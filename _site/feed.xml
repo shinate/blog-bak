@@ -3,10 +3,10 @@
   <channel>
     <title>codante</title>
     <description></description>
-    <link>http://codante.org/</link>
-    <atom:link href="http://codante.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 18 Oct 2015 18:49:21 +0800</pubDate>
-    <lastBuildDate>Sun, 18 Oct 2015 18:49:21 +0800</lastBuildDate>
+    <link>http://codante.org/blog/</link>
+    <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 18 Oct 2015 18:56:20 +0800</pubDate>
+    <lastBuildDate>Sun, 18 Oct 2015 18:56:20 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -14,8 +14,8 @@
         <description>&lt;h1 id=&quot;test&quot;&gt;TEST&lt;/h1&gt;
 </description>
         <pubDate>Mon, 19 Oct 2015 00:00:00 +0800</pubDate>
-        <link>http://codante.org/2015/10/19/test.html</link>
-        <guid isPermaLink="true">http://codante.org/2015/10/19/test.html</guid>
+        <link>http://codante.org/blog/2015/10/19/test.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2015/10/19/test.html</guid>
         
         
       </item>
@@ -25,8 +25,8 @@
         <description>&lt;p&gt;Hello world!&lt;/p&gt;
 </description>
         <pubDate>Mon, 10 May 2010 13:44:48 +0800</pubDate>
-        <link>http://codante.org/2010/05/10/hello-world.html</link>
-        <guid isPermaLink="true">http://codante.org/2010/05/10/hello-world.html</guid>
+        <link>http://codante.org/blog/2010/05/10/hello-world.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2010/05/10/hello-world.html</guid>
         
         
       </item>
@@ -40,8 +40,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 10 May 2010 00:00:00 +0800</pubDate>
-        <link>http://codante.org/2010/05/10/hello.html</link>
-        <guid isPermaLink="true">http://codante.org/2010/05/10/hello.html</guid>
+        <link>http://codante.org/blog/2010/05/10/hello.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2010/05/10/hello.html</guid>
         
         
       </item>
