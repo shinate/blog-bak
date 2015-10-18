@@ -1,0 +1,12 @@
+# Site settings
+title: codante
+email: shine.wangrs@gmail.com
+description: ""
+# destination: "./_site/blog"
+# baseurl: "/blog" # the subpath of your site, e.g. /blog/
+url: "http://codante.org" # the base hostname & protocol for your site
+twitter_username: shine.wangrs@gmail.com
+github_username:  shine.wangrs@gmail.com
+
+# Build settings
+markdown: kramdown
