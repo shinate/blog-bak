@@ -1,0 +1,46 @@
+---
+layout: post
+status: publish
+published: true
+title: wordpress极具个性的文章发布时间显示
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+excerpt: "根据当前的时间，计算出文章在哪天发布，发布了多长时间。只做了今天和昨天的，再久一点的做这个也没必要... 就直接显示确切的发布时间了。"
+wordpress_id: 349
+wordpress_url: http://codante.org/?p=349
+date: '2010-10-05 17:36:23 +0800'
+date_gmt: '2010-10-05 09:36:23 +0800'
+---
+<h2>使用方法</h2>
+<p>将函数添加到主题中的 <strong>functions.php</strong>文件中，在模板里直接调用 <strong><?php the_time_ultra();?></strong></p>
+<h2>代码</h2>
+<p>[php]<br />
+function the_time_ultra(){<br />
+	$u_time = get_the_time('U');<br />
+	$now = current_time('timestamp');<br />
+	list($y, $m, $d) = explode(' ', date("Y m d", $now));<br />
+	$today_0_oclock_stamp = mktime(0, 0, 0, $m, $d, $y);</p>
+<p>	$tps = $now - $u_time;</p>
+<p>	if($u_time - $today_0_oclock_stamp >= 0){ #今天<br />
+		$tls = $u_time - $today_0_oclock_stamp;<br />
+		printf(__('Today, %s', 'codante-simple'), date('G:i', $tls));<br />
+		if($tps < 3600){<br />
+			printf(__('%s minute ago.', 'codante-simple'), intval(date('i', $tps)));<br />
+		} else {<br />
+			printf(__('%s hours ago.', 'codante-simple'), date('G', $tps));<br />
+		}<br />
+	} elseif($u_time - $today_0_oclock_stamp >= -86400){ #昨天<br />
+		$tls = $u_time - $today_0_oclock_stamp + 86400;<br />
+		printf(__('Yesterday, %s', 'codante-simple'), date('G:i', $tls));<br />
+		printf(__('%s hours ago.', 'codante-simple'), round($tps / 3600));<br />
+	} else {<br />
+		echo date(__('Y-n-d G:i', 'codante-simple'), $u_time);<br />
+	}<br />
+}<br />
+[/php]</p>

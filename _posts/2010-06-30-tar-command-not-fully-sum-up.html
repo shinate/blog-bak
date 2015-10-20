@@ -1,0 +1,121 @@
+---
+layout: post
+status: publish
+published: true
+title: tar命令不完全总结
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+excerpt: tar命令详细的介绍与测试，包括排除式打包、增量备份等实际操作。
+wordpress_id: 63
+wordpress_url: http://codante.org/?p=63
+date: '2010-06-30 11:41:24 +0800'
+date_gmt: '2010-06-30 03:41:24 +0800'
+---
+<p>感谢老男孩赐予的知识。 老男孩（QQ:49000448， mail:49000448@qq.com）</p>
+<h2>常用选项</h2>
+<p>[code]<br />
+-z, –gzip, –ungzip<br />
+filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩</p>
+<p>-c, –create<br />
+create a new archive ||建立新的归档文件</p>
+<p>-v, –verbose<br />
+verbosely list files processed||处理过程中输出相关信息</p>
+<p>-f, –file [HOSTNAME:]F<br />
+use archive file or device F (default “-”, meaning stdin/stdout)||对普通文件操作</p>
+<p>-x, –extract, –get<br />
+extract files from an archive||从归档文件中解出文件</p>
+<p>-j, –bzip2<br />
+filter archive through bzip2, use to decompress .bz2 files||用GNU的bzip2压缩文件或解压</p>
+<p>-C, –directory DIR<br />
+change to directory DIR</p>
+<p>–exclude PATTERN<br />
+exclude files based upon PATTERN</p>
+<p>-X, –exclude-from FILE<br />
+exclude files listed in FILE</p>
+<p>-Z, –compress, –uncompress<br />
+filter the archive through compress||调用compress来压缩归档文件，与-x联用时调用compress完成解压缩</p>
+<p>-N, –after-date DATE, –newer DATE<br />
+only store files newer than DATE<br />
+[/code]</p>
+<h2>举例</h2>
+<p>不同方法对应不同的解压方式</p>
+<h3>方法1 (tar.gz)</h3>
+<p>[bash]<br />
+#打包<br />
+tar zcvf test.tar.gz ./test</p>
+<p>#解压<br />
+tar zxvf test.tar.gz<br />
+[/bash]</p>
+<h3>方法2 (tar.bz)</h3>
+<p>[bash]<br />
+#打包<br />
+tar jcvf test.tar.bz ./test</p>
+<p>#解压<br />
+tar jxvf test.tar.bz<br />
+[/bash]</p>
+<h3>错误的例子</h3>
+<p>命令必须对应相应的包，否则无法解压。</p>
+<p>[bash]<br />
+tar zxvf test.tar.bz<br />
+[/bash]</p>
+<p>报错：<br />
+gzip: stdin: not in gzip format<br />
+tar: Child returned status 1<br />
+tar: Error exit delayed from previous error</p>
+<p>[bash]<br />
+tar jxvf test.tar.gz<br />
+[/bash]</p>
+<p>报错：<br />
+bzip2: (stdin) is not a bzip2 file.<br />
+tar: Child returned status 2<br />
+tar: Error exit delayed from previous errors</p>
+<h3>指定解压路径(参数 -C)</h3>
+<p>[bash]<br />
+tar jxvf test.tar.bz -C /home/rhy/<br />
+tar zxvf test.tar.gz -C /home/rhy/<br />
+[/bash]</p>
+<h3>排除式打包(参数 -X)</h3>
+<p>[code]<br />
+man tar:</p>
+<p>–exclude PATTERN<br />
+exclude files based upon PATTERN</p>
+<p>-X, –exclude-from FILE<br />
+exclude files listed in FILE<br />
+[/code]</p>
+<h4>测试准备</h4>
+<p>[bash]<br />
+cd /<br />
+mkdir -p /test/baoliu<br />
+mkdir -p /test/paichu<br />
+touch exceptlist;echo “paichu”&gt;exceptlist<br />
+[/bash]</p>
+<h4>测试开始</h4>
+<p><strong>–exclude</strong> 参数<br />
+[bash]<br />
+cd /<br />
+tar zcvf  paichu.tar.gz ./test –exclude=test/paichu<br />
+./test/<br />
+./test/baoliu/<br />
+[/bash]</p>
+<p><strong>-X</strong> 参数<br />
+[bash]<br />
+cd /<br />
+cat exceptlist<br />
+paichu</p>
+<p>tar zcvfX paichuX.tar.gz /exceptlist ./test<br />
+./test/<br />
+./test/baoliu/<br />
+[/bash]</p>
+<h3>增量备份(参数 -N)</h3>
+<p>[bash]<br />
+#自00点以来的新文件。<br />
+tar -N $(date -d yesterday +%F) zcvf a.tar.gz ./a</p>
+<p>#自2009-09-26以来的新文件<br />
+tar -N 2009-09-26 zcvf a.tar.gz ./a<br />
+[/bash]</p>

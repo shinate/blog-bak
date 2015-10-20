@@ -1,0 +1,166 @@
+---
+layout: post
+status: publish
+published: true
+title: "关于apache的一些实用技巧"
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+excerpt: "关于apache的一些实用技巧，看了几个版本的翻译，不是白字先生就是翻译有偏差，只好自己修改了份。对英文不是很有爱，感谢偶老婆的帮助^ ^"
+wordpress_id: 58
+wordpress_url: http://codante.org/?p=58
+date: '2010-06-28 16:04:01 +0800'
+date_gmt: '2010-06-28 08:04:01 +0800'
+---
+<p>原文地址: <a href="http://www.petefreitag.com/item/505.cfm">http://www.petefreitag.com/item/505.cfm</a></p>
+<h2>隐藏Apache的版本号</h2>
+<p>另外包括一些其他的信息</p>
+<p>apache的默认设置公开了apache的版本号，操作系统，甚至还有已经安装了的apache组件。黑客们会利用这些信息更方便的去攻击你。并且，这些信息告诉了所有人：你的apache并没有经过配置</p>
+<p>你可以在httpd.conf文件中，加上或者修改两条代码，隐藏信息。</p>
+<p>[code]<br />
+ServerSignature Off<br />
+ServerTokens Prod<br />
+[/code]</p>
+<p>ServerSignature apache生成的一些页面底部,比如404页面,文件列表页面等等。</p>
+<p>ServerTokens指向被用来设置Server的http头回响。设置为Prod可以让HTTP头回响显示成这样….</p>
+<p>Server: Apache</p>
+<p>如果是个超级偏执狂，你可以修改源代码或者使用mod_security，来显示比Apache更多的东西.</p>
+<h2>确定运行apache的用户组</h2>
+<p>很多apache安装之后他们是运行在nobody之下的。所以,每个运行在nobody之下的apache，将会被同组的邮件服务器攻击。所以</p>
+<p>[bash]chown -R apache.apache /webserver/apache2/[/bash]</p>
+<p>编辑httpd.conf</p>
+<p>[code]<br />
+User apache<br />
+Group apache<br />
+[/code]</p>
+<h2>确认根目录的东西是关闭的</h2>
+<p>我们不希望apache有修改根目录的权限。 所以，建议你所有的网站都放在一个目录下面(我们称为/web，你可以象这样设置:</p>
+<p>[code]<br />
+Order Deny,Allow<br />
+Deny from all<br />
+Options None<br />
+AllowOverride None<br />
+[/code]</p>
+<p>由于设置了Options None 和AllowOverride None，这将关闭options权限和覆盖权限，你现在必须为每个文件夹加上独立的配置，为他们恢复Option和Override权限。</p>
+<p>[code]<br />
+Order Allow,Deny<br />
+Allow from all<br />
+[/code]</p>
+<h2>关闭文件夹浏览</h2>
+<p>你可以在httpd.conf的Directory标签中间加上一个Options指令。 设置Options为None或者-Indexes</p>
+<p>[code]<br />
+Options -Indexes<br />
+[/code]</p>
+<h2>关闭服务器的side includes</h2>
+<p>也要添加一条Optoions指令到Directory 标签中, 使Options 为 None或者-Includes<br />
+[code]<br />
+Options -Includes<br />
+[/code]</p>
+<h2>关掉CGI</h2>
+<p>如果你不用CGI,那就在Directory标签中加上一条Options指令关掉他。 使Options为None或者-ExecCGI<br />
+[code]<br />
+Options -ExecCGI<br />
+[/code]</p>
+<h2>禁用伪链接</h2>
+<p>只允许访问真实的地址</p>
+<p>也是在directory中修改Options 为 -FollowSymLinks<br />
+[code]<br />
+Options -FollowSymLinks<br />
+[/code]</p>
+<h2>关闭多选项</h2>
+<p>关闭所有选项</p>
+<p>[code]<br />
+Options None<br />
+[/code]</p>
+<p>关闭几个选项</p>
+<p>[code]<br />
+Options -ExecCGI -FollowSymLinks -Indexes<br />
+[/code]</p>
+<h2>关闭 .htaccess 文件的支持</h2>
+<p>也在Directory标签中，但是AllowOverride指令<br />
+[code]<br />
+AllowOverride none<br />
+[/code]</p>
+<p>如果你需要Overrides，需要确认他们不能被下载。改变他们的文件名，而不是原来的.htaccess, 比如可以改为.httpdoveride, 或者屏蔽所有的.ht开头的文件。</p>
+<p>[code]<br />
+AccessFileName .httpdoverride</p>
+<p>Order allow,deny<br />
+Deny from all<br />
+Satisfy All<br />
+[/code]</p>
+<h2>运行 mod_security</h2>
+<p>mod_security 是一个非常好用的Apache组件.<br />
+通过mod_security你可以达到以下效果:</p>
+<ol>
+<li>简单的过滤</li>
+<li>正则表达式过滤</li>
+<li>URL 编码验证</li>
+<li>Unicode编码验证</li>
+<li>核查</li>
+<li>Null值攻击预防</li>
+<li>上传大小限制</li>
+<li>服务器身份掩藏</li>
+<li>内置Chroot支持</li>
+</ol>
+<h2>关掉一些不需要的组件</h2>
+<p>去<a href="http://httpd.apache.org/docs/2.0/mod/">module documentation</a> 看一下你到底需要哪些组件. 好多时候你会发现，你并不需要…。</p>
+<p>一行一行去查找你的httpd.conf里是否包含LoadModule, 可以用#放在行首去关闭组件。 如果象搜索组件，可以运行:</p>
+<p>[code]<br />
+grep LoadModule httpd.conf<br />
+[/code]</p>
+<p>这里有些组件常常打开的，但是不需要。<br />
+[code]<br />
+mod_imap,mod_include,mod_info,mod_userdir,mod_status,mod0cgi,mod-autoindex.<br />
+[/code]</p>
+<h2>限制目录权限</h2>
+<p>root有阅读apache配置文件和bin文件的权限。</p>
+<p>[code]<br />
+chown -R root:root /usr/local/webserver/apache2<br />
+chmod -R o-rwx /usr/local/webserver/apache2<br />
+[/code]</p>
+<h2>减少Timeout值</h2>
+<p>默认设置timeout指令是300秒。 你可以减小他，以预防一些潜在攻击。</p>
+<p>[code]<br />
+Timeout 45<br />
+[/code]</p>
+<h2>减小最大请求</h2>
+<p>apache有很多指令来减小请求数，一个很好的指令是LimitRequestBody指令。 这条指令默认设置是无限的。 如果你想设置上传文件不能超过1MB， 你可以这样写:</p>
+<p>[code]<br />
+LimitRequestBody 1048567<br />
+[/code]</p>
+<p>如果不允许问文件上传。你可以设得更小。</p>
+<p>其他得指令，可以看看LimitRequestFields,LimitrequestFieldSize , LimitRequestLine. 这些指令都是默认设置。但是你必须去优化他们，成为你需要的。 可以看看这个<a href="http://httpd.apache.org/docs/2.0/mod/core.html">文档</a></p>
+<h2>限制XML body区的大小</h2>
+<p>如果你运行了mod_dav,你会希望限制XML 请求的body大小。 LimitXMLRequestBody指令只有在Apache2中有。 并且他的默认值是1个millon字节大小，大约1M, 很多教材上说这里设置为0比较好，这就意味着多大的文件都可以上传，如果你需要上传大文件的话。 但是如果你简单的改变一下控制。 你可以大概的设置成10MB</p>
+<p>[code]<br />
+LimitXMLRequestBody 10485760<br />
+[/code]</p>
+<h2>限制并发</h2>
+<p>apache有些设置可以限制并发请求。MaxClients就是服务器能承受的最大用户值。</p>
+<p>其他的指令比如MaxSpareServers，MaxRequestsPerChild, Apache2上的 ThreadsPerChild,ServerLimit,和MaxSpareThreads 和你的系统硬件配置的配合都是很重要的。</p>
+<h2>IP限制地址段</h2>
+<p>如果你有一些资源只能给特定的网段使用…176。16.0.0–176.16.0.16<br />
+[code]<br />
+Order Deny,Allow<br />
+deny from all<br />
+Allow from 176.16.0.0/16<br />
+[/code]</p>
+<p>或者也可以限定单一IP<br />
+[code]<br />
+Order Deny,Allow<br />
+Deny from all<br />
+Allow from 127.0.0.1<br />
+[/code]</p>
+<h2>调整KeepAlive(永久保持)设置</h2>
+<p>MaxKeepAliveRequests –&gt; 100  (你需要的数)<br />
+KeepAliveTimeout –&gt; 15  (你需要的数)</p>
+<h2>在Chroot环境运行apache</h2>
+<p>chroot allows you to run a program in its own isolated jail. This prevents a break in on one service from being able to effect anything else on the server.</p>
+<p>It can be fairly tricky to set this up using chroot due to library dependencies. I mentioned above that the mod_security module has built in chroot support. It makes the process as simple as adding a mod_security directive to your configuration:</p>
+<p>SecChrootDir /chroot/apache</p>
+<p>There are however some caveats however, so check out the docs for more info.</p>

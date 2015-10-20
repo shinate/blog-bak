@@ -1,0 +1,57 @@
+---
+layout: post
+status: publish
+published: true
+title: linux下的httpd(apache)安装及配置
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+excerpt: "在CentOS5.4 x86_64系统下进行Apache的安装配置，路径都是安装时自己用的，可以根据需要进行更改。在此介绍一下操作流程。"
+wordpress_id: 43
+wordpress_url: http://codante.org/?p=43
+date: '2010-06-23 11:55:37 +0800'
+date_gmt: '2010-06-23 03:55:37 +0800'
+---
+<h2>下载安装包</h2>
+<p>[bash]wget http://apache.etoak.com/httpd/httpd-2.2.11.tar.gz[/bash]</p>
+<h2>创建apache用户</h2>
+<p>[bash]groupadd apache;useradd -g apache apache[/bash]</p>
+<h2>编译安装</h2>
+<p>[bash]./configure --prefix=/usr/local/apache2 \<br />
+--enable-modules=all \<br />
+--enable-ssl \<br />
+--enable-so \<br />
+--enable-rewrite \<br />
+--enable-mime-magic \<br />
+--enable-file-cache \<br />
+--enable-cache \<br />
+--enable-disk-cache \<br />
+--enable-mem-cache \<br />
+--enable-static-rotatelogs \<br />
+--enable-vhost-alias<br />
+make<br />
+make install<br />
+[/bash]</p>
+<h2>配置</h2>
+<h3>修改apache配置文件</h3>
+<p>[bash]vi /usr/local/apache2/conf/httpd.conf[/bash]</p>
+<p>修改:<br />
+[code]DirectoryIndex index.html index.htm index.php<br />
+User apache<br />
+Group apache[/code]</p>
+<p>添加:<br />
+[code]ServerName 127.0.0.1:80[/code]</p>
+<p>[code]AddType application/x-httpd-php .php .php3<br />
+AddType application/x-httpd-php-source .phps[/code]</p>
+<h2>启动apache</h2>
+<p>[bash]/usr/local/apache2/bin/apachectl start[/bash]</p>
+<h2>设置开机启动</h2>
+<p>[bash]vi /etc/rc.local[/bash]<br />
+添加<br />
+[code]/usr/local/apache2/bin/apachectl start[/code]</p>
+<p>感谢老男赐予的文档...</p>

@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: "判断javascript加载完成的方法"
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+wordpress_id: 357
+wordpress_url: http://codante.org/?p=357
+date: '2010-10-18 12:41:59 +0800'
+date_gmt: '2010-10-18 04:41:59 +0800'
+---
+<p>[javascript]<br />
+function include_js(file) {<br />
+    var _doc = document.getElementsByTagName('head')[0];<br />
+    var js = document.createElement('script');<br />
+    js.setAttribute('type', 'text/javascript');<br />
+    js.setAttribute('src', file);<br />
+    _doc.appendChild(js);</p>
+<p>    if (!/*@cc_on!@*/0) { //if not IE<br />
+        //Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload<br />
+        js.onload = function () {<br />
+            alert('Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload');<br />
+        }<br />
+    } else {<br />
+        //IE6、IE7 support js.onreadystatechange<br />
+        js.onreadystatechange = function () {<br />
+            if (js.readyState == 'loaded' || js.readyState == 'complete') {<br />
+                alert('IE6、IE7 support js.onreadystatechange');<br />
+            }<br />
+        }<br />
+    }</p>
+<p>    return false;<br />
+}</p>
+<p>//execution function<br />
+include_js('http://www.planabc.net/wp-includes/js/jquery/jquery.js');<br />
+[/javascript]</p>

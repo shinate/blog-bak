@@ -1,0 +1,162 @@
+---
+layout: post
+status: publish
+published: true
+title: wordpress自制插件：Content Index for Wordpress 锚文本内容索引
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+excerpt: "在文章里添加一个内容索引，表现为锚文本的形式。可以在后台进行配置，控制显示的样式。好久没有更新了，根据平时收集的问题，以及几位热心博主给出的建议，此次更新做了比较多的更改，尝试性的修复内存溢出的问题，具体是不是解决了还希望大伙帮忙留意下~"
+wordpress_id: 48
+wordpress_url: http://codante.org/?p=48
+date: '2010-06-25 14:18:46 +0800'
+date_gmt: '2010-06-25 06:18:46 +0800'
+---
+<h2>概述</h2>
+<p>看到百度百科里的功能，感觉还是比较有必要的，特别是文章比较长的时候。在wordpress.org也看到过，但是不能进行设置，还是自己做个比较放心，改起来也舒服*^ ^*~</p>
+<p>而且，可以增加些内链，增加些锚文本，增加些关键词，反正总比没有的好就是了。</p>
+<h2>当前版本</h2>
+<p><span style="color: #ff0000;"><strong>2.60</strong></span></p>
+<h2 id="在未来的版本中">在未来的版本中</h2>
+<p>如果使用说明中已经出现，就表示已经实现了~</p>
+<ol>
+<li><strong>增加随屏幕滚动的效果</strong> – 博友提出过需求，并且已经实现了，考虑加进来~（已测试，搁浅中，考虑解决办法）</li>
+<li><strong>返回索引菜单、返回顶部，快捷索引（类似于百度百科那样的）</strong></li>
+<li><strong>添加开启缓存选项</strong> - 插件在生成目录时会经过大量的计算，开启缓存后可在发表文章的同时将索引存入数据库，在显示的过程中省略掉分析计算的过程。曾经有博友遇到过php内存溢出的问题，此选项能缓解此类问题。ps：诅咒那些无限开apache虚拟主机的空间商...连再跑个apache都不舍得！！</li>
+<li><strong>支持自然编号索引</strong> - 如：http://xxx.com/1.html#第二个标题 ==&gt; http://xxx.com/1.html#index-2...</li>
+</ol>
+<h2>演示</h2>
+<p>啊...嗯...本文就是最好的演示。下面会有更具体的使用说明及演示。</p>
+<h2>使用说明</h2>
+<h3>插件设置</h3>
+<p>进入wordpress后台管理，设置-&gt;<strong>文章内索引</strong></p>
+<p><img class="alignnone  wp-image-642" title="wp-content-index-screenshot" alt="" src="http://ww2.sinaimg.cn/large/699ef9c0gw1edege9mkdaj20dy0bwdgz.jpg" width="502" height="428" /></p>
+<ol>
+<li><strong>启用方式</strong><br />
+开启 - 默认所有文章开启，可以在单个文章中设置为禁用（类似于黑名单）；<br />
+关闭 - 默认所有文章禁用，可以在单个文章中设置为启用（类似于白名单）。<br />
+<strong></strong></li>
+<li><strong>位置</strong>：设置索引栏在文章中的显示位置，<span style="color: #0000ff;">居左</span>和<span style="color: #0000ff;">居右</span>均为文章环绕型的，会占用文章的部分位置。选择顶部则会在文章标题的下方，内容(摘要)的上方显示，不占用文章内容位置；</li>
+<li><strong>为索引添加编号</strong>：是否在索引项目前添加编号，如果出现h1~h5不同的标签，<span style="color: #008000;">插件会自动识别并显示出层级关系</span>。<br />
+<img class="alignnone  wp-image-298" title="列表编号" alt="索引自动编号" src="http://ww4.sinaimg.cn/large/699ef9c0gw1edegfg9u43j204v04x3yi.jpg" width="175" height="177" /></li>
+<li><strong>为正文中的heading添加编号</strong>：实现类似office里边段落编号的功能。如下图:<br />
+<img class="alignnone  wp-image-496" title="content-index-heading-in" alt="" src="http://ww4.sinaimg.cn/large/699ef9c0gw1edegg43ubzj205x081wex.jpg" /></li>
+<li><strong>标题</strong>：索引栏的标题，可以设置是否开启。如果开启本选项，还可根据需要进行显示文字的设置，若为空，那么将显示插件默认的“<span style="color: #0000ff;">文章内索引</span>”字样。</li>
+<li><strong>层级关系</strong>：是否显示不同层级间的缩进。开启此功能，如<strong><span style="color: #008000;">“4”</span></strong>和<span style="color: #008000;"><strong>“4.1”</strong></span>，<span style="color: #008000;"><strong>“4.1”</strong></span>将相对于他的父级<strong><span style="color: #008000;">“4”</span></strong>进行缩进(无论从视觉还是代码结构均)；关闭此功能，所有索引将会按照自然顺序显示，1、2、3、4、5、6...... 同样，无论是视觉还是代码。</li>
+<li><strong>隐藏按钮</strong>：是否显示隐藏按钮并开启隐藏索引栏的功能，设置此项主要是为了减少较长或过宽的索引栏对文章内容的影响，关闭后更易于用户阅读；</li>
+<li><strong>显示无内容项</strong>：是否显示空的索引。<br />
+如果您在文章中添加了&lt;h3&gt;&lt;/h3&gt;，标签中并没有任何内容，但是，本插件仍然会给此标签建立一个索引，索引的名称是自动进行编号的。<br />
+<img class="alignnone  wp-image-299" title="自动编号的空索引" alt="wp-content-index-screenshot-02" src="http://ww3.sinaimg.cn/large/699ef9c0gw1edeggqsyqrj204g01ma9v.jpg" /></li>
+<li><strong>显示索引(空)项</strong>：是否显示表示层级关系却无实际意义的空项。<br />
+请看实例：<br />
+&lt;h2&gt;索引2&lt;/h2&gt;<br />
+&lt;h3&gt;索引3&lt;/h3&gt;<br />
+当<span style="color: #0000ff;"><strong>h2</strong></span>后面紧跟着<span style="color: #0000ff;"><strong>h3</strong></span>时，将会显示出层级关系，比如 <span style="color: #0000ff;"><strong>1</strong></span> 和<span style="color: #0000ff;"><strong> 1.1</strong></span>。<br />
+但是如果出现另一种情况，如：<br />
+&lt;h2&gt;索引2&lt;/h2&gt;<br />
+&lt;h4&gt;索引4&lt;/h4&gt;<br />
+<span style="color: #0000ff;"><strong>h2</strong></span>后面跟着<span style="color: #0000ff;"><strong>h4</strong></span>，按照正常的层级关系怎样都是说不通的，中间差了一层<span style="color: #ff0000;"><strong>h3</strong></span>，但是插件仍然显示出 <span style="color: #0000ff;"><strong>1</strong></span> 和 <span style="color: #0000ff;"><strong>1.1.1</strong></span> ，它们之间是有个<span style="color: #008000;"><strong>自动添加的 “1.1”</strong></span> 的。这个<span style="color: #008000;"><strong>1.1</strong></span>便是本选项所要控制的对象。</li>
+<li><strong>摘要相关</strong>：每篇文章都是可以有摘要的。如果您没有撰写摘要，此选项不会又任何效果。也就是说，此选项只会作用在添加了摘要的文章。<br />
+<span style="color: #008000;">开启第一层选项，摘要将会自动显示到文章顶部；<br />
+开启第二层选项，摘要将会作为第一项出现在索引栏中。</span></li>
+</ol>
+<p>插件所使用的css样式存放在独立的样式表中，未在后台加入控制。样式表目前会自动加载，如需自定义，请在wordpress主题的样式表中进行样式重置。</p>
+<h3>在文章中使用</h3>
+<p>在文章中添加h1~h6标签即可，插件会自动识别层级关系，最后根据设置来输出。</p>
+<p><span style="color: #999999;">2.42 版开始，可在文章中进行禁用设置！如果某个文章或页面不想使用此功能，可以勾选进行屏蔽。</span><br />
+<strong><span style="color: #0000ff;">2.45 版此功能得到优化，可以使用两套配置，根据需要进行设置，类似于黑名单、白名单。</span></strong></p>
+<p><img class="alignnone  wp-image-643" title="content-index-disable" alt="" src="http://ww2.sinaimg.cn/large/699ef9c0gw1edeghgh6u9j208c0690ss.jpg" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>插件文件列表</h2>
+<p>style.css - 默认样式,现在设置为自动加载<br />
+wp-content-index.php - 插件主文件<br />
+wp-content-index-zh_CN.*o - 语言包...只有中文。恩，只有中文就够了</p>
+<h2>插件下载</h2>
+<h3>下载</h3>
+<p><a href="http://wordpress.org/extend/plugins/wp-content-index/" target="_blank">http://wordpress.org/extend/plugins/wp-content-index/</a></p>
+<h2>更新历史</h2>
+<p><span style="color: #ff0000;"><strong>v2.60 2012-6-21</strong></span></p>
+<ol>
+<li>修复因为没有引入摘要而引起的自然编号混乱问题。</li>
+</ol>
+<p><span style="color: #000000;"><strong>v2.45 2011-10-9</strong></span></p>
+<ol>
+<li>将插件生效的状态保存到数据库，可以使用两套配置来控制目录列表的显示。</li>
+<li>过滤掉索引中以及heading标签中的超链接。</li>
+<li>尝试着解决内存溢出问题(之前好多博主遇到的问题)。</li>
+<li>js重新命名了方法，避免冲突。</li>
+<li>降低生效优先级，解决与wp-keyword-link等插件的冲突问题。</li>
+<li>DB cache功能准备(未实装)。</li>
+<li>其他优化，样式的选择性载入等。</li>
+</ol>
+<p><span style="color: #000000;"><strong>v2.43 2011-2-15</strong></span></p>
+<ol>
+<li>为文章中的heading标签添加层级序号，类似于Office中的 "1, 1.1, 1.1.1"，并可在后台启用或关闭。</li>
+<li>返回索引菜单的功能(未实装，已预留功能，在之后的版本可能会添加上)</li>
+</ol>
+<p><span style="color: #000000;"><strong>v2.42 2010-12-21</strong></span></p>
+<ol>
+<li>初步开启局部控制，在特定文章中可以禁用索引功能。</li>
+</ol>
+<p><span style="color: #000000;"><strong>v2.4 2010-9-21</strong></span></p>
+<ol>
+<li>层级控制选项(功能)实装。</li>
+</ol>
+<p><strong>v2.31 2010-8-9</strong></p>
+<ol>
+<li>修改部分js方法名称及全局变量名称，避免命名冲突。</li>
+</ol>
+<p><strong>v2.30 </strong><strong>2010-7-21</strong></p>
+<ol>
+<li>去除原先要使用的广告代码</li>
+<li>添加信息反馈方法，当插件被激活时，会反馈您的域名、wordpress版本、管理员邮箱，以便我们之后更好的为您服务。</li>
+<li>修改部分方法名，避免与本站开发的其他插件造成冲突。<strong><br />
+</strong></li>
+</ol>
+<p><strong>v2.25 2010-7-16</strong></p>
+<ol>
+<li>保留索引中的空格；</li>
+<li>为索引添加title属性。</li>
+</ol>
+<p><strong>v2.10 2010-6-30</strong></p>
+<ol>
+<li>后台样式全面升级，更加美观；</li>
+<li>优化代码。</li>
+</ol>
+<p><strong>v2.02 2010-6-28</strong></p>
+<ol>
+<li>在混合摘要的时候，将它的层级改变为正文中的最小层级。</li>
+</ol>
+<p><strong>v2.01 2010-6-25</strong></p>
+<ol>
+<li>在管理后台添加自定义设置，可以根据需求设定索引框的位置、标题、序号、内容显示控制等；</li>
+<li>将上个版本中的“单级列表”形式，升级为可以展现附属关系的“层级嵌套”形式；</li>
+</ol>
+<p><strong>v1.0 2010-5-25</strong></p>
+<ol>
+<li>将摘要添加到内容头部，并且识别为索引。</li>
+</ol>
+<p><strong>v0.4 2010-4-30</strong></p>
+<ol>
+<li>可识别空heading标签，添加索引但不显示；</li>
+<li>识别自定义id的heading标签，将锚文本保留，并使用heading标签里的内容作为索引；</li>
+<li>初步识别层级关系，并且通过css定义各个层级的样式；</li>
+<li>绑定到the_content；</li>
+</ol>
+<p><strong>v0.28 2010-4-13</strong></p>
+<ol>
+<li>识别heading标签，并且将内容作为索引和锚文本；</li>
+</ol>
+<p><strong>v0.1 2010-4-5</strong></p>
+<ol>
+<li>文章中找到标签，排列为序号索引；</li>
+<li>在模板中调用添加到页面中；</li>
+</ol>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 1420px; width: 1px; height: 1px; overflow: hidden;">Stable</div>

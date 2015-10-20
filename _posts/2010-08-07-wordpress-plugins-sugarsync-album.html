@@ -1,0 +1,69 @@
+---
+layout: post
+status: publish
+published: true
+title: wordpress自制插件：SugarSync相册(SugarSync Albums)。大陆已墙！
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+wordpress_id: 147
+wordpress_url: http://codante.org/?p=147
+date: '2010-08-07 10:00:10 +0800'
+date_gmt: '2010-08-07 02:00:10 +0800'
+---
+<h2>概述</h2>
+<p>由于过于投入，开发过程中的很多版本都被掠过了，放出时直是从2.0开始的，期间不乏种种的颠覆与修改。</p>
+<p>关于本插件，还附带了一个<a title="用户开放界面(贴图工具)" href="http://codante.org/sugarsync-public-api" target="_blank">独立的站外贴图平台</a>，面向所有用户。</p>
+<h2>重要！</h2>
+<p><strong><span style="color: #ff0000;">经过[天][朝]多地区的测试，sugarsync.com网站已墙！目前客户端能用，web访问全部超时。</span></strong></p>
+<p><strong><span style="color: #ff0000;">MLGBZD......艹</span></strong><strong><span style="color: #ff0000;">艹</span></strong><strong><span style="color: #ff0000;">艹！</span></strong><strong><span style="color: #ff0000;">艹</span></strong><strong><span style="color: #ff0000;">艹</span></strong><strong><span style="color: #ff0000;">！</span></strong><strong><span style="color: #ff0000;">艹！</span></strong></p>
+<p><strong><span style="color: #ff0000;">静等中，不知道TWO会结束后会不会正常  lˇˍˇm<br />
+</span></strong></p>
+<h2>开发进度</h2>
+<p>下载已放出！version2.0, let's playable!...</p>
+<h2>在未来的版本中</h2>
+<ol>
+<li><strong>增加传统方式的图片插入</strong> – 现在文章中的照片插入方式是通过解析格式化字符串进行的，当删除这个插件的时候图片就没有办法显示了，多位博主提出过这个问题… 看来需要增加这一功能了~</li>
+<li><strong>添加相册效果whitebox</strong> - 效果很不错，增加一种效果，而且很方便的，这个插件当初就是被设计成可以添加各种效果库 :p</li>
+</ol>
+<h2>准备工作</h2>
+<p>首先，要先拥有一个sugarsync账户。嘿嘿，旧事重提 <a href="https://www.sugarsync.com/referral?rf=d9y3diy5cvha8" target="_blank">https://www.sugarsync.com/referral?rf=d9y3diy5cvha8</a> 用这个注册吧，可以给你和我每人多加250M的奖励空间(<strong><span style="color: #ff0000;">2010年底前奖励翻倍，也就是500M！</span></strong>)~</p>
+<p>注册流程很简单，填写信息-&gt;邮件确认。</p>
+<p><strong>最重要的</strong>，别忘记下载安装一个sugarsync的客户端，<span style="color: #0000ff;"><strong>登录一次之后，奖励就会被激活。</strong></span>客户端的下载地址为： <a title="下载客户端" href="https://www.sugarsync.com/locale/zh/downloads.html" target="_blank">https://www.sugarsync.com/locale/zh/downloads.html</a> ，其中有适应各种操作系统的版本。</p>
+<h2>演示</h2>
+<p>下面是其中一个相册的展示，采用的是图片模式。</p>
+<p>[SugarSync::T:picture|S:120,80,0|L:column|C:wangwei1957|A:951477_15111]</p>
+<h2>下载</h2>
+<p>当前版本：<strong><span style="color: #ff0000;">2.01</span></strong></p>
+<p>wordpress官方下载：<a href="http://wordpress.org/extend/plugins/sugarsync-albums/" target="_blank">http://wordpress.org/extend/plugins/sugarsync-albums/</a></p>
+<h2>安装</h2>
+<p>两种安装方式任选：</p>
+<ol>
+<li>在wordpress后台-&gt;插件-&gt;添加新插件中，选择“上传”选项，选择插件zip包自动进行安装，安装完毕后激活插件。</li>
+<li>将插件的zip包解压，上传co-sugarsync至wp-content/plugins/目录下，进入wordpress后台激活插件。</li>
+</ol>
+<h2>使用说明</h2>
+<p>制作中...</p>
+<h3>显示模式</h3>
+<p>在文章中插入相册时，载入模式分为两种：“<span style="color: #339966;"><strong>相册模式</strong></span>”，“<span style="color: #ff6600;"><strong>图片模式</strong></span>”。</p>
+<p><strong>图片模式：</strong>以相册及图片为单位插入到文章中，使用本地缓存，载入速度较快。</p>
+<p><strong>相册模式：</strong>以相册为单位插入到文章中，直接从网络获取此相册中的图片，载入速度稍慢，可即时刷新相册中的图片。</p>
+<h2>相册效果</h2>
+<p>目前加入了clearbox与lightbox，如果在后台设置中开启了效果切换选项的话，将会允许用户自己更换想看到的效果。</p>
+<p>插件中的效果库是自动识别的，也就是说只需要按照一定规则添加效果库文件夹，插件会自动识别并加载，提供一个更加简便与自由的扩展方案。</p>
+<h2>历史更新</h2>
+<p><strong>2.01 - 2010/12/20</strong></p>
+<ol>
+<li> 优化代码</li>
+<li> 修复效果库路径错误。</li>
+<li>修复读取顺序错误。</li>
+<li> 修复编辑器载入路径错误。</li>
+</ol>
+<p><strong>2.0 - 2010/12/7</strong></p>
+<p>初始版本</p>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 353px; width: 1px; height: 1px; overflow: hidden;">http://wordpress.org/extend/plugins/sugarsync-albums/</div>

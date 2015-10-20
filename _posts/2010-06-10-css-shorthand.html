@@ -1,0 +1,76 @@
+---
+layout: post
+status: publish
+published: true
+title: CSS中的各种缩写
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+excerpt: "使用缩写可以帮助减少你CSS文件的大小，更加容易阅读。"
+wordpress_id: 34
+wordpress_url: http://codante.org/?p=34
+date: '2010-06-10 09:28:20 +0800'
+date_gmt: '2010-06-10 01:28:20 +0800'
+---
+<p>css缩写的主要规则如下：</p>
+<h2>颜色 color</h2>
+<p>16进制的色彩值，如果每两位的值相同，可以缩写一半，例如：<br />
+<span style="color: #993300;">#000000</span>可以缩写为<span style="color: #0000ff;">#000</span>;<span style="color: #800000;">#336699</span>可以缩写为<span style="color: #0000ff;">#369</span>;</p>
+<h2>盒尺寸</h2>
+<p>通常有下面四种书写方法:</p>
+<p>[css]<br />
+property:value1; /*表示所有边都是一个值value1*/<br />
+property:value1 value2;  /*表示top和bottom的值是value1,right和left的值是value2*/<br />
+property:value1 value2 value3;  /*表示top的值是value1，right和left的值是value2，bottom的值是value3*/<br />
+property:value1 value2 value3 value4;  /*四个值依次表示top,right,bottom,left*/<br />
+[/css]</p>
+<p>方便的记忆方法是顺时针，<span style="color: #ff0000;"><strong>上 右 下 左</strong></span>。具体应用在margin和padding的例子如下：<br />
+[css]margin:1em 0 2em 0.5em;[/css]</p>
+<h2>边框 border</h2>
+<p>边框的属性如下：</p>
+<p>[css]border-width:1px;<br />
+border-style:solid;<br />
+border-color:#000;[/css]</p>
+<p>可以缩写为一句：</p>
+<p>[css]border:1px solid #000;[/css]</p>
+<p>语法是border:<span style="color: #ff0000;">尺寸</span> <span style="color: #339966;">样式</span> <span style="color: #3366ff;">颜色</span>;</p>
+<h2>背景 Backgrounds</h2>
+<p>背景的属性如下：</p>
+<p>[css]background-color:#f00;<br />
+background-image:url(background.gif);<br />
+background-repeat:no-repeat;<br />
+background-attachment:fixed;<br />
+background-position:0 0;[/css]</p>
+<p>可以缩写为一句：</p>
+<p>[css]background:#f00 url(background.gif) no-repeat fixed 0 0;[/css]</p>
+<p>语法是background:<span style="color: #ff0000;">背景颜色</span> <span style="color: #339966;">背景图片</span> <span style="color: #3366ff;">填充类型</span> <span style="color: #ff6600;">附属</span> <span style="color: #800080;">定位</span>;</p>
+<p>你可以省略其中一个或多个属性值，如果省略，该属性值将用浏览器默认值，默认值为：</p>
+<p><span style="color: #3366ff;">color: <strong>transparent</strong><br />
+image: <strong>none</strong><br />
+repeat: <strong>repeat</strong><br />
+attachment: <strong>scroll</strong><br />
+position: <strong>0% 0%</strong></span></p>
+<h2>字体 fonts</h2>
+<p>字体的属性如下：</p>
+<p>[css]font-style:italic;<br />
+font-variant:small-caps;<br />
+font-weight:bold;<br />
+font-size:1em;<br />
+line-height:140%;<br />
+font-family:"Lucida Grande",sans-serif;[/css]</p>
+<p>可以缩写为一句：</p>
+<p>[css]font:italic small-caps bold 1em/140% "Lucida Grande",sans-serif;[/css]</p>
+<p>注意，如果你缩写字体定义，至少要定义font-size和font-family两个值。</p>
+<h2>列表 lists</h2>
+<p>取消默认的圆点和序号可以这样写list-style:none;,</p>
+<p>list的属性如下:</p>
+<p>[css]list-style-type:square;<br />
+list-style-position:inside;<br />
+list-style-image:url(image.gif);[/css]</p>
+<p>可以缩写为一句：</p>
+<p>[css]list-style:square inside url(image.gif);[/css]</p>

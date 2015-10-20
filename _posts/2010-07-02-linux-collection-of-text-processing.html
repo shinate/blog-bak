@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: Linux文本处理命令大集合
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+excerpt: Linux中强大的文档处理能力，持续收集中...
+wordpress_id: 73
+wordpress_url: http://codante.org/?p=73
+date: '2010-07-02 18:10:48 +0800'
+date_gmt: '2010-07-02 10:10:48 +0800'
+---
+<h2>清空文档</h2>
+<p>[bash]<br />
+echo ""&gt;filename<br />
+[/bash]<br />
+[bash]<br />
+&gt;filename<br />
+[/bash]<br />
+[bash]<br />
+cat /dev/null &gt;filename<br />
+[/bash]</p>
+<h2>统计</h2>
+<p><strong>在apache的log中找出访问次数最多的10个IP。</strong><br />
+[bash]<br />
+awk '{print $1}' apache_log |sort |uniq -c|sort -nr|head<br />
+[/bash]<br />
+[bash]<br />
+cat xxxxx | awk '{print $2}'|sort|uniq -c|sort -nr| head -10<br />
+[/bash]</p>

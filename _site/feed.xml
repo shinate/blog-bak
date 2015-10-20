@@ -5,17 +5,3620 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Oct 2015 19:42:14 +0800</pubDate>
-    <lastBuildDate>Tue, 20 Oct 2015 19:42:14 +0800</lastBuildDate>
+    <pubDate>Tue, 20 Oct 2015 19:44:58 +0800</pubDate>
+    <lastBuildDate>Tue, 20 Oct 2015 19:44:58 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
-        <title>Hello world!</title>
-        <description>&lt;p&gt;Hello world!&lt;/p&gt;
+        <title>redis安装及配置</title>
+        <description>&lt;h2&gt;依赖&lt;/h2&gt;
+&lt;p&gt;安装redis需要先安装tcl&lt;/p&gt;
+&lt;p&gt;&lt;a title=&quot;tcl&quot; href=&quot;http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html&quot; target=&quot;_blank&quot;&gt;http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;获取软件&lt;/h2&gt;
+&lt;pre&gt;[bash]
+#tcl8.5
+wget http://downloads.sourceforge.net/tcl/tcl8.5.12-src.tar.gz
+
+#redis
+wget http://redis.googlecode.com/files/redis-2.6.2.tar.gz
+[/bash]&lt;/pre&gt;
+&lt;h2&gt;安装&lt;/h2&gt;
+&lt;h3&gt;tcl&lt;/h3&gt;
+&lt;pre&gt;[bash]
+tar -zxf tcl8.5.12-html.tar.gz --strip-components=1
+cd unix &amp;amp;&amp;amp; ./configure --prefix=/usr \
+--enable-threads \
+--mandir=/usr/share/man
+make
+sed -e &quot;s@^\(TCL_SRC_DIR=&#39;\).*@/usr/include&#39;@&quot; \
+-e &quot;/TCL_B/s@=&#39;\(-L\)\?.*unix@=&#39;/usr/lib@&quot; \
+-i tclConfig.sh
+make install
+make install-private-headers
+ln -v -sf tclsh8.5 /usr/bin/tclsh
+chmod -v 755 /usr/lib/libtcl8.5.so
+[/bash]&lt;/pre&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 10 May 2010 13:44:48 +0800</pubDate>
-        <link>http://codante.org/blog/2010/05/10/hello-world.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2010/05/10/hello-world.html</guid>
+        <pubDate>Wed, 31 Oct 2012 11:13:11 +0800</pubDate>
+        <link>http://codante.org/blog/2012/10/31/redis-install-and-configure.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2012/10/31/redis-install-and-configure.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>LINUX+PHP实现网页快照（截屏）</title>
+        <description>&lt;h2&gt;服务器端&lt;/h2&gt;
+&lt;p&gt;为实现截图的程序必须借助服务器端程序：http://code.google.com/p/wkhtmltopdf/&lt;/p&gt;
+&lt;p&gt;可将网页转换为pdf或者图片，32和64位有区别，找个适合自己服务器的版本。&lt;/p&gt;
+&lt;h3&gt;安装&lt;/h3&gt;
+&lt;p&gt;安装过程十分简单：解压 -&amp;gt; 找个合适的路径放下...&lt;/p&gt;
+&lt;h3&gt;执行&lt;/h3&gt;
+&lt;pre&gt;命令行调用&lt;/pre&gt;
+&lt;pre&gt;[bash]
+/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png
+[/bash]&lt;/pre&gt;
+&lt;p&gt;默认的清晰度比较高，图片会很大，生成图片需要一定的时间。&lt;/p&gt;
+&lt;p&gt;php&lt;/p&gt;
+&lt;pre&gt;[php]
+exec(&#39;/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png&#39;);
+[/php]&lt;/pre&gt;
+&lt;p&gt;具体的使用方法&lt;/p&gt;
+&lt;pre&gt;[php]
+&amp;lt;?php
+ob_start();
+//如果将输出的文件名设置为&#39;-&#39;，则直接返回文件数据流
+passthru(&#39;/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -&#39;);
+$fileName = self::cachePath() . &#39;/&#39; . self::name();
+$content = ob_get_clean();
+
+//写入图片文件，备用
+//file_put_contents($fileName, $content);
+
+//直接输出为图片
+header(&quot;Content-type: image/png&quot;);
+echo $content;
+?&amp;gt;
+[/php]&lt;/pre&gt;
+&lt;h3&gt;中文乱码问题&lt;/h3&gt;
+&lt;p&gt;主要看服务器是否支持中文语言，如果截图中出现乱码，直接装个中文包就好了。&lt;/p&gt;
+&lt;p&gt;[bash]&lt;br /&gt;
+yum install fonts-chinese&lt;br /&gt;
+[/bash]&lt;/p&gt;
+</description>
+        <pubDate>Fri, 24 Aug 2012 20:08:17 +0800</pubDate>
+        <link>http://codante.org/blog/2012/08/24/linux-php-screenshot.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2012/08/24/linux-php-screenshot.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>yum使用说明</title>
+        <description>&lt;p&gt;在Centos中yum安装和卸载软件的使用方法&lt;/p&gt;
+&lt;h2&gt;安装&lt;/h2&gt;
+&lt;h3&gt;单一软件&lt;/h3&gt;
+&lt;pre&gt;[bash]
+yum -y install httpd
+[/bash]&lt;/pre&gt;
+&lt;h3&gt;多个类似软件&lt;/h3&gt;
+&lt;pre&gt;[bash]
+yum -y install httpd*
+[/bash]&lt;/pre&gt;
+&lt;h3&gt;多个非类似软件&lt;/h3&gt;
+&lt;pre&gt;[bash]
+yum -y install httpd php php-gd mysql
+[/bash]&lt;/pre&gt;
+&lt;h2&gt;卸载&lt;/h2&gt;
+&lt;h3&gt;单一软件&lt;/h3&gt;
+&lt;pre&gt;[bash]
+yum -y remove httpd
+[/bash]&lt;/pre&gt;
+&lt;h3&gt;多个相类似软件&lt;/h3&gt;
+&lt;pre&gt;[bash]
+yum -y remove httpd*
+[/bash]&lt;/pre&gt;
+&lt;h3&gt;多个非类似软件&lt;/h3&gt;
+&lt;pre&gt;[bash]
+yum -y remove httpd php php-gd mysql
+[/bash]&lt;/pre&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;h2&gt;yum search&lt;/h2&gt;
+&lt;p&gt;假如我要执行iostat这个命令来查看CPU与存储设备状态，可是执行却发现没有这个命令，于是执行yum install iostat，结果说找不到该软件，使用下面的办法可以解决&lt;/p&gt;
+&lt;pre&gt;[bash]
+yum search iostat
+[/bash]&lt;/pre&gt;
+&lt;p&gt;就能查到和iostat相关的安装包了。&lt;/p&gt;
+&lt;p&gt;另外想安装一个程序，只记得一部分名称，也可以用这个办法来实现安装&lt;/p&gt;
+&lt;pre&gt;[bash]
+yum search png |grep png
+[/bash]&lt;/pre&gt;
+&lt;p&gt;就能找到我们想安装的libpng这个名称。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 11 Jul 2012 15:50:37 +0800</pubDate>
+        <link>http://codante.org/blog/2012/07/11/yum-man.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2012/07/11/yum-man.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>常用英语1000句</title>
+        <description>&lt;p&gt;I see． 我明白了。&lt;br /&gt;
+I quit! 我不干了!&lt;br /&gt;
+Let go! 放手!&lt;br /&gt;
+Me too． 我也是。&lt;br /&gt;
+My god! 天哪!&lt;br /&gt;
+No way! 不行!&lt;br /&gt;
+Come on． 来吧(赶快)&lt;br /&gt;
+Hold on． 等一等。&lt;br /&gt;
+I agree。 我同意。&lt;br /&gt;
+Not bad． 还不错。&lt;br /&gt;
+Not yet． 还没。&lt;br /&gt;
+See you． 再见。&lt;br /&gt;
+Shut up! 闭嘴!&lt;br /&gt;
+So long． 再见。&lt;br /&gt;
+Why not? 好呀! (为什么不呢?)&lt;br /&gt;
+Allow me． 让我来。&lt;br /&gt;
+Be quiet! 安静点!&lt;br /&gt;
+Cheer up! 振作起来!&lt;br /&gt;
+Good job! 做得好!&lt;br /&gt;
+Have fun! 玩得开心!&lt;br /&gt;
+How much? 多少钱?&lt;br /&gt;
+I&#39;m full． 我饱了。&lt;br /&gt;
+I&#39;m home． 我回来了。&lt;br /&gt;
+I&#39;m lost． 我迷路了。&lt;br /&gt;
+My treat． 我请客。&lt;br /&gt;
+So do I． 我也一样。&lt;br /&gt;
+This way。 这边请。&lt;br /&gt;
+After you． 您先。&lt;br /&gt;
+Bless you! 祝福你!&lt;br /&gt;
+Follow me． 跟我来。&lt;br /&gt;
+Forget it! 休想! (算了!)&lt;br /&gt;
+Good luck! 祝好运!&lt;br /&gt;
+I decline! 我拒绝!&lt;br /&gt;
+I promise． 我保证。&lt;br /&gt;
+Of course! 当然了!&lt;br /&gt;
+Slow down! 慢点!&lt;br /&gt;
+Take care! 保重!&lt;br /&gt;
+They hurt． (伤口)疼。&lt;br /&gt;
+Try again． 再试试。&lt;br /&gt;
+Watch out! 当心。&lt;br /&gt;
+What&#39;s up? 有什么事吗?&lt;br /&gt;
+Be careful! 注意!&lt;br /&gt;
+Bottoms up! 干杯(见底)!&lt;br /&gt;
+Don&#39;t move! 不许动!&lt;br /&gt;
+Guess what? 猜猜看?&lt;br /&gt;
+I doubt it 我怀疑。&lt;br /&gt;
+I think so． 我也这么想。&lt;br /&gt;
+I&#39;m single． 我是单身贵族。&lt;br /&gt;
+Keep it up! 坚持下去!&lt;br /&gt;
+Let me see．让我想想。&lt;br /&gt;
+Never mind．不要紧。&lt;br /&gt;
+No problem! 没问题!&lt;br /&gt;
+That&#39;s all! 就这样!&lt;br /&gt;
+Time is up． 时间快到了。&lt;br /&gt;
+What&#39;s new? 有什么新鲜事吗?&lt;br /&gt;
+Count me on 算上我。&lt;br /&gt;
+Don&#39;t worry． 别担心。&lt;br /&gt;
+Feel better? 好点了吗?&lt;br /&gt;
+I love you! 我爱你!&lt;br /&gt;
+I&#39;m his fan。 我是他的影迷。&lt;br /&gt;
+Is it yours? 这是你的吗?&lt;br /&gt;
+That&#39;s neat． 这很好。&lt;br /&gt;
+Are you sure? 你肯定吗?&lt;br /&gt;
+Do l have to 非做不可吗?&lt;br /&gt;
+He is my age． 他和我同岁。&lt;br /&gt;
+Here you are． 给你。&lt;br /&gt;
+No one knows . 没有人知道。&lt;br /&gt;
+Take it easy． 别紧张。&lt;br /&gt;
+What a pity! 太遗憾了!&lt;br /&gt;
+Any thing else? 还要别的吗?&lt;br /&gt;
+To be careful! 一定要小心!&lt;br /&gt;
+Do me a favor? 帮个忙，好吗?&lt;br /&gt;
+Help yourself． 别客气。&lt;br /&gt;
+I&#39;m on a diet． 我在节食。&lt;br /&gt;
+Keep in Touch． 保持联络。&lt;br /&gt;
+Time is money． 时间就是金钱。&lt;br /&gt;
+Who&#39;s calling? 是哪一位?&lt;br /&gt;
+You did right． 你做得对。&lt;br /&gt;
+You set me up! 你出卖我!&lt;br /&gt;
+Can I help you? 我能帮你吗?&lt;br /&gt;
+Enjoy yourself! 祝你玩得开心!&lt;br /&gt;
+Excuse me，Sir． 先生，对不起。&lt;br /&gt;
+Give me a hand! 帮帮我!&lt;br /&gt;
+How&#39;s it going? 怎么样?&lt;br /&gt;
+I have no idea． 我没有头绪。&lt;br /&gt;
+I just made it! 我做到了!&lt;br /&gt;
+I&#39;ll see to it 我会留意的。&lt;br /&gt;
+I&#39;m in a hurry! 我在赶时间!&lt;br /&gt;
+It&#39;s her field． 这是她的本行。&lt;br /&gt;
+It&#39;s up to you． 由你决定。&lt;br /&gt;
+Just wonderful! 简直太棒了!&lt;br /&gt;
+What about you? 你呢?&lt;br /&gt;
+You owe me one．你欠我一个人情。&lt;br /&gt;
+You&#39;re welcome． 不客气。&lt;br /&gt;
+Any day will do． 哪一天都行夕&lt;br /&gt;
+Are you kidding? 你在开玩笑吧!&lt;br /&gt;
+Congratulations! 祝贺你!&lt;br /&gt;
+T can&#39;t help it. 我情不自禁。&lt;br /&gt;
+I don&#39;t mean it. 我不是故意的。&lt;br /&gt;
+I&#39;ll fix you Up． 我会帮你打点的。&lt;br /&gt;
+It sounds great!． 听起来很不错。&lt;br /&gt;
+It&#39;s a fine day。 今天是个好天。&lt;br /&gt;
+So far，So good． 目前还不错。&lt;br /&gt;
+What time is it? 几点了?&lt;br /&gt;
+You can make it! 你能做到!&lt;br /&gt;
+Control yourself! 克制一下!&lt;br /&gt;
+He came by train． 他乘火车来。&lt;br /&gt;
+He is ill in bed． 他卧病在床。&lt;br /&gt;
+He lacks courage． 他缺乏勇气。&lt;br /&gt;
+How&#39;s everything? 一切还好吧?&lt;br /&gt;
+I have no choice． 我别无选择。&lt;br /&gt;
+I like ice-cream． 我喜欢吃冰淇淋。&lt;br /&gt;
+I love this game． 我钟爱这项运动。&lt;br /&gt;
+I&#39;ll try my best． 我尽力而为。&lt;br /&gt;
+I&#39;m On your side． 我全力支持你。&lt;br /&gt;
+Long time no see! 好久不见!&lt;br /&gt;
+No pain，no gain． 不劳无获。&lt;br /&gt;
+Well，it depends 噢，这得看情况。&lt;br /&gt;
+We&#39;re all for it． 我们全都同意。&lt;br /&gt;
+What a good deal! 真便宜!&lt;br /&gt;
+What should I do? 我该怎么办？&lt;br /&gt;
+You asked for it! 你自讨苦吃!&lt;br /&gt;
+You have my word． 我保证。&lt;br /&gt;
+Believe it or not! 信不信由你!&lt;br /&gt;
+Don&#39;t count on me．别指望我。&lt;br /&gt;
+Don&#39;t fall for it! 别上当!&lt;br /&gt;
+Don&#39;t let me down． 别让我失望。&lt;br /&gt;
+Easy come easy go． 来得容易，去得快。&lt;br /&gt;
+I beg your pardon． 请你原谅。&lt;br /&gt;
+I beg your pardon? 请您再说一遍(我没有听清)。&lt;br /&gt;
+I&#39;ll be back soon． 我马上回来。&lt;br /&gt;
+I&#39;ll check it out． 我去查查看。&lt;br /&gt;
+It&#39;s a long story． 说来话长。&lt;br /&gt;
+It&#39;s Sunday today． 今天是星期天。&lt;br /&gt;
+Just wait and see! 等着瞧!&lt;br /&gt;
+Make up your mind． 做个决定吧。&lt;br /&gt;
+That&#39;s all I need． 我就要这些。&lt;br /&gt;
+The view is great． 景色多么漂亮!&lt;br /&gt;
+The wall has ears． 隔墙有耳。&lt;br /&gt;
+There comes a bus． 汽车来了。&lt;br /&gt;
+What day is today? 今天星期几?&lt;br /&gt;
+What do you think? 你怎么认为？&lt;br /&gt;
+Who told you that? 谁告诉你的?&lt;br /&gt;
+Who&#39;s kicking off? 现在是谁在开球?&lt;br /&gt;
+Yes，I suppose So． 是的，我也这么认为。&lt;br /&gt;
+You can&#39;t miss it 你一定能找到的。&lt;br /&gt;
+Any messages for me? 有我的留言吗?&lt;br /&gt;
+Don&#39;t be so modest． 别谦虚了。&lt;br /&gt;
+Don&#39;t give me that! 少来这套!&lt;br /&gt;
+He is a smart boy． 他是个小机灵鬼。&lt;br /&gt;
+He is just a child． 他只是个孩子。&lt;br /&gt;
+I can&#39;t follow you． 我不懂你说的。&lt;br /&gt;
+I felt sort of ill. 我感觉有点不适。&lt;br /&gt;
+I have a good idea! 我有一个好主意。&lt;br /&gt;
+It is growing cool． 天气渐渐凉爽起来。&lt;br /&gt;
+It seems all right． 看来这没问题。&lt;br /&gt;
+It&#39;s going too far． 太离谱了。&lt;br /&gt;
+May I use your pen? 我可以用你的笔吗?&lt;br /&gt;
+She had a bad cold． 她患了重感冒。&lt;br /&gt;
+That&#39;s a good idea． 这个主意真不错。&lt;br /&gt;
+The answer is zero． 白忙了。&lt;br /&gt;
+What does she like? 她喜欢什么?&lt;br /&gt;
+As soon as possible! 越快越好!&lt;br /&gt;
+He can hardly speak． 他几乎说不出话来。&lt;br /&gt;
+He always talks big． 他总是吹牛。&lt;br /&gt;
+He won an election． 他在选举中获胜。&lt;br /&gt;
+I am a football fan． 我是个足球迷。&lt;br /&gt;
+If only I could fly． 要是我能飞就好了。&lt;br /&gt;
+I&#39;ll be right there． 我马上就到。&lt;br /&gt;
+I&#39;ll see you at six． 我六点钟见你。&lt;br /&gt;
+IS it true or false? 这是对的还是错的?&lt;br /&gt;
+Just read it for me． 就读给我听好了。&lt;br /&gt;
+Knowledge is power． 知识就是力量。&lt;br /&gt;
+Move out of my way! 让开!&lt;br /&gt;
+Time is running out． 没时间了。&lt;br /&gt;
+We are good friends． 我们是好朋友。&lt;br /&gt;
+What&#39;s your trouble? 你哪儿不舒服?&lt;br /&gt;
+You did fairly well! 你干得相当不错1&lt;br /&gt;
+Clothes make the man． 人要衣装。&lt;br /&gt;
+Did you miss the bus? 你错过公共汽车了?&lt;br /&gt;
+Don&#39;t lose your head。 不要惊慌失措。&lt;br /&gt;
+He can&#39;t take a joke． 他开不得玩笑。&lt;br /&gt;
+He owes my uncle $100．他欠我叔叔100美元。&lt;br /&gt;
+How are things going? 事情进展得怎样?&lt;br /&gt;
+How are you recently? 最近怎么样?&lt;br /&gt;
+I know all about it． 我知道有关它的一切。&lt;br /&gt;
+It really takes time． 这样太耽误时间了。&lt;br /&gt;
+It&#39;s against the law． 这是违法的。&lt;br /&gt;
+Love me，love my dog． (谚语)爱屋及乌。&lt;br /&gt;
+My mouth is watering． 我要流口水了。&lt;br /&gt;
+Speak louder，please． 说话请大声点儿。&lt;br /&gt;
+This boy has no job． 这个男孩没有工作。&lt;br /&gt;
+This house is my own． 这所房子是我自己的。&lt;br /&gt;
+What happened to you? 你怎么了?&lt;br /&gt;
+You are just in time. 你来得正是时候。&lt;br /&gt;
+You need to workout． 你需要去运动锻炼一下。&lt;br /&gt;
+Your hand feels cold． 你的手摸起来很冷。。&lt;br /&gt;
+Don&#39;t be so childish. 别这么孩子气。&lt;br /&gt;
+Don&#39;t trust to chance! 不要碰运气。&lt;br /&gt;
+Fasten your seat belt． 系好你的安全带&lt;/p&gt;
+&lt;p&gt;He has a large income. 他有很高的收入。&lt;br /&gt;
+He looks very healthy． 他看来很健康。&lt;br /&gt;
+He paused for a reply． 他停下来等着·回答。&lt;br /&gt;
+He repaired his house． 他修理了他的房子。&lt;br /&gt;
+He suggested a picnic. 他建议搞一次野餐。&lt;br /&gt;
+Here&#39;s a gift for you． 这里有个礼物送给你。&lt;br /&gt;
+How much does it cost? 多少钱?&lt;br /&gt;
+I caught the last bus. 我赶上了最后一班车。&lt;br /&gt;
+I could hardly speak． 我简直说不出话来。&lt;br /&gt;
+I&#39;ll have to try that． 我得试试这么做。&lt;br /&gt;
+I&#39;m very proud of you． 我为你感到非常骄傲。&lt;br /&gt;
+It doesn&#39;t make sense. 这没有意义(不合常理)。&lt;br /&gt;
+Make yourself at home． 请不要拘礼。&lt;br /&gt;
+My car needs washing． 我的车需要洗一洗。&lt;br /&gt;
+None of your business! 与你无关!&lt;br /&gt;
+Not a sound was heard. 一点声音也没有。&lt;br /&gt;
+That&#39;s always the case． 习以为常了。&lt;br /&gt;
+The road divides here. 这条路在这里分岔。&lt;br /&gt;
+Those are watermelons． 那些是西瓜。&lt;br /&gt;
+What a nice day it is! 今天天气真好!&lt;br /&gt;
+What&#39;s wrong with you? 你哪里不对劲?&lt;br /&gt;
+You are a chicken． 你是个胆小鬼。&lt;br /&gt;
+A lovely day，isn&#39;t it? 好天气，是吗?&lt;br /&gt;
+He is collecting money． 他在筹集资金。&lt;br /&gt;
+He was born in New York． 他出生在纽约。&lt;br /&gt;
+He was not a bit tired． 他一点也不累。&lt;br /&gt;
+I will be more careful． 我会小心一些的，&lt;br /&gt;
+I will never forget it． 我会记着的。&lt;br /&gt;
+It is Just what I need． 这正是我所需要的。&lt;br /&gt;
+It rather surprised me． 那事使我颇感惊讶。&lt;br /&gt;
+Just around the comer． 就在附近。&lt;br /&gt;
+Just for entertainment． 只是为了消遣一下。&lt;br /&gt;
+Let bygones be bygones． 过去的，就让它过去吧。&lt;br /&gt;
+Mother doesn&#39;t make up． 妈妈不化妆。&lt;br /&gt;
+Oh，you are kidding me． 哦，你别拿我开玩笑了。&lt;br /&gt;
+She has been to school. 她上学去了。&lt;br /&gt;
+Skating is interesting． 滑冰很有趣。&lt;br /&gt;
+Supper is ready at six． 晚餐六点钟就好了。&lt;br /&gt;
+That&#39;s a terrific idea! 真是好主意!&lt;br /&gt;
+What horrible weather! 这鬼天气!&lt;br /&gt;
+Which would you prefer? 你要选哪个?&lt;br /&gt;
+Does she like ice-cream? 她喜欢吃冰淇淋吗?&lt;br /&gt;
+First come first served． 先到先得。&lt;br /&gt;
+Great minds think alike． 英雄所见略同。&lt;br /&gt;
+He has a sense of humor． 他有幽默感。&lt;br /&gt;
+He is acting an old man． 他正扮演一个老人。&lt;br /&gt;
+He is looking for a job． 他正在找工作。&lt;br /&gt;
+He doesn&#39;t care about me． 他并不在乎我。&lt;br /&gt;
+I develop films myself． 我自己冲洗照片。&lt;br /&gt;
+I felt no regret for it． 对这件事我不觉得后悔。&lt;br /&gt;
+I get up at six o&#39;clock． 我六点起床。&lt;br /&gt;
+I meet the boss himself． 我见到了老板本人。&lt;br /&gt;
+I owe you for my dinner. 我欠你晚餐的钱。&lt;br /&gt;
+I really enjoyed myself． 我玩得很开心。&lt;br /&gt;
+I&#39;m fed up with my work! 我对工作烦死了!&lt;br /&gt;
+It&#39;s no use complaining. 发牢骚没什么用。&lt;br /&gt;
+She&#39;s under the weather． 她心情·不好。&lt;br /&gt;
+The child sobbed sadly． 小孩伤心地抽泣着。&lt;br /&gt;
+The rumor had no basis． 那谣言没有·根据。&lt;br /&gt;
+They praised him highly． 他们大大地表扬了他。&lt;br /&gt;
+Winter is a cold season. 冬天是一个，寒冷的季节。&lt;br /&gt;
+You can call me any time． 你可以随时打电话给我。&lt;br /&gt;
+15 divided by3 equals 5． 15除以3等于5。&lt;br /&gt;
+All for one，one for all． 我为人人，人人为我。&lt;br /&gt;
+East,west，home is best． 金窝，银窝，不如自己的草窝。&lt;br /&gt;
+He grasped both my hands. 他紧握住我的双手。&lt;br /&gt;
+He is physically mature． 他身体己发育成熟。&lt;br /&gt;
+I am so sorry about this. 对此我非常抱歉(遗憾)。&lt;br /&gt;
+I can&#39;t afford a new car． 我买不起一部新车。&lt;br /&gt;
+I do want to see him now． 我现在确实很想去见他。&lt;br /&gt;
+I have the right to know. 我有权知道。&lt;br /&gt;
+I heard some one laughing. 我听见有人在笑。&lt;br /&gt;
+I suppose you dance much． 我想你常常跳舞吧。&lt;br /&gt;
+I walked across the park． 我穿过了公园。&lt;br /&gt;
+I&#39;ll just play it by ear． 我到时随机应变。&lt;br /&gt;
+I&#39;m not sure I can do it． 恐怕这事我干不了。&lt;br /&gt;
+I&#39;m not used to drinking． 我不习惯喝酒。&lt;br /&gt;
+Is the cut still painful? 伤口还在痛吗?&lt;br /&gt;
+It&#39;s too good to be true! 好得难以置信。&lt;br /&gt;
+Jean is a blue-eyed girl． 珍是个蓝眼睛的女孩。&lt;br /&gt;
+Let&#39;s not waste our time． 咱们别浪费时间了。&lt;br /&gt;
+May I ask some questions? 我可以问几个问题吗?&lt;br /&gt;
+Money is not everything． 金钱不是一切。&lt;br /&gt;
+Neither of the men spoke． 两个人都没说过话。&lt;br /&gt;
+Stop making such a noise． 别吵了。&lt;br /&gt;
+That makes no difference． 没什么区别。&lt;br /&gt;
+The price is reasonable． 价格还算合理。&lt;br /&gt;
+They crowned him king． 他们拥立他为国王。&lt;br /&gt;
+They&#39;re in red and white. 他们穿着红白相间的衣服。&lt;br /&gt;
+We all desire happiness. 我们都想要幸福。&lt;br /&gt;
+We just caught the plane 我们刚好赶上了飞机。&lt;br /&gt;
+What shall we do tonight? 我们今天晚上去干点儿什么呢?&lt;br /&gt;
+What&#39;s your goal in life 你的人生目标是什么?&lt;br /&gt;
+When was the house built? 这幢房子是什么时候建造的?&lt;br /&gt;
+Why did you stay at home? 为什么呆在家里?&lt;br /&gt;
+Would you like some help? 今天真漂亮!&lt;br /&gt;
+You mustn&#39;t aim too high 你不可好高骛远。&lt;br /&gt;
+You&#39;re really killing me! 真是笑死我了!&lt;br /&gt;
+You&#39;ve got a point there． 你说得挺有道理的。&lt;br /&gt;
+Being criticized is awful! 被人批评真是痛苦!&lt;br /&gt;
+Did you enter the contest? 你参加比赛了吗?&lt;br /&gt;
+Do you accept credit cards? 你们收信用卡吗?&lt;br /&gt;
+Don&#39;t cry over spilt milk． 不要做无益的后悔。&lt;br /&gt;
+Don&#39;t let chances pass by． 不要让机遇从我们身边溜走。&lt;br /&gt;
+He owned himself defeated． 他承认自己失败了。&lt;br /&gt;
+He seems at little nervous． 他显得有点紧张。&lt;br /&gt;
+He strolls about the town． 他在镇上四处遛达。&lt;br /&gt;
+Her tooth ached all night. 她牙疼了一整夜。&lt;br /&gt;
+How about a drink tonight? 今晚喝一杯怎样?&lt;br /&gt;
+I can do nothing but that. 我只会做那件事。&lt;br /&gt;
+I get hold of you at last． 我终于找到你了。&lt;br /&gt;
+I have a surprise for you． 我有一个意想不到的东西给你看。&lt;br /&gt;
+I like all kinds of fruit． 我喜欢各种各样的水果。&lt;br /&gt;
+I saw it with my own eyes． 我亲眼所见。&lt;br /&gt;
+I will arrange everything． 我会安排一切的。&lt;br /&gt;
+I wish I knew my neighbor． 我很想认识我的邻居。&lt;br /&gt;
+I would like to check out． 我想结帐。&lt;br /&gt;
+It has be come much cooler． 天气变得凉爽多了。&lt;br /&gt;
+It&#39;s time you went to bed． 你早就该睡觉了。&lt;br /&gt;
+No spitting on the street． 禁止在大街上吐痰。&lt;br /&gt;
+She was totally exhausted． 她累垮了。&lt;br /&gt;
+Show your tickets，please． 请出示你的票。&lt;br /&gt;
+Thank you for your advice． 谢谢你的建议。&lt;br /&gt;
+That&#39;s the latest fashion． 这是最流行的款式。&lt;br /&gt;
+The train arrived on time． 火车准时到达。&lt;br /&gt;
+There go the house lights． 剧院的灯光灭了。&lt;br /&gt;
+They are paid by the hour． 他们按时取酬。&lt;br /&gt;
+Things are getting better． 情况正在好转。&lt;br /&gt;
+Wake me up at five thirty． 请在五点半叫醒我。&lt;br /&gt;
+We are all busy with work． 我们都忙于工作。&lt;br /&gt;
+Where do you want to meet? 你想在哪儿见面?&lt;br /&gt;
+You can get what you want． 你能得到你想要的。&lt;br /&gt;
+A barking dog doesn&#39;t bite! 吠犬不咬人。&lt;br /&gt;
+Are you free this Saturday? 你这个星期六有空吗?&lt;br /&gt;
+Be careful not to fall ill． 注意不要生病了。&lt;br /&gt;
+Being a mother is not easy． 做一个母亲是不容易的。&lt;br /&gt;
+Brevity is the soul of wit． 简洁是智慧的精华。&lt;br /&gt;
+Cancer is a deadly disease． 癌症是一种致命的疾病。&lt;br /&gt;
+Did you fight with others? 你又和别人打架了吗?&lt;br /&gt;
+Don&#39;t dream away your time． 不要虚度光阴。&lt;br /&gt;
+Don&#39;t keep me waiting long． 不要让我等得太久。&lt;br /&gt;
+He has a remarkable memory． 他有惊人的记忆力。&lt;br /&gt;
+He has completed the task． 他完成了这个任务。&lt;br /&gt;
+He has quite a few friends． 他有不少的朋友。&lt;br /&gt;
+He is capable of any crime． 他什么样的坏事都能干得出来。&lt;br /&gt;
+He walks with a quick pace． 他快步走路。&lt;br /&gt;
+He was not a little tired． 他很累。&lt;br /&gt;
+His looks are always funny． 他的样子总是滑稽可笑。&lt;br /&gt;
+How about going to a movie? 去看场电影怎么样?&lt;br /&gt;
+I think I&#39;ve caught a cold． 我想我得了感冒。&lt;br /&gt;
+I was taking care of Sally. 我在照顾萨莉。&lt;br /&gt;
+I wish I lived in NEWYORK． 我希望住在纽约。&lt;br /&gt;
+I&#39;m very glad to hear that． 很高兴听你这样说。&lt;br /&gt;
+I&#39;m your lucky fellow then. 我就是你的幸运舞伴啦!&lt;br /&gt;
+It&#39;s none of your business! 这不关你的事儿!&lt;br /&gt;
+No littering on the campus． 在校园内不准乱丢废物。&lt;br /&gt;
+She is a good-looking girl. 她是一个漂亮女孩。&lt;br /&gt;
+She mended the broken doll． 她修补了破了的洋娃娃。&lt;br /&gt;
+So I just take what I want． 那么我只拿我所需要的东西。&lt;br /&gt;
+Spring is a pretty season， 春天是一个好季节。&lt;br /&gt;
+The figure seems all Right． 数目看起来是对的。&lt;br /&gt;
+The stars are too far away． 星星太遥远了。&lt;br /&gt;
+The whole world knows that． 全世界都知道。&lt;br /&gt;
+Tomorrow will be a holiday． 明天放假。&lt;br /&gt;
+We walk on the garden path． 我们走在花园小径上。&lt;br /&gt;
+What you need is just rest． 你需要的就是休息。&lt;br /&gt;
+What&#39;s your favorite steps? 你最喜欢跳什么舞?&lt;br /&gt;
+You&#39;d better let her alone． 你们最好是让她一个人呆会儿。&lt;br /&gt;
+A lost chance never returns． 错过的机会永不再来。&lt;br /&gt;
+Don&#39;t let this get you down． 不要为此灰心丧气。&lt;br /&gt;
+He shot the lion with a gun. 他用枪把狮子打死了。&lt;br /&gt;
+I don&#39;t think you are right． 我认为你是不对的。&lt;br /&gt;
+I have never seen the movie． 我从未看过那部电影。&lt;br /&gt;
+I haven&#39;t seen you for ages． 我好久没见到你了。&lt;br /&gt;
+I was alone，but not lonely． 我独自一人，但并不觉得寂寞。&lt;br /&gt;
+I went there three days ago． 我三天前去过那儿。&lt;br /&gt;
+It&#39;s a friendly competition． 这是一场友谊赛。&lt;br /&gt;
+It&#39;s very thoughtful of you． 你想得真周到。&lt;br /&gt;
+May I speak to Lora，please? 我能和劳拉说话吗?&lt;br /&gt;
+Mr.Wang is fixing his bike． 王先生在修他的自行车。&lt;br /&gt;
+My brother is see king a job． 我弟弟正在找工作。&lt;br /&gt;
+Nancy will retire next year． 南希明年就退休了。&lt;br /&gt;
+Neither you nor he is wrong． 你没错，他也没错。&lt;br /&gt;
+Opportunity knocks but once． 机不可失，时不再来。&lt;br /&gt;
+She dressed herself hastily． 她匆忙穿上衣服。&lt;br /&gt;
+She hired a car by the hour． 她租了一辆按钟点计费的汽车。&lt;br /&gt;
+Someone is ringing the bell． 有人在按门铃。&lt;br /&gt;
+The Smiths are my neighbors. 史密斯一家是我的邻居。&lt;br /&gt;
+These shoes don&#39;t fit right． 这双鞋不太合适。&lt;br /&gt;
+This is only the first half． 这才是上半场呢。&lt;br /&gt;
+This pen doesn&#39;t write well． 这钢笔不好写。&lt;br /&gt;
+Would you like a cup of tea? 你想喝杯茶吗?&lt;br /&gt;
+You really look sharp today． 你今天真漂亮。&lt;br /&gt;
+Another cat came to my house． 又有一只猫来到我家了。&lt;br /&gt;
+Check your answers with mine． 把你的答案跟我的核对一下。&lt;br /&gt;
+Don&#39;t keep the truth from me． 别瞒着我事实真相。&lt;br /&gt;
+Everything has its beginning． 凡事都有开端。&lt;br /&gt;
+He came to the point at once． 他一下子就说到了点子上。&lt;br /&gt;
+He fell behind with his work． 他工作落后了。&lt;br /&gt;
+He is the happiest man alive. 他是世界上最快乐的人。&lt;/p&gt;
+&lt;p&gt;He neither smokes nor drinks． 他既不抽烟也不喝酒。&lt;br /&gt;
+He ran his horse up the hill． 他策马跑上小山。&lt;br /&gt;
+He reminds me of his brother. 他使我想起了他的弟弟。&lt;br /&gt;
+He was efficient in his work． 他工作效率高。&lt;br /&gt;
+He will do anything but work． 只要不是干活，他干什么都行。&lt;br /&gt;
+His father runs a restaurant． 他的父亲经营一家餐馆。&lt;br /&gt;
+I have something to tell you． 我有事要告诉你。&lt;br /&gt;
+I smelled a smell of cooking． 我闻到了烧菜做饭的味道。&lt;br /&gt;
+I want to see the film again． 我真想再看一遍。&lt;br /&gt;
+I&#39;ve got too much work to do． 我要做的工作太多了。&lt;br /&gt;
+Let&#39;s go for a walk，shall we? 咱们出去走走，好吗?&lt;br /&gt;
+Please let me check the bill． 请让我核对一下帐单。&lt;br /&gt;
+Plenty of sleep is healthful． 充足的睡眠有益于健康。&lt;br /&gt;
+The sun comes up in the east． 太阳从东方升起。&lt;br /&gt;
+This is because we feel pain． 这是因为我们能感到疼痛。&lt;br /&gt;
+What do you desire me to do? 你想要我做什么?&lt;br /&gt;
+What you said was quite true. 你所说的完全符合事实。&lt;br /&gt;
+You can either stay or leave． 你或者留下或者离开。&lt;br /&gt;
+Your life is your own affair． 你的生活是你自己的事。&lt;br /&gt;
+All that glitters is not gold． 发闪光的不全是黄金。&lt;br /&gt;
+Are you going to have a party? 你要举行聚会吗?&lt;br /&gt;
+Aren&#39;t you concerned about it? 难道你不担心吗?&lt;br /&gt;
+Don&#39;t forget to keep in touch． 别忘了保持联系。&lt;br /&gt;
+He broke his words once again. 他又一次违背了诺言。&lt;br /&gt;
+He is in his everyday clothes． 他穿着平常的衣服。&lt;br /&gt;
+He is taller than I by ahead． 他比我高一头。&lt;br /&gt;
+He led them down the mountain． 他带他们下山。&lt;br /&gt;
+He was trained to be a lawyer． 他被培养成一名律师。&lt;br /&gt;
+I am afraid that l have to go． 我要走了。&lt;br /&gt;
+I don&#39;t have any cash with me． 我身上没带现金。&lt;br /&gt;
+I have been putting on weight． 我开始发胖了。&lt;br /&gt;
+I have just finished the book． 我刚刚读完这本书。&lt;br /&gt;
+I was late for work yesterday， 我昨天上班迟到了。&lt;br /&gt;
+It appears to be a true story． 这故事似乎是真的。&lt;br /&gt;
+I&#39;ve got to start working out． 我必须开始做健身运动了。&lt;br /&gt;
+Japan is to the east of China． 日本在中国的东部。&lt;br /&gt;
+John asked Grace to marry him， 约翰向格雷斯求婚。&lt;br /&gt;
+My watch is faster than yours． 我的表比你的表快。&lt;br /&gt;
+New China was founded in l949． 1949年新中国成立。&lt;br /&gt;
+Thanks for your flattering me． 多谢你的夸奖。&lt;br /&gt;
+They charged the fault on him． 他们把过失归咎于他。&lt;br /&gt;
+This car is in good condition． 这车性能很好。&lt;br /&gt;
+This work itself is very easy． 这件工作本身很容易。&lt;br /&gt;
+Truth is the daughter of time． 时间见真理。&lt;br /&gt;
+We look forward to your visit． 期待您的光临。&lt;br /&gt;
+What do you think of this one? 您觉得这个怎么样子&lt;br /&gt;
+What&#39;s the weather like to day? 今天天气怎么样?&lt;br /&gt;
+A red tie will match that suit． 红领带会配那件衣服。&lt;br /&gt;
+A wet road is usually slippery． 潮湿的路往往是滑的。&lt;br /&gt;
+Example is better than precept。 身教胜于言传。&lt;br /&gt;
+Go right back to the beginning． 直接回到起始位置。&lt;br /&gt;
+He does everything without aim． 他做事都漫无目标。&lt;br /&gt;
+He is respectful to his elders． 他对长辈很恭敬。&lt;br /&gt;
+He knows English better than I． 他比我懂英语。&lt;br /&gt;
+He resolved to give up smoking． 他决心戒烟。&lt;br /&gt;
+His talk covered many subjects． 他的报告涉及很多课题。&lt;br /&gt;
+I fear that he drinks too much． 我担心他喝的酒太多了。&lt;br /&gt;
+I have my hair cut every month． 我每个月都理发。&lt;br /&gt;
+I want to have a part-time job． 我想有一份兼职工作。&lt;br /&gt;
+I&#39;m sorry to have bothered you． 对不起，打扰你了。&lt;br /&gt;
+It is not so easy as you think． 这事没有你想象的那么简单。&lt;br /&gt;
+Keep your temper under control． 不要发脾气。 ．&lt;br /&gt;
+Lying and stealing are immoral． 说谎和偷窃都是不道德的。&lt;br /&gt;
+My efforts resulted in nothing． 我的努力毫无结果。&lt;br /&gt;
+My false teeth are stuck to it． 我的假牙还在上边呢!&lt;br /&gt;
+She is a composer for the harp． 她是位写竖琴曲的作曲家&lt;br /&gt;
+Take me to the airport，please． 请送我去机场。&lt;br /&gt;
+Talking with you is a pleasure. 和你谈话很愉快&lt;br /&gt;
+The eggs are sold by the dozen． 鸡蛋按打卖。&lt;br /&gt;
+The price just covers the cost． 这个价格正好抵消成本。&lt;br /&gt;
+The sweater is of good quality. 这件毛衣质地很好。&lt;br /&gt;
+The teacher got a little angry． 老师有点生气了。&lt;br /&gt;
+Think carefully before you act． 三思而后行。&lt;br /&gt;
+Walt invented the steam engine． 瓦特发明了蒸汽机。&lt;br /&gt;
+We are divided in our opinions． 我们意见分歧。&lt;br /&gt;
+What ever I said，he&#39;d disagree． 不论我说什么他都不同意。&lt;br /&gt;
+Who ever comes will be welcomed． 来的人我们都欢迎。&lt;br /&gt;
+You look as if you didn&#39;t care． 你看上去好像满不在乎。&lt;br /&gt;
+You should look at it yourself． 你应该亲自看看它。&lt;br /&gt;
+Draw your chair up to the table． 把你的椅子拉到桌子旁边来。&lt;br /&gt;
+He covered himself with a quilt． 他给自己盖上一条被。&lt;br /&gt;
+He found my lecture interesting． 他觉得我讲课有趣。&lt;br /&gt;
+He had a good many friends here． 他在这儿有很多朋友。&lt;br /&gt;
+He is only about five feet high. 他大概只有五英尺高。&lt;br /&gt;
+Her family are all music lovers． 她全家人都是音乐爱好者。&lt;br /&gt;
+I am busy．How is your business? 我很忙。你的生意做得怎样?&lt;br /&gt;
+I don&#39;t think much of the movie． 我认为那电影不怎么样。&lt;br /&gt;
+I feel like eating an ice-cream． 我想吃一个冰淇淋。&lt;br /&gt;
+I found him seated on the bench． 我发现他在椅子上坐着&lt;br /&gt;
+I gave much time to the old car． 我在这辆破车上花了不少时间。&lt;br /&gt;
+I lost the door key about here. 我在这附近掉了门钥匙。&lt;br /&gt;
+I&#39;m not guessing，I really know． 我不是在猜想，我真的知道。&lt;br /&gt;
+It&#39;s time to tell her the truth． 是该告诉她真相的时候了。&lt;br /&gt;
+Let&#39;s watch TV with a candle on． 咱们点上蜡烛看电视吧。&lt;br /&gt;
+Most games cost about that much． 大部分游戏差不多都是这个价钱。&lt;br /&gt;
+My parents want me to go abroad． 我父母想让我出国。&lt;br /&gt;
+She has been collecting stamps． 她一直收集邮票。&lt;br /&gt;
+There are many stars in the sky． 天上有很多星星。&lt;br /&gt;
+We get to London this afternoon． 我们是今天下午到达伦敦的。&lt;br /&gt;
+What about having a pizza first? 先吃点比萨饼怎么样?&lt;br /&gt;
+You&#39;d better look before you leap． 你最好三思而后行。&lt;br /&gt;
+You know what I&#39;m talking about. 我想你知道我在说什么。&lt;br /&gt;
+He has been sick for three weeks． 他已经病了几周了。&lt;br /&gt;
+He inspected the car for defects． 他详细检查车子有无效障。&lt;br /&gt;
+I count you as one of my friends 我把你算作我的一个朋友。&lt;br /&gt;
+I go to school by bike every day. 我每天骑自行车上学。&lt;br /&gt;
+I have a large collection of CDs. 我收集了很多唱片。&lt;br /&gt;
+I won&#39;t be able to see him today. 今天我不可能去看他。&lt;br /&gt;
+I&#39;ll call a taxi in case of need． 如果需要的话，我会叫出租车的。&lt;br /&gt;
+Is there any sugar in the bottle? 瓶子里还有糖吗?&lt;br /&gt;
+It&#39;s a secret between you and me. 这是你我之间的秘密。&lt;br /&gt;
+It&#39;s very kind of you to help me． 你帮助我真是太好了。&lt;br /&gt;
+Let&#39;s divide the cake into three． 我们将蛋糕分成三份吧。&lt;br /&gt;
+Patience is a mark of confidence. 耐心是自信心的一种表现。&lt;br /&gt;
+Susan is going to finish college． 苏珊将完成大学学业。&lt;br /&gt;
+That is my idea about friendship． 这是我关于友谊的看法。&lt;br /&gt;
+The book you ask for is sold out． 你要的那本书已经售完了。&lt;br /&gt;
+The boy was too nervous to speak． 那男孩紧张得说不出话来。&lt;br /&gt;
+The play may begin at any moment． 戏随时都有可能开始。&lt;br /&gt;
+The salve will heal slight burns． 这种药膏能治疗轻微烧伤。&lt;br /&gt;
+The sea sparkled in the sunlight． 阳光下，大海波光粼粼。&lt;br /&gt;
+The teacher tested us in English． 老师用英文考我们。&lt;br /&gt;
+There is a bridge over the river. 河上有一座桥。&lt;br /&gt;
+They rode their respective bikes． 他们各自骑着自己的自行车。&lt;br /&gt;
+They will arrive in half an hour． 他们将于半小时之内到达。&lt;br /&gt;
+Time is more valuable than money. 时间比金钱宝贵。&lt;br /&gt;
+We are all in favor of this plan． 我们都赞同这项计划。&lt;br /&gt;
+We reached London this afternoon． 我们是今天下午到达伦敦的。&lt;br /&gt;
+We two finished a bottle of wine． 我俩喝完了一瓶酒。&lt;br /&gt;
+what a lovely little girl she is! 她是一个多么可爱的小女孩耶!&lt;br /&gt;
+Will you pick me up at my place? 你能到我的住处来接我吗?&lt;br /&gt;
+You may choose whatever you like． 你可以喜欢什么就选什么。&lt;br /&gt;
+You&#39;re suffering from an allergy? 你过敏吗?&lt;br /&gt;
+Beyond all questions you are right. 毫无疑问，你是对的。&lt;br /&gt;
+But I plan to weed the yard today. 我计划今天除院子里的草。&lt;br /&gt;
+But who will do all the house work? 但是这些家务活谁来做呢?&lt;br /&gt;
+Close the door after you，please． 请随手关门。&lt;br /&gt;
+Come to see me whenever you like。 你可以随时来见我。&lt;br /&gt;
+Don&#39;t pull the chairs about,boys! 不要把椅子拖来拖去，孩子们!&lt;br /&gt;
+He drives more carefully than you． 他开车比你小心。&lt;br /&gt;
+He invited me to dinner yesterday． 他昨天请我吃晚饭了。&lt;br /&gt;
+He struck his attacker on the ear． 他打了那个攻击者一耳光。&lt;br /&gt;
+He suddenly appeared in the party． 他突然在晚会上出现了。&lt;br /&gt;
+Her handbag goes with her clothes. 她的手袋和她的衣服很搭配。&lt;br /&gt;
+Here we are．Row M, seats l and 3． 哦，到了。M排，l号和3号。&lt;br /&gt;
+His boss might get angry with him． 他的老板也许会生他的气。&lt;br /&gt;
+I expect to be there this evening． 我打算今天晚上到那儿去。&lt;br /&gt;
+I really need to lose some weight． 我真的需要减肥了。&lt;br /&gt;
+I think you have the Wrong number． 我想你打错号码了。&lt;br /&gt;
+I would rather stay at home alone． 我宁愿独自呆在家。&lt;br /&gt;
+I&#39;d like to look at some sweaters． 我想看看毛衣。&lt;br /&gt;
+Its origin is still a mystery now． 它的起源至今仍是个谜。&lt;br /&gt;
+Money is no more than our servant． 金钱不过是我们的仆人。&lt;br /&gt;
+Once you begin，you must continue． 一旦开始，你就得继续。&lt;br /&gt;
+She is poor but quite respectable． 她虽穷，人品却很端正。&lt;br /&gt;
+She spent a lot of money on books． 她花了很多钱来买书。&lt;br /&gt;
+The girl in red is his girlfriend． 穿红衣服的那个女孩是他的女朋友。&lt;br /&gt;
+There is a chair below the window． 窗户下面有一把椅子。&lt;br /&gt;
+They employed him as a consultant． 他们雇用他为顾问。&lt;br /&gt;
+To be honest with you，I&#39;m twenty． 老实说，我20岁。&lt;br /&gt;
+We often call him by his nickname． 我们经常叫他的绰号。&lt;br /&gt;
+Will you be free tomorrow evening? 你明晚有空吗?&lt;br /&gt;
+Would you like to leave a message? 你要留话吗?&lt;br /&gt;
+You can never turn the clock back． 时光不能倒流。&lt;br /&gt;
+You may as well tell me the truth． 你还是把事实告诉我为好。&lt;br /&gt;
+Are your grandparents still living? 你的祖父母还在么?&lt;br /&gt;
+Can you recognize that woman，Mary? 你能认出那个女人是谁了吗，玛丽?&lt;br /&gt;
+Do you have any suggestions for me? 你对我有什么建议么?&lt;br /&gt;
+He is tough，but I am even tougher. 他是一个硬汉子，不过我要比他更硬。&lt;br /&gt;
+He made his way through the forest． 他设法穿过了森林。&lt;br /&gt;
+He suggests you leave here at once． 他建议你立刻离开这儿。&lt;br /&gt;
+He was married to a friend of mine． 他和我的一个朋友结了婚。&lt;br /&gt;
+He will blame you for carelessness． 他会责备你的粗心大意。&lt;br /&gt;
+I can give you a number of excuses． 我可以给你说出很多韵理由。&lt;br /&gt;
+I don&#39;t doubt that he will help me． 我不怀疑他会援助我。&lt;br /&gt;
+I hope you enjoy your stay with us． 希望您在这儿过的愉快。&lt;br /&gt;
+I&#39;d like to-repair our differences． 我愿意消除一下我们之间的分歧。&lt;br /&gt;
+It&#39;s nothing to be surprised about． 这事不值得大惊小怪。&lt;br /&gt;
+It&#39;s rude to stare at other people. 盯着别人看是不礼貌的。&lt;br /&gt;
+Bob has always had a crush on Lucy． 鲍伯一直在爱着露茜。&lt;br /&gt;
+Let&#39;s take a short break for lunch． 让我们休息一会儿，去吃午饭。&lt;br /&gt;
+Linda speaks as if she were a boss． 琳达说话总好象她是老板。&lt;br /&gt;
+She became more and more beautiful． 她变得越来越漂亮了。&lt;br /&gt;
+Suppose it rains,what shall we do? 万一下雨，我们该怎么办?&lt;br /&gt;
+The book is protected by copyright． 该书受版权保护。&lt;br /&gt;
+The ice is hard enough to skate on． 冰已经厚得可以划冰了。&lt;br /&gt;
+The price includes postage charges. 价格包括邮资在内。&lt;br /&gt;
+This is a little something for you． 这是我给你们的一点心意。&lt;br /&gt;
+What he likes best is making jokes． 他最喜欢开玩笑。&lt;br /&gt;
+Who but Jack would do such a thing? 除了杰克谁会做这种事呢?&lt;br /&gt;
+You should have a mind of your own． 你必须有自己的主见。&lt;br /&gt;
+You will soon get used to the work． 你很快就会习惯于这项工作的。&lt;br /&gt;
+Columbus discovered America in l492． 哥伦布于1492年发现了美洲。&lt;br /&gt;
+God helps those who he1p themselves． 上帝帮助那些自己帮自己的人。&lt;br /&gt;
+He has a nice sum of money put away． 他存了一大笔钱。&lt;br /&gt;
+He is heavily insured against death． 他给自己投了巨额的人身保险。&lt;br /&gt;
+He used to learn everything by rote． 他过去总是死记硬背。&lt;br /&gt;
+He&#39;s a terrible man when he&#39;s angry． 他生气的时候很可怕。&lt;br /&gt;
+I am on my way to the grocery store． 我正在去杂货店的路上。&lt;br /&gt;
+I am sick of always waiting for you! 你，老让我等你，真是烦透了。&lt;/p&gt;
+&lt;p&gt;I appreciate John&#39;s helping in time． 我感谢约翰的及时帮助。&lt;br /&gt;
+I bought it the day it was released. 它发行的当天我就买了。&lt;br /&gt;
+I doubted whether the story is true． 我怀疑那故事是不是真的。&lt;br /&gt;
+I learnt that I had passed the test． 我获悉我测验及格了。&lt;br /&gt;
+I will seek from my doctor&#39;s advice． 我将请教医生的意见。&lt;br /&gt;
+Ice cream is popular among children． 冰淇淋深受孩子们的欢迎。&lt;br /&gt;
+I&#39;d like to get this film developed． 我要冲洗这卷胶卷。&lt;br /&gt;
+In a word，I am tired of everything． 总之，我对一切都很厌倦。&lt;br /&gt;
+Let us do it by ourselves，will you? 我们自己做这件事，可以吗?&lt;br /&gt;
+May I know the quantity you require? 请问你们需要多少数量的货物?&lt;br /&gt;
+Nobody has ever solved this problem． 没有人曾解决过这个问题。&lt;br /&gt;
+Our school covers 100 square meters． 我们学校占地面积平方米。&lt;br /&gt;
+People enjoyed the stamps very much． 人们非常喜爱这些邮票。&lt;br /&gt;
+The editor over looked a print error． 这位编辑漏掉了一个印刷错误。&lt;br /&gt;
+The sudden barking frightened Clara． 突然的狗叫声吓坏了克拉拉。&lt;br /&gt;
+The teams are coming onto the field． 队员们都进场了。&lt;br /&gt;
+There is a mark of ink on his shirt． 他的衬衣上有一块墨迹。&lt;br /&gt;
+There isn&#39;t any water in the bottle． 瓶子里一点水也没有。&lt;br /&gt;
+This joke has gone a little too far． 这个玩笑开得有点-过分了。&lt;br /&gt;
+We arrived in London this afternoon。 我们是今天下午到达伦敦的。&lt;br /&gt;
+We can&#39;t go out because of the rain． 我们不能出去因为下雨了。&lt;br /&gt;
+We should make good use of our time． 我们应该充分利用我们的时间。&lt;br /&gt;
+We should save unnecessary expenses.我们应节省不必要的开支。&lt;br /&gt;
+You may have heard of Birth Control.你们也许听说过控制人口出生的措施。&lt;br /&gt;
+After a pause he continued his story.停顿一下之后他继续说他的。&lt;br /&gt;
+As you know, I am a very kind person. 你知道，我是个很和善的人。&lt;br /&gt;
+He dare not tell us his evil conduct.他不敢告诉我们他的恶行。&lt;br /&gt;
+I can express myself in good English. 我可以用很好的英语来表达自己的观点。&lt;br /&gt;
+I&#39;ll furnish my house with furniture. 我要为我的房子置办家具。&lt;br /&gt;
+It seemed as if there was no way out. 看情形似乎没有出路了。&lt;br /&gt;
+It&#39;s the hottest day I&#39;ve had so far. 这是迄今为止我经历的最热的一天。&lt;br /&gt;
+Mr. Smith is in charge of this class. 史密斯老师负责该班。&lt;br /&gt;
+Mr. Smith taught English at a school. 史密斯先生在一所学校教英语。&lt;br /&gt;
+None of us is afraid of difficulties.我们当中没有一个人害怕困难。&lt;br /&gt;
+Our school is in the east of Beijing. 我们学校在北京的东部。&lt;br /&gt;
+She really wishes her clock had rung. 她真希望今天早上她的闹钟响了。&lt;br /&gt;
+She teaches foreign students Chinese. 她教外国学生汉语。&lt;br /&gt;
+The question will be settled tonight. 这个问题将在今晚解决。&lt;br /&gt;
+The weight is too much for my height. 相对于我的身高来说，体重太重了!&lt;br /&gt;
+There are mice in Mrs. Lee&#39;s kitchen! 李太太的厨房里有老鼠!&lt;br /&gt;
+There is no one but hopes to be rich. 没有人不想发财。&lt;br /&gt;
+There&#39;ll be some sport reviews on TV. 电视上会有一些体育评论。&lt;br /&gt;
+This company is our regular customer. 这家公司是我们的老客户。&lt;br /&gt;
+This is a good example of his poetry. 这是他诗作的一个好例子。&lt;br /&gt;
+What we read influences our thinking. 我们所阅读的书本会影响我们的思想。&lt;br /&gt;
+Words can&#39;t express what I felt then. 无法用语言形容我当时的感受。&lt;br /&gt;
+You really have an ear for pop music. 你确实对流行音乐很有欣赏力。&lt;br /&gt;
+A bad workman quarrels with his tools.手艺差的工人总是抱怨工具不好使。&lt;br /&gt;
+Can you adapt yourself to the new job? 你能适应新的工作吗?&lt;br /&gt;
+Does the computer ever make a mistake.? 计算机出错吗?&lt;br /&gt;
+Don&#39;t be uneasy about the consequence.不必为后果忧虑不安。&lt;br /&gt;
+Even a child can answer this question.即使小孩儿都能回答这个问题。&lt;br /&gt;
+He has many strange ideas in his mind. 他脑子里尽足奇思怪想。&lt;br /&gt;
+He is commonly supposed to be foolish.他是公认的傻瓜。&lt;br /&gt;
+He sat with his arms across the chest. 他双臂交*于胸前的坐在那里。&lt;br /&gt;
+He set up a fine example to all of us. 他为我们树立了一个好榜样。&lt;br /&gt;
+His cake is four times as big as mine. 他的蛋糕是我的四倍大。&lt;br /&gt;
+I do not care whether it rains or not. 我不管天会不会下雨。&lt;br /&gt;
+I have a lot in common with my sister. 我和我姐姐有很多相同之处。&lt;br /&gt;
+I haven&#39;t even touched your tooth yet. 我还没有碰到你的牙齿呢。&lt;br /&gt;
+I&#39;m looking forward to a prompt reply.盼迅速答复。&lt;br /&gt;
+It is an excellent novel in every way. 无论从哪方面来看，这都是一本优秀的小说。&lt;br /&gt;
+It is clear that the cat has eaten it!很明显，是猫偷吃的!&lt;br /&gt;
+Nothing but death can part the couple.除了死之外，什么也拆不散这一对。&lt;br /&gt;
+Now she looks pale as if she were ill.现在她脸色难看，好像病了一样。&lt;br /&gt;
+She was injured badly in the accident.她在这次意外中受到重伤。&lt;br /&gt;
+The secret was spread among the crowd.秘密在人群当中传播开来。&lt;br /&gt;
+The two brothers look very much alike. 这兄弟俩看上去很相像。&lt;br /&gt;
+Their interest is listening to others. 他们的兴趣是听别人说话。&lt;br /&gt;
+There was a notice in the supermarket. 超市里有一个布告。&lt;br /&gt;
+This one cannot compare with that one. 这个与那个无法比较。&lt;br /&gt;
+To know everything is to know nothing. 样样通，样样松。&lt;br /&gt;
+To tell the truth, I don&#39;t like disco. 说实话，我不喜欢迪斯科。&lt;br /&gt;
+True and False have opposite meanings. 真与假含义完全相反。&lt;br /&gt;
+What&#39;s the point of going to college? 上大学有何用?&lt;br /&gt;
+Where can we make the insurance claim? 我们可以在哪里提出保险赔偿?这个无法与那个比较。&lt;br /&gt;
+Why don&#39;t I pick you up at your house? 为什么不让我去接你呢?&lt;br /&gt;
+Why don&#39;t you attend an aerobic class? 你为什么不去参加一个有氧健身班呢?&lt;br /&gt;
+You can kill two birds with one stone.一举两得。&lt;br /&gt;
+You can&#39;t go in no matter who you are. 不管你是谁，都不能进去。&lt;br /&gt;
+You should learn these words by heart. 你应该把这些词背熟。&lt;br /&gt;
+Could I have those two tickets, please?这两张票给我行不行?&lt;br /&gt;
+He has to take care of his sick mother. 他得照顾他生病的母亲。&lt;br /&gt;
+He hired a workman to repair the fence.他雇用了一个工人修理围墙。&lt;br /&gt;
+I can&#39;t make this machine run properly.我无法使这部机器正常运转。&lt;br /&gt;
+I don&#39;t know if I&#39;ll have the patience.我不知道我有没有耐心。&lt;br /&gt;
+I don&#39;t like what you are saying.我不喜欢你说的话。&lt;br /&gt;
+I fell in love with her at first sight.我第一眼见到她就爱上了她。&lt;br /&gt;
+I have just heard from my sister, Mary.我刚收到我妹妹玛丽的一封信。&lt;br /&gt;
+If you would only try, you could do it.只要你肯尝试，你一定能做这件事。&lt;br /&gt;
+It is no use learning without thinking.学而不思则惘。&lt;br /&gt;
+It was a lazy, breezy autumn afternoon.这是一个懒散的，起风的秋日下午。&lt;br /&gt;
+Jack is the strongest boy in the class.杰克是全班最强壮的男孩。&lt;br /&gt;
+Please fetch a chair from another room.请到别的房间取一把椅子。&lt;br /&gt;
+The doctor began to operate on the boy.医生开始给那个男孩动手术。&lt;br /&gt;
+The doctor is taking my blood pressure.医生正给我量血压。&lt;br /&gt;
+The machines will not operate properly.那些机器不能正常运转。&lt;br /&gt;
+The students declared against cheating.学生们表示反对作弊。&lt;br /&gt;
+There is hope so long as he is with us. 只要他在就有希望。&lt;br /&gt;
+He talks as if he were the head of the office.他说话的口气像办公室主任似的。&lt;br /&gt;
+His cake is three times bigger than mine.他的蛋糕比我的大三倍。&lt;br /&gt;
+I am looking forward to your early reply. 希望早日得到你的答复。&lt;br /&gt;
+I could say nothing but that I was sorry.我除了说&quot;对不起&quot;之外，什么也说不出来。&lt;br /&gt;
+I don&#39;t know how to express my gratitude. 我不知道怎样来表达我的感激之情。我要赶飞机&lt;br /&gt;
+I have to catch a plane. Could you hurry?你能快点吗?我好久没有她的消息了。&lt;br /&gt;
+I haven&#39;t heard from her for a long time.我好久没有她的消息了。&lt;br /&gt;
+I would like to wash the clothes for you. 我愿意帮你洗这些衣服。&lt;br /&gt;
+Let me see your driver&#39;s license, please. 请让我看看你的驾驶执照。&lt;br /&gt;
+She goes to work every day except Sunday. 除星期天外，他每天去上班。&lt;br /&gt;
+Take a seat please, make yourself at home.请坐，随便一点。&lt;br /&gt;
+The damage was caused by external forces. 损害是由外力引起的。&lt;br /&gt;
+The doctor advised me to give up smoking.医生建议我戒烟。&lt;br /&gt;
+The flowers make the room more beautiful.花使房间变得更加美了。&lt;br /&gt;
+There is a good restaurant on the street.那条大街上有一个很好的餐馆。&lt;br /&gt;
+They covered 120 miles in a single night.他们仅一夜就走了120英里路。&lt;br /&gt;
+Try to look on the bright side of things.尽量从好的方面看。&lt;br /&gt;
+What&#39;s your plan for the summer vacation?你暑假打算干什么?&lt;br /&gt;
+You may pick whichever one you like best.你可以挑你最喜欢的。&lt;br /&gt;
+You&#39;re welcome to stay with us next time.欢迎您下次再光临我们的饭店。&lt;br /&gt;
+There was a murder in London yesterday. 昨天伦敦发生了一起谋杀案。&lt;br /&gt;
+They stared at the huge tiger with awe. 他们敬畏地看着那头巨虎。&lt;br /&gt;
+He never misses a chance to see a movie.他从不错过看电影的机会。&lt;br /&gt;
+I cannot put up with my noisy roommates.我受不了我那些吵闹的室友了。&lt;br /&gt;
+I will be back by the end of next month.我下个月底会回来。&lt;br /&gt;
+I&#39;m good at freestyle and breast stroke.我擅长自由泳和蛙泳。&lt;br /&gt;
+It was your turn to wash them yesterday. 昨天轮到你把它们洗干净。&lt;br /&gt;
+Let&#39;s go out to have a dinner, shall we?咱们出去吃饭吧，好吗?&lt;br /&gt;
+Please push the ladder against the wall.请把梯子靠在墙壁上。&lt;br /&gt;
+She is standing in the front of the bus.她站在公共汽车的前部。&lt;br /&gt;
+The doctor asked me to watch what I eat.医生要我注意饮食。&lt;br /&gt;
+The grass is moist early in the morning.清晨的草地湿漉漉的。&lt;br /&gt;
+The test finished. We began our holiday.考试结束了，我们开始放假。&lt;br /&gt;
+This question is too complicated for me.这个问题对我说来太复杂了。&lt;br /&gt;
+Tony speaks English and he plays tennis.托尼会说英语，打网球。&lt;br /&gt;
+What is worth doing is worth doing well.只要你觉得某事值得去做，就一定要把它做好。&lt;br /&gt;
+Would you like to go to a party with me?你想不想和我一起去参加一个聚会?&lt;br /&gt;
+All at once, a rabbit came out of a hole.突然，一只兔子从一个洞中跑了出来。&lt;br /&gt;
+All characters in the book are imaginary.书中所有的人物都是虚构的。&lt;br /&gt;
+Do you feel like going to that new disco? 你想去那个新开的迪厅&lt;br /&gt;
+Ducks know how to swim when they are born.鸭子天生会游泳&lt;br /&gt;
+He spent most of his life gathering money.他一生大部分时间用来积聚钱财。&lt;br /&gt;
+He usually stays at home with his pet dog.他通常跟他的爱犬待在家里。&lt;br /&gt;
+How peaceful and beautiful the country is!多么平静美丽的国家呀!&lt;br /&gt;
+I am told that you dance wonderfully well.我听说你的舞跳得特棒。&lt;br /&gt;
+I have had several conversations with him.我已经和他谈过几次了。&lt;br /&gt;
+It is the best film that I have ever seen.这是我所看过的最好的电影。&lt;br /&gt;
+It&#39;s only a party in honor of my birthday.这只是为了庆祝我的生日而举行的晚会。&lt;br /&gt;
+Learning English is like building a house.学英语象盖房子。&lt;br /&gt;
+Listening with your heart is good for you.专心聆听别人说话对你有好处。&lt;br /&gt;
+My grandpa died of hunger in the old days. 我爷爷在旧社会死于饥饿。&lt;br /&gt;
+She feared staying alone in the farmhouse. 她害怕一个人留在农舍里。&lt;br /&gt;
+She guided the tourists around the castle.她引导旅游者参观了这座城堡。&lt;br /&gt;
+She runs everyday in order to lose weight.她每天都跑步是为了减肥。&lt;br /&gt;
+She sang perfectly in the hall last night.她昨晚在大厅唱得非常好。&lt;br /&gt;
+Somebody is always complaining to others.有人总是向别人抱怨。&lt;br /&gt;
+They don&#39;t often have a bad day this year.他们今年的运气还不错。&lt;br /&gt;
+We regard the matter as nothing important. 我们认为这件事情不重要。&lt;br /&gt;
+We&#39;ll take our holiday sometime in August. 我们将在八月份的某个时候休假。&lt;br /&gt;
+Could you direct me to the station, please?请问到车站怎么走?&lt;br /&gt;
+Have you cleared your luggage with customs ?你的行李通关了吗?&lt;br /&gt;
+He bothered me with a great many questions.他对我提了一大堆问题，真烦!&lt;br /&gt;
+He does exercises every day in the morning.他每天早上锻练身体。&lt;br /&gt;
+How do I control myself? I can&#39;t calm down.我怎能控制我自己?我无法冷静下来。&lt;br /&gt;
+I dig songs and I like pop music very much.我特别喜欢歌曲和流行音乐。&lt;br /&gt;
+I&#39;d like to cash a traveler&#39;s check please.我想兑换旅行支票。&lt;br /&gt;
+I&#39;d like to pick sea shells this afternoon.今天下午我想去捡贝壳。&lt;br /&gt;
+It&#39;s odd that they didn&#39;t reply our letter.他们没有给我们回信，这真奇怪。&lt;br /&gt;
+John seldom gets together with his friends.约翰很少与朋友聚在一起。&lt;br /&gt;
+Many people have been out of work recently.最近有许多人失业。&lt;br /&gt;
+Please give my best regards to your family.请代我向你们全家致以最诚挚的问候。&lt;br /&gt;
+Some people have compared books to friends.有些人把书比作朋友。&lt;br /&gt;
+The bat together with the balls was stolen.球拍和球全被偷了。&lt;br /&gt;
+The color of her dress suits her very well.她衣服的颜色很适合她。&lt;br /&gt;
+The days get longer and the nights get shorter.白天变长了，黑夜变短了。&lt;br /&gt;
+The dress doesn&#39;t fit her. She is too thin.这件衣服不适合她，她太瘦了。&lt;br /&gt;
+The examination put a lot of stress on him.那次考试给了他很大的压力。&lt;br /&gt;
+The mother sat the child at a little table.母亲安排孩子坐到小桌旁。&lt;br /&gt;
+There is some difference between the twins.这对双胞胎有点儿不一样。&lt;br /&gt;
+They insisted on staying rather than going.他们坚持留下来，而不愿意走&lt;br /&gt;
+Trust me, the game is really worth playing.相信我，这游戏确实值得一玩。&lt;br /&gt;
+Unlike her friends, she never gave up hope.与她的朋友的不同之处是，她从不放弃希望。&lt;br /&gt;
+Well done! You are always doing a good job!干得不错!你总是干得很出色!&lt;br /&gt;
+We&#39;re planning a tour to Italy this summer.我们计划今年夏天到意大利去旅行。&lt;br /&gt;
+Were there any letters for me this morning?今天早上有我的信吗?&lt;br /&gt;
+Why isn&#39;t Mrs. Lee&#39;s cat catching the mice?李太太的猫为何不在抓这些老鼠呢?&lt;br /&gt;
+Your English is improving little by little.你的英语正在渐渐提高。&lt;br /&gt;
+Could you tell me where I can wash my hands?请问洗手间怎么走?&lt;br /&gt;
+Do you have any plans for the long weekend?你有办法打发这个漫长的周末吗?&lt;br /&gt;
+He decided to bring a suit against his boss.他决定起诉他的老板。&lt;br /&gt;
+He devoted his life to the study of science.他把毕生献给科学研究。&lt;br /&gt;
+He had to choose between death and dishonor.他不得不在死亡和耻辱之间选择。&lt;br /&gt;
+His previous attempts had been unsuccessful.他以前的尝试没有成功。&lt;br /&gt;
+I determined that nothing should be changed.我决定什么都不改变。&lt;br /&gt;
+I don&#39;t think it will lead to a good result.我认为这事不会有什么好结果。&lt;br /&gt;
+I have 4 books and 2 magazines to check out.我有4本书和2本杂志要借。&lt;br /&gt;
+I think I&#39;ve filled in everything correctly.我想各项都填对了。&lt;br /&gt;
+I&#39;m not sure whether I have locked the door.我没把握是否锁了门。&lt;br /&gt;
+It took him a little time to fix that watch.他很快就把表修理好了。&lt;br /&gt;
+My father is at home looking for the ticket.我爸爸正在家里找票呢!&lt;br /&gt;
+Not until last week did I get a work permit.直到上周我才拿到工作许可证。&lt;/p&gt;
+&lt;p&gt;She intends to make teaching her profession.她想以教书为职业。&lt;br /&gt;
+The letter &quot;x&quot; stands for an unknown number.字母x代表未知数。&lt;br /&gt;
+The sight of the dead body scared him stiff.看到尸体把他吓僵了。&lt;br /&gt;
+There are lots of huge buildings in Beijing.在北京有许多高大的建筑物。&lt;br /&gt;
+There is an interesting film on Channel one.在一频道有一部有趣的电影。&lt;br /&gt;
+They plan to immigrate to Finland next year.他们计划明年移居芬兰。&lt;br /&gt;
+We enjoyed driving along the new expressway.我们喜欢沿着新建的高速公路开车。&lt;br /&gt;
+We need to cooperate perfectly to win the game.要想赢得比赛，我们需要密切配合。&lt;br /&gt;
+We need more than listening. We need action!我们需要的不光是听得进意见，我们要的是行动。&lt;br /&gt;
+Yes. I wouldn&#39;t go home early if I were you.是的，如果我是你，我不会早回家。&lt;br /&gt;
+Your answer is satisfying. I feel satisfied.你的答案是令人满意的。我感到很满意。&lt;br /&gt;
+Betty and Susan are talking on the telephone.贝蒂和苏珊正在通电话。&lt;br /&gt;
+Great efforts ensure the success of our work.巨大的努力确保了我们工作的成功。&lt;br /&gt;
+He has tasted the sweets and bitters of life.他已尝遍了人生的甜酸苦辣。&lt;br /&gt;
+He said he was educated in the United States.他说他是在美国受的教育。&lt;br /&gt;
+How do you like our English literature Prof.?你觉得我们的英国文学课的教授怎么样?&lt;br /&gt;
+I am looking forward to your visit next week.我期待着你下周来访。&lt;br /&gt;
+I feel I am the happiest person in the world.我觉得自己是世界上最幸福的人了。&lt;br /&gt;
+I had to sit up all night writing the report.我不得不熬通宵写报告。&lt;br /&gt;
+I hope we can see each other again some time.希望还能有相见的机会。&lt;br /&gt;
+I saw him playing football on the playground.我看见他在操场上踢足球。&lt;br /&gt;
+It is tomorrow that they will have a meeting.就在明天(而不是在别的某一天)他们要开会。&lt;br /&gt;
+Let me tell you some details about clearance.让我告诉你一些通关的细节。&lt;br /&gt;
+The brain needs a continuous supply of blood.大脑需要连续不断地供血。&lt;br /&gt;
+The doctor&#39;s words made him feel comfortable.医生的话让他感觉很舒服。&lt;br /&gt;
+The truth is quite other than what you think.事实真相和你所想的完全不同。&lt;br /&gt;
+They stopped talking when their boss came in.当老板进来的时候；他们停止了交谈。&lt;br /&gt;
+They were glad of the examination being over.他们为考试结束了而高兴。&lt;br /&gt;
+This is by far the largest cake in the world.这是目前世界上最大的蛋糕了。&lt;br /&gt;
+Whichever you choose, you won&#39;t be satisfied.不论你选择哪一个，你都不会满意。&lt;br /&gt;
+Will you connect this wire to the television ?你把这根电线和电视机连上好吗?&lt;br /&gt;
+His words are strongly impressed on my memory.他的话深深地铭记在我的心头。&lt;br /&gt;
+Is this the fight bus for the Capital Library?这辆车到首都图书馆吗?&lt;br /&gt;
+One third of this area is covered with forest.这一地区三分之一的地方都是森林。&lt;br /&gt;
+They are arguing over who should pay the bill.他们为谁应该付款而争论不休。&lt;br /&gt;
+Wait a moment, I&#39;ll be with you in an instant.等一下，我立刻就来。&lt;br /&gt;
+You&#39;ll save time not waiting for the elevator.你可以节省等电梯的时间。&lt;br /&gt;
+A clear conscience laughs at false accusation.只要问心无愧，无端的指责可以一笑置之。&lt;br /&gt;
+I have a headache, and she has a stomachache.我头疼，她胃疼。&lt;br /&gt;
+He glared at Bill, ready to teach him a lesson.他怒视着比尔，准备教训他一顿。&lt;br /&gt;
+I assure you that you will feel no pain at all.我保证你根本不会觉得疼的。&lt;br /&gt;
+I can&#39;t afford to go to a restaurant every day.每天都去餐馆吃饭，我真是支付不起。&lt;br /&gt;
+I left at 6:00 so that I could catch the train.我六点钟出门，以便赶上火车。&lt;br /&gt;
+I&#39;m afraid I have some rather bad news for you.我恐怕有些很坏的消息要告诉你。&lt;br /&gt;
+Learn to say the fight thing at the fight time.学会在适当的时候说适当的话。&lt;br /&gt;
+No wonder you can&#39;t sleep when you eat so much.你吃这么多难怪睡不着。&lt;br /&gt;
+Please ask her to call me back when she&#39;s back.她回来时请让她给我回个电话。&lt;br /&gt;
+There are a lot of people in the swimming pool.游泳池里挤满了人。&lt;br /&gt;
+They have to work hard to support their family.他们必须努力工作来支持他们的家。&lt;br /&gt;
+This way, he can kill two birds with one stone.这样他就能两全其美。&lt;br /&gt;
+We are all taking medicine against the disease.我们都服药治疗疾病。&lt;br /&gt;
+Would you please go to a dancing party with me?请你跟我一起去参加一个舞会好吗?&lt;br /&gt;
+He usually drops in at my place on his way home.他常常在回家的路上顺便来看看我。&lt;br /&gt;
+His vanity was hurt by their talking so frankly.他们坦率的谈话伤害了他的虚荣心。&lt;br /&gt;
+How would you go to Beijing, by air or by train?你怎样去北京，是乘飞机还是坐火车?&lt;br /&gt;
+I cannot express how glad I am to hear from him.我无法表达我接到他的信时有多高兴。&lt;br /&gt;
+If Tom cannot keep his promise, he&#39;ll lose face.如果汤姆不能信守诺言，他就会丢面子。&lt;br /&gt;
+I&#39;ll still love her even if she doesn&#39;t love me.即使她不爱我，我还仍然爱她。&lt;br /&gt;
+I received an invitation, but I did not accept it.我收到-份请帖，但没有接受。&lt;br /&gt;
+If I were you, I would not be bothered by English.如果我是你，就不会为英语烦恼了。&lt;br /&gt;
+If you don&#39;t work, you will fail to pass the exam.如果你不学习，你考试就会不及格。&lt;br /&gt;
+I&#39;m thinking of hanging the lamp from the ceiling.我打算把灯吊在天花板上。&lt;br /&gt;
+It is more important to be healthy than bony slim.健康永远比皮包骨头好。&lt;br /&gt;
+Long ago, people believed that the world was flat.很久以前人们相信地球是平的。&lt;br /&gt;
+Old tunes are sweetest and old friends are surest.老调最甜美，老友最可靠。&lt;br /&gt;
+She makes it clear that she doesn&#39;t like swimming.她明确地表示她不喜欢游泳。&lt;br /&gt;
+The constitution guards the liberty of the people.宪法保护人民的自由。&lt;br /&gt;
+The doctor examined the soldier&#39;s wound carefully.大夫仔细检查了战士的伤口。&lt;br /&gt;
+The harder I study, the better my English will be.我越努力，我的英语就会越好。&lt;br /&gt;
+The sun was shining and the sky was crystal clear.阳光闪烁，天空湛蓝。&lt;br /&gt;
+This cellar room is very damp in the rainy season.这间地下室在雨季非常潮湿。&lt;br /&gt;
+Computers are becoming a part of our everyday life.电子计算机正渐渐成为我们日常生活的一部分。&lt;br /&gt;
+Every man is fool sometimes, but none at all times.每个人都有愚蠢的时候，但是没有一个人永远愚蠢。&lt;br /&gt;
+He dreamed of traveling to remote South Sea Islands.他曾梦想到遥远的南海诸岛去旅游。&lt;br /&gt;
+How can I climb up that wall! I wish I were a bird!我怎么能够爬得上那堵墙?我要是一只鸟就好了!&lt;br /&gt;
+However, Susan has not really made up her mind yet.然而，苏珊却还没有决定。&lt;br /&gt;
+I really think a little exercise would do you good.我真的觉得做点运动对你有好处。&lt;br /&gt;
+I will never forget the days that I spent with you.我永远都不会忘记和你一起度过的日子。&lt;br /&gt;
+we got a bad headache, and my nose is running.我头痛得厉害，还流鼻涕。&lt;br /&gt;
+Many young girls dream of being a fashion model.许多年轻女孩梦想成为时装模特儿。&lt;br /&gt;
+Most of the earth&#39;s surface is covered by water.大部分的地球表面被水覆盖着。&lt;br /&gt;
+Somebody&#39;s knocking at the door. I&#39;ll answer it.有人在敲门，我去开。&lt;br /&gt;
+The number 13 bus will take you to the hospital.13路车会带你去医院。&lt;br /&gt;
+They celebrated his birthday with a dance party.也们举办舞会来祝贺他的生日。&lt;br /&gt;
+They misplaced this book under other categories.他们把它错放到另一个类别去了。&lt;br /&gt;
+They played a shameful part in the whole affair.他们在这一事件中扮演了可耻的角色。&lt;br /&gt;
+As a matter of fact, he was pretending to be ill.实际上，他是在装病。&lt;br /&gt;
+I will speak against anything I know to be wrong.我会对所有我认为不对的事情直言不讳。&lt;br /&gt;
+In spite of the heavy rain, she went to the shop.尽管下着大雨，她还是去了商店。&lt;br /&gt;
+No matter what happened, he would not say a word.不管发生什么事，他也不会说一句话。&lt;br /&gt;
+No one knows the location of the hidden treasure.谁也不知道藏宝地点在哪里。&lt;br /&gt;
+The old lady enjoys a quiet life with her family.老太太和她的家人安享宁静的生活。&lt;br /&gt;
+The population of the city is close to a million.这个城市的人口接近一百万。&lt;br /&gt;
+We are prohibited from smoking on school grounds.我们被禁止在校园内抽烟。&lt;br /&gt;
+Growth, however, brings new problems and concerns.不过，发展也带来了新的问题和顾虑。&lt;br /&gt;
+He appears to be your friend but I doubt if he is.他看上去像是你的朋友，但我怀疑他是否是真心的。&lt;br /&gt;
+I am so full that I would burst with another bite.我吃得如此之饱，我感觉我再吃一口肚子就要胀破了。&lt;br /&gt;
+I have two cats. One is white, the other is black.我有两只猫，一只是白猫，另一只是黑猫。&lt;br /&gt;
+I&#39;m sorry, these 2 books are 3 days overdue.小姐，对不起，这两本书已经过期3天了。&lt;br /&gt;
+Jalu has forgotten falling off his bicycle.詹露早忘掉他从白行车上摔下来这件事了。&lt;/p&gt;
+&lt;p&gt;Manners are quite different from country to country.各国的礼仪各不相同。&lt;br /&gt;
+Not only did I know her, but I was her best friend.我不仅认识她，还是她最好的朋友。&lt;br /&gt;
+The best-known movie awards are the Academy Awards.最著名的电影奖是奥斯卡金像奖。&lt;br /&gt;
+We&#39;ve got to do something about the neighbor&#39;s dog!我们得对邻居的狗采取点行动了!&lt;br /&gt;
+Will you come and join us for dinner on Sunday?星期天来和我们共进晚餐好吗?&lt;br /&gt;
+Do you think people are a company&#39;s greatest wealth?你认为人是公司最大的财富吗?&lt;br /&gt;
+He thinks himself somebody, but we think him nobody.他自以为是重要人物，但我们觉得他什么也不是。&lt;br /&gt;
+I believe I haven&#39;t reached the summit of my career.我相信我还没有达到事业的巅峰。&lt;br /&gt;
+It is no matter whether you get there early or late.你早到晚到都没有关系。&lt;br /&gt;
+It&#39;s against the rules to handle the ball in soccer.在足球中以手触球就是犯规。&lt;br /&gt;
+The nurse assisted the doctor in the operating room.护士在手术室协助医生动手术。&lt;br /&gt;
+What I do on my own time is nobody else&#39;s business.我在自己的时间里干什么根本不关别人的事。&lt;br /&gt;
+What I want to do is different from those of others.我想做的与别人不同。&lt;br /&gt;
+You forget to write down the date of your departure.您忘了写离店日期了。&lt;br /&gt;
+&quot;I wish I&#39;d known about that rule earlier&quot;, she said.&quot;我要是早点知道这个规矩就好了!&quot;她说。&lt;br /&gt;
+Could you tell me your secret for a long, happy life?你能告诉我长时间地过着快乐的生活的秘诀吗?&lt;br /&gt;
+He holds a position of great responsibility upon him.他担任着一个责任重大的职务。&lt;br /&gt;
+It is said he has secret love affairs with two women!据说他背地里和两个女人有关系！&lt;br /&gt;
+Number 13 buses run much more frequently, don&#39;t they?13路车跑得更勤，是不是?&lt;br /&gt;
+They are only too delighted to accept the invitation.他们非常乐意接受邀请。&lt;br /&gt;
+We are going to have the final examination next week.我们下周举行期末考试。&lt;br /&gt;
+And now medical care helps to keep people alive longer.现在的医疗保健使得人们活得更长。&lt;br /&gt;
+Do you think you&#39;ll be able to go to sleep fight away?你认为你马上就能睡着吗?&lt;br /&gt;
+I am in charge of the company when the manager is out.经理不在时山我来管理公司。&lt;br /&gt;
+I borrowed a notebook from Tom and I lent it to Marry.我从汤姆那儿借了一本笔记本，我又把它借给玛丽了。&lt;br /&gt;
+I&#39;m doing some washing and John is cooking dinner.我正在洗衣服，约翰在做晚饭。&lt;br /&gt;
+Were there any exciting incidents during your journey?你们在旅行中有没有什么令人激动的事情?&lt;br /&gt;
+As far as policy is concerned, I have to say something.谈到政策，我得说几句。&lt;br /&gt;
+Could you tell me what the maximum weight allowance is?您能告诉我行李的最大重量限额是多少吗?&lt;br /&gt;
+He came out of the library, a large book under his arm.他夹着本厚书，走出了图书馆。&lt;br /&gt;
+The brothers differ from each other in their interests.这几个兄弟各有所好。&lt;br /&gt;
+Although we can&#39;t see these atoms, they really do exist.虽然我们看不见原子，但它们的确存在。&lt;br /&gt;
+I am familiar with the casual atmosphere in the company.我对公司中这种放松的氛围感到很熟悉。&lt;br /&gt;
+Most people eat, write, and work with their fight hands.大多数人吃饭，写字，工作都用右手。&lt;br /&gt;
+Only by working hard can we succeed in doing everything.只有努力，才能成功&lt;br /&gt;
+Take it easy, you will be all right in a couple of days.。别担心，你两天之内就会痊愈的。&lt;br /&gt;
+The Beatles represented part of the spirit of their age.甲壳虫乐队代表了他们时代的部分精神。&lt;br /&gt;
+There being no one to help me, I had to do it all alone.因为没有人帮助我，我不得不独立完成这项工作。&lt;br /&gt;
+How much cloth does it take to make a skirt for the girl?女孩做一条裙子要用多少布?&lt;br /&gt;
+With all these mouths to feed, he didn&#39;t know what to do.由于有那么多人要供养，他不知道怎么办才好。&lt;br /&gt;
+I forgot to prepare the speech I&#39;m supposed to give today.我忘了准备今天的我该做的演讲了。&lt;br /&gt;
+It&#39;s supposed to start at 6:30 sharp, but I doubt it will.应该是六点半整的，但是我觉得够呛。&lt;br /&gt;
+On behalf of my company, I would like to welcome you here.我代表我们公司欢迎你来这里。&lt;br /&gt;
+She&#39;s been quite different since coming back from America.从美国回来之后，她变化很大。&lt;br /&gt;
+Today it is common that women and girls make up in public.今天，在公共场所看到妇女和姑娘化妆打扮是很普遍的事。&lt;br /&gt;
+I have to transfer to No. ll bus, but where is the bus stop?我需要换乘11路公共汽车，但是汽车站在哪儿?&lt;br /&gt;
+I supposed him to be very clever but he was in fact a fool.我以为他很聪明，其实他是个蠢货。&lt;br /&gt;
+The rabbit ran to the woods and did not come back any more.兔子跑进了森林再也没有出来了。&lt;br /&gt;
+Tom and Mary congratulated us on the birth of our daughter.汤姆和玛丽为我们女儿的出生向我们表示祝贺。&lt;br /&gt;
+I can&#39;t help eating sweets whenever they are in my presence.我无论什么时候一看到甜食就忍不住要吃。&lt;br /&gt;
+l am vacuuming the floor now and have several shirts to iron.我正在用真空吸尘器清理地板，还有好几件衬衫要熨。&lt;br /&gt;
+I will love you until the seas run dry and the rocks crumble.我将爱你直到海枯石烂。&lt;br /&gt;
+There is a broken small old gray stone bridge over the river河上有一座破烂不堪的、古老的、灰色的小石桥。&lt;br /&gt;
+No wonder people say that computers are taking over the world.难怪有人说电子计算机正渐渐接管世界。&lt;br /&gt;
+The enormous increase of population will create many problems.巨大的人口增长将产生很多问题。&lt;br /&gt;
+There&#39;s nothing better for you than plenty of water and sleep.你最好多喝水多休息。&lt;br /&gt;
+You should always depend on yourself rather than someone else.你应该是依靠你自己，而不足别人。&lt;br /&gt;
+I would like to express to all of you here our sincere welcome.让我向在座诸位致以最真挚的欢迎。&#39;&lt;br /&gt;
+Many people prefer living in the country to living in the town.许多人喜欢住在农村而不喜欢住在城市。&lt;br /&gt;
+Since I&#39;m here, I&#39;d like to try a typical dish of this country.既然来了，我想吃这个国家特有的食物。&lt;br /&gt;
+Walking up and down the stairs would beat any exercise machine.上下楼梯可比什么健身器都要好。&lt;br /&gt;
+Had it not been for the alarm clock she wouldn&#39;t have been late.如果不是因为闹钟不响的话，她就不会迟到了。&lt;br /&gt;
+How ever you may work hard, the boss will not be fully satisfied.无论你有多努力，老板总不会完全满意。&lt;br /&gt;
+If he had not broken his tooth, he would not be in hospital now.如果他没有把牙齿弄坏，现在就不在医院了。&lt;br /&gt;
+You might as well throw your money away as spend it in gambling.你与其把钱花在赌博上，不如把它丢掉的好。&lt;br /&gt;
+Can you put me in the picture about the World Cup Football Match?你能给我讲讲关于世界杯足球赛的状况吗?&lt;br /&gt;
+I&#39;m usually just using the search engines to look up information.我通常只是用搜索引擎找一些资料。&lt;br /&gt;
+He goes home early everyday for fear that his wife would be angry.他每天很早就回家，免得老婆生气。&lt;br /&gt;
+I regret to inform you that we are unable to offer you employment.很遗憾地告诉你，我们无法雇用你。&lt;br /&gt;
+I will continue my learning, though I am tired of learning English.尽管我很烦英语，我还是要学它。&lt;br /&gt;
+Li Bai is one of the greatest poets that have ever lived in China.李白是中国有史以来最伟大的诗人之一。&lt;br /&gt;
+Many people complain that computers are taking over their jobs.许多人抱怨说计算机正在接管人的工作。&lt;br /&gt;
+The cupboards in her kitchen were full of things she did not need.她厨房的橱柜中放满了她不需要的东西。&lt;br /&gt;
+What be said did not annoy me much, for I knew he did not mean it.我并不在乎他所说的，我知道他不是那个意思。&lt;br /&gt;
+He asked me some personal questions, but I would never answer them.他问了我几个个人问题，我根本不愿回答。&lt;br /&gt;
+I don&#39;t care where we go as long as we don&#39;t have to stand in line.不管去哪里，只要不用站着排队就行。&lt;br /&gt;
+She likes Mike a lot, but she doesn&#39;t want to get married so early.她喜欢迈克，但她不想那么早就结婚。&lt;br /&gt;
+Why don&#39;t you find a job and end this dependence upon your parents?你为何不找个职业．不再依靠你的父母呢?&lt;br /&gt;
+Will you please try to find out for me what time the train arrives?能不能请你帮我查查火车什么时候到?&lt;br /&gt;
+A good knowledge of English will improve your chances of employment.英语好将有助于增加你们的就业机会。&lt;br /&gt;
+If she finds out you spilled ink on her coat, she&#39;ll blow her stack.如果她发现你在她上衣上洒了墨水，她会大发脾气的。&lt;br /&gt;
+I would be very grateful for information about entry to your college.若能寄给我贵校的入学申请材料我将十分感激。&lt;br /&gt;
+Mr. Smith knew Jack didn&#39;t look at the others because he was nervous.史密斯先生知道杰克不敢看别人是因为紧张。&lt;br /&gt;
+On being introduced to somebody, a British person often shakes hands.英国人被介绍给别人的时候常常和对方握握手。&lt;br /&gt;
+I want to take a walk along the river bank, singing my favorite songs.我想在河边散步，唱我喜欢的歌。&lt;br /&gt;
+Many people believe that overweight results from overeating and stress.很多人认为肥胖超重是因为吃得过多和压力造成的。&lt;br /&gt;
+Yet all these things, different as they seem, have one thing in common.然而所有这些东西，看上去虽不同，但却有一个共同点。&lt;br /&gt;
+All my best memories come back clearly to me, some can even make me cry.所有美好的记忆又在我脑海清晰地浮现了，有些甚至还令我哭泣。&lt;br /&gt;
+This is the most wonderful day of my life, because I&#39;m here with you now.今天是我一生中最美好的一天，因为我现在和你在一起。&lt;br /&gt;
+When I was young, I&#39;d listen to the radio, waiting for my favorite songs.当我还是个小女孩的时候，我常听着收音机，等待我最喜欢的歌。&lt;br /&gt;
+I&#39;m certain he&#39;ll go to see the film, because he&#39;s bought a ticket.我肯定他会去看电影的，冈为他把票都买好了。&lt;br /&gt;
+Unfortunately you&#39;ll have to pay the fine before you check those books out.在你借书之前你要先付清罚款。&lt;br /&gt;
+Hi! You guys keep talking so loudly that I have to speak at the top my voice!哎!你们一直这样大声讲话，我都不得不扯着嗓子说话了。&lt;br /&gt;
+We should not only know the theory but also how to apply it to practice.我们不仅要知道理论，还要知道怎样把理论应用于实践。&lt;br /&gt;
+Combining exercise with the diet may be the most effective way to lose weight. 运动与节食结合也许是减肥最有效的途径。&lt;br /&gt;
+The maximum weight allowance is 60 kilos per traveler, excluding hand luggage. 每个旅客托运的行李最大重量限额是60公斤，手提行李除外。&lt;br /&gt;
+You are just putting on a little weight. I believe you&#39;ll get that off easily.你只是稍微胖了些．很快就会恢复的。&lt;br /&gt;
+In many countries, more and more companies are replacing people with computers.在许多国家有越来越多的公司使用电子计算机来代替人。&lt;br /&gt;
+There are mice next to the refrigerator, under the sink and inside the cupboard!冰箱边、洗碗槽下，还有橱柜里面都有老鼠!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 09 May 2012 15:39:16 +0800</pubDate>
+        <link>http://codante.org/blog/2012/05/09/commonly-used-in-english-1000.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2012/05/09/commonly-used-in-english-1000.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>[转]又是个教孩子的</title>
+        <description>&lt;h2&gt;饮水机事件&lt;/h2&gt;
+&lt;p&gt;女儿快一岁时，对什么都好奇，尤其对饮水机的开关好奇，她外婆带着她很担心，一直看着并不停阻止，要知道这是很难的事，大人总有走开的时候，而女儿在学步车里是可以到处走动的。于是我决定不用看着了，饮水机的开关并不很危险，只要一放手水就会停，与其一直提心吊胆地看着不如让她烫到一次来得有用，很快她给烫到了，并记住了这是危险的，在很长一段时间内没有再去触摸。顺便我告诉她我们阻止她是因为这个东西是有危险的，所以要记住，大人阻止你动的东西都有道理，别以为一岁的小孩不懂，其实他们会听明白。好吧，应该是女孩明白得早一点，男孩会晚一点。&lt;/p&gt;
+&lt;h2&gt;插座事件&lt;/h2&gt;
+&lt;p&gt;女儿快两岁时，对墙上的插座孔很感兴趣，于是我拿来了她的录音机，告诉她墙上的孔里有电，是录音机需要的，插插头的时候需要拿着后面的塑料部分，这才安全，如果拿了前面的两片金属是会死的，而且手湿的时候插插座也是会死的。女儿对死还是很敬畏的，虽然未必明白具体会怎样，但总之是一件很不好很可怕的事。在两岁不到的日子里她学会了插插座，从那天起我们经常叫她XX来帮我插一下这样那样的插座，她也经常拖着她的录音机这个房间听听，再拖到那个房间听听，不用求我们帮她了。好吧，她很安全地活到了现在，从没触过电，我也没再担心过她会触电，我甚至曾告诉她，如果看到一根金属线你想知道是否带电，可以用手背靠上去试一下，有电的话会打到你，会有点痛有点麻，但记住千万不能用手心去抓，手背碰到会弹开，没危险，手心碰到会抓紧，那就是要命了。&lt;/p&gt;
+&lt;h2&gt;穿衣换挨PP&lt;/h2&gt;
+&lt;p&gt;女儿两岁时洗完澡衣服都是自己穿，可是自己穿的新鲜劲过掉后，会想办法偷懒。某日洗完澡，穿了一大半的衣服，对我说，老妈，你帮我穿衣服吧。我非常愉快的说，可以，不过有条件的，帮你穿一件一服你让我打一下吧，我很喜欢你PP打上去的手感。她考虑了一下同意交换，于是我帮她穿了两只袜子换到了两下PP，至今我仍记得那两下打得我手发痛。打完后她的脸色非常尴尬，而我又非常陶醉地在那儿夸她PP打上去的手感有多好，会让人打着上瘾。。。。。。第二天，穿衣服时我相当嗨皮滴主动要求帮她穿衣服，并再三申明太喜欢打她PP的感觉了，希望她能再给我个享受的机会。&lt;/p&gt;
+&lt;p&gt;当然，直到现在我也没能再找到这个机会享受。&lt;/p&gt;
+&lt;h2&gt;自己回家&lt;/h2&gt;
+&lt;p&gt;女儿两岁半了，在小小班里也上了一段时间了，深深懂得红灯停绿灯行的规则。&lt;br /&gt;
+有次我带她去逛街，在闹市区跟她说，我要去单位一下，问她是否能认识回家的路，可否自己回家,当然她认为没问题，于是我远远跟在她后面，看她如何回家。女儿很认真地在每个路口等红绿灯，甚至在其中一个路口等到了第六个绿灯的时候才过。事后我才知道，她不单只看绿灯，过的时候还要看看有没有别的车可能在闯红灯，确认100%的安全才通过。&lt;br /&gt;
+其实孩子为自己负责的时候，远比大人认为的更有责任感。&lt;/p&gt;
+&lt;h2&gt;虫子是非常可爱的生物&lt;/h2&gt;
+&lt;p&gt;我是非常害怕那些软趴趴的肉虫，虽然知道这东西其实是无害的，但就是害怕啊。&lt;br /&gt;
+小孩是不懂得害怕的，我的私心是要教女儿不怕以后可以帮我挡虫子。于是某天一只有虫的桃子，我告诉她有虫的桃子更甜，而那里面的虫子是非常可爱的，肥肥白白，还会爬动。女儿问那虫子不会咬我吗，我回答，这些虫子都是吃素的，而你是荤的，对于虫子来说也太老了咬不动。&lt;br /&gt;
+女儿相当相信，她把虫子抓在手里看它爬来爬去，手心手背来回爬，左手爬到右手右手爬回左手，吃饭时把那条虫子放在桌子上看着虫子吃饭，爬远了抓回来继续看。我，我，我尖叫压在喉咙里，还不能做出害怕的表情，如果我有一点害怕的样子，从此女儿就会对无害的虫子一直莫明害怕，我一直想不起那次我是怎么把饭吃完的。&lt;br /&gt;
+她开始把各种大大小小的青虫带回家养，终于我的神经变得异常坚强了，居然不再害怕这些肥肥软软的虫子了，然后发现居然有些青虫长得圆头大脑相当卡通。我们一直希望会养出蝴蝶来，事实证明，所有这些青虫最后都长成了大大小小的飞蛾。&lt;/p&gt;
+&lt;h2&gt;性教育&lt;/h2&gt;
+&lt;p&gt;每个小孩都会问自己从哪来，我一直在等，终于她问了，我于是带她去买了两张人体的解剖图，又找了两张外形图。然后详细解说了所有的器官，每个器官的功能，当然也包括了男女不同的生殖器官，她是由何而来再如何出来。总结就是怎么进来就怎么出去，只不过进来的时候要显微镜才能看得到，十个月后出来时已经是很大个的婴儿了。只不过是普通知识而已，实话实说，我这样认为，女儿于是也这么接受，一点也没什么神秘的。在了解得这么透彻后，女儿不再对此感兴趣，别人逗她时，她会一脸平静滴详细告诉他们自己由何而来，每个人都是这样出来的。&lt;/p&gt;
+&lt;h2&gt;躺在地上哭&lt;/h2&gt;
+&lt;p&gt;女儿很少用哭闹作为手段来达到目的，因为一次也没成功过，上了小小班后看到了成功案例，于是活学活用，在某天为了和我们一起吃白粥还是要单独给她下面条躺到了地上。我们全家该干嘛就干嘛去，当她空气。这里要感谢我的老妈，她更是开始了扫地，当扫到女儿躺的地方时，对她说，来来躺过去一点，这儿我要扫地，别挡着，我扫玩了你再躺回来。于是女儿挪地继续躺着哭，一会又说，好了，我把这儿扫干净了，你可以躺回来了。两岁半的女儿居然真的又躺回原来的地方来哼哼唧唧。我们全家都躲了起来狂笑。当了半小时空气的女儿终于发现别人的成功案例在她身上成功不了，爬起来讨好的说，我觉得其实白粥也是很好吃的，说完自己P颠P颠跑去把白粥吃了个干净。&lt;br /&gt;
+直到现在，我也再没看到过她躺在地上哭闹作为达到目的的手段。其实小孩子很多行为只不过是试探，第一次就阻止，基本不会有第二次同样行为发生。&lt;/p&gt;
+&lt;h2&gt;不吃饭是自己的损失，不是别人的&lt;/h2&gt;
+&lt;p&gt;某天与我饭前吵架，饭桌上把碗重重一放恶狠狠地说，看到你就烦，我不吃了。我马上说，可以，不过一直到下次吃饭你都不可以吃任何东西。女儿开始有点心虚，继续说我不是说我不吃，只是不跟你一起吃，等你吃完我再来吃。我回答她，要么现在一起吃，要么你留着下顿再一起吃，没有第三个选择。她气鼓鼓说那我不吃了。&lt;br /&gt;
+我们吃完把台子理掉，开始笑嘻嘻地讨论，怎么有这么傻的人，居然拿不吃饭来要胁别人，自己不吃饭饿的又不是别人，笑死人，居然拿饿自己要胁别人，哈哈哈哈哈。。。。。。。于是以饿一顿饭的代价，女儿明白了拿伤害自己来要胁别人，是很蠢的事。类似的事再也没在她的生活中出现过。&lt;/p&gt;
+&lt;h2&gt;有限的玩具，无限的乐趣&lt;/h2&gt;
+&lt;p&gt;女儿从小到大的玩具极其有限，电动的基本没有，所有的玩具拿个大袋子也就可以装起来了。&lt;br /&gt;
+这么少的玩具，不是因为经济原因，是因为小孩子玩具越少越简单，注意力就越容易集中，想象力就越丰富，就越懂得珍惜东西。&lt;br /&gt;
+小孩子都喜欢玩水，女儿也不例外，我的条件是，玩水可以，但只限卫生间，并且玩好要自己把卫生间弄干净。一个小桶一个盆，一只空可乐瓶，外加一个漏斗，一只小匙可以消磨掉整整下午的时间，她会把桶里的水用小瓶盖或小匙一点一点弄到大可乐瓶中，有时用漏斗有时不用，加满一瓶倒进盆里，盆里满了再用同样的方法把水弄进桶里，有时把上述各种大小工具按到桶里按到盆里，加满水按不加水按半加水按，正着按反着按，想象成各种情况，一个人玩得不亦乐乎，并且从没玩腻过。&lt;br /&gt;
+小班时，女儿就可以坐在那儿一两个小时，集中专心地做一件事。&lt;br /&gt;
+天线宝宝当时是女儿最爱看的节目，商场里也有卖，她很喜欢，于是我告诉她，在她生日的时候可以拥有一个，她可以在四个中挑一个，第二年的生日她等到了第二个天线宝宝，在漫长的等待后得到的东西都是值得珍惜的。从小时起她最想的东西都需要经过等待才能得到，最长的等了整整一年。于是现在她对东西都是很珍惜，很明白价值，并且想要什么都会考虑清楚是否真的需要。&lt;/p&gt;
+&lt;h2&gt;学写字是需要配额的&lt;/h2&gt;
+&lt;p&gt;该学写数字了，买了一本描红，交给女儿，然后告诉她，这个是有配额的，每天只能写半页，不可超过。&lt;br /&gt;
+小孩子学东西，一开始总是非常有兴趣的，恨不能一下写掉半本，每天写到很高兴的时候，配额用完了，本子收掉了，求也没用，只能明天再写。于是养成了习惯，每天一定要写掉半页才高兴。很轻松愉快地完成了学写数字这个过程。&lt;br /&gt;
+关键是要保持神秘，一直要吊着她，提起她的兴趣与好奇心，把求她学写字，变成她来求你要多写，但一定不能答应，继续用配额来吊着她直到任务完成。&lt;/p&gt;
+&lt;h2&gt;分享&lt;/h2&gt;
+&lt;p&gt;女儿两岁不到（突然发现大多行为的纠正塑造都发生在三岁以内），她外婆经常买小虾挤虾仁炒给她吃，有次我看到了，就拿筷子夹了几个尝尝，女儿说你怎么吃我的虾仁。我回答谁说是你的虾仁，拿起勺子狠狠两勺吃掉一半，女儿反应过来，手忙脚乱来跟我抢吃，可是，她怎么抢得过我，怎么抢得过我。。。。。。嘿嘿！女儿看着空掉的虾仁碗眼泪下来了，我跟她说，东西谁都可以吃，没有什么东西是你一个人的，大家想怎么吃就怎么吃。从那天开始凡她喜欢吃的我都一定分走一半，小孩子就是好教，她很快习惯了与人分享。&lt;br /&gt;
+有时候看到她特别喜欢吃的东西，我们想让她多吃一点，会说我牙痛咬不了这东西，或是这东西我不太喜欢。。。。。。等等看起来很合理的借口，你帮个忙帮我吃掉吧，一定要用求她的口气，让她觉得她是在帮你的忙（当然这种事不能做得太多，多了就没意思了），这时女儿会吃得欢天喜地，这是意外得到的快乐。如果没有学会分享，孩子会认为这是他应得的，并没有觉得开心，但是只要被别人分掉哪怕一小口都会生气；而习惯分享的孩子哪怕是多吃到一口都会觉得意外与开心。少吃点不会对人生有影响，懂得分享，容易得到快乐的心态会让孩子终身受益。&lt;/p&gt;
+&lt;h2&gt;自己搞定&lt;/h2&gt;
+&lt;p&gt;比较小的时候（哪一年真忘记了，但一定是三岁不到）晚饭后天天带她下楼玩，广场上很多小孩，有些小孩会带些玩具下来，女儿有时会想去玩又不敢说，就求我帮她去说。当然我一口拒绝，告诉她，这是你想玩的东西，要么你自己去商量借来玩，要么就不要玩。忍了几天，终于她走出了第一步自己去借了一样玩，当然有时候会借不到，但大多数的时候还是能成功借到。只要成功一次，以后的事就好办得多，孩子都是自来熟的生物啊。后来她发现带样玩具下去，跟人交换玩更容易玩到自己想玩的东西，好吧，你自己搞定了。&lt;/p&gt;
+&lt;h2&gt;失败的天赋训练&lt;/h2&gt;
+&lt;p&gt;孩子小的时候完全依赖成人才能存活，他们不能保护自己，于是老天给他们一项天赋，那就是精细分辨成人的语气作出判断，略大一点他们会对生活的环境观察细微，哪怕一点微小的变化都能发现，这也是天赋或者说动物的本能，因为他们不能保护自己，所以对环境变化异常敏感。当孩子一两岁的时候，几乎所有的父母都会发现孩子非常有观察力，而且近乎过目不忘，这时父母会惊喜，但很快，当他们长大，能力越来越强，天赋会逐渐消失，如何保持这稍纵即逝的天赋呢。&lt;br /&gt;
+这点来说，我是失败的，方法很简单，但是持之以恒至少到六岁。。。。。。很遗憾，机会错过了就不会再有。&lt;br /&gt;
+每天晚上给孩子读一段故事，当孩子会开口讲话后，让他把昨天的故事复述出来，讲不出来再读一次（请相信孩子的记忆天赋），能复述出来就继续读下一段，由短到长日复一日，持之以恒，五六岁时，你会发现，孩子可以过耳不忘，头天晚上听过一遍的大篇故事，第二天晚上可以几乎一字不差的背出来。后期因为可以完全背出故事，自己拿书来念，对照着书认字简直是水到渠成的事。这需要父母有强大的耐心与恒心（自责一万遍），每个孩子其实都是过目不忘的天才。&lt;br /&gt;
+我表妹成功了，当我失败后才明白她的父母得有多强大才能造就她这样的天才。&lt;/p&gt;
+&lt;h2&gt;跌倒了，出血了&lt;/h2&gt;
+&lt;p&gt;女儿在外头跌倒了，爬起来后发现皮破了不少，出血了，紧张了。我蹲下观察后，笑嘻嘻地对她说，啊，出血了，我们回去找个碗把这血盛起来吧，还能烧锅血汤呢，很补的，别浪费啦。女儿紧绷的神经一下就放松了。&lt;br /&gt;
+回到家，我拿出酒精帮她消毒，先跟她说明，这个是消毒用的，抹在破掉的皮肤上可能会很痛，但是呢，不忍这个痛，可能伤口就会感染，也许就会烂掉这块肉，到时候肉掉了更痛，或者细菌进到血液里得了败血症，那就会死。女儿想了想，说，那你就消毒吧，我可以忍一下。&lt;/p&gt;
+&lt;h2&gt;补牙&lt;/h2&gt;
+&lt;p&gt;女儿上小小班后，终于戒掉了叼着奶瓶睡着的习惯，但她的两颗门牙因为长期泡在奶里，蛀掉了点，于是我计划带她去修补一下，省得越蛀越大。&lt;br /&gt;
+事先告知女儿，她的牙蛀掉了，如果现在不处理，发展下去会危害到她的恒牙，如果带她去修补牙齿，处理的时候可能会有点痛会出点血，但都不会太厉害，然后问她，你看是不是要去修补一下。女儿表示赞同。坐到牙医的椅子上，医生不敢下手，我只得再次当医生面问了女儿一次，得到再次肯定后，医生战战兢兢地动了手，整个过程女儿张大嘴巴木头一般一动不动，事后跟我说，你说会有点痛，其实一点也不痛。看多了坐上椅子就象杀猪一样的孩子，医生反到很不能适应这么冷静来补牙的小孩。&lt;br /&gt;
+为什么女儿会这么冷静呢，因为我事先告知了可能会发生的情况，比如痛，比如出血，她有了心理准备，也就不怕了。孩子哭闹反抗或许更多的不是因为痛，而是对未知伤害本能的恐惧。&lt;br /&gt;
+所以别以为孩子小，骗骗就可以了，他们会记得你骗过，会不信任你，下次再骗就没那么容易了。也不要低估孩子的承受能力，说实话会让他们更信任你，让他们对可能的疼痛作好心理准备，他们其实是很能忍痛的小生物。&lt;/p&gt;
+&lt;h2&gt;体罚&lt;/h2&gt;
+&lt;p&gt;再乖巧的孩子，也总有把父母惹到怒发冲冠，恨不能一巴掌拍死的时候，否则那就不是孩子是木偶了。&lt;br /&gt;
+某日，我很担心自己会忍不住对着女儿一巴掌下去，好出出心里这口鸟气。但是怒气是这样的，忍着也许会内伤，一旦动手却会象黄河溃堤，可能一掌接一掌收不了手，好多暴打孩子的父母借口是为孩子，其实更多是为了出自己心头的一口气。这是自己的女儿，所以只能内伤。&lt;br /&gt;
+我对女儿说，最后提醒你一次，如果再犯我就要打你了，犯一次打一下，犯两次打两下，第三次打四下，每次加倍。女儿说，不行。我说，补充条件，受罚时你得自己脱好裤子床上挨打，如果你不肯，那我捉住了打，打一下的变两下，打两的变四下，总之加倍。&lt;br /&gt;
+她挑战我，挑战我，挑战我。。。。。。最后我让她可以自由挑个地方受罚，她挑了房间，并清场不得围观，锁门，自己脱裤子挨打。对她来说，这是很丢脸的事，但也是很有效的管教办法，一般情况下只要提醒了一次立下规矩，为免再次丢脸挨打，就会遵守规定。&lt;/p&gt;
+&lt;p&gt;三岁见老之我见。&lt;br /&gt;
+这句古话经常听过，但不很明白，女儿出生后，在教养中慢慢发现，古人真是太TMD（加重语气）有智慧了。&lt;br /&gt;
+专家说要温情教育，要给孩子讲道理。三岁以内的孩子，听得懂大道理吗？也许。但更重要的不是给那么小的小孩讲道理，最重要的是先立规矩，一岁的孩子也会明白“不行”这个词。如果孩子错了，哪怕孩子再小也不能姑息，一定要马上阻止，并正确引导其行为，不要相信孩子大了自然会明白这种说法，只要在第一次就坚决阻止错误，孩子很快会明白并做出正确的行为。一旦孩子的偏差行为养成了习惯再阻止就难得多，孩子也会无所适从。三岁之内，孩子的大多数行为习惯都已形成，如果一开始就不断纠正矫正，就不需要后期反复地为一个个偏差纠缠，后续的教育也就会越走越顺。&lt;/p&gt;
+&lt;h2&gt;绣花还是跳舞&lt;/h2&gt;
+&lt;p&gt;某天，女儿的外婆对我说，你来跟她说吧，她比较肯听你的话，幼儿园办课外班，女孩子么让她去学跳舞最好，可是她不肯，要去绣花。我叫来女儿，问她，是不是要上课外班，她说是，我说，那你想上什么班呢，女儿说，我想学绣花，我还没绣过呢，可是外婆要让我去学跳舞。我：不用理外婆，那是你上课，不是她去上，你想上什么课是你的自由，别人管不着，但是既然是你自己的选择，就得为自己负责，认真学好。期末，女儿遗憾得说，我才绣了A和B，C字绣了一半课就结束了，没得绣了。&lt;/p&gt;
+&lt;h2&gt;自己的行为自己负责结果&lt;/h2&gt;
+&lt;p&gt;小区里很多孩子，女儿由于不娇气做作，很能自来熟。&lt;br /&gt;
+一天女儿问我，能否带小朋友来玩，我回答，这个家也是你的，你可以做主，如果带小朋友来玩，你们可以任意，但最后得把一切恢复原状，由于是你带来的朋友，所以你要负责。孩子们非常喜欢来我家，因为自由。通常我会对他们视而不见，他们玩他们的，我做我的，而女儿会负责招待，吃的也好，玩的也好，全由她自己做主。&lt;br /&gt;
+有时候玩得高兴会把地上弄得一团乱，临走，女儿会组织他们清理干净。如果走前没清理干净，最后就由女儿自己清理。这是我们说好的，她做了主人，她负责结果。&lt;/p&gt;
+&lt;h2&gt;包子的底限&lt;/h2&gt;
+&lt;p&gt;女儿平时表现得很包子，不太跟人计较，从没见过她与朋友争吵不愉快。她外婆一直很担心，每每报怨我把女儿教成包子，以后是会吃亏的。&lt;br /&gt;
+大班时，她带回个同学玩，决定送同学一本书。两堆书，一堆是她看过的，一堆是没看完的，女儿让同学在她看过的一堆书里挑选一本，但是她同学坚持要一本她没看过书。女儿坚持，她同学也坚持，于是女儿说，这本书我没看过，不可以送给你，但可以借给你，我写一张借书证，你签好名，看完了还给我。两个孩子认真的做了一张借书卡，签下大名,写下日期。&lt;br /&gt;
+包子只是表面现象，始终有底限，当触碰到底限时，会想出办法解决，不与朋友造成冲突。父母从小放手才能逼着她找办法解决自己的问题，这个也是很需要锻练滴。&lt;/p&gt;
+&lt;h2&gt;写作文&lt;/h2&gt;
+&lt;p&gt;上小学，老师要求写作文，女儿写不出，要我教。我把她带到电脑前，教她打开谷歌，模糊输入作文题目，按下搜索键，然后告诉她，这些都是你需要的作文，挑着抄吧，不过，你们老师应该都有看过，所以整篇的抄呢很容易被发现，你得多找几篇拼在一起抄。抄作文这种事一回生两回熟，三回四回就经验丰富了。&lt;br /&gt;
+为什么教女儿抄作文呢，一二年级的孩子，词汇量很少，很难写出生动的作文，最好的办法就是抄别人的。当她把多篇文章拼凑在一起时，必须仔细研读所有的文章，挑出可用的词句段落，并想办法把这些连贯起来成为一篇完整的作文。&lt;br /&gt;
+嘿嘿，我很懒，但是这个办法的确很有效。&lt;/p&gt;
+&lt;h2&gt;做作业到十点&lt;/h2&gt;
+&lt;p&gt;一二年级，因为学校离外婆家很近，于是就住在外婆家，可是居然常常做作业到九十点钟，开始大人报怨学校作业太多，后来跟她的同学交流后发现，同样的作业有的六点前就完成，有的孩子和女儿一样要做到九十点。其实女儿并没有专心认真做作业，边玩边做当然就这样了，后来有段时间她外公天天看着她做，但要别人看着才做的事并不很有效。于是，非常懒的楼主出现了。其实我只是很认真地对她说，我知道你们的作业量，从今天起每天作业最晚做到8点，8点以后再敢做作业，我就把本子扔了。女儿反抗，那我就告诉老师，是你不让我做完作业，我才交不出。我笑，那你就去跟老师说好了，反正交不出作业的人是你不是我，写到黑板上的名字是你不是我。女儿无奈，整整一个月，我天天去看她，整整一个月，她的作业都在六点前完成，然后，就养成了习惯，不用看着都能很快专心地完成。&lt;/p&gt;
+&lt;p&gt;为什么这次能这么轻易就改正了她的坏习惯呢，其实有两个必要的条件，&lt;br /&gt;
+一是从小我就灌输她的人生必须她自己承担责任，我绝对不会为她负责，也是一直这样执行，所以她知道我说的都是事实，交不出作业她得自己承担后果。&lt;br /&gt;
+二是从小我立下的规矩都是一定会执行，没有或许也许下次之类，所以我说8点后再做就扔了她的本子，虽然没有真的执行，但她知道只要违反我就一定会执行。&lt;/p&gt;
+&lt;h2&gt;信任&lt;/h2&gt;
+&lt;p&gt;六岁&lt;br /&gt;
+女儿：我要不要假期上课外班？&lt;br /&gt;
+我：谁上？&lt;br /&gt;
+女儿：当然是我上&lt;br /&gt;
+我：你上问我干嘛&lt;/p&gt;
+&lt;p&gt;七岁&lt;br /&gt;
+女儿：老师说写字可以考级，我要不要考呢&lt;br /&gt;
+我：谁考？&lt;br /&gt;
+女儿：我考&lt;br /&gt;
+我：那关我鸟事，问我干嘛&lt;/p&gt;
+&lt;p&gt;八岁&lt;br /&gt;
+女儿：我同学要来，不认识我家，她妈妈送到公园门口，陪我一起去接一下吧。&lt;br /&gt;
+我：这种小事还要我陪？你又不是不认识路，自己去接&lt;br /&gt;
+女儿：你就不怕我被骗走啊。&lt;br /&gt;
+我：骗你？一、你8岁了，对骗子来说年纪太大了，头脑清楚口齿伶俐，养不家&lt;br /&gt;
+二、你是女孩，卖不起大价钱，不合算&lt;br /&gt;
+三、要说拿你去卖给人家做老婆生孩子，你又太小了还没发育，现在骗你去还得养很多年才能卖钱，太亏了&lt;br /&gt;
+所以，你是现在是根本没人要最安全的年纪，过马路注意安全就可以。&lt;br /&gt;
+女儿：。。。。。。。。。。&lt;/p&gt;
+&lt;p&gt;九岁&lt;br /&gt;
+女儿：外公他们要出门旅游一个星期，那放学谁来接我啊&lt;br /&gt;
+我：都这么大了接什么接，带个钥匙自己坐公交回来&lt;br /&gt;
+女儿：。。。。。。。。&lt;/p&gt;
+&lt;p&gt;十岁&lt;br /&gt;
+女儿：学校开运动会，我可以报一个项目也可以报两个，有跳高，跳远，100米。。。。。。。你帮我想想报哪个好啊，我很难决定&lt;br /&gt;
+我：你老妈要是靠得住会帮你拿主意，那母猪都会上树了&lt;/p&gt;
+&lt;p&gt;十一岁&lt;br /&gt;
+女儿：我的下颌矫正器磨着牙肉了，要去修正一下&lt;br /&gt;
+我：这个月我没空，你定个时间我给你买好火车票，你自己去上海找医生修正，记得带好资料和钱&lt;br /&gt;
+女儿：世博开了，我还没去过呢&lt;br /&gt;
+我：这么热，我决定不去，票在抽屉里，自己去&lt;br /&gt;
+女儿：不怕我丢掉啊&lt;br /&gt;
+我：世博开了，上海现在是全国最安全的地方，超多武警便衣，你想丢哪去？&lt;br /&gt;
+外婆：要不带我去吧&lt;br /&gt;
+（外婆很不放心一定要跟去）&lt;br /&gt;
+临去前，外婆碎碎念地反复问女儿，世博怎么坐车怎么转地铁，怎么吃饭&lt;br /&gt;
+女儿：你可不可以不这么烦啊，我可以不带你去的。&lt;br /&gt;
+外婆：好吧，我到上海一定只跟着你什么也不烦&lt;/p&gt;
+&lt;p&gt;晚十点，我接到女儿电话：老妈，我们现在上火车了，火车X点X分开，大约X分钟到，你算一下时间来接我们吧。&lt;/p&gt;
+&lt;p&gt;上车到后，她外婆笑得象朵花，忍也忍不住，很兴奋地说&lt;br /&gt;
+今天我跟着她先去医院修正牙套，都是她买的地铁票，负责路线，到了医院，自己挂号找医生说情况，我真的只是跟在她后面什么也不用管&lt;br /&gt;
+到世博也是她看地图挑路线场馆，带着去吃饭，走进去看别人都是大人照顾小孩，我只要坐着，全部由她负责把饭菜送到我手里。在世博里我看东西，她跟我说，外婆你看中什么跟我说好了，我买给你。&lt;/p&gt;
+&lt;p&gt;信任自己的孩子，不是口头上的鼓励，是真正了解你的孩子，相信他们的能力，大胆放手，才是真正的信任&lt;/p&gt;
+&lt;h2&gt;成绩都是浮云&lt;/h2&gt;
+&lt;p&gt;上小学后，女儿仍当自己在幼儿园，考试时自己不做跑去教别人。做题目的思维有时也和别人不太一样。比如一道数学题，某店早上卖了五个苹果，下午卖了七个梨，问如果你是店主该进什么水果，为什么？其实只是简单比较哪种水果卖得多就进哪种。女儿回答，如果我是店主就进草莓，因为我喜欢吃草莓。当我无意中看到这张考卷时，笑到风中凌乱。好吧，我真没觉得这是问题，但老师看到这种回答一定是一头黑线了。可想而知，她的成绩虽不很差但也不会太好。半年后，老师对天天接女儿的外婆说，家里谁管她。答，她妈妈。老师，那请她妈妈来学校一趟。&lt;br /&gt;
+我听到这个消息后很真诚地笑嘻嘻地跟女儿说，我呢不理你怎么学，混着就好，但是呢你也得给我点面子，考试怎么也得混到平均线吧，我要是没面子了，你也就没好果子，是吧。&lt;br /&gt;
+女儿的外婆很着急，天天对我说，你也管管她的成绩啊，管管啊，终于有天我怒了，跟她说，成绩不重要，学会做人才重要，小学学到三年级基本的字就差不多都认识了，基本的加减乘除也全学会了，就算踏上社会一般也就用这点，成绩再好，不会做人，不会自理也是废物一个，小学学的这点狗P东西，值得这么紧张么。她外婆大惊，你可别对孩子这样说。我：。。。。。。其实我早就跟她这样说过了。但是呢，我对她还有过补充，内容是：你运气不好，出生晚了，你看,XX和XX他们也没读什么书就可以混个工作了，一般来说越晚出生呢得读得学历越高才能找到工作，中国的教育制度就是这样，你也没得挑，我对你没啥要求，不过你日后想要找个工作养自己呢，还是得混个大学文凭的。女儿点头深表赞同和遗憾，自己出生晚了得多读点书才能混个工作。&lt;br /&gt;
+期末，老师发来短信，要求复习，正好我和女儿在外头散步，我对她说老师叫你们期末复习，你看需不需要，女儿摇头，不要吧，我都会了，我点头，我也这样认为，你们学的这一点点东西还需要复习就太猪了。&lt;br /&gt;
+二年级结束时，数学老师对孩子的外婆说，这个孩子读上去会比较吃力。&lt;br /&gt;
+三年级，一切照旧，别人的成绩开始掉下去时，女儿仍然不温不火的混着不变的成绩，四年级学期结束时，我得到消息，女儿混着的成绩到了第三名，于是提前跟家人打过招呼，这个成绩问过就行，不得奖励。因为她的成绩是混出来的，我不希望她为了这个成绩而有压力，为了保持去加倍努力，再说了读书是为她自己，成绩是她的，凭什么为了她的成绩要给奖励呢。一个孩子在一生中自由轻松能有几年，为了那浮云样的几分成绩，放弃这样那样，不值得啊。&lt;br /&gt;
+五年级，六年级，她仍在混着，一次也没复习过，老师说，这个孩子没有存在感，成绩中上，不拖拉作业，好吧，这是我希望的。&lt;/p&gt;
+&lt;h2&gt;签字&lt;/h2&gt;
+&lt;p&gt;女儿学了几年的硬笔书法，学完楷书学行书。&lt;br /&gt;
+我：把行书学好，以后你平时用楷书，需要我签名时，你用行书签一下就可以了。&lt;br /&gt;
+女儿：不行，老师说不可以自己签。&lt;br /&gt;
+我：切，平时老师叫你读书背课文你怎么不做就叫我签&lt;br /&gt;
+女儿：那是你愿意签的，现在我不愿意代你签&lt;br /&gt;
+我为什么这样随便帮女儿签作业，因为了解自己的女儿，她的行为后果都由自己负责，不论我怎么签，最后如果背不出后果还是她承担，所以她绝对不敢对自己捣浆糊&lt;br /&gt;
+女儿为什么不肯代我签名，因为她知道即使她拿着0分的考卷给我签，我也一定会签，最多笑嘻嘻地对她说，这个成绩真不是容易考出来的，要什么样的天粪才能考到这种程度，走出去别说认识我，那太丢脸了。所以她完全不必要冒险代签名。&lt;/p&gt;
+&lt;h2&gt;约定以后一起看A片&lt;/h2&gt;
+&lt;p&gt;我有一本描述男女不同的书，女儿不知道哪去扒了出来，看得津津有味，其中一段是描写男女看A片大脑不同的反应，她不明白了，跑来问我&lt;br /&gt;
+女儿：A片是什么&lt;br /&gt;
+我：赤裸祼，没有情节不穿衣服的人类交配作片&lt;br /&gt;
+女儿：你看过吗&lt;br /&gt;
+我：成年人一般都看过&lt;br /&gt;
+女儿：跟猫咪交配一样吗&lt;br /&gt;
+我：不同在于，猫咪任何时候都穿着毛皮大衣以同一姿式交配，而A片里的人多数扒光了交配，也有穿点衣服交配，以不同的角度动作交配，虽然表象不同，但性器官的接触来说，人类和猫咪或别的动物没差别&lt;br /&gt;
+女儿：我可以看吗？&lt;br /&gt;
+我：现在不行，你太小了，A片规定至少年满18岁才能看。这东西没什么了不起，就是以夸张的动作声音来表现男女之间的交配过程，以后等你可以看了，我们一起看吧。&lt;/p&gt;
+&lt;p&gt;在边上认真杀怪的老公，终于抬起了给雷得焦黑并风中凌乱的头，对着我们内牛满面&lt;br /&gt;
+她的老婆刚和十一岁的女儿要约定一起看A片&lt;br /&gt;
+约定一起看A片&lt;br /&gt;
+定一起看A片&lt;br /&gt;
+一起看A片&lt;br /&gt;
+起看A片&lt;br /&gt;
+看A片&lt;br /&gt;
+A片&lt;br /&gt;
+片&lt;/p&gt;
+&lt;h2&gt;钱&lt;/h2&gt;
+&lt;p&gt;女儿虽然从小不乱买东西，但对于钱还是很没概念，因为买什么都是大人掏的钱。&lt;br /&gt;
+两年级时，我给她每月五元，跟她说，从现在起每个月给你五元，要买什么都用自己的钱。没两天她跑来跟我说，学校里的小店卖的键子比外面贵一倍，学校里卖一元一个，外面要卖一元两个。说的时候很懊恼，因为她刚在学校里用自己的钱买了一只。我：是的，你的五块钱在学校里只能买五个，外面可以买到十个。巨大的差额深深地刺激到她了。第二天放学，她跑来跟我说，买得太贵了，问我能不能帮她承担一半的价钱（五毛）。我：不行，你买之前谁让你不比较价格的，都说好的，你要买东西就在这五块钱里，贵也好便宜也好，反正都是你花的，我绝对不会为你的行为买这个单。&lt;br /&gt;
+从那时起，她对钱金的概念就相当精准了&lt;/p&gt;
+&lt;p&gt;去饭店请客，拿出装一万现金的信封交给女儿，跟她说，我要跟亲威聊天没空结帐，你去办一下。她很自然地跟服务员下去结帐，一会带着剩下的钱和发票回来交给我。过后我问她是把钱全都交出去结的帐吗，她答：不是，问了一下说是4500，我就点了45张给他们，结果多点了，他们还我一张。&lt;/p&gt;
+&lt;p&gt;十岁时带她去上海看牙，在车上与她聊天，说起带了银行卡不用带现金，卡是有密码的。在医院我把卡交给她让她自己去结帐，凑在她耳边告诉她密码。女儿：其实我在车上就猜到是什么密码了，可是车上有司机在，我就没说。&lt;/p&gt;
+&lt;p&gt;女儿对于分寸的撑握，老娘我颇感欣慰。&lt;/p&gt;
+&lt;h2&gt;出国&lt;/h2&gt;
+&lt;p&gt;某日与家人聊天，聊到身边好多同事朋友的孩子，读书不咋滴，就选择出国，深深让我BS。&lt;/p&gt;
+&lt;p&gt;我对女儿说：你记住，以后你读书能象XX阿姨一样出类拔粹，那我们就负担你出国的费用，否则，想出国等以后自己赚了钱再去，我们绝不负担你一毛钱的费用。&lt;/p&gt;
+&lt;p&gt;女儿点头称明白。&lt;/p&gt;
+&lt;h2&gt;素描班&lt;/h2&gt;
+&lt;p&gt;五年级寒假，&lt;br /&gt;
+我：要不要去学学素描，这个对你以后学习立体几何很有帮助，可以提高你的空间想象力&lt;br /&gt;
+女儿：好啊&lt;br /&gt;
+我：可以先试一个寒假，要是不想学了，可以不学，只要把这一季交的钱学完就行。&lt;/p&gt;
+&lt;p&gt;寒假结束&lt;br /&gt;
+女儿：老妈，我想还是继续学吧，老师说，考了级高考可以加分的。&lt;br /&gt;
+我：想学么钱在抽屉里，自己去交学费。&lt;br /&gt;
+女儿：老师说我学了这么久从来没见过你&lt;br /&gt;
+我：乱讲，第一次我们找去交钱不是见过一次了吗&lt;br /&gt;
+女儿：可能他不记得了，可是别的家长都会进来接，你都从来不进来接我&lt;br /&gt;
+我：需要这样吗？&lt;br /&gt;
+女儿：嗯，不需要&lt;/p&gt;
+&lt;p&gt;在我这样混蛋教育理论（我老爸的说法，针对我对学校学习的理论，虽然他知道我说的是事实）下，女儿还是比别的孩子更能为自己的将来考虑，可见孩子只要真正为自己负责，别人的理论她会参考但作出对自己有利的判断。&lt;/p&gt;
+&lt;h2&gt;天份你有吗&lt;/h2&gt;
+&lt;p&gt;女儿：翁老师（女儿的素描老师）说，有些小孩学东学西，结果一样都学不好，还不如专心只学一样，学得精。&lt;br /&gt;
+我：大师级的都需要天份，没天份再努力也只能是工匠，你有画画的天份吗？&lt;br /&gt;
+女儿：没有，我们这有个小女孩，老师说她很有天份，比我晚学没几天就到里面去画了，我还在外面画，我只不过比别人坐得住，认真点。&lt;br /&gt;
+我：所以呀，你不过是没天份的普通人，再努力也成不了大师，你作为普通人能做的就是认真多学点各种皮毛，将来可以唬唬不会的普通人。&lt;br /&gt;
+我：普通人在这个老师这儿学的只能是皮毛，差别在于到达表皮层还是真皮层，专心努力的工匠级可以到达肌肉组织，只有真正有天份的才能通过努力到达骨骼中心。&lt;/p&gt;
+&lt;h2&gt;自制力不是天生的&lt;/h2&gt;
+&lt;p&gt;因为属于早期，这一段其实该写进前十，嘿嘿，忘记了&lt;br /&gt;
+三岁内的孩子先立规矩再讲道理，道理懂不懂没关系，规矩却一定要严格执行，但也有可以打破的时候。&lt;br /&gt;
+夏天，规定女儿每天可以吃一小支冷饮，某日，女儿提出要多吃一支。我回答可以，但有个条件，你今天多吃一支，那明天后天就不能再吃，你可以选择每天一支，也可以选择多吃一支放弃明后两天的份额。女儿选择多吃一支，在以后的两天她没能再吃到冷饮，于是这个规矩只打破过一次就再也没被打破了。&lt;br /&gt;
+女儿：我可以现在吃薯片吗？&lt;br /&gt;
+我：可以，不过现在快吃饭了，你现在吃可以吃三片，但是饭后再吃可以吃六片。&lt;br /&gt;
+女儿：算了，我还是饭后吃吧&lt;/p&gt;
+&lt;p&gt;女儿：我现在可以出去玩沙子吗？&lt;br /&gt;
+我：可以，但现在是睡午觉的时间了，要是现在玩你可以玩半小时，睡好起来玩，可以玩一小时&lt;br /&gt;
+女儿：我现在去睡觉了。&lt;/p&gt;
+&lt;p&gt;我们对女儿规定，不是重要的日子，比如生日、比如春节。。。。。，外出不可以买东西。某日带她一起去小商品市场买线，她站在旁边的玩具摊很仔细地看了很久，老公：不可以买哦。女儿一脸平静：我只是看看呀。&lt;br /&gt;
+身上抓开、受伤结了盖，我总会忍不住去剥，一直剥一直剥，伤口老也不好，虽知道这不是好行为，但很难忍住。女儿开始也有这个行为，于是我跟她说，这个盖如果剥了，以后这块皮肤就会留下疤，很难看。从此她身上伤口上的盖全部都是自然脱落，没再剥过一个，这样的自制力让我叹为观止深深汗颜。&lt;/p&gt;
+&lt;h2&gt;女孩是要富养的&lt;/h2&gt;
+&lt;p&gt;单指物质上，富养女儿必须是不动声色潜移默化，略一偏差，结果养出来的不是装13物质女就是暴发户样虚荣女。&lt;br /&gt;
+浪琴事件是真实存在的，十岁的女儿需要一只手表，我给了她两只，两只手表样式大小厚薄都相似，米老鼠的粉蓝表带，卡通底盘，浪琴的鳄鱼表带，18K金表，一只价格一大家多，一只价值一万多。理由是一用一备，喜欢哪只带哪只，反正除了价格有差其他都差不多。当然我肯定女儿会选米老鼠。而且女儿也认为手表，不过因品牌材质不同所以价格差一百倍，但本质上没差别。&lt;br /&gt;
+我常把十多万的卡交给女儿让她结帐，习以为常就好。如果见惯了这些，并不觉得了不起，也就不会出去炫耀，炫耀的本质是要觉得这件事了不起才会做。富养的实质是要让女儿认为，这些东西这些钱没什么了不起，只有有这个概念，将来才不容易被骗，家长没有这个心态就不要去富养女儿，不然就是害她。&lt;/p&gt;
+&lt;h2&gt;现在开始不许看我QQ&lt;/h2&gt;
+&lt;p&gt;女儿在她的电脑上聊QQ，突然对我宣布，现在开始不许看我QQ。&lt;br /&gt;
+我：什么事啊？是不是找了个男朋友（笑，愉快地说）&lt;br /&gt;
+女儿：乱讲，怎么可能（同笑）&lt;br /&gt;
+我：好差劲，没有男朋友搞得这么神秘干什么，无聊&lt;br /&gt;
+女儿：我在贴吧找了个QQ群加入，都跟我差不多年纪，我们在聊动画片&lt;br /&gt;
+我：不就是什么什么暧昧，什么什么亲嘴嘛，有什么了不起的&lt;br /&gt;
+女儿：才不是，是在聊动画里的人&lt;br /&gt;
+我：啊，虚拟帅哥呀，那你就比老妈差远了，你老妈最近在群里聊真实帅哥，就是那个钟XX&lt;br /&gt;
+女儿：我知道，不是你一直在看的那个嘛&lt;br /&gt;
+我：对了，最近才跟人聊起杀生丸，那个杀杀可是你老妈我的最爱，要不你给你的群里推荐一下，长得真正人模狗样，超级漂亮&lt;br /&gt;
+女儿：是呀是呀，一般这种超帅的都是主角身边不最重要的那个&lt;/p&gt;
+&lt;p&gt;套孩子的话需要技巧，首先先要把最严重最不可能的情况说得没什么了不起，比如男朋友，让孩子知道这都无所谓了就没什么更了不起的秘密了，一下就卸掉了孩子的大半戒心。&lt;br /&gt;
+当孩子告诉你秘密时，同上继续把他们认为最严重的情况说得没什么了不起。好了，剩下的戒心也卸掉了。&lt;br /&gt;
+然后把自己拉到与孩子同一位置，她告诉你聊动画帅哥时，你要让她知道你也在做同样的事，比她聊得多，她这点小儿科了。最好能推荐一两个她们感兴趣的人物。&lt;br /&gt;
+于是所谓的秘密成为了浮云，你知道了想知道的，孩子也对你卸掉了戒心&lt;/p&gt;
+&lt;h2&gt;上小小班学的准备&lt;/h2&gt;
+&lt;p&gt;这一段，本来觉得无关紧要，可是看了几天贴后觉得还是写一下吧。&lt;br /&gt;
+上小小班前做什么准备呢&lt;br /&gt;
+1、教会孩子自己吃饭。关于这个，宝宝一岁多的时候就可以放手让他们自己吃了，不用多久他们就能自己搞定，当然开始肯定是让人头痛的。很多家长不是喜欢说不要让孩子输在起跑线上吗，怎么孩子自己吃饭就不怕他们输了呢，自己吃饭锻练了孩子的手眼协调力，也就是说锻练了大脑，增加了孩子的自信（父母放手，自己搞定的孩子三岁所谓的逆反期就没有或是不明显）。在两岁半孩子上小小班前可以熟练使用筷子了，上小小班后怎么可能饿到自己呢。&lt;br /&gt;
+2、教会孩子自己穿脱衣服和鞋子。午睡起来二三十个孩子排排坐等老师穿衣，你怕他冻着，可是怎么可能冻不着呢，自己搞定又怎么冻得着。&lt;br /&gt;
+3、教会孩子自己上厕所，自己擦PP。不要怕孩子擦不干净，多练就好，当然在冬天，因为孩子手短衣服多，可以请老师帮忙。&lt;br /&gt;
+4、给孩子买容易穿脱的衣服。比如前扣的（这个当然在上小小班前要学会扣扣子，这个更是精细动作有利大脑发育），鞋子要魔术搭扣，容易穿脱的那种。&lt;br /&gt;
+当然，我是这样做的，所以孩子上小小班后，基本就没有这样那样的问题，看到很多父母心疼孩子吃不饱穿不暖，你心疼？心疼怎么不早点教会孩子自己搞定。老师也是人，也会累的，你试试每天对着二三十个不停哭闹不会吃饭不会穿衣的小孩，其实最想哭的是老师。&lt;/p&gt;
+&lt;h2&gt;没想出来怎么起题目，那就不起了&lt;/h2&gt;
+&lt;p&gt;女儿四五岁吧，晚饭后带她去小区玩，有几个七八岁的小男孩在踢球，女儿在旁边跑来跑去想加入，一个小男孩一转身和女儿撞了起来，结果，女儿就给弹到了沙石地上，当然不会摔得很轻。那个小孩男呆住了，看了看女儿，又望向站在边上的我，手足无措，看得出相当紧张害怕。我于是45度仰望天空移动移动。。。。。。出去逛商店了。15分钟后再回来，女儿已经加入了踢球行列，快乐非常，回去时还约定明天再来。&lt;br /&gt;
+到家后女儿自己处理了伤口，我问她跌倒后有没有怪那个小男孩，女儿回答，他又不是故意的，而且我也跌得不是太重，只出了点血而已，痛得也不是太厉害。&lt;br /&gt;
+女儿根本就没问我的反应，因为她知道就算她给小朋友撞得骨折了，我也只会送她去医院而非责怪别人。因为这仍是她的事，同龄人之间的事由她自己判断解决，怪与不怪是她自己的选择。&lt;/p&gt;
+&lt;h2&gt;女儿，你虽然是普通人，不过也可以投点机&lt;/h2&gt;
+&lt;p&gt;女儿：今天数学考试绝大多数人都考了80+，我是86，只有三个人考到90以上，一个考了99.5，平时成绩上上下下的也都考了80+。&lt;br /&gt;
+我：让我来猜，那三个90+的至少有两个男生，那个99.5的一定是男生。&lt;br /&gt;
+女儿：你怎么知道得这么准(嘴型O字）&lt;/p&gt;
+&lt;p&gt;女儿：今天英语考试，有两个不及格，才五个90+，我考了92&lt;br /&gt;
+我：两个不及格的一定是男生&lt;br /&gt;
+女儿：你怎么又知道了&lt;/p&gt;
+&lt;p&gt;女儿：期末考试很多人90+，我考了98&lt;br /&gt;
+我：那平时数学超好的那个男生，估计就没你考得成绩高了&lt;br /&gt;
+女儿：咦，为什么你都猜得那么准&lt;/p&gt;
+&lt;p&gt;女儿五年级，已经发育了，因为从来不复习，这些成绩真实地反映了她的大脑情况，证明女儿不过是个普通人，拥有普通的女性化大脑，而将来在理科方面也不太可能拥有很大的潜力。&lt;/p&gt;
+&lt;p&gt;女儿六年级&lt;br /&gt;
+我：你看来没什么机会在理科方面胜出来，不过呢，虽然你可能没有强大的理科头脑，但是你在语言学习方面又比一般男生强。英语呢，这一辈子都用得到，能流利无障碍地交流，将来你的机会也许就比别人多一点，中国的应试教育也有一个好处，就是把分数打包算，也许你理科会弱一点，但是把英语练强大了，也能一定程度上弥补你的弱项。&lt;br /&gt;
+在晃了一圈培训班后，女儿决定去上英语。外教，四人小班制，自已报了三年。&lt;br /&gt;
+第一天回来我问：其他三个小朋友都几岁在哪上学呀？&lt;br /&gt;
+女儿：两个工作了，一个正在找工作&lt;br /&gt;
+我：。。。。。。&lt;br /&gt;
+女儿：老师安排我下堂上外教的课，我跟她说算了，我听不大懂，先预习课件吧。&lt;/p&gt;
+&lt;p&gt;第二次我问：今天你做了两个小时的课件吗？&lt;br /&gt;
+女儿：不是，一个小时，还有一个小时我去找老师谈了点事。&lt;br /&gt;
+我：做课件的时候一个人？没老师来看你来帮你？&lt;br /&gt;
+女儿：怎么可能有老师来呢，当然是自己一个人做课件&lt;br /&gt;
+我：那找老师谈了什么呢？&lt;br /&gt;
+女儿：先找老师定一个我的英文名字，她拿了一堆让我挑个，我就挑了个短的。然后跟她定下下次上课的时间，聊了点别的还做了张调查问卷。&lt;/p&gt;
+&lt;p&gt;会为自己打算，自己处理事情的女儿，虽然是普通人，但我相信将来为她担忧的心会少很多。&lt;/p&gt;
+&lt;h2&gt;草泥马&lt;/h2&gt;
+&lt;p&gt;这真是个神奇的物种，我第一次看到就深深折服，迅速推荐给女儿。两人一起搜照片并找出所有版本的草泥马之歌，一边听一边乐不可支笑个不停，于是决定买上一对。可是打了N个电话后发现，这东西贵得要死，一只要七八万，还价又还不下，谈不拢的情况下只能作罢。反正会跌价，等跌了再买也可以，女儿深表赞同。&lt;br /&gt;
+也许是恶趣味，有时我们会在家里一起放声高歌各版本走音草泥马之歌，开心不已。&lt;/p&gt;
+&lt;h2&gt;可怜的老毛&lt;/h2&gt;
+&lt;p&gt;女儿：听说毛泽东死了几十年没烂还躺在水晶棺材里让人瞻仰&lt;br /&gt;
+我：这个人，虽然你老妈我很BS他，但也很同情他。我们中国人讲究入土为安，他都死了三十几年了，还做成了标本让人参观，不得入土安宁。&lt;br /&gt;
+女儿：干嘛要这么对他？&lt;br /&gt;
+我：不知道做这个决定的人是不是跟老毛有仇，也许当年参观他标本的人对他带有敬意，毕竟那个时代他是个神化的人物，不过我们这辈对他已经无感了，更别说你们这代，估计现在去参观的年轻人都是抱看千年女尸一样的心情去的。&lt;br /&gt;
+女儿：死了还让人做成标本参观，真可怜&lt;br /&gt;
+我：你老妈我要是死了，记得烧成灰找棵树埋了做花肥，估计属全营养花肥了。&lt;/p&gt;
+&lt;h2&gt;猫&lt;/h2&gt;
+&lt;p&gt;家里有三只猫，一黄两白，全是流浪猫，最后一只白猫夏天在小区的树上叫了一天下不来，十岁的女儿去找保安说自家的猫到了树上下不来，请保安帮忙，于是保安爬到树上帮她捉下来交给她带回家。&lt;br /&gt;
+女儿收养了这只尚处于奶猫阶段的小白猫，宣称这是她的猫，其他两只是老妈的猫。女儿的猫是只公猫，慢慢长大点后本性就出来了，跑到床上划地盘，真是灾难，忍无可忍，虽还是小猫仍送去做了绝育。女儿抱着她的猫突然问，男人有前列腺，那公猫有没有前列腺呢。我：这真是个问题，需要查一下。&lt;br /&gt;
+原来公猫真的也有哈，还和人一样会得炎症，啧啧。&lt;/p&gt;
+&lt;h2&gt;蛇&lt;/h2&gt;
+&lt;p&gt;暑假，女儿在家，我上班时，她打来电话，院子里发现一条蛇，不知道有没有毒，长着黄条纹，大约一米不到&lt;br /&gt;
+一会又打来：那蛇她上网查不到一样的，仍不知是否有毒&lt;br /&gt;
+第三通电话：外公来了，拿了把修篱笆的大剪刀给那蛇头颈一剪刀，不过没剪断，蛇游到了树丛间拉不出来。外公说明天再说，走了。&lt;br /&gt;
+晚上我回家，一起上网查，总算查到了一样的蛇，是一条无毒蛇。我对女儿说：无毒蛇和黄蟮没差，你下午应该活捉这东西的。感叹，这蛇买的话还是很贵的，还不一定时时买到，肉很鲜，要是才死可以扒了皮美美吃一顿。女儿大喜，求他老爸去捉，他老爸回答：很怕，不敢。打电话给外公，外公回：太晚了，不高兴过来捉（我估计也是有点怕的）。打了N个电话后发现真的没人会去帮她捉上来，于是来求我一起去捉蛇，我一口回绝，老娘我顶怕这东西，女儿安慰：我也怕的。我：那谁去捉？女儿:我捉，你帮我站在上面打手电筒就好了。&lt;br /&gt;
+我站在台阶上面打手电，做好了随时跑的姿式，女儿戴着一次性手套在院中找到了那条蛇，用力拉了半天后叫了起来，这蛇还活着。然后她伸手轻轻抚摸那条蛇，口中喃喃：好可怜的蛇，刚我用力拉了半天，一定痛死了。我们决定明天天亮了再把蛇捉出来，我问女儿捉到了怎么办，女儿：当然放了啊。我：那你刚刚不是要吃了它么？女儿：刚刚以为蛇死了那就别浪费吃了它，可是活着当然就放了&lt;br /&gt;
+蛇的结局，死了，隔天那剪伤得太重，夏天不知道什么时候死的没敢吃，女儿郁闷，没吃到又没放掉，浪费。&lt;/p&gt;
+&lt;h2&gt;狗&lt;/h2&gt;
+&lt;p&gt;女儿对动物的热爱有时候让旁人惊竦，任何她看到的狗无论大小都要抱过来抚摸一番，越大的狗越爱，曾求我帮她养只大白熊，我回答城市里不准养这种大狗。女儿：那我们搬到乡下去吧。&lt;br /&gt;
+有一段时间，女儿晚饭后的爱好就是一个人跑到广场跟各种出来遛的狗混，时时向我汇报，今天看到一只拉不拉多，今天看到一只苏牧，今天跟一只藏獒玩，还是小狗来着、今天有人带只草狗也长得很大.....&lt;br /&gt;
+某日回家，到了小区看到邻居在遛一成年大狗，急急要我停车，向狗飞奔而去，狗主人把牵狗绳交给女儿，笑道：这是雪橇，不咬人。她于是牵着那根狗绳被狗在小区里遛了两个来回，顺便同他们回院子跟大狗聊天到晚饭。&lt;br /&gt;
+有趣的是，无论怎样的狗都从没咬过女儿，甚至是那种咬过人极凶的给关起来的狼狗。猫狗都是感觉极其灵敏的动物，人若紧张时假装镇定可以骗过人但绝骗不过这些动物，它们会感觉得到人类的紧张，于是它们更紧张才容易伤人。而女儿时时把这些动物当朋友，她自己放松毫无敌意，于是动物也放松，因而再凶的狗她都可以伸手去摸。我教女儿面对动物，如果你害怕，那就千万不要假装不怕，要在它伤你前尽快想办法逃走或是赶走对方，但如果你真的放松不怕，那么动物一般也会放松不伤你，这些动物会凭你的感觉决定对你的态度。&lt;/p&gt;
+&lt;h2&gt;只睡三分钟就好&lt;/h2&gt;
+&lt;p&gt;女儿很小时，某天午睡前要吃某东西，我不同意，女儿再求，我提出折中，只要她睡着三分钟，我就叫她起来吃。虽然女儿对时间没什么观念，不过也知道三分钟是很少很少的时间，于是同意，并叮嘱满三分钟一定要叫她起来，我叮嘱一定要睡着三分钟，光闭眼不算。&lt;br /&gt;
+我时时观察，一个小时后，女儿略有醒的迹象，马上上前轻拍，轻轻说，快醒醒，三分钟到了。女儿火速睁眼，我表功，你看我很守信用吧，满了三分钟马上就叫你了，现在你可以去吃了。女儿开心点头，觉得只睡三分钟大赚。这招在女儿识钟前很好用，识钟后就没再用过。有时女儿会得寸进尺要求只睡两分钟，虽然答应她没问题，不过为了逼真，我会说三分钟已经是最少时间了，两分也太过份了，不能答应。她其实也是试探而已，于是仍是约定三分。&lt;/p&gt;
+&lt;h2&gt;吃药&lt;/h2&gt;
+&lt;p&gt;女儿很小时（我记得是一岁内），我们平时把日常喝的绿茶对她保持神秘，时时申明不可以给她喝，而又由我偶尔偷偷给她一口，装得很神秘，其实孩子并不知道绿茶什么味道，也不知道为什么她不可以喝，可是这样背着人偷偷神秘喝一小口又是异常快乐满足。&lt;br /&gt;
+于是到了喂药时，大家又当他面喝茶，申明不能给她喝，而我把药放在勺内，假装偷偷给她弄了一勺，喂给她，并叮嘱，快喝，别让人发现了。喝掉后又迅速拿她自己的杯子喝水，假装我们什么也没做的样子，女儿注意力全然放在不让人发现上，喝到什么根本没关心，喝着药却仍是偷喝绿茶的快乐满足感。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 08 May 2012 13:20:57 +0800</pubDate>
+        <link>http://codante.org/blog/2012/05/08/teach-your-children.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2012/05/08/teach-your-children.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>[转载]洋媳妇教育孩子，让中国婆婆大开眼界</title>
+        <description>&lt;h2&gt;不吃饭就饿着&lt;/h2&gt;
+&lt;p&gt;每天早上，托比醒来后，苏珊把早餐往餐桌上一放，就自顾自地忙去了。托比会自己爬上凳子，喝牛奶，吃面包片。吃饱后，他回自己的房间，在衣柜里找衣服、鞋 子，再自己穿上。毕竟托比只有3岁，还搞不清楚子的正反面，分不清鞋子的左右脚。有一次托比又把裤子穿反了，我赶紧上前想帮他换，却被苏珊制止了。她说， 如果他觉得不舒服，会自己脱下来，重新穿好；如果他没觉得有什么不舒服，那就随他的便。那一整天，托比反穿着裤子跑来跑去，苏姗像没看见一样。&lt;/p&gt;
+&lt;p&gt;又一次，托比出去和邻居家的小朋友玩，没多大会就气喘吁吁地跑回家，对苏珊说：“妈妈，露西说我的裤子穿反了，真的吗？”露西是邻居家的小姑娘，今年5 岁。苏姗笑着说：“是的，你要不要换回来？”托比点点头，自己脱下裤子，仔细看了看，重新穿上了。从那以后，托比再也没穿反过裤子。&lt;/p&gt;
+&lt;p&gt;我不禁想起，我的外孙女五六岁时不会用筷子，上小学时不会系鞋带。如今在上寄宿制初中的她，每个周末都要带回家一大堆脏衣服呢。&lt;/p&gt;
+&lt;p&gt;一 天中午，托比闹情绪，不肯吃饭。苏珊说了他几句，愤怒地小托比一把将盘子推到了地上，盘子里的食物洒了一地。苏姗看着托比，认真地说：“看来你确实不想吃 饭！记住，从现在到明天早上，你什么都不能吃。”托比点点头，坚定地回答：“Yes!”我在心里暗笑，这母子俩，还都挺倔！&lt;/p&gt;
+&lt;p&gt;下午，苏珊和我商量，晚上由我做中国菜。我心领神会，托比特别爱吃中国菜，一定是苏珊觉得托比中午没好好吃饭，想让他晚上多吃点儿。&lt;br /&gt;
+那天晚上我施展厨艺，做了托比最爱吃的糖醋里脊、油闷大虾，还用意大利面做了中国式的凉面。托比最喜欢吃那种凉面，小小的人可以吃满满一大盘。&lt;/p&gt;
+&lt;p&gt;开始吃晚饭了，托比欢天喜地地爬上凳子。苏珊却走过来，拿走了他的盘子和刀叉，说：“我们已经约好了，今天你不能吃饭，你自己也答应了的。”托比看着面容 严肃的妈妈，“哇”地一声在哭起来，边哭边说：“妈妈，我饿，我要吃饭。”“不行，说过的话要算数。”苏珊毫不心软。&lt;br /&gt;
+我心疼了，想替托比求情，说点好话，却见儿子对我使眼色。想起我刚到美国时，儿子就跟我说，在美国，父母教育孩子时，别人千万不要插手，即使是长辈也不例外。无奈，我只好保持沉默。&lt;br /&gt;
+那顿饭，从始至终，可怜的小托比一直坐在玩具车里，眼巴巴地看着我们三个大人狼吞虎咽。我这才明白苏珊让我做中餐的真正用意。我相信，下一次，托比想发脾 气扔饭碗时，一定会想起自己饿着肚子看爸爸妈妈和奶奶享用美食的经历。饿着肚子的滋味不好受，况且还是面对自己最喜爱的食物。&lt;/p&gt;
+&lt;p&gt;临睡前，我和苏珊一起去向托比道晚安。托比小心翼翼地问：“妈妈，我很饿，现在我能吃中国面吗？”苏珊微笑着摇摇头，坚决地说：“不！”托比叹了口气，又问：“那等我睡完觉睁开眼睛时，可以吃吗？”“当然可以。”苏珊温柔地回答。托比甜甜地笑了。&lt;/p&gt;
+&lt;p&gt;大部分情况下，托比吃饭都很积极，他不想因为“罢吃”而错过食物，再受饿肚子的苦。每当看到托比埋头大口大口地吃饭，嘴上脸上粘的都是食物时，我就想起 外孙女。她像托比这么大时，为了哄她吃饭，几个大人端着饭碗跟在她屁股后面跑，她还不买账，还要谈条件：吃完这碗买一个玩具，再吃一碗买一个玩具……&lt;/p&gt;
+&lt;h2&gt;以其人之道，还治其人之身&lt;/h2&gt;
+&lt;p&gt;有一天，我们带托比去公园玩。很快，托比就和两个女孩儿玩起了厨房游戏。塑料小锅、小铲子、小盘子、小碗摆了一地。忽然，淘气的托比拿起小锅，使劲在一个女孩儿头上敲了一下，女孩儿愣了一下，放声大哭。另一个女孩儿年纪更小一些，见些情形，也被吓得大哭起来。大概托比没想到会有这么严重的后果，站在一旁，愣住了。&lt;/p&gt;
+&lt;p&gt;苏珊走上前，问清了事情的来龙去脉后，她一声不吭，拿起小锅，使劲敲到托比的头上，托比没防备，一下子跌坐在草地上，哇哇大哭起来。苏珊问托比：“疼吗？下次还这样吗？”托比一边哭，一边拼命摇头。我相信他以后再也不会这么做了。&lt;/p&gt;
+&lt;p&gt;托比的舅舅送了他一辆浅蓝色的小自行车，托比非常喜欢，当成宝贝，不许别人碰。邻居小姑娘露西是托比的好朋友，央求托比好几次，要骑他的小车，托比都没答应。&lt;/p&gt;
+&lt;p&gt;一次，几个孩子一起玩时，露西趁托比不注意，偷偷骑上小车，扬长而去。托比发现后，气愤地跑来向苏珊告状。苏珊正和几个孩子的母亲一起聊天喝咖啡，便微笑着说：“你们的事情自己解决，妈妈可管不了。”托比无奈地走了。&lt;/p&gt;
+&lt;p&gt;过了一小会儿，露西骑着小车回来了。托比看到露西，一把将她推倒在地，抢过了小车。露西坐在地上大哭起来。苏珊抱起露西，安抚了她一会儿。很快，露西就和别的小朋友兴高采烈地玩了起来。&lt;/p&gt;
+&lt;p&gt;托比自己骑了会车，觉得有些无聊，看到那几个孩子玩得那么高兴，他想加入，又觉得有些不好意思。他蹭到苏珊身边，嘟囔道：“妈妈，我想跟露西他们一起 玩。”苏珊不动声色地说：“那你自己去找他们啦！”“妈妈，你陪我一起去。”托比恳求道。“那可不行，刚才是你把露西弄哭的，现在你又想和大家玩，就得自 己去解决问题。”&lt;/p&gt;
+&lt;p&gt;托比骑着小车慢慢靠近露西，快到她身边时，又掉头回来。来回好几次，不知道从什么时候开始，托比和露西又笑逐颜开，闹成了一团。&lt;/p&gt;
+&lt;h2&gt;管教孩子是父母的事&lt;/h2&gt;
+&lt;p&gt;苏珊的父母住在加利福尼亚州，听说我来了，两人开车来探望我们。家里来了客人，托比很兴奋，跑上跑下地乱窜。他把玩沙子用的小桶装满了水，提着小桶在屋里 四处转悠。苏珊警告了她好几次，不要把水洒到地板上，托比置若罔闻。最后，托比还是把水桶弄倒了，水洒了一地。兴奋的小托比不觉得自己做错了事，还得意地 光着脚丫踩水玩，把裤子全弄湿了。我连忙找出拖把准备拖地。苏珊从我手中抢过拖把交给托比，对他说：“把地拖干，把湿衣服脱下来，自己洗干净。”托比不愿 意，又哭又闹。苏珊二话不说，直接把他拉到贮藏室，关了禁闭。听到托比在里面发出惊天动地的哭喊，我心疼坏了，想进去把他抱出来。托比的外婆却拦住我， 说：“这是苏珊的事。”&lt;/p&gt;
+&lt;p&gt;过了一会儿，托比不哭了，他在贮藏室里大声喊：“妈妈，我错了。”苏珊站在门外，问：“那你知道该怎么做了吗？”“我知道。”苏珊打开门，托比从贮藏室走 出来，脸上还挂着两行泪珠。他拿起有他两个高的拖把吃力地把地上的水拖干净。然后，他脱下裤子，拎在手上，光着屁股走进洗手间，稀里哗啦地洗起衣服来。&lt;/p&gt;
+&lt;p&gt;托比的外公外婆看着表情惊异的我，意味深长地笑了。这件事让我感触颇深。在很多中国家庭，父母管教孩子时，常常会引起“世界大战”，往往是外婆外公护，爷爷奶奶拦，夫妻吵架，鸡飞狗跳。&lt;/p&gt;
+&lt;p&gt;后来，我和托比的外公外婆聊天时，提到这件事，托比的外公说了一段话，让我印象深刻。他说，孩 子是父母的孩子，首先要尊重父母对孩子的教育方式。孩子虽然小，却是天生的外交家，当他看到家庭成员之间出现分歧时，他会很聪明地钻空子。这不仅对改善他 的行为毫无益处，反而会导致问题越来越严重，甚至带来更多别的问题。而且，家庭成员之间发生冲突，不和谐的家庭氛围会带给孩子更多的不安全感，对孩子的心 理发展产生不利影响。所以，无论是父辈与祖辈在教育孩子的问题上发生分歧，还是夫妻两人的教育观念有差异，都不能在孩子面前发生冲突。&lt;/p&gt;
+&lt;p&gt;托比的外公外婆在家里住了一周，准备回加利福尼亚了。临走前两天，托比的外公郑重地问女儿：“托比想要一辆玩具挖掘机，我可以买给他吗？”苏珊想了想，说：“你们这次来，已经送给他一双旱冰鞋作为礼物了，到圣诞节时，再买玩具挖掘机当礼物送给他吧！”&lt;/p&gt;
+&lt;p&gt;我不知道托比的外公是怎么告诉小家伙的，后来我带托比去超市，他指着玩具挖掘机说：“外公说，圣诞节时，给我买这个当礼物。”语气里满是欣喜和期待。&lt;/p&gt;
+&lt;p&gt;虽然苏珊对托比如此严格，托比去却对妈妈爱得不得了。他在外面玩时，会采集一些好看的小花或者他认为漂亮的叶子，郑重其事地送给妈妈；别人送给他礼物，他会叫妈妈和他一起拆开；有什么好吃的，也总要留一半给妈妈。&lt;/p&gt;
+&lt;p&gt;想到很多中国孩子对父母的漠视与冷淡，我不得不佩服我的洋媳妇。在我看来，在教育孩子的问题上，美国妈妈有很多值得中国妈妈学习的地方。&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;*Ps: 转载这篇留着用的，顺便给俺老娘留着看。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 24 Apr 2012 11:09:59 +0800</pubDate>
+        <link>http://codante.org/blog/2012/04/24/foreign-daughter-in-law-to-educate-their-children-the-chinese-mother-in-law-surprised.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2012/04/24/foreign-daughter-in-law-to-educate-their-children-the-chinese-mother-in-law-surprised.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>haproxy设置websocket</title>
+        <description>&lt;pre&gt;[code]
+frontend all 0.0.0.0:80
+   timeout client 86400000
+   default_backend www_backend
+   acl is_websocket hdr(Upgrade) -i WebSocket
+   acl is_websocket hdr_beg(Host) -i ws
+   use_backend socket_backend if is_websocket
+[/code]&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 17 Apr 2012 11:39:56 +0800</pubDate>
+        <link>http://codante.org/blog/2012/04/17/haproxy-websocket.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2012/04/17/haproxy-websocket.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>金哥bye~金哥bye~金哥on the way~~</title>
+        <description>&lt;p&gt;备案总算下来了，重新开站~ 庆祝下。&lt;/p&gt;
+&lt;p&gt;哥们儿TM又老了一岁，同时庆祝下....&lt;/p&gt;
+</description>
+        <pubDate>Mon, 19 Dec 2011 18:42:34 +0800</pubDate>
+        <link>http://codante.org/blog/2011/12/19/brother-jin-bye-brother-jin-bye-brother-jin-on-the-way.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2011/12/19/brother-jin-bye-brother-jin-bye-brother-jin-on-the-way.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>HTTP状态码</title>
+        <description>&lt;h2&gt;常见的&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;200 - OK，服务器成功返回网页&lt;br /&gt;
+- Standard response for successful HTTP requests.&lt;/li&gt;
+&lt;li&gt;301 - Moved Permanently（永久跳转），请求的网页已永久跳转到新位置。&lt;br /&gt;
+- This and all future requests should be directed to the given.&lt;/li&gt;
+&lt;li&gt;403 - Forbidden（禁止访问）,服务器拒绝请求&lt;br /&gt;
+- forbidden request (matches a deny filter) =&amp;gt; HTTP 403&lt;br /&gt;
+- The request was a legal request, but the server is refusing to respond to it.&lt;/li&gt;
+&lt;li&gt;404 - Not Found,服务器找不到请求的页面。&lt;br /&gt;
+- The requested resource could not be found but may be available again in the future.&lt;/li&gt;
+&lt;li&gt;500 - Internal Server Error（内部服务器错误）&lt;br /&gt;
+- internal error in haproxy =&amp;gt; HTTP 500&lt;br /&gt;
+- A generic error message, given when no more specific message is suitable.&lt;/li&gt;
+&lt;li&gt;502 - Bad Gateway（坏的网关）,一般是网关服务器请求后端服务时，后端服务没有按照http协议正确返回结果。&lt;br /&gt;
+- the server returned an invalid or incomplete response =&amp;gt; HTTP 502&lt;br /&gt;
+- The server was acting as a gateway or proxy and received an invalid response from the upstream server.&lt;/li&gt;
+&lt;li&gt;503 - Service Unavailable（服务当前不可用）,可能因为超载或停机维护。&lt;br /&gt;
+- no server was available to handle the request =&amp;gt; HTTP 503&lt;br /&gt;
+- The server is currently unavailable (because it is overloaded or down for maintenance).&lt;/li&gt;
+&lt;li&gt;504 - Gateway Timeout（网关超时）,一般是网关服务器请求后端服务时，后端服务没有在特定的时间内完成服务。&lt;br /&gt;
+- the server failed to reply in time =&amp;gt; HTTP 504&lt;br /&gt;
+- The server was acting as a gateway or proxy and did not receive a timely response from the upstream server.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;其他&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;100 : Continue&lt;/li&gt;
+&lt;li&gt;101 : Switching Protocols&lt;/li&gt;
+&lt;li&gt;102 : Processing&lt;/li&gt;
+&lt;li&gt;200 : OK&lt;/li&gt;
+&lt;li&gt;201 : Created&lt;/li&gt;
+&lt;li&gt;202 : Accepted&lt;/li&gt;
+&lt;li&gt;203 : Non-Authoritative Information&lt;/li&gt;
+&lt;li&gt;204 : No Content&lt;/li&gt;
+&lt;li&gt;205 : Reset Content&lt;/li&gt;
+&lt;li&gt;206 : Partial Content&lt;/li&gt;
+&lt;li&gt;207 : Multi-Status&lt;/li&gt;
+&lt;li&gt;226 : IM Used&lt;/li&gt;
+&lt;li&gt;300 : Multiple Choices&lt;/li&gt;
+&lt;li&gt;301 : Moved Permanently&lt;/li&gt;
+&lt;li&gt;302 : Found&lt;/li&gt;
+&lt;li&gt;303 : See Other&lt;/li&gt;
+&lt;li&gt;304 : Not Modified&lt;/li&gt;
+&lt;li&gt;305 : Use Proxy&lt;/li&gt;
+&lt;li&gt;306 : Reserved&lt;/li&gt;
+&lt;li&gt;307 : Temporary Redirect&lt;/li&gt;
+&lt;li&gt;400 : Bad Request&lt;/li&gt;
+&lt;li&gt;401 : Unauthorized&lt;/li&gt;
+&lt;li&gt;402 : Payment Required&lt;/li&gt;
+&lt;li&gt;403 : Forbidden&lt;/li&gt;
+&lt;li&gt;404 : Not Found&lt;/li&gt;
+&lt;li&gt;405 : Method Not Allowed&lt;/li&gt;
+&lt;li&gt;406 : Not Acceptable&lt;/li&gt;
+&lt;li&gt;407 : Proxy Authentication Required&lt;/li&gt;
+&lt;li&gt;408 : Request Timeout&lt;/li&gt;
+&lt;li&gt;409 : Conflict&lt;/li&gt;
+&lt;li&gt;410 : Gone&lt;/li&gt;
+&lt;li&gt;411 : Length Required&lt;/li&gt;
+&lt;li&gt;412 : Precondition Failed&lt;/li&gt;
+&lt;li&gt;413 : Request Entity Too Large&lt;/li&gt;
+&lt;li&gt;414 : Request-URI Too Long&lt;/li&gt;
+&lt;li&gt;415 : Unsupported Media Type&lt;/li&gt;
+&lt;li&gt;416 : Requested Range Not Satisfiable&lt;/li&gt;
+&lt;li&gt;417 : Expectation Failed&lt;/li&gt;
+&lt;li&gt;422 : Unprocessable Entity&lt;/li&gt;
+&lt;li&gt;423 : Locked&lt;/li&gt;
+&lt;li&gt;424 : Failed Dependency&lt;/li&gt;
+&lt;li&gt;426 : Upgrade Required&lt;/li&gt;
+&lt;li&gt;500 : Internal Server Error&lt;/li&gt;
+&lt;li&gt;501 : Not Implemented&lt;/li&gt;
+&lt;li&gt;502 : Bad Gateway&lt;/li&gt;
+&lt;li&gt;503 : Service Unavailable&lt;/li&gt;
+&lt;li&gt;504 : Gateway Timeout&lt;/li&gt;
+&lt;li&gt;505 : HTTP Version Not Supported&lt;/li&gt;
+&lt;li&gt;506 : Variant Also Negotiates&lt;/li&gt;
+&lt;li&gt;507 : Insufficient Storage&lt;/li&gt;
+&lt;li&gt;510 : Not Extended&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 16 Nov 2011 20:03:39 +0800</pubDate>
+        <link>http://codante.org/blog/2011/11/16/http-header-status-code.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2011/11/16/http-header-status-code.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>iTunes下载加速hosts</title>
+        <description>&lt;pre&gt;[code]
+203.69.113.136 a1.phobos.apple.com
+203.69.113.136 a2.phobos.apple.com
+203.69.113.136 a3.phobos.apple.com
+203.69.113.136 a4.phobos.apple.com
+203.69.113.136 a5.phobos.apple.com
+203.69.113.136 a6.phobos.apple.com
+203.69.113.136 a7.phobos.apple.com
+203.69.113.136 a8.phobos.apple.com
+203.69.113.136 a9.phobos.apple.com
+203.69.113.136 a10.phobos.apple.com
+203.69.113.136 a11.phobos.apple.com
+203.69.113.136 a12.phobos.apple.com
+203.69.113.136 a13.phobos.apple.com
+203.69.113.136 a14.phobos.apple.com
+203.69.113.136 a15.phobos.apple.com
+203.69.113.136 a16.phobos.apple.com
+203.69.113.136 a17.phobos.apple.com
+203.69.113.136 a18.phobos.apple.com
+203.69.113.136 a19.phobos.apple.com
+203.69.113.136 a20.phobos.apple.com
+203.69.113.136 a21.phobos.apple.com
+203.69.113.136 a22.phobos.apple.com
+203.69.113.136 a23.phobos.apple.com
+203.69.113.136 a24.phobos.apple.com
+203.69.113.136 a25.phobos.apple.com
+203.69.113.136 a26.phobos.apple.com
+203.69.113.136 a27.phobos.apple.com
+203.69.113.136 a28.phobos.apple.com
+203.69.113.136 a29.phobos.apple.com
+203.69.113.136 a30.phobos.apple.com
+203.69.113.136 a31.phobos.apple.com
+203.69.113.136 a32.phobos.apple.com
+203.69.113.136 a33.phobos.apple.com
+203.69.113.136 a34.phobos.apple.com
+203.69.113.136 a35.phobos.apple.com
+203.69.113.136 a36.phobos.apple.com
+203.69.113.136 a37.phobos.apple.com
+203.69.113.136 a38.phobos.apple.com
+203.69.113.136 a39.phobos.apple.com
+203.69.113.136 a40.phobos.apple.com
+203.69.113.136 a41.phobos.apple.com
+203.69.113.136 a42.phobos.apple.com
+203.69.113.136 a43.phobos.apple.com
+203.69.113.136 a44.phobos.apple.com
+203.69.113.136 a45.phobos.apple.com
+203.69.113.136 a46.phobos.apple.com
+203.69.113.136 a47.phobos.apple.com
+203.69.113.136 a48.phobos.apple.com
+203.69.113.136 a49.phobos.apple.com
+203.69.113.136 a50.phobos.apple.com
+203.69.113.136 a51.phobos.apple.com
+203.69.113.136 a52.phobos.apple.com
+203.69.113.136 a53.phobos.apple.com
+203.69.113.136 a54.phobos.apple.com
+203.69.113.136 a55.phobos.apple.com
+203.69.113.136 a56.phobos.apple.com
+203.69.113.136 a57.phobos.apple.com
+203.69.113.136 a58.phobos.apple.com
+203.69.113.136 a59.phobos.apple.com
+203.69.113.136 a60.phobos.apple.com
+203.69.113.136 a61.phobos.apple.com
+203.69.113.136 a62.phobos.apple.com
+203.69.113.136 a63.phobos.apple.com
+203.69.113.136 a64.phobos.apple.com
+203.69.113.136 a65.phobos.apple.com
+203.69.113.136 a66.phobos.apple.com
+203.69.113.136 a67.phobos.apple.com
+203.69.113.136 a68.phobos.apple.com
+203.69.113.136 a69.phobos.apple.com
+203.69.113.136 a70.phobos.apple.com
+203.69.113.136 a71.phobos.apple.com
+203.69.113.136 a72.phobos.apple.com
+203.69.113.136 a73.phobos.apple.com
+203.69.113.136 a74.phobos.apple.com
+203.69.113.136 a75.phobos.apple.com
+203.69.113.136 a76.phobos.apple.com
+203.69.113.136 a77.phobos.apple.com
+203.69.113.136 a78.phobos.apple.com
+203.69.113.136 a79.phobos.apple.com
+203.69.113.136 a80.phobos.apple.com
+203.69.113.136 a81.phobos.apple.com
+203.69.113.136 a82.phobos.apple.com
+203.69.113.136 a83.phobos.apple.com
+203.69.113.136 a84.phobos.apple.com
+203.69.113.136 a85.phobos.apple.com
+203.69.113.136 a86.phobos.apple.com
+203.69.113.136 a87.phobos.apple.com
+203.69.113.136 a88.phobos.apple.com
+203.69.113.136 a89.phobos.apple.com
+203.69.113.136 a90.phobos.apple.com
+203.69.113.136 a91.phobos.apple.com
+203.69.113.136 a92.phobos.apple.com
+203.69.113.136 a93.phobos.apple.com
+203.69.113.136 a94.phobos.apple.com
+203.69.113.136 a95.phobos.apple.com
+203.69.113.136 a96.phobos.apple.com
+203.69.113.136 a97.phobos.apple.com
+203.69.113.136 a98.phobos.apple.com
+203.69.113.136 a99.phobos.apple.com
+203.69.113.136 a100.phobos.apple.com
+203.69.113.136 a101.phobos.apple.com
+203.69.113.136 a102.phobos.apple.com
+203.69.113.136 a103.phobos.apple.com
+203.69.113.136 a104.phobos.apple.com
+203.69.113.136 a105.phobos.apple.com
+203.69.113.136 a106.phobos.apple.com
+203.69.113.136 a107.phobos.apple.com
+203.69.113.136 a108.phobos.apple.com
+203.69.113.136 a109.phobos.apple.com
+203.69.113.136 a110.phobos.apple.com
+203.69.113.136 a111.phobos.apple.com
+203.69.113.136 a112.phobos.apple.com
+203.69.113.136 a113.phobos.apple.com
+203.69.113.136 a114.phobos.apple.com
+203.69.113.136 a115.phobos.apple.com
+203.69.113.136 a116.phobos.apple.com
+203.69.113.136 a117.phobos.apple.com
+203.69.113.136 a118.phobos.apple.com
+203.69.113.136 a119.phobos.apple.com
+203.69.113.136 a120.phobos.apple.com
+203.69.113.136 a121.phobos.apple.com
+203.69.113.136 a122.phobos.apple.com
+203.69.113.136 a123.phobos.apple.com
+203.69.113.136 a124.phobos.apple.com
+203.69.113.136 a125.phobos.apple.com
+203.69.113.136 a126.phobos.apple.com
+203.69.113.136 a127.phobos.apple.com
+203.69.113.136 a128.phobos.apple.com
+203.69.113.136 a129.phobos.apple.com
+203.69.113.136 a130.phobos.apple.com
+203.69.113.136 a131.phobos.apple.com
+203.69.113.136 a132.phobos.apple.com
+203.69.113.136 a133.phobos.apple.com
+203.69.113.136 a134.phobos.apple.com
+203.69.113.136 a135.phobos.apple.com
+203.69.113.136 a136.phobos.apple.com
+203.69.113.136 a137.phobos.apple.com
+203.69.113.136 a138.phobos.apple.com
+203.69.113.136 a139.phobos.apple.com
+203.69.113.136 a140.phobos.apple.com
+203.69.113.136 a141.phobos.apple.com
+203.69.113.136 a142.phobos.apple.com
+203.69.113.136 a143.phobos.apple.com
+203.69.113.136 a144.phobos.apple.com
+203.69.113.136 a145.phobos.apple.com
+203.69.113.136 a146.phobos.apple.com
+203.69.113.136 a147.phobos.apple.com
+203.69.113.136 a148.phobos.apple.com
+203.69.113.136 a149.phobos.apple.com
+203.69.113.136 a150.phobos.apple.com
+203.69.113.136 a151.phobos.apple.com
+203.69.113.136 a152.phobos.apple.com
+203.69.113.136 a153.phobos.apple.com
+203.69.113.136 a154.phobos.apple.com
+203.69.113.136 a155.phobos.apple.com
+203.69.113.136 a156.phobos.apple.com
+203.69.113.136 a157.phobos.apple.com
+203.69.113.136 a158.phobos.apple.com
+203.69.113.136 a159.phobos.apple.com
+203.69.113.136 a160.phobos.apple.com
+203.69.113.136 a161.phobos.apple.com
+203.69.113.136 a162.phobos.apple.com
+203.69.113.136 a163.phobos.apple.com
+203.69.113.136 a164.phobos.apple.com
+203.69.113.136 a165.phobos.apple.com
+203.69.113.136 a166.phobos.apple.com
+203.69.113.136 a167.phobos.apple.com
+203.69.113.136 a168.phobos.apple.com
+203.69.113.136 a169.phobos.apple.com
+203.69.113.136 a170.phobos.apple.com
+203.69.113.136 a171.phobos.apple.com
+203.69.113.136 a172.phobos.apple.com
+203.69.113.136 a173.phobos.apple.com
+203.69.113.136 a174.phobos.apple.com
+203.69.113.136 a175.phobos.apple.com
+203.69.113.136 a176.phobos.apple.com
+203.69.113.136 a177.phobos.apple.com
+203.69.113.136 a178.phobos.apple.com
+203.69.113.136 a179.phobos.apple.com
+203.69.113.136 a180.phobos.apple.com
+203.69.113.136 a181.phobos.apple.com
+203.69.113.136 a182.phobos.apple.com
+203.69.113.136 a183.phobos.apple.com
+203.69.113.136 a184.phobos.apple.com
+203.69.113.136 a185.phobos.apple.com
+203.69.113.136 a186.phobos.apple.com
+203.69.113.136 a187.phobos.apple.com
+203.69.113.136 a188.phobos.apple.com
+203.69.113.136 a189.phobos.apple.com
+203.69.113.136 a190.phobos.apple.com
+203.69.113.136 a191.phobos.apple.com
+203.69.113.136 a192.phobos.apple.com
+203.69.113.136 a193.phobos.apple.com
+203.69.113.136 a194.phobos.apple.com
+203.69.113.136 a195.phobos.apple.com
+203.69.113.136 a196.phobos.apple.com
+203.69.113.136 a197.phobos.apple.com
+203.69.113.136 a198.phobos.apple.com
+203.69.113.136 a199.phobos.apple.com
+203.69.113.136 a200.phobos.apple.com
+203.69.113.136 a201.phobos.apple.com
+203.69.113.136 a202.phobos.apple.com
+203.69.113.136 a203.phobos.apple.com
+203.69.113.136 a204.phobos.apple.com
+203.69.113.136 a205.phobos.apple.com
+203.69.113.136 a206.phobos.apple.com
+203.69.113.136 a207.phobos.apple.com
+203.69.113.136 a208.phobos.apple.com
+203.69.113.136 a209.phobos.apple.com
+203.69.113.136 a210.phobos.apple.com
+203.69.113.136 a211.phobos.apple.com
+203.69.113.136 a212.phobos.apple.com
+203.69.113.136 a213.phobos.apple.com
+203.69.113.136 a214.phobos.apple.com
+203.69.113.136 a215.phobos.apple.com
+203.69.113.136 a216.phobos.apple.com
+203.69.113.136 a217.phobos.apple.com
+203.69.113.136 a218.phobos.apple.com
+203.69.113.136 a219.phobos.apple.com
+203.69.113.136 a220.phobos.apple.com
+203.69.113.136 a221.phobos.apple.com
+203.69.113.136 a222.phobos.apple.com
+203.69.113.136 a223.phobos.apple.com
+203.69.113.136 a224.phobos.apple.com
+203.69.113.136 a225.phobos.apple.com
+203.69.113.136 a226.phobos.apple.com
+203.69.113.136 a227.phobos.apple.com
+203.69.113.136 a228.phobos.apple.com
+203.69.113.136 a229.phobos.apple.com
+203.69.113.136 a230.phobos.apple.com
+203.69.113.136 a231.phobos.apple.com
+203.69.113.136 a232.phobos.apple.com
+203.69.113.136 a233.phobos.apple.com
+203.69.113.136 a234.phobos.apple.com
+203.69.113.136 a235.phobos.apple.com
+203.69.113.136 a236.phobos.apple.com
+203.69.113.136 a237.phobos.apple.com
+203.69.113.136 a238.phobos.apple.com
+203.69.113.136 a239.phobos.apple.com
+203.69.113.136 a240.phobos.apple.com
+203.69.113.136 a241.phobos.apple.com
+203.69.113.136 a242.phobos.apple.com
+203.69.113.136 a243.phobos.apple.com
+203.69.113.136 a244.phobos.apple.com
+203.69.113.136 a245.phobos.apple.com
+203.69.113.136 a246.phobos.apple.com
+203.69.113.136 a247.phobos.apple.com
+203.69.113.136 a248.phobos.apple.com
+203.69.113.136 a249.phobos.apple.com
+203.69.113.136 a250.phobos.apple.com
+203.69.113.136 a251.phobos.apple.com
+203.69.113.136 a252.phobos.apple.com
+203.69.113.136 a253.phobos.apple.com
+203.69.113.136 a254.phobos.apple.com
+203.69.113.136 a255.phobos.apple.com
+203.69.113.136 a256.phobos.apple.com
+203.69.113.136 a257.phobos.apple.com
+203.69.113.136 a258.phobos.apple.com
+203.69.113.136 a259.phobos.apple.com
+203.69.113.136 a260.phobos.apple.com
+203.69.113.136 a261.phobos.apple.com
+203.69.113.136 a262.phobos.apple.com
+203.69.113.136 a263.phobos.apple.com
+203.69.113.136 a264.phobos.apple.com
+203.69.113.136 a265.phobos.apple.com
+203.69.113.136 a266.phobos.apple.com
+203.69.113.136 a267.phobos.apple.com
+203.69.113.136 a268.phobos.apple.com
+203.69.113.136 a269.phobos.apple.com
+203.69.113.136 a270.phobos.apple.com
+203.69.113.136 a271.phobos.apple.com
+203.69.113.136 a272.phobos.apple.com
+203.69.113.136 a273.phobos.apple.com
+203.69.113.136 a274.phobos.apple.com
+203.69.113.136 a275.phobos.apple.com
+203.69.113.136 a276.phobos.apple.com
+203.69.113.136 a277.phobos.apple.com
+203.69.113.136 a278.phobos.apple.com
+203.69.113.136 a279.phobos.apple.com
+203.69.113.136 a280.phobos.apple.com
+203.69.113.136 a281.phobos.apple.com
+203.69.113.136 a282.phobos.apple.com
+203.69.113.136 a283.phobos.apple.com
+203.69.113.136 a284.phobos.apple.com
+203.69.113.136 a285.phobos.apple.com
+203.69.113.136 a286.phobos.apple.com
+203.69.113.136 a287.phobos.apple.com
+203.69.113.136 a288.phobos.apple.com
+203.69.113.136 a289.phobos.apple.com
+203.69.113.136 a290.phobos.apple.com
+203.69.113.136 a291.phobos.apple.com
+203.69.113.136 a292.phobos.apple.com
+203.69.113.136 a293.phobos.apple.com
+203.69.113.136 a294.phobos.apple.com
+203.69.113.136 a295.phobos.apple.com
+203.69.113.136 a296.phobos.apple.com
+203.69.113.136 a297.phobos.apple.com
+203.69.113.136 a298.phobos.apple.com
+203.69.113.136 a299.phobos.apple.com
+203.69.113.136 a300.phobos.apple.com
+203.69.113.136 a301.phobos.apple.com
+203.69.113.136 a302.phobos.apple.com
+203.69.113.136 a303.phobos.apple.com
+203.69.113.136 a304.phobos.apple.com
+203.69.113.136 a305.phobos.apple.com
+203.69.113.136 a306.phobos.apple.com
+203.69.113.136 a307.phobos.apple.com
+203.69.113.136 a308.phobos.apple.com
+203.69.113.136 a309.phobos.apple.com
+203.69.113.136 a310.phobos.apple.com
+203.69.113.136 a311.phobos.apple.com
+203.69.113.136 a312.phobos.apple.com
+203.69.113.136 a313.phobos.apple.com
+203.69.113.136 a314.phobos.apple.com
+203.69.113.136 a315.phobos.apple.com
+203.69.113.136 a316.phobos.apple.com
+203.69.113.136 a317.phobos.apple.com
+203.69.113.136 a318.phobos.apple.com
+203.69.113.136 a319.phobos.apple.com
+203.69.113.136 a320.phobos.apple.com
+203.69.113.136 a321.phobos.apple.com
+203.69.113.136 a322.phobos.apple.com
+203.69.113.136 a323.phobos.apple.com
+203.69.113.136 a324.phobos.apple.com
+203.69.113.136 a325.phobos.apple.com
+203.69.113.136 a326.phobos.apple.com
+203.69.113.136 a327.phobos.apple.com
+203.69.113.136 a328.phobos.apple.com
+203.69.113.136 a329.phobos.apple.com
+203.69.113.136 a330.phobos.apple.com
+203.69.113.136 a331.phobos.apple.com
+203.69.113.136 a332.phobos.apple.com
+203.69.113.136 a333.phobos.apple.com
+203.69.113.136 a334.phobos.apple.com
+203.69.113.136 a335.phobos.apple.com
+203.69.113.136 a336.phobos.apple.com
+203.69.113.136 a337.phobos.apple.com
+203.69.113.136 a338.phobos.apple.com
+203.69.113.136 a339.phobos.apple.com
+203.69.113.136 a340.phobos.apple.com
+203.69.113.136 a341.phobos.apple.com
+203.69.113.136 a342.phobos.apple.com
+203.69.113.136 a343.phobos.apple.com
+203.69.113.136 a344.phobos.apple.com
+203.69.113.136 a345.phobos.apple.com
+203.69.113.136 a346.phobos.apple.com
+203.69.113.136 a347.phobos.apple.com
+203.69.113.136 a348.phobos.apple.com
+203.69.113.136 a349.phobos.apple.com
+203.69.113.136 a350.phobos.apple.com
+203.69.113.136 a351.phobos.apple.com
+203.69.113.136 a352.phobos.apple.com
+203.69.113.136 a353.phobos.apple.com
+203.69.113.136 a354.phobos.apple.com
+203.69.113.136 a355.phobos.apple.com
+203.69.113.136 a356.phobos.apple.com
+203.69.113.136 a357.phobos.apple.com
+203.69.113.136 a358.phobos.apple.com
+203.69.113.136 a359.phobos.apple.com
+203.69.113.136 a360.phobos.apple.com
+203.69.113.136 a361.phobos.apple.com
+203.69.113.136 a362.phobos.apple.com
+203.69.113.136 a363.phobos.apple.com
+203.69.113.136 a364.phobos.apple.com
+203.69.113.136 a365.phobos.apple.com
+203.69.113.136 a366.phobos.apple.com
+203.69.113.136 a367.phobos.apple.com
+203.69.113.136 a368.phobos.apple.com
+203.69.113.136 a369.phobos.apple.com
+203.69.113.136 a370.phobos.apple.com
+203.69.113.136 a371.phobos.apple.com
+203.69.113.136 a372.phobos.apple.com
+203.69.113.136 a373.phobos.apple.com
+203.69.113.136 a374.phobos.apple.com
+203.69.113.136 a375.phobos.apple.com
+203.69.113.136 a376.phobos.apple.com
+203.69.113.136 a377.phobos.apple.com
+203.69.113.136 a378.phobos.apple.com
+203.69.113.136 a379.phobos.apple.com
+203.69.113.136 a380.phobos.apple.com
+203.69.113.136 a381.phobos.apple.com
+203.69.113.136 a382.phobos.apple.com
+203.69.113.136 a383.phobos.apple.com
+203.69.113.136 a384.phobos.apple.com
+203.69.113.136 a385.phobos.apple.com
+203.69.113.136 a386.phobos.apple.com
+203.69.113.136 a387.phobos.apple.com
+203.69.113.136 a388.phobos.apple.com
+203.69.113.136 a389.phobos.apple.com
+203.69.113.136 a390.phobos.apple.com
+203.69.113.136 a391.phobos.apple.com
+203.69.113.136 a392.phobos.apple.com
+203.69.113.136 a393.phobos.apple.com
+203.69.113.136 a394.phobos.apple.com
+203.69.113.136 a395.phobos.apple.com
+203.69.113.136 a396.phobos.apple.com
+203.69.113.136 a397.phobos.apple.com
+203.69.113.136 a398.phobos.apple.com
+203.69.113.136 a399.phobos.apple.com
+203.69.113.136 a400.phobos.apple.com
+203.69.113.136 a401.phobos.apple.com
+203.69.113.136 a402.phobos.apple.com
+203.69.113.136 a403.phobos.apple.com
+203.69.113.136 a404.phobos.apple.com
+203.69.113.136 a405.phobos.apple.com
+203.69.113.136 a406.phobos.apple.com
+203.69.113.136 a407.phobos.apple.com
+203.69.113.136 a408.phobos.apple.com
+203.69.113.136 a409.phobos.apple.com
+203.69.113.136 a410.phobos.apple.com
+203.69.113.136 a411.phobos.apple.com
+203.69.113.136 a412.phobos.apple.com
+203.69.113.136 a413.phobos.apple.com
+203.69.113.136 a414.phobos.apple.com
+203.69.113.136 a415.phobos.apple.com
+203.69.113.136 a416.phobos.apple.com
+203.69.113.136 a417.phobos.apple.com
+203.69.113.136 a418.phobos.apple.com
+203.69.113.136 a419.phobos.apple.com
+203.69.113.136 a420.phobos.apple.com
+203.69.113.136 a421.phobos.apple.com
+203.69.113.136 a422.phobos.apple.com
+203.69.113.136 a423.phobos.apple.com
+203.69.113.136 a424.phobos.apple.com
+203.69.113.136 a425.phobos.apple.com
+203.69.113.136 a426.phobos.apple.com
+203.69.113.136 a427.phobos.apple.com
+203.69.113.136 a428.phobos.apple.com
+203.69.113.136 a429.phobos.apple.com
+203.69.113.136 a430.phobos.apple.com
+203.69.113.136 a431.phobos.apple.com
+203.69.113.136 a432.phobos.apple.com
+203.69.113.136 a433.phobos.apple.com
+203.69.113.136 a434.phobos.apple.com
+203.69.113.136 a435.phobos.apple.com
+203.69.113.136 a436.phobos.apple.com
+203.69.113.136 a437.phobos.apple.com
+203.69.113.136 a438.phobos.apple.com
+203.69.113.136 a439.phobos.apple.com
+203.69.113.136 a440.phobos.apple.com
+203.69.113.136 a441.phobos.apple.com
+203.69.113.136 a442.phobos.apple.com
+203.69.113.136 a443.phobos.apple.com
+203.69.113.136 a444.phobos.apple.com
+203.69.113.136 a445.phobos.apple.com
+203.69.113.136 a446.phobos.apple.com
+203.69.113.136 a447.phobos.apple.com
+203.69.113.136 a448.phobos.apple.com
+203.69.113.136 a449.phobos.apple.com
+203.69.113.136 a450.phobos.apple.com
+203.69.113.136 a451.phobos.apple.com
+203.69.113.136 a452.phobos.apple.com
+203.69.113.136 a453.phobos.apple.com
+203.69.113.136 a454.phobos.apple.com
+203.69.113.136 a455.phobos.apple.com
+203.69.113.136 a456.phobos.apple.com
+203.69.113.136 a457.phobos.apple.com
+203.69.113.136 a458.phobos.apple.com
+203.69.113.136 a459.phobos.apple.com
+203.69.113.136 a460.phobos.apple.com
+203.69.113.136 a461.phobos.apple.com
+203.69.113.136 a462.phobos.apple.com
+203.69.113.136 a463.phobos.apple.com
+203.69.113.136 a464.phobos.apple.com
+203.69.113.136 a465.phobos.apple.com
+203.69.113.136 a466.phobos.apple.com
+203.69.113.136 a467.phobos.apple.com
+203.69.113.136 a468.phobos.apple.com
+203.69.113.136 a469.phobos.apple.com
+203.69.113.136 a470.phobos.apple.com
+203.69.113.136 a471.phobos.apple.com
+203.69.113.136 a472.phobos.apple.com
+203.69.113.136 a473.phobos.apple.com
+203.69.113.136 a474.phobos.apple.com
+203.69.113.136 a475.phobos.apple.com
+203.69.113.136 a476.phobos.apple.com
+203.69.113.136 a477.phobos.apple.com
+203.69.113.136 a478.phobos.apple.com
+203.69.113.136 a479.phobos.apple.com
+203.69.113.136 a480.phobos.apple.com
+203.69.113.136 a481.phobos.apple.com
+203.69.113.136 a482.phobos.apple.com
+203.69.113.136 a483.phobos.apple.com
+203.69.113.136 a484.phobos.apple.com
+203.69.113.136 a485.phobos.apple.com
+203.69.113.136 a486.phobos.apple.com
+203.69.113.136 a487.phobos.apple.com
+203.69.113.136 a488.phobos.apple.com
+203.69.113.136 a489.phobos.apple.com
+203.69.113.136 a490.phobos.apple.com
+203.69.113.136 a491.phobos.apple.com
+203.69.113.136 a492.phobos.apple.com
+203.69.113.136 a493.phobos.apple.com
+203.69.113.136 a494.phobos.apple.com
+203.69.113.136 a495.phobos.apple.com
+203.69.113.136 a496.phobos.apple.com
+203.69.113.136 a497.phobos.apple.com
+203.69.113.136 a498.phobos.apple.com
+203.69.113.136 a499.phobos.apple.com
+203.69.113.136 a500.phobos.apple.com
+203.69.113.136 a501.phobos.apple.com
+203.69.113.136 a502.phobos.apple.com
+203.69.113.136 a503.phobos.apple.com
+203.69.113.136 a504.phobos.apple.com
+203.69.113.136 a505.phobos.apple.com
+203.69.113.136 a506.phobos.apple.com
+203.69.113.136 a507.phobos.apple.com
+203.69.113.136 a508.phobos.apple.com
+203.69.113.136 a509.phobos.apple.com
+203.69.113.136 a510.phobos.apple.com
+203.69.113.136 a511.phobos.apple.com
+203.69.113.136 a512.phobos.apple.com
+203.69.113.136 a513.phobos.apple.com
+203.69.113.136 a514.phobos.apple.com
+203.69.113.136 a515.phobos.apple.com
+203.69.113.136 a516.phobos.apple.com
+203.69.113.136 a517.phobos.apple.com
+203.69.113.136 a518.phobos.apple.com
+203.69.113.136 a519.phobos.apple.com
+203.69.113.136 a520.phobos.apple.com
+203.69.113.136 a521.phobos.apple.com
+203.69.113.136 a522.phobos.apple.com
+203.69.113.136 a523.phobos.apple.com
+203.69.113.136 a524.phobos.apple.com
+203.69.113.136 a525.phobos.apple.com
+203.69.113.136 a526.phobos.apple.com
+203.69.113.136 a527.phobos.apple.com
+203.69.113.136 a528.phobos.apple.com
+203.69.113.136 a529.phobos.apple.com
+203.69.113.136 a530.phobos.apple.com
+203.69.113.136 a531.phobos.apple.com
+203.69.113.136 a532.phobos.apple.com
+203.69.113.136 a533.phobos.apple.com
+203.69.113.136 a534.phobos.apple.com
+203.69.113.136 a535.phobos.apple.com
+203.69.113.136 a536.phobos.apple.com
+203.69.113.136 a537.phobos.apple.com
+203.69.113.136 a538.phobos.apple.com
+203.69.113.136 a539.phobos.apple.com
+203.69.113.136 a540.phobos.apple.com
+203.69.113.136 a541.phobos.apple.com
+203.69.113.136 a542.phobos.apple.com
+203.69.113.136 a543.phobos.apple.com
+203.69.113.136 a544.phobos.apple.com
+203.69.113.136 a545.phobos.apple.com
+203.69.113.136 a546.phobos.apple.com
+203.69.113.136 a547.phobos.apple.com
+203.69.113.136 a548.phobos.apple.com
+203.69.113.136 a549.phobos.apple.com
+203.69.113.136 a550.phobos.apple.com
+203.69.113.136 a551.phobos.apple.com
+203.69.113.136 a552.phobos.apple.com
+203.69.113.136 a553.phobos.apple.com
+203.69.113.136 a554.phobos.apple.com
+203.69.113.136 a555.phobos.apple.com
+203.69.113.136 a556.phobos.apple.com
+203.69.113.136 a557.phobos.apple.com
+203.69.113.136 a558.phobos.apple.com
+203.69.113.136 a559.phobos.apple.com
+203.69.113.136 a560.phobos.apple.com
+203.69.113.136 a561.phobos.apple.com
+203.69.113.136 a562.phobos.apple.com
+203.69.113.136 a563.phobos.apple.com
+203.69.113.136 a564.phobos.apple.com
+203.69.113.136 a565.phobos.apple.com
+203.69.113.136 a566.phobos.apple.com
+203.69.113.136 a567.phobos.apple.com
+203.69.113.136 a568.phobos.apple.com
+203.69.113.136 a569.phobos.apple.com
+203.69.113.136 a570.phobos.apple.com
+203.69.113.136 a571.phobos.apple.com
+203.69.113.136 a572.phobos.apple.com
+203.69.113.136 a573.phobos.apple.com
+203.69.113.136 a574.phobos.apple.com
+203.69.113.136 a575.phobos.apple.com
+203.69.113.136 a576.phobos.apple.com
+203.69.113.136 a577.phobos.apple.com
+203.69.113.136 a578.phobos.apple.com
+203.69.113.136 a579.phobos.apple.com
+203.69.113.136 a580.phobos.apple.com
+203.69.113.136 a581.phobos.apple.com
+203.69.113.136 a582.phobos.apple.com
+203.69.113.136 a583.phobos.apple.com
+203.69.113.136 a584.phobos.apple.com
+203.69.113.136 a585.phobos.apple.com
+203.69.113.136 a586.phobos.apple.com
+203.69.113.136 a587.phobos.apple.com
+203.69.113.136 a588.phobos.apple.com
+203.69.113.136 a589.phobos.apple.com
+203.69.113.136 a590.phobos.apple.com
+203.69.113.136 a591.phobos.apple.com
+203.69.113.136 a592.phobos.apple.com
+203.69.113.136 a593.phobos.apple.com
+203.69.113.136 a594.phobos.apple.com
+203.69.113.136 a595.phobos.apple.com
+203.69.113.136 a596.phobos.apple.com
+203.69.113.136 a597.phobos.apple.com
+203.69.113.136 a598.phobos.apple.com
+203.69.113.136 a599.phobos.apple.com
+203.69.113.136 a600.phobos.apple.com
+203.69.113.136 a601.phobos.apple.com
+203.69.113.136 a602.phobos.apple.com
+203.69.113.136 a603.phobos.apple.com
+203.69.113.136 a604.phobos.apple.com
+203.69.113.136 a605.phobos.apple.com
+203.69.113.136 a606.phobos.apple.com
+203.69.113.136 a607.phobos.apple.com
+203.69.113.136 a608.phobos.apple.com
+203.69.113.136 a609.phobos.apple.com
+203.69.113.136 a610.phobos.apple.com
+203.69.113.136 a611.phobos.apple.com
+203.69.113.136 a612.phobos.apple.com
+203.69.113.136 a613.phobos.apple.com
+203.69.113.136 a614.phobos.apple.com
+203.69.113.136 a615.phobos.apple.com
+203.69.113.136 a616.phobos.apple.com
+203.69.113.136 a617.phobos.apple.com
+203.69.113.136 a618.phobos.apple.com
+203.69.113.136 a619.phobos.apple.com
+203.69.113.136 a620.phobos.apple.com
+203.69.113.136 a621.phobos.apple.com
+203.69.113.136 a622.phobos.apple.com
+203.69.113.136 a623.phobos.apple.com
+203.69.113.136 a624.phobos.apple.com
+203.69.113.136 a625.phobos.apple.com
+203.69.113.136 a626.phobos.apple.com
+203.69.113.136 a627.phobos.apple.com
+203.69.113.136 a628.phobos.apple.com
+203.69.113.136 a629.phobos.apple.com
+203.69.113.136 a630.phobos.apple.com
+203.69.113.136 a631.phobos.apple.com
+203.69.113.136 a632.phobos.apple.com
+203.69.113.136 a633.phobos.apple.com
+203.69.113.136 a634.phobos.apple.com
+203.69.113.136 a635.phobos.apple.com
+203.69.113.136 a636.phobos.apple.com
+203.69.113.136 a637.phobos.apple.com
+203.69.113.136 a638.phobos.apple.com
+203.69.113.136 a639.phobos.apple.com
+203.69.113.136 a640.phobos.apple.com
+203.69.113.136 a641.phobos.apple.com
+203.69.113.136 a642.phobos.apple.com
+203.69.113.136 a643.phobos.apple.com
+203.69.113.136 a644.phobos.apple.com
+203.69.113.136 a645.phobos.apple.com
+203.69.113.136 a646.phobos.apple.com
+203.69.113.136 a647.phobos.apple.com
+203.69.113.136 a648.phobos.apple.com
+203.69.113.136 a649.phobos.apple.com
+203.69.113.136 a650.phobos.apple.com
+203.69.113.136 a651.phobos.apple.com
+203.69.113.136 a652.phobos.apple.com
+203.69.113.136 a653.phobos.apple.com
+203.69.113.136 a654.phobos.apple.com
+203.69.113.136 a655.phobos.apple.com
+203.69.113.136 a656.phobos.apple.com
+203.69.113.136 a657.phobos.apple.com
+203.69.113.136 a658.phobos.apple.com
+203.69.113.136 a659.phobos.apple.com
+203.69.113.136 a660.phobos.apple.com
+203.69.113.136 a661.phobos.apple.com
+203.69.113.136 a662.phobos.apple.com
+203.69.113.136 a663.phobos.apple.com
+203.69.113.136 a664.phobos.apple.com
+203.69.113.136 a665.phobos.apple.com
+203.69.113.136 a666.phobos.apple.com
+203.69.113.136 a667.phobos.apple.com
+203.69.113.136 a668.phobos.apple.com
+203.69.113.136 a669.phobos.apple.com
+203.69.113.136 a670.phobos.apple.com
+203.69.113.136 a671.phobos.apple.com
+203.69.113.136 a672.phobos.apple.com
+203.69.113.136 a673.phobos.apple.com
+203.69.113.136 a674.phobos.apple.com
+203.69.113.136 a675.phobos.apple.com
+203.69.113.136 a676.phobos.apple.com
+203.69.113.136 a677.phobos.apple.com
+203.69.113.136 a678.phobos.apple.com
+203.69.113.136 a679.phobos.apple.com
+203.69.113.136 a680.phobos.apple.com
+203.69.113.136 a681.phobos.apple.com
+203.69.113.136 a682.phobos.apple.com
+203.69.113.136 a683.phobos.apple.com
+203.69.113.136 a684.phobos.apple.com
+203.69.113.136 a685.phobos.apple.com
+203.69.113.136 a686.phobos.apple.com
+203.69.113.136 a687.phobos.apple.com
+203.69.113.136 a688.phobos.apple.com
+203.69.113.136 a689.phobos.apple.com
+203.69.113.136 a690.phobos.apple.com
+203.69.113.136 a691.phobos.apple.com
+203.69.113.136 a692.phobos.apple.com
+203.69.113.136 a693.phobos.apple.com
+203.69.113.136 a694.phobos.apple.com
+203.69.113.136 a695.phobos.apple.com
+203.69.113.136 a696.phobos.apple.com
+203.69.113.136 a697.phobos.apple.com
+203.69.113.136 a698.phobos.apple.com
+203.69.113.136 a699.phobos.apple.com
+203.69.113.136 a700.phobos.apple.com
+203.69.113.136 a701.phobos.apple.com
+203.69.113.136 a702.phobos.apple.com
+203.69.113.136 a703.phobos.apple.com
+203.69.113.136 a704.phobos.apple.com
+203.69.113.136 a705.phobos.apple.com
+203.69.113.136 a706.phobos.apple.com
+203.69.113.136 a707.phobos.apple.com
+203.69.113.136 a708.phobos.apple.com
+203.69.113.136 a709.phobos.apple.com
+203.69.113.136 a710.phobos.apple.com
+203.69.113.136 a711.phobos.apple.com
+203.69.113.136 a712.phobos.apple.com
+203.69.113.136 a713.phobos.apple.com
+203.69.113.136 a714.phobos.apple.com
+203.69.113.136 a715.phobos.apple.com
+203.69.113.136 a716.phobos.apple.com
+203.69.113.136 a717.phobos.apple.com
+203.69.113.136 a718.phobos.apple.com
+203.69.113.136 a719.phobos.apple.com
+203.69.113.136 a720.phobos.apple.com
+203.69.113.136 a721.phobos.apple.com
+203.69.113.136 a722.phobos.apple.com
+203.69.113.136 a723.phobos.apple.com
+203.69.113.136 a724.phobos.apple.com
+203.69.113.136 a725.phobos.apple.com
+203.69.113.136 a726.phobos.apple.com
+203.69.113.136 a727.phobos.apple.com
+203.69.113.136 a728.phobos.apple.com
+203.69.113.136 a729.phobos.apple.com
+203.69.113.136 a730.phobos.apple.com
+203.69.113.136 a731.phobos.apple.com
+203.69.113.136 a732.phobos.apple.com
+203.69.113.136 a733.phobos.apple.com
+203.69.113.136 a734.phobos.apple.com
+203.69.113.136 a735.phobos.apple.com
+203.69.113.136 a736.phobos.apple.com
+203.69.113.136 a737.phobos.apple.com
+203.69.113.136 a738.phobos.apple.com
+203.69.113.136 a739.phobos.apple.com
+203.69.113.136 a740.phobos.apple.com
+203.69.113.136 a741.phobos.apple.com
+203.69.113.136 a742.phobos.apple.com
+203.69.113.136 a743.phobos.apple.com
+203.69.113.136 a744.phobos.apple.com
+203.69.113.136 a745.phobos.apple.com
+203.69.113.136 a746.phobos.apple.com
+203.69.113.136 a747.phobos.apple.com
+203.69.113.136 a748.phobos.apple.com
+203.69.113.136 a749.phobos.apple.com
+203.69.113.136 a750.phobos.apple.com
+203.69.113.136 a751.phobos.apple.com
+203.69.113.136 a752.phobos.apple.com
+203.69.113.136 a753.phobos.apple.com
+203.69.113.136 a754.phobos.apple.com
+203.69.113.136 a755.phobos.apple.com
+203.69.113.136 a756.phobos.apple.com
+203.69.113.136 a757.phobos.apple.com
+203.69.113.136 a758.phobos.apple.com
+203.69.113.136 a759.phobos.apple.com
+203.69.113.136 a760.phobos.apple.com
+203.69.113.136 a761.phobos.apple.com
+203.69.113.136 a762.phobos.apple.com
+203.69.113.136 a763.phobos.apple.com
+203.69.113.136 a764.phobos.apple.com
+203.69.113.136 a765.phobos.apple.com
+203.69.113.136 a766.phobos.apple.com
+203.69.113.136 a767.phobos.apple.com
+203.69.113.136 a768.phobos.apple.com
+203.69.113.136 a769.phobos.apple.com
+203.69.113.136 a770.phobos.apple.com
+203.69.113.136 a771.phobos.apple.com
+203.69.113.136 a772.phobos.apple.com
+203.69.113.136 a773.phobos.apple.com
+203.69.113.136 a774.phobos.apple.com
+203.69.113.136 a775.phobos.apple.com
+203.69.113.136 a776.phobos.apple.com
+203.69.113.136 a777.phobos.apple.com
+203.69.113.136 a778.phobos.apple.com
+203.69.113.136 a779.phobos.apple.com
+203.69.113.136 a780.phobos.apple.com
+203.69.113.136 a781.phobos.apple.com
+203.69.113.136 a782.phobos.apple.com
+203.69.113.136 a783.phobos.apple.com
+203.69.113.136 a784.phobos.apple.com
+203.69.113.136 a785.phobos.apple.com
+203.69.113.136 a786.phobos.apple.com
+203.69.113.136 a787.phobos.apple.com
+203.69.113.136 a788.phobos.apple.com
+203.69.113.136 a789.phobos.apple.com
+203.69.113.136 a790.phobos.apple.com
+203.69.113.136 a791.phobos.apple.com
+203.69.113.136 a792.phobos.apple.com
+203.69.113.136 a793.phobos.apple.com
+203.69.113.136 a794.phobos.apple.com
+203.69.113.136 a795.phobos.apple.com
+203.69.113.136 a796.phobos.apple.com
+203.69.113.136 a797.phobos.apple.com
+203.69.113.136 a798.phobos.apple.com
+203.69.113.136 a799.phobos.apple.com
+203.69.113.136 a800.phobos.apple.com
+203.69.113.136 a801.phobos.apple.com
+203.69.113.136 a802.phobos.apple.com
+203.69.113.136 a803.phobos.apple.com
+203.69.113.136 a804.phobos.apple.com
+203.69.113.136 a805.phobos.apple.com
+203.69.113.136 a806.phobos.apple.com
+203.69.113.136 a807.phobos.apple.com
+203.69.113.136 a808.phobos.apple.com
+203.69.113.136 a809.phobos.apple.com
+203.69.113.136 a810.phobos.apple.com
+203.69.113.136 a811.phobos.apple.com
+203.69.113.136 a812.phobos.apple.com
+203.69.113.136 a813.phobos.apple.com
+203.69.113.136 a814.phobos.apple.com
+203.69.113.136 a815.phobos.apple.com
+203.69.113.136 a816.phobos.apple.com
+203.69.113.136 a817.phobos.apple.com
+203.69.113.136 a818.phobos.apple.com
+203.69.113.136 a819.phobos.apple.com
+203.69.113.136 a820.phobos.apple.com
+203.69.113.136 a821.phobos.apple.com
+203.69.113.136 a822.phobos.apple.com
+203.69.113.136 a823.phobos.apple.com
+203.69.113.136 a824.phobos.apple.com
+203.69.113.136 a825.phobos.apple.com
+203.69.113.136 a826.phobos.apple.com
+203.69.113.136 a827.phobos.apple.com
+203.69.113.136 a828.phobos.apple.com
+203.69.113.136 a829.phobos.apple.com
+203.69.113.136 a830.phobos.apple.com
+203.69.113.136 a831.phobos.apple.com
+203.69.113.136 a832.phobos.apple.com
+203.69.113.136 a833.phobos.apple.com
+203.69.113.136 a834.phobos.apple.com
+203.69.113.136 a835.phobos.apple.com
+203.69.113.136 a836.phobos.apple.com
+203.69.113.136 a837.phobos.apple.com
+203.69.113.136 a838.phobos.apple.com
+203.69.113.136 a839.phobos.apple.com
+203.69.113.136 a840.phobos.apple.com
+203.69.113.136 a841.phobos.apple.com
+203.69.113.136 a842.phobos.apple.com
+203.69.113.136 a843.phobos.apple.com
+203.69.113.136 a844.phobos.apple.com
+203.69.113.136 a845.phobos.apple.com
+203.69.113.136 a846.phobos.apple.com
+203.69.113.136 a847.phobos.apple.com
+203.69.113.136 a848.phobos.apple.com
+203.69.113.136 a849.phobos.apple.com
+203.69.113.136 a850.phobos.apple.com
+203.69.113.136 a851.phobos.apple.com
+203.69.113.136 a852.phobos.apple.com
+203.69.113.136 a853.phobos.apple.com
+203.69.113.136 a854.phobos.apple.com
+203.69.113.136 a855.phobos.apple.com
+203.69.113.136 a856.phobos.apple.com
+203.69.113.136 a857.phobos.apple.com
+203.69.113.136 a858.phobos.apple.com
+203.69.113.136 a859.phobos.apple.com
+203.69.113.136 a860.phobos.apple.com
+203.69.113.136 a861.phobos.apple.com
+203.69.113.136 a862.phobos.apple.com
+203.69.113.136 a863.phobos.apple.com
+203.69.113.136 a864.phobos.apple.com
+203.69.113.136 a865.phobos.apple.com
+203.69.113.136 a866.phobos.apple.com
+203.69.113.136 a867.phobos.apple.com
+203.69.113.136 a868.phobos.apple.com
+203.69.113.136 a869.phobos.apple.com
+203.69.113.136 a870.phobos.apple.com
+203.69.113.136 a871.phobos.apple.com
+203.69.113.136 a872.phobos.apple.com
+203.69.113.136 a873.phobos.apple.com
+203.69.113.136 a874.phobos.apple.com
+203.69.113.136 a875.phobos.apple.com
+203.69.113.136 a876.phobos.apple.com
+203.69.113.136 a877.phobos.apple.com
+203.69.113.136 a878.phobos.apple.com
+203.69.113.136 a879.phobos.apple.com
+203.69.113.136 a880.phobos.apple.com
+203.69.113.136 a881.phobos.apple.com
+203.69.113.136 a882.phobos.apple.com
+203.69.113.136 a883.phobos.apple.com
+203.69.113.136 a884.phobos.apple.com
+203.69.113.136 a885.phobos.apple.com
+203.69.113.136 a886.phobos.apple.com
+203.69.113.136 a887.phobos.apple.com
+203.69.113.136 a888.phobos.apple.com
+203.69.113.136 a889.phobos.apple.com
+203.69.113.136 a890.phobos.apple.com
+203.69.113.136 a891.phobos.apple.com
+203.69.113.136 a892.phobos.apple.com
+203.69.113.136 a893.phobos.apple.com
+203.69.113.136 a894.phobos.apple.com
+203.69.113.136 a895.phobos.apple.com
+203.69.113.136 a896.phobos.apple.com
+203.69.113.136 a897.phobos.apple.com
+203.69.113.136 a898.phobos.apple.com
+203.69.113.136 a899.phobos.apple.com
+203.69.113.136 a900.phobos.apple.com
+203.69.113.136 a901.phobos.apple.com
+203.69.113.136 a902.phobos.apple.com
+203.69.113.136 a903.phobos.apple.com
+203.69.113.136 a904.phobos.apple.com
+203.69.113.136 a905.phobos.apple.com
+203.69.113.136 a906.phobos.apple.com
+203.69.113.136 a907.phobos.apple.com
+203.69.113.136 a908.phobos.apple.com
+203.69.113.136 a909.phobos.apple.com
+203.69.113.136 a910.phobos.apple.com
+203.69.113.136 a911.phobos.apple.com
+203.69.113.136 a912.phobos.apple.com
+203.69.113.136 a913.phobos.apple.com
+203.69.113.136 a914.phobos.apple.com
+203.69.113.136 a915.phobos.apple.com
+203.69.113.136 a916.phobos.apple.com
+203.69.113.136 a917.phobos.apple.com
+203.69.113.136 a918.phobos.apple.com
+203.69.113.136 a919.phobos.apple.com
+203.69.113.136 a920.phobos.apple.com
+203.69.113.136 a921.phobos.apple.com
+203.69.113.136 a922.phobos.apple.com
+203.69.113.136 a923.phobos.apple.com
+203.69.113.136 a924.phobos.apple.com
+203.69.113.136 a925.phobos.apple.com
+203.69.113.136 a926.phobos.apple.com
+203.69.113.136 a927.phobos.apple.com
+203.69.113.136 a928.phobos.apple.com
+203.69.113.136 a929.phobos.apple.com
+203.69.113.136 a930.phobos.apple.com
+203.69.113.136 a931.phobos.apple.com
+203.69.113.136 a932.phobos.apple.com
+203.69.113.136 a933.phobos.apple.com
+203.69.113.136 a934.phobos.apple.com
+203.69.113.136 a935.phobos.apple.com
+203.69.113.136 a936.phobos.apple.com
+203.69.113.136 a937.phobos.apple.com
+203.69.113.136 a938.phobos.apple.com
+203.69.113.136 a939.phobos.apple.com
+203.69.113.136 a940.phobos.apple.com
+203.69.113.136 a941.phobos.apple.com
+203.69.113.136 a942.phobos.apple.com
+203.69.113.136 a943.phobos.apple.com
+203.69.113.136 a944.phobos.apple.com
+203.69.113.136 a945.phobos.apple.com
+203.69.113.136 a946.phobos.apple.com
+203.69.113.136 a947.phobos.apple.com
+203.69.113.136 a948.phobos.apple.com
+203.69.113.136 a949.phobos.apple.com
+203.69.113.136 a950.phobos.apple.com
+203.69.113.136 a951.phobos.apple.com
+203.69.113.136 a952.phobos.apple.com
+203.69.113.136 a953.phobos.apple.com
+203.69.113.136 a954.phobos.apple.com
+203.69.113.136 a955.phobos.apple.com
+203.69.113.136 a956.phobos.apple.com
+203.69.113.136 a957.phobos.apple.com
+203.69.113.136 a958.phobos.apple.com
+203.69.113.136 a959.phobos.apple.com
+203.69.113.136 a960.phobos.apple.com
+203.69.113.136 a961.phobos.apple.com
+203.69.113.136 a962.phobos.apple.com
+203.69.113.136 a963.phobos.apple.com
+203.69.113.136 a964.phobos.apple.com
+203.69.113.136 a965.phobos.apple.com
+203.69.113.136 a966.phobos.apple.com
+203.69.113.136 a967.phobos.apple.com
+203.69.113.136 a968.phobos.apple.com
+203.69.113.136 a969.phobos.apple.com
+203.69.113.136 a970.phobos.apple.com
+203.69.113.136 a971.phobos.apple.com
+203.69.113.136 a972.phobos.apple.com
+203.69.113.136 a973.phobos.apple.com
+203.69.113.136 a974.phobos.apple.com
+203.69.113.136 a975.phobos.apple.com
+203.69.113.136 a976.phobos.apple.com
+203.69.113.136 a977.phobos.apple.com
+203.69.113.136 a978.phobos.apple.com
+203.69.113.136 a979.phobos.apple.com
+203.69.113.136 a980.phobos.apple.com
+203.69.113.136 a981.phobos.apple.com
+203.69.113.136 a982.phobos.apple.com
+203.69.113.136 a983.phobos.apple.com
+203.69.113.136 a984.phobos.apple.com
+203.69.113.136 a985.phobos.apple.com
+203.69.113.136 a986.phobos.apple.com
+203.69.113.136 a987.phobos.apple.com
+203.69.113.136 a988.phobos.apple.com
+203.69.113.136 a989.phobos.apple.com
+203.69.113.136 a990.phobos.apple.com
+203.69.113.136 a991.phobos.apple.com
+203.69.113.136 a992.phobos.apple.com
+203.69.113.136 a993.phobos.apple.com
+203.69.113.136 a994.phobos.apple.com
+203.69.113.136 a995.phobos.apple.com
+203.69.113.136 a996.phobos.apple.com
+203.69.113.136 a997.phobos.apple.com
+203.69.113.136 a998.phobos.apple.com
+203.69.113.136 a999.phobos.apple.com
+203.69.113.136 a1000.phobos.apple.com
+203.69.113.136 a1001.phobos.apple.com
+203.69.113.136 a1002.phobos.apple.com
+203.69.113.136 a1003.phobos.apple.com
+203.69.113.136 a1004.phobos.apple.com
+203.69.113.136 a1005.phobos.apple.com
+203.69.113.136 a1006.phobos.apple.com
+203.69.113.136 a1007.phobos.apple.com
+203.69.113.136 a1008.phobos.apple.com
+203.69.113.136 a1009.phobos.apple.com
+203.69.113.136 a1010.phobos.apple.com
+203.69.113.136 a1011.phobos.apple.com
+203.69.113.136 a1012.phobos.apple.com
+203.69.113.136 a1013.phobos.apple.com
+203.69.113.136 a1014.phobos.apple.com
+203.69.113.136 a1015.phobos.apple.com
+203.69.113.136 a1016.phobos.apple.com
+203.69.113.136 a1017.phobos.apple.com
+203.69.113.136 a1018.phobos.apple.com
+203.69.113.136 a1019.phobos.apple.com
+203.69.113.136 a1020.phobos.apple.com
+203.69.113.136 a1021.phobos.apple.com
+203.69.113.136 a1022.phobos.apple.com
+203.69.113.136 a1023.phobos.apple.com
+203.69.113.136 a1024.phobos.apple.com
+203.69.113.136 a1025.phobos.apple.com
+203.69.113.136 a1026.phobos.apple.com
+203.69.113.136 a1027.phobos.apple.com
+203.69.113.136 a1028.phobos.apple.com
+203.69.113.136 a1029.phobos.apple.com
+203.69.113.136 a1030.phobos.apple.com
+203.69.113.136 a1031.phobos.apple.com
+203.69.113.136 a1032.phobos.apple.com
+203.69.113.136 a1033.phobos.apple.com
+203.69.113.136 a1034.phobos.apple.com
+203.69.113.136 a1035.phobos.apple.com
+203.69.113.136 a1036.phobos.apple.com
+203.69.113.136 a1037.phobos.apple.com
+203.69.113.136 a1038.phobos.apple.com
+203.69.113.136 a1039.phobos.apple.com
+203.69.113.136 a1040.phobos.apple.com
+203.69.113.136 a1041.phobos.apple.com
+203.69.113.136 a1042.phobos.apple.com
+203.69.113.136 a1043.phobos.apple.com
+203.69.113.136 a1044.phobos.apple.com
+203.69.113.136 a1045.phobos.apple.com
+203.69.113.136 a1046.phobos.apple.com
+203.69.113.136 a1047.phobos.apple.com
+203.69.113.136 a1048.phobos.apple.com
+203.69.113.136 a1049.phobos.apple.com
+203.69.113.136 a1050.phobos.apple.com
+203.69.113.136 a1051.phobos.apple.com
+203.69.113.136 a1052.phobos.apple.com
+203.69.113.136 a1053.phobos.apple.com
+203.69.113.136 a1054.phobos.apple.com
+203.69.113.136 a1055.phobos.apple.com
+203.69.113.136 a1056.phobos.apple.com
+203.69.113.136 a1057.phobos.apple.com
+203.69.113.136 a1058.phobos.apple.com
+203.69.113.136 a1059.phobos.apple.com
+203.69.113.136 a1060.phobos.apple.com
+203.69.113.136 a1061.phobos.apple.com
+203.69.113.136 a1062.phobos.apple.com
+203.69.113.136 a1063.phobos.apple.com
+203.69.113.136 a1064.phobos.apple.com
+203.69.113.136 a1065.phobos.apple.com
+203.69.113.136 a1066.phobos.apple.com
+203.69.113.136 a1067.phobos.apple.com
+203.69.113.136 a1068.phobos.apple.com
+203.69.113.136 a1069.phobos.apple.com
+203.69.113.136 a1070.phobos.apple.com
+203.69.113.136 a1071.phobos.apple.com
+203.69.113.136 a1072.phobos.apple.com
+203.69.113.136 a1073.phobos.apple.com
+203.69.113.136 a1074.phobos.apple.com
+203.69.113.136 a1075.phobos.apple.com
+203.69.113.136 a1076.phobos.apple.com
+203.69.113.136 a1077.phobos.apple.com
+203.69.113.136 a1078.phobos.apple.com
+203.69.113.136 a1079.phobos.apple.com
+203.69.113.136 a1080.phobos.apple.com
+203.69.113.136 a1081.phobos.apple.com
+203.69.113.136 a1082.phobos.apple.com
+203.69.113.136 a1083.phobos.apple.com
+203.69.113.136 a1084.phobos.apple.com
+203.69.113.136 a1085.phobos.apple.com
+203.69.113.136 a1086.phobos.apple.com
+203.69.113.136 a1087.phobos.apple.com
+203.69.113.136 a1088.phobos.apple.com
+203.69.113.136 a1089.phobos.apple.com
+203.69.113.136 a1090.phobos.apple.com
+203.69.113.136 a1091.phobos.apple.com
+203.69.113.136 a1092.phobos.apple.com
+203.69.113.136 a1093.phobos.apple.com
+203.69.113.136 a1094.phobos.apple.com
+203.69.113.136 a1095.phobos.apple.com
+203.69.113.136 a1096.phobos.apple.com
+203.69.113.136 a1097.phobos.apple.com
+203.69.113.136 a1098.phobos.apple.com
+203.69.113.136 a1099.phobos.apple.com
+203.69.113.136 a1100.phobos.apple.com
+203.69.113.136 a1101.phobos.apple.com
+203.69.113.136 a1102.phobos.apple.com
+203.69.113.136 a1103.phobos.apple.com
+203.69.113.136 a1104.phobos.apple.com
+203.69.113.136 a1105.phobos.apple.com
+203.69.113.136 a1106.phobos.apple.com
+203.69.113.136 a1107.phobos.apple.com
+203.69.113.136 a1108.phobos.apple.com
+203.69.113.136 a1109.phobos.apple.com
+203.69.113.136 a1110.phobos.apple.com
+203.69.113.136 a1111.phobos.apple.com
+203.69.113.136 a1112.phobos.apple.com
+203.69.113.136 a1113.phobos.apple.com
+203.69.113.136 a1114.phobos.apple.com
+203.69.113.136 a1115.phobos.apple.com
+203.69.113.136 a1116.phobos.apple.com
+203.69.113.136 a1117.phobos.apple.com
+203.69.113.136 a1118.phobos.apple.com
+203.69.113.136 a1119.phobos.apple.com
+203.69.113.136 a1120.phobos.apple.com
+203.69.113.136 a1121.phobos.apple.com
+203.69.113.136 a1122.phobos.apple.com
+203.69.113.136 a1123.phobos.apple.com
+203.69.113.136 a1124.phobos.apple.com
+203.69.113.136 a1125.phobos.apple.com
+203.69.113.136 a1126.phobos.apple.com
+203.69.113.136 a1127.phobos.apple.com
+203.69.113.136 a1128.phobos.apple.com
+203.69.113.136 a1129.phobos.apple.com
+203.69.113.136 a1130.phobos.apple.com
+203.69.113.136 a1131.phobos.apple.com
+203.69.113.136 a1132.phobos.apple.com
+203.69.113.136 a1133.phobos.apple.com
+203.69.113.136 a1134.phobos.apple.com
+203.69.113.136 a1135.phobos.apple.com
+203.69.113.136 a1136.phobos.apple.com
+203.69.113.136 a1137.phobos.apple.com
+203.69.113.136 a1138.phobos.apple.com
+203.69.113.136 a1139.phobos.apple.com
+203.69.113.136 a1140.phobos.apple.com
+203.69.113.136 a1141.phobos.apple.com
+203.69.113.136 a1142.phobos.apple.com
+203.69.113.136 a1143.phobos.apple.com
+203.69.113.136 a1144.phobos.apple.com
+203.69.113.136 a1145.phobos.apple.com
+203.69.113.136 a1146.phobos.apple.com
+203.69.113.136 a1147.phobos.apple.com
+203.69.113.136 a1148.phobos.apple.com
+203.69.113.136 a1149.phobos.apple.com
+203.69.113.136 a1150.phobos.apple.com
+203.69.113.136 a1151.phobos.apple.com
+203.69.113.136 a1152.phobos.apple.com
+203.69.113.136 a1153.phobos.apple.com
+203.69.113.136 a1154.phobos.apple.com
+203.69.113.136 a1155.phobos.apple.com
+203.69.113.136 a1156.phobos.apple.com
+203.69.113.136 a1157.phobos.apple.com
+203.69.113.136 a1158.phobos.apple.com
+203.69.113.136 a1159.phobos.apple.com
+203.69.113.136 a1160.phobos.apple.com
+203.69.113.136 a1161.phobos.apple.com
+203.69.113.136 a1162.phobos.apple.com
+203.69.113.136 a1163.phobos.apple.com
+203.69.113.136 a1164.phobos.apple.com
+203.69.113.136 a1165.phobos.apple.com
+203.69.113.136 a1166.phobos.apple.com
+203.69.113.136 a1167.phobos.apple.com
+203.69.113.136 a1168.phobos.apple.com
+203.69.113.136 a1169.phobos.apple.com
+203.69.113.136 a1170.phobos.apple.com
+203.69.113.136 a1171.phobos.apple.com
+203.69.113.136 a1172.phobos.apple.com
+203.69.113.136 a1173.phobos.apple.com
+203.69.113.136 a1174.phobos.apple.com
+203.69.113.136 a1175.phobos.apple.com
+203.69.113.136 a1176.phobos.apple.com
+203.69.113.136 a1177.phobos.apple.com
+203.69.113.136 a1178.phobos.apple.com
+203.69.113.136 a1179.phobos.apple.com
+203.69.113.136 a1180.phobos.apple.com
+203.69.113.136 a1181.phobos.apple.com
+203.69.113.136 a1182.phobos.apple.com
+203.69.113.136 a1183.phobos.apple.com
+203.69.113.136 a1184.phobos.apple.com
+203.69.113.136 a1185.phobos.apple.com
+203.69.113.136 a1186.phobos.apple.com
+203.69.113.136 a1187.phobos.apple.com
+203.69.113.136 a1188.phobos.apple.com
+203.69.113.136 a1189.phobos.apple.com
+203.69.113.136 a1190.phobos.apple.com
+203.69.113.136 a1191.phobos.apple.com
+203.69.113.136 a1192.phobos.apple.com
+203.69.113.136 a1193.phobos.apple.com
+203.69.113.136 a1194.phobos.apple.com
+203.69.113.136 a1195.phobos.apple.com
+203.69.113.136 a1196.phobos.apple.com
+203.69.113.136 a1197.phobos.apple.com
+203.69.113.136 a1198.phobos.apple.com
+203.69.113.136 a1199.phobos.apple.com
+203.69.113.136 a1200.phobos.apple.com
+203.69.113.136 a1201.phobos.apple.com
+203.69.113.136 a1202.phobos.apple.com
+203.69.113.136 a1203.phobos.apple.com
+203.69.113.136 a1204.phobos.apple.com
+203.69.113.136 a1205.phobos.apple.com
+203.69.113.136 a1206.phobos.apple.com
+203.69.113.136 a1207.phobos.apple.com
+203.69.113.136 a1208.phobos.apple.com
+203.69.113.136 a1209.phobos.apple.com
+203.69.113.136 a1210.phobos.apple.com
+203.69.113.136 a1211.phobos.apple.com
+203.69.113.136 a1212.phobos.apple.com
+203.69.113.136 a1213.phobos.apple.com
+203.69.113.136 a1214.phobos.apple.com
+203.69.113.136 a1215.phobos.apple.com
+203.69.113.136 a1216.phobos.apple.com
+203.69.113.136 a1217.phobos.apple.com
+203.69.113.136 a1218.phobos.apple.com
+203.69.113.136 a1219.phobos.apple.com
+203.69.113.136 a1220.phobos.apple.com
+203.69.113.136 a1221.phobos.apple.com
+203.69.113.136 a1222.phobos.apple.com
+203.69.113.136 a1223.phobos.apple.com
+203.69.113.136 a1224.phobos.apple.com
+203.69.113.136 a1225.phobos.apple.com
+203.69.113.136 a1226.phobos.apple.com
+203.69.113.136 a1227.phobos.apple.com
+203.69.113.136 a1228.phobos.apple.com
+203.69.113.136 a1229.phobos.apple.com
+203.69.113.136 a1230.phobos.apple.com
+203.69.113.136 a1231.phobos.apple.com
+203.69.113.136 a1232.phobos.apple.com
+203.69.113.136 a1233.phobos.apple.com
+203.69.113.136 a1234.phobos.apple.com
+203.69.113.136 a1235.phobos.apple.com
+203.69.113.136 a1236.phobos.apple.com
+203.69.113.136 a1237.phobos.apple.com
+203.69.113.136 a1238.phobos.apple.com
+203.69.113.136 a1239.phobos.apple.com
+203.69.113.136 a1240.phobos.apple.com
+203.69.113.136 a1241.phobos.apple.com
+203.69.113.136 a1242.phobos.apple.com
+203.69.113.136 a1243.phobos.apple.com
+203.69.113.136 a1244.phobos.apple.com
+203.69.113.136 a1245.phobos.apple.com
+203.69.113.136 a1246.phobos.apple.com
+203.69.113.136 a1247.phobos.apple.com
+203.69.113.136 a1248.phobos.apple.com
+203.69.113.136 a1249.phobos.apple.com
+203.69.113.136 a1250.phobos.apple.com
+203.69.113.136 a1251.phobos.apple.com
+203.69.113.136 a1252.phobos.apple.com
+203.69.113.136 a1253.phobos.apple.com
+203.69.113.136 a1254.phobos.apple.com
+203.69.113.136 a1255.phobos.apple.com
+203.69.113.136 a1256.phobos.apple.com
+203.69.113.136 a1257.phobos.apple.com
+203.69.113.136 a1258.phobos.apple.com
+203.69.113.136 a1259.phobos.apple.com
+203.69.113.136 a1260.phobos.apple.com
+203.69.113.136 a1261.phobos.apple.com
+203.69.113.136 a1262.phobos.apple.com
+203.69.113.136 a1263.phobos.apple.com
+203.69.113.136 a1264.phobos.apple.com
+203.69.113.136 a1265.phobos.apple.com
+203.69.113.136 a1266.phobos.apple.com
+203.69.113.136 a1267.phobos.apple.com
+203.69.113.136 a1268.phobos.apple.com
+203.69.113.136 a1269.phobos.apple.com
+203.69.113.136 a1270.phobos.apple.com
+203.69.113.136 a1271.phobos.apple.com
+203.69.113.136 a1272.phobos.apple.com
+203.69.113.136 a1273.phobos.apple.com
+203.69.113.136 a1274.phobos.apple.com
+203.69.113.136 a1275.phobos.apple.com
+203.69.113.136 a1276.phobos.apple.com
+203.69.113.136 a1277.phobos.apple.com
+203.69.113.136 a1278.phobos.apple.com
+203.69.113.136 a1279.phobos.apple.com
+203.69.113.136 a1280.phobos.apple.com
+203.69.113.136 a1281.phobos.apple.com
+203.69.113.136 a1282.phobos.apple.com
+203.69.113.136 a1283.phobos.apple.com
+203.69.113.136 a1284.phobos.apple.com
+203.69.113.136 a1285.phobos.apple.com
+203.69.113.136 a1286.phobos.apple.com
+203.69.113.136 a1287.phobos.apple.com
+203.69.113.136 a1288.phobos.apple.com
+203.69.113.136 a1289.phobos.apple.com
+203.69.113.136 a1290.phobos.apple.com
+203.69.113.136 a1291.phobos.apple.com
+203.69.113.136 a1292.phobos.apple.com
+203.69.113.136 a1293.phobos.apple.com
+203.69.113.136 a1294.phobos.apple.com
+203.69.113.136 a1295.phobos.apple.com
+203.69.113.136 a1296.phobos.apple.com
+203.69.113.136 a1297.phobos.apple.com
+203.69.113.136 a1298.phobos.apple.com
+203.69.113.136 a1299.phobos.apple.com
+203.69.113.136 a1300.phobos.apple.com
+203.69.113.136 a1301.phobos.apple.com
+203.69.113.136 a1302.phobos.apple.com
+203.69.113.136 a1303.phobos.apple.com
+203.69.113.136 a1304.phobos.apple.com
+203.69.113.136 a1305.phobos.apple.com
+203.69.113.136 a1306.phobos.apple.com
+203.69.113.136 a1307.phobos.apple.com
+203.69.113.136 a1308.phobos.apple.com
+203.69.113.136 a1309.phobos.apple.com
+203.69.113.136 a1310.phobos.apple.com
+203.69.113.136 a1311.phobos.apple.com
+203.69.113.136 a1312.phobos.apple.com
+203.69.113.136 a1313.phobos.apple.com
+203.69.113.136 a1314.phobos.apple.com
+203.69.113.136 a1315.phobos.apple.com
+203.69.113.136 a1316.phobos.apple.com
+203.69.113.136 a1317.phobos.apple.com
+203.69.113.136 a1318.phobos.apple.com
+203.69.113.136 a1319.phobos.apple.com
+203.69.113.136 a1320.phobos.apple.com
+203.69.113.136 a1321.phobos.apple.com
+203.69.113.136 a1322.phobos.apple.com
+203.69.113.136 a1323.phobos.apple.com
+203.69.113.136 a1324.phobos.apple.com
+203.69.113.136 a1325.phobos.apple.com
+203.69.113.136 a1326.phobos.apple.com
+203.69.113.136 a1327.phobos.apple.com
+203.69.113.136 a1328.phobos.apple.com
+203.69.113.136 a1329.phobos.apple.com
+203.69.113.136 a1330.phobos.apple.com
+203.69.113.136 a1331.phobos.apple.com
+203.69.113.136 a1332.phobos.apple.com
+203.69.113.136 a1333.phobos.apple.com
+203.69.113.136 a1334.phobos.apple.com
+203.69.113.136 a1335.phobos.apple.com
+203.69.113.136 a1336.phobos.apple.com
+203.69.113.136 a1337.phobos.apple.com
+203.69.113.136 a1338.phobos.apple.com
+203.69.113.136 a1339.phobos.apple.com
+203.69.113.136 a1340.phobos.apple.com
+203.69.113.136 a1341.phobos.apple.com
+203.69.113.136 a1342.phobos.apple.com
+203.69.113.136 a1343.phobos.apple.com
+203.69.113.136 a1344.phobos.apple.com
+203.69.113.136 a1345.phobos.apple.com
+203.69.113.136 a1346.phobos.apple.com
+203.69.113.136 a1347.phobos.apple.com
+203.69.113.136 a1348.phobos.apple.com
+203.69.113.136 a1349.phobos.apple.com
+203.69.113.136 a1350.phobos.apple.com
+203.69.113.136 a1351.phobos.apple.com
+203.69.113.136 a1352.phobos.apple.com
+203.69.113.136 a1353.phobos.apple.com
+203.69.113.136 a1354.phobos.apple.com
+203.69.113.136 a1355.phobos.apple.com
+203.69.113.136 a1356.phobos.apple.com
+203.69.113.136 a1357.phobos.apple.com
+203.69.113.136 a1358.phobos.apple.com
+203.69.113.136 a1359.phobos.apple.com
+203.69.113.136 a1360.phobos.apple.com
+203.69.113.136 a1361.phobos.apple.com
+203.69.113.136 a1362.phobos.apple.com
+203.69.113.136 a1363.phobos.apple.com
+203.69.113.136 a1364.phobos.apple.com
+203.69.113.136 a1365.phobos.apple.com
+203.69.113.136 a1366.phobos.apple.com
+203.69.113.136 a1367.phobos.apple.com
+203.69.113.136 a1368.phobos.apple.com
+203.69.113.136 a1369.phobos.apple.com
+203.69.113.136 a1370.phobos.apple.com
+203.69.113.136 a1371.phobos.apple.com
+203.69.113.136 a1372.phobos.apple.com
+203.69.113.136 a1373.phobos.apple.com
+203.69.113.136 a1374.phobos.apple.com
+203.69.113.136 a1375.phobos.apple.com
+203.69.113.136 a1376.phobos.apple.com
+203.69.113.136 a1377.phobos.apple.com
+203.69.113.136 a1378.phobos.apple.com
+203.69.113.136 a1379.phobos.apple.com
+203.69.113.136 a1380.phobos.apple.com
+203.69.113.136 a1381.phobos.apple.com
+203.69.113.136 a1382.phobos.apple.com
+203.69.113.136 a1383.phobos.apple.com
+203.69.113.136 a1384.phobos.apple.com
+203.69.113.136 a1385.phobos.apple.com
+203.69.113.136 a1386.phobos.apple.com
+203.69.113.136 a1387.phobos.apple.com
+203.69.113.136 a1388.phobos.apple.com
+203.69.113.136 a1389.phobos.apple.com
+203.69.113.136 a1390.phobos.apple.com
+203.69.113.136 a1391.phobos.apple.com
+203.69.113.136 a1392.phobos.apple.com
+203.69.113.136 a1393.phobos.apple.com
+203.69.113.136 a1394.phobos.apple.com
+203.69.113.136 a1395.phobos.apple.com
+203.69.113.136 a1396.phobos.apple.com
+203.69.113.136 a1397.phobos.apple.com
+203.69.113.136 a1398.phobos.apple.com
+203.69.113.136 a1399.phobos.apple.com
+203.69.113.136 a1400.phobos.apple.com
+203.69.113.136 a1401.phobos.apple.com
+203.69.113.136 a1402.phobos.apple.com
+203.69.113.136 a1403.phobos.apple.com
+203.69.113.136 a1404.phobos.apple.com
+203.69.113.136 a1405.phobos.apple.com
+203.69.113.136 a1406.phobos.apple.com
+203.69.113.136 a1407.phobos.apple.com
+203.69.113.136 a1408.phobos.apple.com
+203.69.113.136 a1409.phobos.apple.com
+203.69.113.136 a1410.phobos.apple.com
+203.69.113.136 a1411.phobos.apple.com
+203.69.113.136 a1412.phobos.apple.com
+203.69.113.136 a1413.phobos.apple.com
+203.69.113.136 a1414.phobos.apple.com
+203.69.113.136 a1415.phobos.apple.com
+203.69.113.136 a1416.phobos.apple.com
+203.69.113.136 a1417.phobos.apple.com
+203.69.113.136 a1418.phobos.apple.com
+203.69.113.136 a1419.phobos.apple.com
+203.69.113.136 a1420.phobos.apple.com
+203.69.113.136 a1421.phobos.apple.com
+203.69.113.136 a1422.phobos.apple.com
+203.69.113.136 a1423.phobos.apple.com
+203.69.113.136 a1424.phobos.apple.com
+203.69.113.136 a1425.phobos.apple.com
+203.69.113.136 a1426.phobos.apple.com
+203.69.113.136 a1427.phobos.apple.com
+203.69.113.136 a1428.phobos.apple.com
+203.69.113.136 a1429.phobos.apple.com
+203.69.113.136 a1430.phobos.apple.com
+203.69.113.136 a1431.phobos.apple.com
+203.69.113.136 a1432.phobos.apple.com
+203.69.113.136 a1433.phobos.apple.com
+203.69.113.136 a1434.phobos.apple.com
+203.69.113.136 a1435.phobos.apple.com
+203.69.113.136 a1436.phobos.apple.com
+203.69.113.136 a1437.phobos.apple.com
+203.69.113.136 a1438.phobos.apple.com
+203.69.113.136 a1439.phobos.apple.com
+203.69.113.136 a1440.phobos.apple.com
+203.69.113.136 a1441.phobos.apple.com
+203.69.113.136 a1442.phobos.apple.com
+203.69.113.136 a1443.phobos.apple.com
+203.69.113.136 a1444.phobos.apple.com
+203.69.113.136 a1445.phobos.apple.com
+203.69.113.136 a1446.phobos.apple.com
+203.69.113.136 a1447.phobos.apple.com
+203.69.113.136 a1448.phobos.apple.com
+203.69.113.136 a1449.phobos.apple.com
+203.69.113.136 a1450.phobos.apple.com
+203.69.113.136 a1451.phobos.apple.com
+203.69.113.136 a1452.phobos.apple.com
+203.69.113.136 a1453.phobos.apple.com
+203.69.113.136 a1454.phobos.apple.com
+203.69.113.136 a1455.phobos.apple.com
+203.69.113.136 a1456.phobos.apple.com
+203.69.113.136 a1457.phobos.apple.com
+203.69.113.136 a1458.phobos.apple.com
+203.69.113.136 a1459.phobos.apple.com
+203.69.113.136 a1460.phobos.apple.com
+203.69.113.136 a1461.phobos.apple.com
+203.69.113.136 a1462.phobos.apple.com
+203.69.113.136 a1463.phobos.apple.com
+203.69.113.136 a1464.phobos.apple.com
+203.69.113.136 a1465.phobos.apple.com
+203.69.113.136 a1466.phobos.apple.com
+203.69.113.136 a1467.phobos.apple.com
+203.69.113.136 a1468.phobos.apple.com
+203.69.113.136 a1469.phobos.apple.com
+203.69.113.136 a1470.phobos.apple.com
+203.69.113.136 a1471.phobos.apple.com
+203.69.113.136 a1472.phobos.apple.com
+203.69.113.136 a1473.phobos.apple.com
+203.69.113.136 a1474.phobos.apple.com
+203.69.113.136 a1475.phobos.apple.com
+203.69.113.136 a1476.phobos.apple.com
+203.69.113.136 a1477.phobos.apple.com
+203.69.113.136 a1478.phobos.apple.com
+203.69.113.136 a1479.phobos.apple.com
+203.69.113.136 a1480.phobos.apple.com
+203.69.113.136 a1481.phobos.apple.com
+203.69.113.136 a1482.phobos.apple.com
+203.69.113.136 a1483.phobos.apple.com
+203.69.113.136 a1484.phobos.apple.com
+203.69.113.136 a1485.phobos.apple.com
+203.69.113.136 a1486.phobos.apple.com
+203.69.113.136 a1487.phobos.apple.com
+203.69.113.136 a1488.phobos.apple.com
+203.69.113.136 a1489.phobos.apple.com
+203.69.113.136 a1490.phobos.apple.com
+203.69.113.136 a1491.phobos.apple.com
+203.69.113.136 a1492.phobos.apple.com
+203.69.113.136 a1493.phobos.apple.com
+203.69.113.136 a1494.phobos.apple.com
+203.69.113.136 a1495.phobos.apple.com
+203.69.113.136 a1496.phobos.apple.com
+203.69.113.136 a1497.phobos.apple.com
+203.69.113.136 a1498.phobos.apple.com
+203.69.113.136 a1499.phobos.apple.com
+203.69.113.136 a1500.phobos.apple.com
+203.69.113.136 a1501.phobos.apple.com
+203.69.113.136 a1502.phobos.apple.com
+203.69.113.136 a1503.phobos.apple.com
+203.69.113.136 a1504.phobos.apple.com
+203.69.113.136 a1505.phobos.apple.com
+203.69.113.136 a1506.phobos.apple.com
+203.69.113.136 a1507.phobos.apple.com
+203.69.113.136 a1508.phobos.apple.com
+203.69.113.136 a1509.phobos.apple.com
+203.69.113.136 a1510.phobos.apple.com
+203.69.113.136 a1511.phobos.apple.com
+203.69.113.136 a1512.phobos.apple.com
+203.69.113.136 a1513.phobos.apple.com
+203.69.113.136 a1514.phobos.apple.com
+203.69.113.136 a1515.phobos.apple.com
+203.69.113.136 a1516.phobos.apple.com
+203.69.113.136 a1517.phobos.apple.com
+203.69.113.136 a1518.phobos.apple.com
+203.69.113.136 a1519.phobos.apple.com
+203.69.113.136 a1520.phobos.apple.com
+203.69.113.136 a1521.phobos.apple.com
+203.69.113.136 a1522.phobos.apple.com
+203.69.113.136 a1523.phobos.apple.com
+203.69.113.136 a1524.phobos.apple.com
+203.69.113.136 a1525.phobos.apple.com
+203.69.113.136 a1526.phobos.apple.com
+203.69.113.136 a1527.phobos.apple.com
+203.69.113.136 a1528.phobos.apple.com
+203.69.113.136 a1529.phobos.apple.com
+203.69.113.136 a1530.phobos.apple.com
+203.69.113.136 a1531.phobos.apple.com
+203.69.113.136 a1532.phobos.apple.com
+203.69.113.136 a1533.phobos.apple.com
+203.69.113.136 a1534.phobos.apple.com
+203.69.113.136 a1535.phobos.apple.com
+203.69.113.136 a1536.phobos.apple.com
+203.69.113.136 a1537.phobos.apple.com
+203.69.113.136 a1538.phobos.apple.com
+203.69.113.136 a1539.phobos.apple.com
+203.69.113.136 a1540.phobos.apple.com
+203.69.113.136 a1541.phobos.apple.com
+203.69.113.136 a1542.phobos.apple.com
+203.69.113.136 a1543.phobos.apple.com
+203.69.113.136 a1544.phobos.apple.com
+203.69.113.136 a1545.phobos.apple.com
+203.69.113.136 a1546.phobos.apple.com
+203.69.113.136 a1547.phobos.apple.com
+203.69.113.136 a1548.phobos.apple.com
+203.69.113.136 a1549.phobos.apple.com
+203.69.113.136 a1550.phobos.apple.com
+203.69.113.136 a1551.phobos.apple.com
+203.69.113.136 a1552.phobos.apple.com
+203.69.113.136 a1553.phobos.apple.com
+203.69.113.136 a1554.phobos.apple.com
+203.69.113.136 a1555.phobos.apple.com
+203.69.113.136 a1556.phobos.apple.com
+203.69.113.136 a1557.phobos.apple.com
+203.69.113.136 a1558.phobos.apple.com
+203.69.113.136 a1559.phobos.apple.com
+203.69.113.136 a1560.phobos.apple.com
+203.69.113.136 a1561.phobos.apple.com
+203.69.113.136 a1562.phobos.apple.com
+203.69.113.136 a1563.phobos.apple.com
+203.69.113.136 a1564.phobos.apple.com
+203.69.113.136 a1565.phobos.apple.com
+203.69.113.136 a1566.phobos.apple.com
+203.69.113.136 a1567.phobos.apple.com
+203.69.113.136 a1568.phobos.apple.com
+203.69.113.136 a1569.phobos.apple.com
+203.69.113.136 a1570.phobos.apple.com
+203.69.113.136 a1571.phobos.apple.com
+203.69.113.136 a1572.phobos.apple.com
+203.69.113.136 a1573.phobos.apple.com
+203.69.113.136 a1574.phobos.apple.com
+203.69.113.136 a1575.phobos.apple.com
+203.69.113.136 a1576.phobos.apple.com
+203.69.113.136 a1577.phobos.apple.com
+203.69.113.136 a1578.phobos.apple.com
+203.69.113.136 a1579.phobos.apple.com
+203.69.113.136 a1580.phobos.apple.com
+203.69.113.136 a1581.phobos.apple.com
+203.69.113.136 a1582.phobos.apple.com
+203.69.113.136 a1583.phobos.apple.com
+203.69.113.136 a1584.phobos.apple.com
+203.69.113.136 a1585.phobos.apple.com
+203.69.113.136 a1586.phobos.apple.com
+203.69.113.136 a1587.phobos.apple.com
+203.69.113.136 a1588.phobos.apple.com
+203.69.113.136 a1589.phobos.apple.com
+203.69.113.136 a1590.phobos.apple.com
+203.69.113.136 a1591.phobos.apple.com
+203.69.113.136 a1592.phobos.apple.com
+203.69.113.136 a1593.phobos.apple.com
+203.69.113.136 a1594.phobos.apple.com
+203.69.113.136 a1595.phobos.apple.com
+203.69.113.136 a1596.phobos.apple.com
+203.69.113.136 a1597.phobos.apple.com
+203.69.113.136 a1598.phobos.apple.com
+203.69.113.136 a1599.phobos.apple.com
+203.69.113.136 a1600.phobos.apple.com
+203.69.113.136 a1601.phobos.apple.com
+203.69.113.136 a1602.phobos.apple.com
+203.69.113.136 a1603.phobos.apple.com
+203.69.113.136 a1604.phobos.apple.com
+203.69.113.136 a1605.phobos.apple.com
+203.69.113.136 a1606.phobos.apple.com
+203.69.113.136 a1607.phobos.apple.com
+203.69.113.136 a1608.phobos.apple.com
+203.69.113.136 a1609.phobos.apple.com
+203.69.113.136 a1610.phobos.apple.com
+203.69.113.136 a1611.phobos.apple.com
+203.69.113.136 a1612.phobos.apple.com
+203.69.113.136 a1613.phobos.apple.com
+203.69.113.136 a1614.phobos.apple.com
+203.69.113.136 a1615.phobos.apple.com
+203.69.113.136 a1616.phobos.apple.com
+203.69.113.136 a1617.phobos.apple.com
+203.69.113.136 a1618.phobos.apple.com
+203.69.113.136 a1619.phobos.apple.com
+203.69.113.136 a1620.phobos.apple.com
+203.69.113.136 a1621.phobos.apple.com
+203.69.113.136 a1622.phobos.apple.com
+203.69.113.136 a1623.phobos.apple.com
+203.69.113.136 a1624.phobos.apple.com
+203.69.113.136 a1625.phobos.apple.com
+203.69.113.136 a1626.phobos.apple.com
+203.69.113.136 a1627.phobos.apple.com
+203.69.113.136 a1628.phobos.apple.com
+203.69.113.136 a1629.phobos.apple.com
+203.69.113.136 a1630.phobos.apple.com
+203.69.113.136 a1631.phobos.apple.com
+203.69.113.136 a1632.phobos.apple.com
+203.69.113.136 a1633.phobos.apple.com
+203.69.113.136 a1634.phobos.apple.com
+203.69.113.136 a1635.phobos.apple.com
+203.69.113.136 a1636.phobos.apple.com
+203.69.113.136 a1637.phobos.apple.com
+203.69.113.136 a1638.phobos.apple.com
+203.69.113.136 a1639.phobos.apple.com
+203.69.113.136 a1640.phobos.apple.com
+203.69.113.136 a1641.phobos.apple.com
+203.69.113.136 a1642.phobos.apple.com
+203.69.113.136 a1643.phobos.apple.com
+203.69.113.136 a1644.phobos.apple.com
+203.69.113.136 a1645.phobos.apple.com
+203.69.113.136 a1646.phobos.apple.com
+203.69.113.136 a1647.phobos.apple.com
+203.69.113.136 a1648.phobos.apple.com
+203.69.113.136 a1649.phobos.apple.com
+203.69.113.136 a1650.phobos.apple.com
+203.69.113.136 a1651.phobos.apple.com
+203.69.113.136 a1652.phobos.apple.com
+203.69.113.136 a1653.phobos.apple.com
+203.69.113.136 a1654.phobos.apple.com
+203.69.113.136 a1655.phobos.apple.com
+203.69.113.136 a1656.phobos.apple.com
+203.69.113.136 a1657.phobos.apple.com
+203.69.113.136 a1658.phobos.apple.com
+203.69.113.136 a1659.phobos.apple.com
+203.69.113.136 a1660.phobos.apple.com
+203.69.113.136 a1661.phobos.apple.com
+203.69.113.136 a1662.phobos.apple.com
+203.69.113.136 a1663.phobos.apple.com
+203.69.113.136 a1664.phobos.apple.com
+203.69.113.136 a1665.phobos.apple.com
+203.69.113.136 a1666.phobos.apple.com
+203.69.113.136 a1667.phobos.apple.com
+203.69.113.136 a1668.phobos.apple.com
+203.69.113.136 a1669.phobos.apple.com
+203.69.113.136 a1670.phobos.apple.com
+203.69.113.136 a1671.phobos.apple.com
+203.69.113.136 a1672.phobos.apple.com
+203.69.113.136 a1673.phobos.apple.com
+203.69.113.136 a1674.phobos.apple.com
+203.69.113.136 a1675.phobos.apple.com
+203.69.113.136 a1676.phobos.apple.com
+203.69.113.136 a1677.phobos.apple.com
+203.69.113.136 a1678.phobos.apple.com
+203.69.113.136 a1679.phobos.apple.com
+203.69.113.136 a1680.phobos.apple.com
+203.69.113.136 a1681.phobos.apple.com
+203.69.113.136 a1682.phobos.apple.com
+203.69.113.136 a1683.phobos.apple.com
+203.69.113.136 a1684.phobos.apple.com
+203.69.113.136 a1685.phobos.apple.com
+203.69.113.136 a1686.phobos.apple.com
+203.69.113.136 a1687.phobos.apple.com
+203.69.113.136 a1688.phobos.apple.com
+203.69.113.136 a1689.phobos.apple.com
+203.69.113.136 a1690.phobos.apple.com
+203.69.113.136 a1691.phobos.apple.com
+203.69.113.136 a1692.phobos.apple.com
+203.69.113.136 a1693.phobos.apple.com
+203.69.113.136 a1694.phobos.apple.com
+203.69.113.136 a1695.phobos.apple.com
+203.69.113.136 a1696.phobos.apple.com
+203.69.113.136 a1697.phobos.apple.com
+203.69.113.136 a1698.phobos.apple.com
+203.69.113.136 a1699.phobos.apple.com
+203.69.113.136 a1700.phobos.apple.com
+203.69.113.136 a1701.phobos.apple.com
+203.69.113.136 a1702.phobos.apple.com
+203.69.113.136 a1703.phobos.apple.com
+203.69.113.136 a1704.phobos.apple.com
+203.69.113.136 a1705.phobos.apple.com
+203.69.113.136 a1706.phobos.apple.com
+203.69.113.136 a1707.phobos.apple.com
+203.69.113.136 a1708.phobos.apple.com
+203.69.113.136 a1709.phobos.apple.com
+203.69.113.136 a1710.phobos.apple.com
+203.69.113.136 a1711.phobos.apple.com
+203.69.113.136 a1712.phobos.apple.com
+203.69.113.136 a1713.phobos.apple.com
+203.69.113.136 a1714.phobos.apple.com
+203.69.113.136 a1715.phobos.apple.com
+203.69.113.136 a1716.phobos.apple.com
+203.69.113.136 a1717.phobos.apple.com
+203.69.113.136 a1718.phobos.apple.com
+203.69.113.136 a1719.phobos.apple.com
+203.69.113.136 a1720.phobos.apple.com
+203.69.113.136 a1721.phobos.apple.com
+203.69.113.136 a1722.phobos.apple.com
+203.69.113.136 a1723.phobos.apple.com
+203.69.113.136 a1724.phobos.apple.com
+203.69.113.136 a1725.phobos.apple.com
+203.69.113.136 a1726.phobos.apple.com
+203.69.113.136 a1727.phobos.apple.com
+203.69.113.136 a1728.phobos.apple.com
+203.69.113.136 a1729.phobos.apple.com
+203.69.113.136 a1730.phobos.apple.com
+203.69.113.136 a1731.phobos.apple.com
+203.69.113.136 a1732.phobos.apple.com
+203.69.113.136 a1733.phobos.apple.com
+203.69.113.136 a1734.phobos.apple.com
+203.69.113.136 a1735.phobos.apple.com
+203.69.113.136 a1736.phobos.apple.com
+203.69.113.136 a1737.phobos.apple.com
+203.69.113.136 a1738.phobos.apple.com
+203.69.113.136 a1739.phobos.apple.com
+203.69.113.136 a1740.phobos.apple.com
+203.69.113.136 a1741.phobos.apple.com
+203.69.113.136 a1742.phobos.apple.com
+203.69.113.136 a1743.phobos.apple.com
+203.69.113.136 a1744.phobos.apple.com
+203.69.113.136 a1745.phobos.apple.com
+203.69.113.136 a1746.phobos.apple.com
+203.69.113.136 a1747.phobos.apple.com
+203.69.113.136 a1748.phobos.apple.com
+203.69.113.136 a1749.phobos.apple.com
+203.69.113.136 a1750.phobos.apple.com
+203.69.113.136 a1751.phobos.apple.com
+203.69.113.136 a1752.phobos.apple.com
+203.69.113.136 a1753.phobos.apple.com
+203.69.113.136 a1754.phobos.apple.com
+203.69.113.136 a1755.phobos.apple.com
+203.69.113.136 a1756.phobos.apple.com
+203.69.113.136 a1757.phobos.apple.com
+203.69.113.136 a1758.phobos.apple.com
+203.69.113.136 a1759.phobos.apple.com
+203.69.113.136 a1760.phobos.apple.com
+203.69.113.136 a1761.phobos.apple.com
+203.69.113.136 a1762.phobos.apple.com
+203.69.113.136 a1763.phobos.apple.com
+203.69.113.136 a1764.phobos.apple.com
+203.69.113.136 a1765.phobos.apple.com
+203.69.113.136 a1766.phobos.apple.com
+203.69.113.136 a1767.phobos.apple.com
+203.69.113.136 a1768.phobos.apple.com
+203.69.113.136 a1769.phobos.apple.com
+203.69.113.136 a1770.phobos.apple.com
+203.69.113.136 a1771.phobos.apple.com
+203.69.113.136 a1772.phobos.apple.com
+203.69.113.136 a1773.phobos.apple.com
+203.69.113.136 a1774.phobos.apple.com
+203.69.113.136 a1775.phobos.apple.com
+203.69.113.136 a1776.phobos.apple.com
+203.69.113.136 a1777.phobos.apple.com
+203.69.113.136 a1778.phobos.apple.com
+203.69.113.136 a1779.phobos.apple.com
+203.69.113.136 a1780.phobos.apple.com
+203.69.113.136 a1781.phobos.apple.com
+203.69.113.136 a1782.phobos.apple.com
+203.69.113.136 a1783.phobos.apple.com
+203.69.113.136 a1784.phobos.apple.com
+203.69.113.136 a1785.phobos.apple.com
+203.69.113.136 a1786.phobos.apple.com
+203.69.113.136 a1787.phobos.apple.com
+203.69.113.136 a1788.phobos.apple.com
+203.69.113.136 a1789.phobos.apple.com
+203.69.113.136 a1790.phobos.apple.com
+203.69.113.136 a1791.phobos.apple.com
+203.69.113.136 a1792.phobos.apple.com
+203.69.113.136 a1793.phobos.apple.com
+203.69.113.136 a1794.phobos.apple.com
+203.69.113.136 a1795.phobos.apple.com
+203.69.113.136 a1796.phobos.apple.com
+203.69.113.136 a1797.phobos.apple.com
+203.69.113.136 a1798.phobos.apple.com
+203.69.113.136 a1799.phobos.apple.com
+203.69.113.136 a1800.phobos.apple.com
+203.69.113.136 a1801.phobos.apple.com
+203.69.113.136 a1802.phobos.apple.com
+203.69.113.136 a1803.phobos.apple.com
+203.69.113.136 a1804.phobos.apple.com
+203.69.113.136 a1805.phobos.apple.com
+203.69.113.136 a1806.phobos.apple.com
+203.69.113.136 a1807.phobos.apple.com
+203.69.113.136 a1808.phobos.apple.com
+203.69.113.136 a1809.phobos.apple.com
+203.69.113.136 a1810.phobos.apple.com
+203.69.113.136 a1811.phobos.apple.com
+203.69.113.136 a1812.phobos.apple.com
+203.69.113.136 a1813.phobos.apple.com
+203.69.113.136 a1814.phobos.apple.com
+203.69.113.136 a1815.phobos.apple.com
+203.69.113.136 a1816.phobos.apple.com
+203.69.113.136 a1817.phobos.apple.com
+203.69.113.136 a1818.phobos.apple.com
+203.69.113.136 a1819.phobos.apple.com
+203.69.113.136 a1820.phobos.apple.com
+203.69.113.136 a1821.phobos.apple.com
+203.69.113.136 a1822.phobos.apple.com
+203.69.113.136 a1823.phobos.apple.com
+203.69.113.136 a1824.phobos.apple.com
+203.69.113.136 a1825.phobos.apple.com
+203.69.113.136 a1826.phobos.apple.com
+203.69.113.136 a1827.phobos.apple.com
+203.69.113.136 a1828.phobos.apple.com
+203.69.113.136 a1829.phobos.apple.com
+203.69.113.136 a1830.phobos.apple.com
+203.69.113.136 a1831.phobos.apple.com
+203.69.113.136 a1832.phobos.apple.com
+203.69.113.136 a1833.phobos.apple.com
+203.69.113.136 a1834.phobos.apple.com
+203.69.113.136 a1835.phobos.apple.com
+203.69.113.136 a1836.phobos.apple.com
+203.69.113.136 a1837.phobos.apple.com
+203.69.113.136 a1838.phobos.apple.com
+203.69.113.136 a1839.phobos.apple.com
+203.69.113.136 a1840.phobos.apple.com
+203.69.113.136 a1841.phobos.apple.com
+203.69.113.136 a1842.phobos.apple.com
+203.69.113.136 a1843.phobos.apple.com
+203.69.113.136 a1844.phobos.apple.com
+203.69.113.136 a1845.phobos.apple.com
+203.69.113.136 a1846.phobos.apple.com
+203.69.113.136 a1847.phobos.apple.com
+203.69.113.136 a1848.phobos.apple.com
+203.69.113.136 a1849.phobos.apple.com
+203.69.113.136 a1850.phobos.apple.com
+203.69.113.136 a1851.phobos.apple.com
+203.69.113.136 a1852.phobos.apple.com
+203.69.113.136 a1853.phobos.apple.com
+203.69.113.136 a1854.phobos.apple.com
+203.69.113.136 a1855.phobos.apple.com
+203.69.113.136 a1856.phobos.apple.com
+203.69.113.136 a1857.phobos.apple.com
+203.69.113.136 a1858.phobos.apple.com
+203.69.113.136 a1859.phobos.apple.com
+203.69.113.136 a1860.phobos.apple.com
+203.69.113.136 a1861.phobos.apple.com
+203.69.113.136 a1862.phobos.apple.com
+203.69.113.136 a1863.phobos.apple.com
+203.69.113.136 a1864.phobos.apple.com
+203.69.113.136 a1865.phobos.apple.com
+203.69.113.136 a1866.phobos.apple.com
+203.69.113.136 a1867.phobos.apple.com
+203.69.113.136 a1868.phobos.apple.com
+203.69.113.136 a1869.phobos.apple.com
+203.69.113.136 a1870.phobos.apple.com
+203.69.113.136 a1871.phobos.apple.com
+203.69.113.136 a1872.phobos.apple.com
+203.69.113.136 a1873.phobos.apple.com
+203.69.113.136 a1874.phobos.apple.com
+203.69.113.136 a1875.phobos.apple.com
+203.69.113.136 a1876.phobos.apple.com
+203.69.113.136 a1877.phobos.apple.com
+203.69.113.136 a1878.phobos.apple.com
+203.69.113.136 a1879.phobos.apple.com
+203.69.113.136 a1880.phobos.apple.com
+203.69.113.136 a1881.phobos.apple.com
+203.69.113.136 a1882.phobos.apple.com
+203.69.113.136 a1883.phobos.apple.com
+203.69.113.136 a1884.phobos.apple.com
+203.69.113.136 a1885.phobos.apple.com
+203.69.113.136 a1886.phobos.apple.com
+203.69.113.136 a1887.phobos.apple.com
+203.69.113.136 a1888.phobos.apple.com
+203.69.113.136 a1889.phobos.apple.com
+203.69.113.136 a1890.phobos.apple.com
+203.69.113.136 a1891.phobos.apple.com
+203.69.113.136 a1892.phobos.apple.com
+203.69.113.136 a1893.phobos.apple.com
+203.69.113.136 a1894.phobos.apple.com
+203.69.113.136 a1895.phobos.apple.com
+203.69.113.136 a1896.phobos.apple.com
+203.69.113.136 a1897.phobos.apple.com
+203.69.113.136 a1898.phobos.apple.com
+203.69.113.136 a1899.phobos.apple.com
+203.69.113.136 a1900.phobos.apple.com
+203.69.113.136 a1901.phobos.apple.com
+203.69.113.136 a1902.phobos.apple.com
+203.69.113.136 a1903.phobos.apple.com
+203.69.113.136 a1904.phobos.apple.com
+203.69.113.136 a1905.phobos.apple.com
+203.69.113.136 a1906.phobos.apple.com
+203.69.113.136 a1907.phobos.apple.com
+203.69.113.136 a1908.phobos.apple.com
+203.69.113.136 a1909.phobos.apple.com
+203.69.113.136 a1910.phobos.apple.com
+203.69.113.136 a1911.phobos.apple.com
+203.69.113.136 a1912.phobos.apple.com
+203.69.113.136 a1913.phobos.apple.com
+203.69.113.136 a1914.phobos.apple.com
+203.69.113.136 a1915.phobos.apple.com
+203.69.113.136 a1916.phobos.apple.com
+203.69.113.136 a1917.phobos.apple.com
+203.69.113.136 a1918.phobos.apple.com
+203.69.113.136 a1919.phobos.apple.com
+203.69.113.136 a1920.phobos.apple.com
+203.69.113.136 a1921.phobos.apple.com
+203.69.113.136 a1922.phobos.apple.com
+203.69.113.136 a1923.phobos.apple.com
+203.69.113.136 a1924.phobos.apple.com
+203.69.113.136 a1925.phobos.apple.com
+203.69.113.136 a1926.phobos.apple.com
+203.69.113.136 a1927.phobos.apple.com
+203.69.113.136 a1928.phobos.apple.com
+203.69.113.136 a1929.phobos.apple.com
+203.69.113.136 a1930.phobos.apple.com
+203.69.113.136 a1931.phobos.apple.com
+203.69.113.136 a1932.phobos.apple.com
+203.69.113.136 a1933.phobos.apple.com
+203.69.113.136 a1934.phobos.apple.com
+203.69.113.136 a1935.phobos.apple.com
+203.69.113.136 a1936.phobos.apple.com
+203.69.113.136 a1937.phobos.apple.com
+203.69.113.136 a1938.phobos.apple.com
+203.69.113.136 a1939.phobos.apple.com
+203.69.113.136 a1940.phobos.apple.com
+203.69.113.136 a1941.phobos.apple.com
+203.69.113.136 a1942.phobos.apple.com
+203.69.113.136 a1943.phobos.apple.com
+203.69.113.136 a1944.phobos.apple.com
+203.69.113.136 a1945.phobos.apple.com
+203.69.113.136 a1946.phobos.apple.com
+203.69.113.136 a1947.phobos.apple.com
+203.69.113.136 a1948.phobos.apple.com
+203.69.113.136 a1949.phobos.apple.com
+203.69.113.136 a1950.phobos.apple.com
+203.69.113.136 a1951.phobos.apple.com
+203.69.113.136 a1952.phobos.apple.com
+203.69.113.136 a1953.phobos.apple.com
+203.69.113.136 a1954.phobos.apple.com
+203.69.113.136 a1955.phobos.apple.com
+203.69.113.136 a1956.phobos.apple.com
+203.69.113.136 a1957.phobos.apple.com
+203.69.113.136 a1958.phobos.apple.com
+203.69.113.136 a1959.phobos.apple.com
+203.69.113.136 a1960.phobos.apple.com
+203.69.113.136 a1961.phobos.apple.com
+203.69.113.136 a1962.phobos.apple.com
+203.69.113.136 a1963.phobos.apple.com
+203.69.113.136 a1964.phobos.apple.com
+203.69.113.136 a1965.phobos.apple.com
+203.69.113.136 a1966.phobos.apple.com
+203.69.113.136 a1967.phobos.apple.com
+203.69.113.136 a1968.phobos.apple.com
+203.69.113.136 a1969.phobos.apple.com
+203.69.113.136 a1970.phobos.apple.com
+203.69.113.136 a1971.phobos.apple.com
+203.69.113.136 a1972.phobos.apple.com
+203.69.113.136 a1973.phobos.apple.com
+203.69.113.136 a1974.phobos.apple.com
+203.69.113.136 a1975.phobos.apple.com
+203.69.113.136 a1976.phobos.apple.com
+203.69.113.136 a1977.phobos.apple.com
+203.69.113.136 a1978.phobos.apple.com
+203.69.113.136 a1979.phobos.apple.com
+203.69.113.136 a1980.phobos.apple.com
+203.69.113.136 a1981.phobos.apple.com
+203.69.113.136 a1982.phobos.apple.com
+203.69.113.136 a1983.phobos.apple.com
+203.69.113.136 a1984.phobos.apple.com
+203.69.113.136 a1985.phobos.apple.com
+203.69.113.136 a1986.phobos.apple.com
+203.69.113.136 a1987.phobos.apple.com
+203.69.113.136 a1988.phobos.apple.com
+203.69.113.136 a1989.phobos.apple.com
+203.69.113.136 a1990.phobos.apple.com
+203.69.113.136 a1991.phobos.apple.com
+203.69.113.136 a1992.phobos.apple.com
+203.69.113.136 a1993.phobos.apple.com
+203.69.113.136 a1994.phobos.apple.com
+203.69.113.136 a1995.phobos.apple.com
+203.69.113.136 a1996.phobos.apple.com
+203.69.113.136 a1997.phobos.apple.com
+203.69.113.136 a1998.phobos.apple.com
+203.69.113.136 a1999.phobos.apple.com
+203.69.113.136 a2000.phobos.apple.com
+[/code]&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 14 Oct 2011 15:13:08 +0800</pubDate>
+        <link>http://codante.org/blog/2011/10/14/itunes-download-speedup.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2011/10/14/itunes-download-speedup.html</guid>
         
         
       </item>
