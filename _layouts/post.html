@@ -45,7 +45,7 @@ layout: default
   <!-- post navigator -->
   <div class="post-nav">
     {% if page.previous %}
-    <a class="post-nav-previous" href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+    <a class="post-nav-previous" href="{{ page.previous.url | prepend: site.url }}">{{ page.previous.title }}</a>
     {% endif %}
 
     {% if page.previous and page.next %}
@@ -53,7 +53,7 @@ layout: default
     {% endif %}
 
     {% if page.next %}
-    <a class="post-nav-next" href="{{ page.next.url }}">{{ page.next.title }}</a>
+    <a class="post-nav-next" href="{{ page.next.url | prepend: site.url }}">{{ page.next.title }}</a>
     {% endif %}
   </div>
 
