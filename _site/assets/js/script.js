@@ -48,7 +48,7 @@ $(document).ready(function () {
         });
     }
 
-    if (window.matchMedia('(min-width: 769px)').matches) {
-        $(".post-archive").css("top", "");
-    }
+    //if (window.matchMedia('(min-width: 769px)').matches) {
+    //    $(".post-archive").css("top", "");
+    //}
 });
