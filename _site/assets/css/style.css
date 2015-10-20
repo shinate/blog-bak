@@ -199,6 +199,10 @@ img {
     color: #999;
 }
 
+.post-archive {
+    overflow-y: auto;
+}
+
 /* post archive trigger */
 .post-archive-trigger {
     position: absolute;
