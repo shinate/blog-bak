@@ -17,7 +17,7 @@ layout: default
       {% else %}
       {% assign status = '' %}
       {% endif %}
-      <a class="post-archive-iterm" href="{{ post.url }}">
+      <a class="post-archive-iterm" href="{{ post.url | prepend: site.url }}">
         <span class="post-archive-date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <span class="post-archive-title {{ status }}">{{ post.title }}</span>
       </a>
