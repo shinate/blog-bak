@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <!-- head -->
+    {% include head.html %}
 
-  {% include head.html %}
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+    <!-- /fonts -->
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="{{ "/assets/css/solarized_dark.css" | prepend: site.url }}" />
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | prepend: site.url }}" />
+    <!-- /stylesheets -->
 
+    <!-- /head -->
+  </head>
   <body>
 
-    {% include header.html %}
+    {{ content }}
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
+    <!-- scripts -->
+    <script src="{{ "/assets/js/jquery-1.11.3.min.js" | prepend: site.url }}"></script>
+    <script src="{{ "/assets/js/highlight.pack.js" | prepend: site.url }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="{{ "/assets/js/script.js" | prepend: site.url }}"></script>
 
-    {% include footer.html %}
-
+    {% if site.google_analytics %}
+      <!-- Google Analytics -->
+      {% include google-analytics.html %}
+    {% endif %}
+    {% if site.baidu_analytics %}
+      <!-- Google Analytics -->
+      {% include baidu-analytics.html %}
+    {% endif %}
+    <!-- /scripts -->
   </body>
-
 </html>
