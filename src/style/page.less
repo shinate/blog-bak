@@ -1,0 +1,75 @@
+/**
+ * =======================
+ * page layout
+ * =======================
+ */
+.page-wrapper:before {
+  content: "";
+  display: block;
+  padding-top: 50%;
+  background-color: #f8f8f8;
+}
+
+@media (min-width: 769px) {
+  .page-wrapper:before {
+    display: none;
+  }
+
+  .page-wrapper {
+    background-color: #f8f8f8;
+    padding-left: 340px;
+    height: 100%;
+  }
+}
+
+.page-container {
+  position: relative;
+  padding-top: 55px;
+  font-family: "Titillium Web", sans-serif;
+  letter-spacing: .09em;
+}
+
+.page-container:before {
+  content: "";
+  position: absolute;
+  top: -55px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-image: url({{ site.avatar | prepend: site.url }});
+  background-size: cover;
+}
+
+@media (min-width: 600px) {
+  .page-container {
+    padding-top: 75px;
+  }
+
+  .page-container:before {
+    top: -75px;
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (min-width: 769px) {
+  .page-container {
+    right: 0;
+    padding-top: 0;
+    height: 100%;
+    min-width: 384.5px;
+    background-color: #fff;
+  }
+
+  .page-container:before {
+    top: 150px;
+    left: -75px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

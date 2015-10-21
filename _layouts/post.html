@@ -56,15 +56,28 @@ layout: default
     <a class="post-nav-next" href="{{ page.next.url | prepend: site.url }}">{{ page.next.title }}</a>
     {% endif %}
   </div>
+  <!-- /post navigator -->
 
-  <!-- disqus comment system -->
   {% if site.disqus_shortname != '' %}
+  <!-- disqus comment system -->
   <div class="post-comment">
     {% include disqus.html %}
   </div>
+  <!-- /disqus comment system -->
   {% endif %}
 
   <!-- footer -->
   {% include footer.html %}
+  <!-- /footer -->
+
+  <script>
+    $(document).ready(function(){
+      var wrapper = $('.post-archive');
+      var scroller = $('.post-archive-iterms');
+      var currentIterm = scroller.find('.checked').parent();
+
+      wrapper.scrollTop(currentIterm.position().top);
+    });
+  </script>
 
 </div>

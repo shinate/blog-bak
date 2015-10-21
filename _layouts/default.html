@@ -3,7 +3,6 @@
   <head>
     <!-- head -->
     {% include head.html %}
-
     <!-- fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
     <!-- /fonts -->
@@ -11,27 +10,27 @@
     <link rel="stylesheet" href="{{ "/assets/css/solarized_dark.css" | prepend: site.url }}" />
     <link rel="stylesheet" href="{{ "/assets/css/style.css" | prepend: site.url }}" />
     <!-- /stylesheets -->
-
+    <!-- scripts -->
+    <script src="{{ "/assets/js/jquery-1.11.3.min.js" | prepend: site.url }}"></script>
+    <script src="{{ "/assets/js/highlight.pack.js" | prepend: site.url }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="{{ "/assets/js/script.js" | prepend: site.url }}"></script>
+    <!-- /scripts -->
     <!-- /head -->
   </head>
   <body>
 
     {{ content }}
 
-    <!-- scripts -->
-    <script src="{{ "/assets/js/jquery-1.11.3.min.js" | prepend: site.url }}"></script>
-    <script src="{{ "/assets/js/highlight.pack.js" | prepend: site.url }}"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="{{ "/assets/js/script.js" | prepend: site.url }}"></script>
-
     {% if site.google_analytics %}
-      <!-- Google Analytics -->
+    <!-- Google Analytics -->
       {% include google-analytics.html %}
+    <!-- /Google Analytics -->
     {% endif %}
     {% if site.baidu_analytics %}
-      <!-- Google Analytics -->
+    <!-- Baidu Analytics -->
       {% include baidu-analytics.html %}
+    <!-- /Baidu Analytics -->
     {% endif %}
-    <!-- /scripts -->
   </body>
 </html>

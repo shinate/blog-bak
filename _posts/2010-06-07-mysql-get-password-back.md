@@ -1,0 +1,112 @@
+---
+layout: post
+status: publish
+published: true
+title: MySQL数据库丢失root密码恢复
+author:
+  display_name: "莳子"
+  login: admin
+  email: shine.wangrs@gmail.com
+  url: http://codante.org
+author_login: admin
+author_email: shine.wangrs@gmail.com
+author_url: http://codante.org
+excerpt: "如果不小心把MySQL root的密码弄丢，或是在修改初始密码时忘记了新的密码，无需重装MySQL，下面就是具体的解决方案。"
+wordpress_id: 31
+wordpress_url: http://codante.org/?p=31
+date: '2010-06-07 09:10:55 +0800'
+date_gmt: '2010-06-07 01:10:55 +0800'
+---
+
+
+## Mysql 数据库丢失root密码恢复
+
+[code]  
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#  
+
+Mysql 数据库丢失root密码恢复  
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#  
+
+\# Purpose: recover mysql root password  
+
+\#  
+
+\# USER          YYYY-MM-DD -- ACTION  
+
+\# Oldboy        2009-10-24 -- Created  
+
+\# QQ:49000448   老男孩       mail:49000448@qq.com  
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#  
+
+[/code]
+
+### 单实例
+
+[bash]  
+
+killall mysqld  
+
+mysqld_safe --skip-grant-tables &  
+
+mysql -u root -p  
+
+[/bash]
+
+### 多实例
+
+[bash]  
+
+killall mysqld  
+
+mysqld_safe --defaults-file=/data/3306/my.cnf  --skip-grant-table &  
+
+mysql -u root -p -S /data/3306/mysql.sock  
+
+[/bash]
+
+## 跳过验证启动mysql
+
+### 登陆后修改密码
+
+[code]  
+
+mysql&gt; UPDATE mysql.user SET password=PASSWORD("hyran123") WHERE user='root';  
+
+Query OK, 2 rows affected (0.00 sec)  
+
+Rows matched: 2  Changed: 2  Warnings: 0  
+
+mysql&gt;FLUSH PRIVILEGES;  
+
+Query OK, 0 rows affected (0.00 sec)  
+
+mysql&gt; quit  
+
+Bye  
+
+[/code]
+
+### 重起mysql登陆测试(多实例修改密码后测试)
+
+[bash]  
+
+/data/3306/mysql restart  
+
+[root@ryan01 3306]\# mysql -u root -p'hyran123′ -S /data/3306/mysql.sock  
+
+Enter password:  
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.  
+
+Your MySQL connection id is 1  
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.  
+
+mysql&gt;  
+
+[/bash]
