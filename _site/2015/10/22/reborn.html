@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CSS3圆角属性在各浏览器中的实现</title>
+<title>Reborn</title>
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="http://codante.org/blog" />
@@ -47,7 +47,7 @@
       
       <a class="post-archive-iterm" href="http://codante.org/blog/2015/10/22/reborn.html">
         <span class="post-archive-date">2015-10-22</span>
-        <span class="post-archive-title ">Reborn</span>
+        <span class="post-archive-title checked">Reborn</span>
       </a>
       
       
@@ -303,7 +303,7 @@
       
       <a class="post-archive-iterm" href="http://codante.org/blog/2011/02/11/css3-rounded-attributes-of-the-implementation-of-the-browser.html">
         <span class="post-archive-date">2011-02-11</span>
-        <span class="post-archive-title checked">CSS3圆角属性在各浏览器中的实现</span>
+        <span class="post-archive-title ">CSS3圆角属性在各浏览器中的实现</span>
       </a>
       
       
@@ -831,8 +831,8 @@
 
   <!-- post header -->
   <div class="post-header">
-    <h1>CSS3圆角属性在各浏览器中的实现</h1>
-    <span>2011-02-11</span>
+    <h1>Reborn</h1>
+    <span>2015-10-22</span>
   </div>
 
   <!-- post content -->
@@ -841,78 +841,18 @@
   
 
   <div class="post-content english">
-    <p>圆角属性border-radius在CSS3中出现了，目前为止IE仍然没有支持它... 这里就不浪费口水了。
-根据浏览器所用引擎的不同，圆角的使用方式也略有不同。</p>
-
-<h2>火狐</h2>
-
-<p>firefox目前还不能直接支持border-radius，所以只能使用其特有的属性。
-代码结构：-moz-border-radius: {1,4} | inherit
-如果设置四个角都是一样圆角的话，可以这样</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-moz-border-radius:5px;
-</code></pre></div>
-<p>当然也可根据需要对四个角单独设置，顺序是顺时针从左上开始，上左、上右、下右、下左，</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-moz-border-radius-topleft: 5px;
--moz-border-radius-topright: 5px;
--moz-border-radius-bottomright: 5px;
--moz-border-radius-bottomleft: 5px;
-</code></pre></div>
-<p>也可以用合并起来一起设置</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-moz-border-radius:5px 0 5px 0;
-</code></pre></div>
-<h2>webkit</h2>
-
-<p>Safari, Google Chrome 都是基于Webkit 的。
-代码结构：-webkit-border-radius：{1,2} | inherit;
-如果设置四个角都是一样圆角的话，可以这样</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-webkit-border-radius:3px;
-</code></pre></div>
-<p>如果是单独设置四个角的话，需要采取这种方式</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-webkit-border-top-left-radius:3px 5px;
--webkit-border-top-right-radius:3px 5px;
--webkit-border-bottom-right-radius:3px 5px;
--webkit-border-bottom-left-radius:3px 5px;
-</code></pre></div>
-<p>webkit的每个角都能设置的更加细致，分别对每个角的x、y进行设置，表现出非正圆的弧形，带来的问题就是无法像火狐那样全部合并来写。
-如果是要合并的话，只能使用-webkit-border-radius:3px;或者-webkit-border-radius:3px 5px;</p>
-
-<h2>非window环境</h2>
-
-<p>在Unix/Linux/BSD系统中非火狐浏览器，主要使用KED出品的khtml引擎。
-代码结构：-khtml-border-radius: {1,2} | inherit
-类似于webkit。怎么说呢，虽然是小众，加上也无妨。</p>
-
-<h2>IE</h2>
-
-<p>要不是因为在中国拥有50%以上的占有率还真不想提它，这个恨呐！
-刚在网上翻了翻，还真有解决的办法。
-在样式表里增加行为(behavior)，什么东西？你懂的！以前写hover的时候用过，这里还得用。
-为了兼容IE，可以用以下代码：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-moz-border-radius: 15px;
--khtml-border-radius: 15px;
--webkit-border-radius: 15px;
-border-radius: 15px;
-behavior: url(border-radius.htc);
-</code></pre></div>
-<h2>效果演示</h2>
-
-<p><a href="http://unite.codante.org/development/tester/border-radius/">http://unite.codante.org/development/tester/border-radius/</a>
-下载：<a href="http://codante.org/wp-content/uploads/2011/02/border-radius.zip">border-radius.zip</a></p>
+    <p>I am back</p>
 
   </div>
 
   <!-- post navigator -->
   <div class="post-nav">
     
-    <a class="post-nav-previous" href="http://codante.org/blog/2011/02/11/css-expression-usage-summary.html">CSS Expression（动态属性）用法总结</a>
+    <a class="post-nav-previous" href="http://codante.org/blog/2012/10/31/redis-install-and-configure.html">redis安装及配置</a>
     
 
     
-    <div class="post-nav-sep"></div>
-    
 
-    
-    <a class="post-nav-next" href="http://codante.org/blog/2011/02/11/rendering-engine-trident-gecko-presto-khtml-webcore-webkit.html">浏览器内核(Rendering Engine):Trident、Gecko、Presto、KHTML、WebCore、WebKit</a>
     
   </div>
   <!-- /post navigator -->
