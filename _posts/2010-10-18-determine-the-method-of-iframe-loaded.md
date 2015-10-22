@@ -17,31 +17,17 @@ date: '2010-10-18 12:37:36 +0800'
 date_gmt: '2010-10-18 04:37:36 +0800'
 ---
 
-
-[javascript]  
-
-var iframe = document.createElement("iframe");  
-
-iframe.src = "http://www.planabc.net";  
-
-if (iframe.attachEvent){  
-
-    iframe.attachEvent("onload", function(){  
-
-        alert("Local iframe is now loaded.");  
-
-    });  
-
-} else {  
-
-    iframe.onload = function(){  
-
-        alert("Local iframe is now loaded.");  
-
-    };  
-
-}  
-
-document.body.appendChild(iframe);  
-
-[/javascript]
+```javascript
+var iframe = document.createElement("iframe");
+iframe.src = "http://www.planabc.net";
+if (iframe.attachEvent){
+iframe.attachEvent("onload", function(){
+    alert("Local iframe is now loaded.");
+});
+} else {
+iframe.onload = function(){
+    alert("Local iframe is now loaded.");
+};
+}
+document.body.appendChild(iframe);
+```

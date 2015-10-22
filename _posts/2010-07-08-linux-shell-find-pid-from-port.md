@@ -17,5 +17,6 @@ date: '2010-07-08 10:49:38 +0800'
 date_gmt: '2010-07-08 02:49:38 +0800'
 ---
 
-
-[bash]netstat -lnp|grep 端口号|grep -v grep|sed -n '1p'|awk '{print $7}'|awk -F/ '{print $1}'[/bash]
+```bash
+netstat -lnp|grep 端口号|grep -v grep|sed -n '1p'|awk '{print $7}'|awk -F/ '{print $1}'
+```

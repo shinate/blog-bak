@@ -17,19 +17,14 @@ date: '2010-09-21 13:21:46 +0800'
 date_gmt: '2010-09-21 05:21:46 +0800'
 ---
 
-
 统计访问量最多的前N个IP，倒序排列
 
-[bash]  
-
-cat 日志文件 | awk '{print $1}'|sort|uniq -c|sort -r -n -k1|head -数量  
-
-[/bash]
+```bash
+cat 日志文件 | awk '{print $1}'|sort|uniq -c|sort -r -n -k1|head -数量
+```
 
 统计访问量最多的50个IP，倒序排列，并且排除包含"bot"和"spider"的记录
 
-[bash]  
-
-cat access_20100921.log |egrep -v "bot|spider"| awk '{print $1}'|sort|uniq -c|sort -r -n -k1|head -50  
-
-[/bash]
+```bash
+cat access_20100921.log |egrep -v "bot|spider"| awk '{print $1}'|sort|uniq -c|sort -r -n -k1|head -50
+```

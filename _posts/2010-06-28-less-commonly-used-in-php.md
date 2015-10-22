@@ -18,43 +18,62 @@ date: '2010-06-28 09:20:31 +0800'
 date_gmt: '2010-06-28 01:20:31 +0800'
 ---
 
-
 ### 返回当前class的所有方法
 
-[php]get_class_methods()[/php]
+```php
+get_class_methods()
+```
 
 ### 返回当前页所有加载的文件
 
-[php]get_included_files()[/php]
+```php
+get_included_files()
+```
 
 ### 返回当前页所有class
 
-[php]get_declared_classes()[/php]
+```php
+get_declared_classes()
+```
 
 ### 返回所有的接口
 
-[php]get_declared_interfaces()[/php]
+```php
+get_declared_interfaces()
+```
 
 ### 返回所有的function
 
-[php]get_defined_functions()[/php]
+```php
+get_defined_functions()
+```
 
 ### 返回当前页所有的变量
 
-[php]get_defined_vars()[/php]
+```php
+get_defined_vars()
+```
 
 ### 返回当前用户
 
-[php]get_current_user()[/php]
+```php
+get_current_user()
+```
 
 ### 返回所有常量
 
-[php]get_defined_constants()[/php]
+```php
+get_defined_constants()
+```
 
 ### 获取PHP当前加载的所有扩展
 
-[php]get_loaded_extensions()[/php]
+```php
+get_loaded_extensions()
+```
 
 ### 获取指定扩展的所有方法列表
 
-[php]get_extension_funcs('xml')[/php]
+```php
+get_extension_funcs('xml')
+```

@@ -18,8 +18,6 @@ date: '2010-08-17 11:05:31 +0800'
 date_gmt: '2010-08-17 03:05:31 +0800'
 ---
 
-
 [![祈福][0]][0]
 [0]: http://codante.org/wp-content/uploads/2010/08/la-zhu.jpg
-
 [0]: http://codante.org/wp-content/uploads/2010/08/la-zhu.jpg "祈福"

@@ -17,8 +17,6 @@ date: '2010-11-16 15:07:48 +0800'
 date_gmt: '2010-11-16 07:07:48 +0800'
 ---
 
-
 收藏备用
-
 [http://www.notebookcheck.net/Mobile-Processors-Benchmarklist.2436.0.html][0]
 [0]: http://www.notebookcheck.net/Mobile-Processors-Benchmarklist.2436.0.html

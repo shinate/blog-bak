@@ -18,7 +18,6 @@ date: '2010-11-17 10:15:11 +0800'
 date_gmt: '2010-11-17 02:15:11 +0800'
 ---
 
-
 ## 参数详解
 
 wmode即窗口模式总共有三种，看看当年Macromedia官方的说法：
@@ -29,7 +28,6 @@ wmode即窗口模式总共有三种，看看当年Macromedia官方的说法：
 ### window
 
 默认情况下的显示模式，在这种模式下flash  player有自己的窗口句柄，这就意味着flash影片是存在于Windows中的一个显示实例，并且是在浏览器核心显示窗口之上的，所以flash只 是貌似显示在浏览器中，但这也是flash最快最有效率的渲染模式。由于他是独立于浏览器的HTML渲染表面，这就导致默认显示方式下flash总是会遮 住位置与他重合的所有DHTML层。
-
 但是大多数苹果电脑浏览器会允许DHTML层显示在flash之上，但当flash影片播放时会出现比较诡异的现象，比如DHTML层像被flash刮掉一块一样显示异常。
 
 ### opaque
@@ -39,5 +37,4 @@ wmode即窗口模式总共有三种，看看当年Macromedia官方的说法：
 ### transparent
 
 透明模式，在这种模式下flash  player会将stage的背景色alpha值将为0并且只会绘制stage上真实可见的对象，同样你也可以使用z-index来控制flash影片的 深度值，但是与Opaque模式不同的是这样做会降低flash影片的回放效果，而且在9.0.115之前的flash  player版本设置wmode="opaque"或"transparent"会导致全屏模式失效。
-
 了解了各种模式的实现方式和意义在以后的开发中就可以按照具体情况选择设置wmode属性的值了。

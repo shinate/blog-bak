@@ -18,97 +18,96 @@ date: '2010-06-30 03:08:28 +0800'
 date_gmt: '2010-06-29 19:08:28 +0800'
 ---
 
-
 感谢老男孩赐予的知识。 老男孩（QQ:49000448， mail:49000448@qq.com）
 
 ## 下载源码包
 
-[bash]  
-
-wget http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.41-linux-i686-glibc23.tar.gz/from/http://mysql.cdpa.nsysu.edu.tw/[/bash]
+```bash
+wget http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.41-linux-i686-glibc23.tar.gz/from/http://mysql.cdpa.nsysu.edu.tw/
+```
 
 ## 创建mysql用户
 
-[bash]
-
-groupadd mysql;  
-
+```bash
+groupadd mysql;
 useradd -s /sign/nologin -g mysql -M mysql    \#-s /sign/nologin禁止其他所有的php，cookie。
-
-[/bash]
+```
 
 ## 编译
 
-[bash]  
-
-./configure --prefix=/usr/local/mysql \  
-
---with-unix-socket-path=/usr/local/mysql/tmp/mysql.sock \  
-
---localstatedir=/usr/local/mysql/data \  
-
---enable-assembler \  
-
---with-mysqld-ldflags=-all-static \  
-
---with-client-ldflags=-all-static \  
-
---enable-thread-safe-client \  
-
---with-mysqld-user=mysql \  
-
---with-big-tables \  
-
---without-debug \  
-
+```bash
+./configure --prefix=/usr/local/mysql \
+--with-unix-socket-path=/usr/local/mysql/tmp/mysql.sock \
+--localstatedir=/usr/local/mysql/data \
+--enable-assembler \
+--with-mysqld-ldflags=-all-static \
+--with-client-ldflags=-all-static \
+--enable-thread-safe-client \
+--with-mysqld-user=mysql \
+--with-big-tables \
+--without-debug \
 --with-pthread;
-
-[/bash]
+```
 
 ## 安装
 
-[bash]  
-
-make  
-
-make install  
-
-[/bash]
+```bash
+make
+make install
+```
 
 ## 初始化数据库
 
-拷贝MySQL的配置文件到/etc目录下  
+拷贝MySQL的配置文件到/etc目录下
 
-[bash]cp support-files/my-huge.cnf /etc/my.cnf[/bash]
+```bash
+cp support-files/my-huge.cnf /etc/my.cnf
+```
 
-创建数据文件夹  
+创建数据文件夹
 
-[bash]mkdir -p /usr/local/mysql/data[/bash]
+```bash
+mkdir -p /usr/local/mysql/data
+```
 
-生成mysql.sock  
+生成mysql.sock
 
-[bash]/usr/local/mysql/bin/mysql_install_db --user=mysql[/bash]
+```bash
+/usr/local/mysql/bin/mysql_install_db --user=mysql
+```
 
-将软件的安装目录拥有者改为root用户  
+将软件的安装目录拥有者改为root用户
 
-[bash]chown -R root /usr/local/mysql/[/bash]
+```bash
+chown -R root /usr/local/mysql/
+```
 
-将存放数据库的目录拥有者改为mysql用户  
+将存放数据库的目录拥有者改为mysql用户
 
-[bash]chown -R mysql /usr/local/mysql/data[/bash]
+```bash
+chown -R mysql /usr/local/mysql/data
+```
 
-将软件的安装目录属组改为mysql组  
+将软件的安装目录属组改为mysql组
 
-[bash]chgrp -R mysql /usr/local/mysql/[/bash]
+```bash
+chgrp -R mysql /usr/local/mysql/
+```
 
 ## 启动
 
-[bash]/usr/local/mysql/bin/mysqld_safe --user=mysql &[/bash]
+```bash
+/usr/local/mysql/bin/mysqld_safe --user=mysql &
+```
 
 ## 添加开机启动
 
-[bash]vi /etc/rc.local[/bash]
+```bash
+vi /etc/rc.local
+```
 
 添加一行
 
-[code]/usr/local/mysql/bin/mysqld_safe --user=mysql &[/code]
+```code
+/usr/local/mysql/bin/mysqld_safe --user=mysql &
+```

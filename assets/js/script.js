@@ -48,6 +48,13 @@ $(document).ready(function () {
         });
     }
 
+    var post_archive = $('.post-archive');
+    if (post_archive.length) {
+        var post_archive_iterms = $('.post-archive-iterms');
+        var post_archive_currentiterm = post_archive_iterms.find('.checked').parent();
+
+        post_archive.scrollTop(post_archive_currentiterm.position().top - (post_archive.height() - post_archive_currentiterm.height()) / 2);
+    }
     //if (window.matchMedia('(min-width: 769px)').matches) {
     //    $(".post-archive").css("top", "");
     //}

@@ -17,8 +17,6 @@ date: '2011-02-09 16:21:37 +0800'
 date_gmt: '2011-02-09 08:21:37 +0800'
 ---
 
-
 显卡的型号满天飞，新旧、性能很混乱，无论是攒机还是买本，先看一下，免得被忽悠了。
-
 [http://www.notebookcheck.net/Mobile-Graphics-Cards-Benchmark-List.844.0.html][0]
 [0]: http://www.notebookcheck.net/Mobile-Graphics-Cards-Benchmark-List.844.0.html

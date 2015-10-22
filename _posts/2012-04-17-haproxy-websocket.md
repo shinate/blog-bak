@@ -17,12 +17,11 @@ date: '2012-04-17 11:39:56 +0800'
 date_gmt: '2012-04-17 03:39:56 +0800'
 ---
 
-
-    [code]
-    frontend all 0.0.0.0:80
-       timeout client 86400000
-       default_backend www_backend
-       acl is_websocket hdr(Upgrade) -i WebSocket
-       acl is_websocket hdr_beg(Host) -i ws
-       use_backend socket_backend if is_websocket
-    [/code]
+```code
+frontend all 0.0.0.0:80
+   timeout client 86400000
+   default_backend www_backend
+   acl is_websocket hdr(Upgrade) -i WebSocket
+   acl is_websocket hdr_beg(Host) -i ws
+   use_backend socket_backend if is_websocket
+```

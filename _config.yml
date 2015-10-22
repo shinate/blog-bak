@@ -14,6 +14,11 @@ disqus_shortname: # disqus_shortname for disqus comment system
 twitter_username: shine.wangrs@gmail.com
 github_username:  shine.wangrs@gmail.com
 
+# highlight
+highlighter: true
+markdown: redcarpet
+# markdown: kramdown
+
+
 # Build settings
-markdown: kramdown
 exclude: [node_modules, src, gulpfile.js, package.json]

@@ -17,9 +17,9 @@ date: '2011-11-16 20:03:39 +0800'
 date_gmt: '2011-11-16 12:03:39 +0800'
 ---
 
-
 ## 常见的
-* 200 - OK，服务器成功返回网页  
+
+* 200 - OK，服务器成功返回网页
   
   - Standard response for successful HTTP requests.
 * 301 - Moved Permanently（永久跳转），请求的网页已永久跳转到新位置。  
@@ -55,6 +55,7 @@ date_gmt: '2011-11-16 12:03:39 +0800'
   - The server was acting as a gateway or proxy and did not receive a timely response from the upstream server.
 
 ## 其他
+
 * 100 : Continue
 * 101 : Switching Protocols
 * 102 : Processing

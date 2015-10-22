@@ -17,22 +17,17 @@ date: '2010-10-12 19:10:09 +0800'
 date_gmt: '2010-10-12 11:10:09 +0800'
 ---
 
-
 ## VI
 
 对某个文件进行处理
 
-[bash]  
+```bash
+vi filename
+```
 
-vi filename  
-
-[/bash]  
-
-[code]  
-
-:%s/^M/\r/g  
-
-[/code]
+```code
+:%s/^M/\r/g
+```
 
 ## SED方法
 
@@ -40,13 +35,10 @@ vi filename
 
 可对多文件批量处理
 
-[bash]  
+```bash
+perl -p -i -e "s/^M//g" `find .`
+```
 
-perl -p -i -e "s/^M//g" `find .`  
-
-[/bash]
 * `find .` 可以替换为任何文件或者多个文件，它的作用为提取所需的文件名。
-
 ***注意：^M字符需要使用 Ctrl+v+m来输入**
-
 持续......

@@ -18,39 +18,28 @@ date: '2010-07-02 18:10:48 +0800'
 date_gmt: '2010-07-02 10:10:48 +0800'
 ---
 
-
 ## 清空文档
 
-[bash]  
+```bash
+echo ""&gt;filename
+```
 
-echo ""&gt;filename  
+```bash
+&gt;filename
+```
 
-[/bash]  
-
-[bash]  
-
-&gt;filename  
-
-[/bash]  
-
-[bash]  
-
-cat /dev/null &gt;filename  
-
-[/bash]
+```bash
+cat /dev/null &gt;filename
+```
 
 ## 统计
 
-**在apache的log中找出访问次数最多的10个IP。**  
+**在apache的log中找出访问次数最多的10个IP。**
 
-[bash]  
+```bash
+awk '{print $1}' apache_log |sort |uniq -c|sort -nr|head
+```
 
-awk '{print $1}' apache_log |sort |uniq -c|sort -nr|head  
-
-[/bash]  
-
-[bash]  
-
-cat xxxxx | awk '{print $2}'|sort|uniq -c|sort -nr| head -10  
-
-[/bash]
+```bash
+cat xxxxx | awk '{print $2}'|sort|uniq -c|sort -nr| head -10
+```

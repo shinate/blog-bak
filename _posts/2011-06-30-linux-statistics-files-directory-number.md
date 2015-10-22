@@ -17,30 +17,29 @@ date: '2011-06-30 10:59:37 +0800'
 date_gmt: '2011-06-30 02:59:37 +0800'
 ---
 
-
 统计当前目录下的文件以及目录数量（不包括子目录）
 
-    [bash]
-    ls -l | wc -l
-    [/bash]
+```bash
+ls -l | wc -l
+```
 
 统计当前目录下的文件数量（遍历所有子目录）
 
-    [bash]
-    find . -type f | wc -l
-    [/bash]
+```bash
+find . -type f | wc -l
+```
 
 统计当前目录下的目录数量（遍历所有子目录）
 
-    [bash]
-    find . -type d |  wc -l
-    [/bash]
+```bash
+find . -type d |  wc -l
+```
 
 当然，也可以指定某个目录来使用
 
-    [bash]
-    find /xxx/yyy ......
-    ls -l /xxx/yyy......
-    [/bash]
+```bash
+find /xxx/yyy ......
+ls -l /xxx/yyy......
+```
 
-    [bash]
+```bash

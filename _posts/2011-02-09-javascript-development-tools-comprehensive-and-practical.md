@@ -18,9 +18,9 @@ date: '2011-02-09 17:05:27 +0800'
 date_gmt: '2011-02-09 09:05:27 +0800'
 ---
 
-
 ## 测试器
-* [JSLint --JavaScript的验证器][0]  
+
+* [JSLint --JavaScript的验证器][0]
   
   JSLint取得一个JavaScript源代码并对其扫描。如果发现问题，它送回信息描述问题状况及在源代码中的大概位置。问题不一定就出在句法上，不过常常正是这里出错。JSLint查看一些风格约定和结构问题，它证明不了程序是否正确。它只是提供了另一双眼睛来帮助发现问题。
 * [JsUnit][1]  
@@ -43,7 +43,8 @@ date_gmt: '2011-02-09 09:05:27 +0800'
   JavaScriptMVC的测试库提供事件模拟，单元测试，Ajax 夹具，和一个控制台程序。
 
 ## 调试工具
-* [Javascript调试工具包][7]  
+
+* [Javascript调试工具包][7]
   
   JavaScript调试工具包是一种跨浏览器调试JavaScript的eclipse plugin，它可以在IE,Firefox,Safari,Chrome,Opera甚至是移动浏览器上调试JavaScript。
 * [Firebug][8]  
@@ -66,7 +67,8 @@ date_gmt: '2011-02-09 09:05:27 +0800'
   许多JavaScript开发者仅仅使用alert()来显示各种信息调试代码。Blackbird在JavaScript上提供了记录信息的简单方式以及一个引人注意的控制台程序来察看并过滤信息。
 
 ## HTTP监控
-* [Fiddler][15]  
+
+* [Fiddler][15]
   
   Fiddler是一种Web调试代理，它记录你的电脑和网络之间所有的HTTP(S)流量。可以用Fiddler检查所有HTTP(S)流量，设置断点，干涉进来或出去的数据。
 * [TamperData][16]  
@@ -77,7 +79,8 @@ date_gmt: '2011-02-09 09:05:27 +0800'
   可以在浏览的时候查看网页的HTTP headers。可以用Live HTTP Headers调试网页应用程序，找出远端网站使用的是那种网站服务器，或者查看远端网站发送的小数据文件。
 
 ## 文件
-* [jGrouseDoc][18]  
+
+* [jGrouseDoc][18]
   
   jGrouseDoc可以从源代码中的注释生成API文件。你可以用这个工具记载你需要的所有构造------不仅有函数和变量，还有类文件包，界面，命名空间，包和其它。使用那种JavaScript框架是无关紧要的------你可以不采取框架或工具强加的方式而以自己希望的方式记录代码，
 * [JSDoc Toolkit][19]  
@@ -85,7 +88,8 @@ date_gmt: '2011-02-09 09:05:27 +0800'
   JavaScript的一种文件产生器，以JavaScript形式写成；它自动从加注的JavaScript源代码中生成格式模版化，多页面HTML（或XML, JSON, 抑或其它文本）。
 
 ## 压缩
-* [Online Javascript Compression Tool][20]  
+
+* [Online Javascript Compression Tool][20]
   
   一个可以用一些压缩算法如[JSMin][21] 和 [Packer][22]压缩JavaScript文件的在线JavaScript压缩器。压缩的JavaScript文件是生产环境中的理想文件，因为它们常常将文件大小减小30-90%。在很大程度上，文件尺寸的缩小是通过除去网页浏览者或访问者不需要的注释和多余的空格字符来实现的。
 * [Scriptalizer][23]  
@@ -99,7 +103,8 @@ date_gmt: '2011-02-09 09:05:27 +0800'
   The YUI Compressor是一种JavaScript压缩器。去除注释和空格之外，它还可以用最小可用变量名混淆局部变量。即使在使用'eval'或'with'之类构造（在这些情况下压缩并不合适），这种混淆也是安全的。与jsmin相比，它平均节省20%。
 
 ## 格式化
-* [JavaScript代码美化工具][26]  
+
+* [JavaScript代码美化工具][26]
   
   这个美化工具可处理散乱或压缩的JavaScript代码，不断对其进行快速的格式化并使其可读。编辑程序&集成开发环境
 * [Aptana Studio][27]  
@@ -113,7 +118,8 @@ date_gmt: '2011-02-09 09:05:27 +0800'
   Spket IDE是JavaScript和XML开发功能强大的工具包。JavaScript, XUL/XBL and Yahoo! Widget开发功能强大的编辑器。JavaScript编辑器有代码完成，语法高亮显示和内容概要等功能，这些功能帮助开发者高效制作出有效的JavaScript代码。Spket IDE为非商业用途免费提供。
 
 ## 其它工具
-* [Google的 AJAX APIs Playground][32]  
+
+* [Google的 AJAX APIs Playground][32]
   
   AJAX API Playground装载有Google JavaScript APIs（Maps, Search, Feeds, Calendar, Visualization, Language, Blogger, Libraries和 Earth,等等）例子，你可以编辑运行这些例子帮助你探究Google的APIs可提供的功能。同时也还有保存和输出功能。你可以用保存功能保持编辑的例子以留待以后使用。而输出功能可用来修改例子并把代码公布在一个永久的URL上。
 * [QuirksMode -- 相容性表 ][33]  
@@ -133,7 +139,8 @@ date_gmt: '2011-02-09 09:05:27 +0800'
   一个制作规则表达的在线工具。
 
 ## 其它浏览器扩展
-* [Firefox, Flock & Seamonkey的网络开发人员扩展][38]  
+
+* [Firefox, Flock & Seamonkey的网络开发人员扩展][38]
   
   网络开发人员拓展在浏览器中增加了一个菜单和工具条，其中包含许多网络开发工具包括能使你的XHTML生效，发现JavaScript/CSS的错误，网页结构可视化，测试网络表单，改变运行中的XHTML，检查HTTP头信息等等。
 * [Opera Dragonfly][39]  

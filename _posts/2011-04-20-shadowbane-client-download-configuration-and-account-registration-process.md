@@ -18,7 +18,6 @@ date: '2011-04-20 13:39:57 +0800'
 date_gmt: '2011-04-20 05:39:57 +0800'
 ---
 
-
 [![][0]][0]
 
 ## 下载客户端
@@ -28,18 +27,18 @@ date_gmt: '2011-04-20 05:39:57 +0800'
 ## 安装及配置
 
 绿色无公害版本，解压即可，然后在游戏目录里面的CONFIG子目录下，找到ArcaneIP.CFG文件，这个文件是服务器及端口地址。
-
 用记事本打开，删掉里面所有的内容，输入
 
-    [code]
-    SERVER= logon.playtocrush.com
-    PORT= 6000
-    [/code]
+```code
+SERVER= logon.playtocrush.com
+PORT= 6000
+```
 
 **"="后面必须带空格！**
 
 ## 注册账号
-1. 进入论坛 [http://www.playtocrush.com/forums/  
+
+1. 进入论坛 [http://www.playtocrush.com/forums/
   ][3][![][1]][4]
 2. 顶部菜单条最左边，点击Register；
  勾选I have read, and agree to abide by the Shadowbane Emulator rules，确定；
@@ -69,10 +68,8 @@ date_gmt: '2011-04-20 05:39:57 +0800'
 
 ## 创建游戏账号
 
-点击顶部横条第一个User CP（就是登陆之前register的位置）进入用户设置中心。点击左面第一个蓝条下面**Create Game Account**，勾选I agree to  the terms and conditions，下面按键确认，这是激活游戏账号。可以重复操作，最多激活三个账号，格式是你的论坛账户名_2，_3  
-
+点击顶部横条第一个User CP（就是登陆之前register的位置）进入用户设置中心。点击左面第一个蓝条下面**Create Game Account**，勾选I agree to  the terms and conditions，下面按键确认，这是激活游戏账号。可以重复操作，最多激活三个账号，格式是你的论坛账户名_2，_3
 左边的List Game Accounts，是查看你激活的游戏账号列表。
-
 游戏密码就是你论坛的密码。自此，功德圆满~ 挥汗，准备洒泪吧，久违的SB。ogon.playtocrush.com
 [0]: http://codante.org/wp-content/uploads/2011/04/logo_shadowbane.jpg
 [1]: http://tracker.btarena.org/download.php?id=54402&name=Shadowbane%20-%20Throne%20of%20Oblivion.rar.torrent
@@ -80,7 +77,6 @@ date_gmt: '2011-04-20 05:39:57 +0800'
 [3]: http://www.playtocrush.com/forums/
 [4]: http://codante.org/wp-content/uploads/2011/04/注册入口.jpg
 [5]: http://codante.org/wp-content/uploads/2011/04/填写注册信息.jpg
-
 [0]: http://codante.org/wp-content/uploads/2011/04/logo_shadowbane.jpg "logo_shadowbane"
 [1]: http://codante.org/wp-content/uploads/2011/04/注册入口.jpg "注册入口"
 [2]: http://codante.org/wp-content/uploads/2011/04/填写注册信息.jpg "填写注册信息"

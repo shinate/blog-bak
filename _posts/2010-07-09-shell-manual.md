@@ -20,14 +20,11 @@ date: '2010-07-09 11:56:41 +0800'
 date_gmt: '2010-07-09 03:56:41 +0800'
 ---
 
-
 最近在学习简单的shell写一些监控和脚本，实现更简洁的功能操作过程。
-
 先把手册放上来，如果浏览器装有PDF阅读插件，那么直接可看。下载请右键另存为即可。
 
 ## 下载
 
-[Shell手册.pdf][0]  
-
+[Shell手册.pdf][0]
 [downloadcounter(Shell_Manual.pdf)][downloadsize(Shell_Manual.pdf)][downloadupdated(Shell_Manual.pdf)]
 [0]: [download(Shell_Manual.pdf)]
