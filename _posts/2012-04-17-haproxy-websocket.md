@@ -17,7 +17,7 @@ date: '2012-04-17 11:39:56 +0800'
 date_gmt: '2012-04-17 03:39:56 +0800'
 ---
 
-```
+```ini
 frontend all 0.0.0.0:80
    timeout client 86400000
    default_backend www_backend

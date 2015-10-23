@@ -843,12 +843,12 @@
   
 
   <div class="post-content english">
-    <div class="highlight"><pre><code class="language-text" data-lang="text">frontend all 0.0.0.0:80
-   timeout client 86400000
-   default_backend www_backend
-   acl is_websocket hdr(Upgrade) -i WebSocket
-   acl is_websocket hdr_beg(Host) -i ws
-   use_backend socket_backend if is_websocket
+    <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">frontend</span> <span class="err">all</span> <span class="err">0.0.0.0:80</span>
+   <span class="err">timeout</span> <span class="err">client</span> <span class="err">86400000</span>
+   <span class="err">default_backend</span> <span class="err">www_backend</span>
+   <span class="err">acl</span> <span class="err">is_websocket</span> <span class="err">hdr(Upgrade)</span> <span class="err">-i</span> <span class="err">WebSocket</span>
+   <span class="err">acl</span> <span class="err">is_websocket</span> <span class="err">hdr_beg(Host)</span> <span class="err">-i</span> <span class="err">ws</span>
+   <span class="err">use_backend</span> <span class="err">socket_backend</span> <span class="err">if</span> <span class="err">is_websocket</span>
 </code></pre></div>
   </div>
 

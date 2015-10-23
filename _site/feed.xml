@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Oct 2015 11:14:23 +0800</pubDate>
-    <lastBuildDate>Fri, 23 Oct 2015 11:14:23 +0800</lastBuildDate>
+    <pubDate>Fri, 23 Oct 2015 11:47:10 +0800</pubDate>
+    <lastBuildDate>Fri, 23 Oct 2015 11:47:10 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -1159,12 +1159,12 @@ php&lt;/p&gt;
     
       <item>
         <title>haproxy设置websocket</title>
-        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;frontend all 0.0.0.0:80
-   timeout client 86400000
-   default_backend www_backend
-   acl is_websocket hdr(Upgrade) -i WebSocket
-   acl is_websocket hdr_beg(Host) -i ws
-   use_backend socket_backend if is_websocket
+        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;err&quot;&gt;frontend&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;0.0.0.0:80&lt;/span&gt;
+   &lt;span class=&quot;err&quot;&gt;timeout&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;86400000&lt;/span&gt;
+   &lt;span class=&quot;err&quot;&gt;default_backend&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;www_backend&lt;/span&gt;
+   &lt;span class=&quot;err&quot;&gt;acl&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;is_websocket&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;hdr(Upgrade)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;WebSocket&lt;/span&gt;
+   &lt;span class=&quot;err&quot;&gt;acl&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;is_websocket&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;hdr_beg(Host)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;ws&lt;/span&gt;
+   &lt;span class=&quot;err&quot;&gt;use_backend&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;socket_backend&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;is_websocket&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Tue, 17 Apr 2012 11:39:56 +0800</pubDate>
         <link>http://codante.org/blog/2012/04/17/haproxy-websocket.html</link>
