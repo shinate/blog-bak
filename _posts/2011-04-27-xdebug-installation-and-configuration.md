@@ -27,7 +27,7 @@ wget http://www.xdebug.org/files/xdebug-2.1.1.tgz
 
 ```bash
 cd xdebug-2.1.1
-\#创建configure
+#创建configure
 /servers/app/php/bin/phpize
 ./configure --enable-xdebug --with-php-config=/servers/app/php/bin/php-config
 make
@@ -50,7 +50,7 @@ zend_extension=/servers/app/php/lib/php/extensions/no-debug-non-zts-20090626/xde
 
 关于xdebug配置的一些说明
 
-```
+```ini
 ;xdebug配置
 [Xdebug]
 ;开启自动跟踪
