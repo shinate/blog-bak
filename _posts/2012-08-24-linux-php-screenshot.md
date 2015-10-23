@@ -44,7 +44,7 @@ exec('/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png');
 具体的使用方法
 
 ```php
-&lt;?php
+<?php
 ob_start();
 //如果将输出的文件名设置为'-'，则直接返回文件数据流
 passthru('/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -');
@@ -55,7 +55,7 @@ $content = ob_get_clean();
 //直接输出为图片
 header("Content-type: image/png");
 echo $content;
-?&gt;
+?>
 ```
 
 ### 中文乱码问题

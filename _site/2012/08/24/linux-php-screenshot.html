@@ -175,14 +175,6 @@
       
       
       
-      <a class="post-archive-iterm" href="http://codante.org/blog/2011/03/15/css-compatible-with-all-browsers-translucent-background-opaque-text.html">
-        <span class="post-archive-date">2011-03-15</span>
-        <span class="post-archive-title ">兼容各浏览器的半透明背景且不透明文字的CSS写法</span>
-      </a>
-      
-      
-      
-      
       <a class="post-archive-iterm" href="http://codante.org/blog/2011/03/08/date-with-aquarium-in-early-spring.html">
         <span class="post-archive-date">2011-03-08</span>
         <span class="post-archive-title ">初春我与海洋馆的约会</span>
@@ -862,18 +854,18 @@ php</p>
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">exec(&#39;/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png&#39;);</span>
 </code></pre></div>
 <p>具体的使用方法</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">&amp;lt;?php</span>
-<span class="x">ob_start();</span>
-<span class="x">//如果将输出的文件名设置为&#39;-&#39;，则直接返回文件数据流</span>
-<span class="x">passthru(&#39;/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -&#39;);</span>
-<span class="x">$fileName = self::cachePath() . &#39;/&#39; . self::name();</span>
-<span class="x">$content = ob_get_clean();</span>
-<span class="x">//写入图片文件，备用</span>
-<span class="x">//file_put_contents($fileName, $content);</span>
-<span class="x">//直接输出为图片</span>
-<span class="x">header(&quot;Content-type: image/png&quot;);</span>
-<span class="x">echo $content;</span>
-<span class="x">?&amp;gt;</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nb">ob_start</span><span class="p">();</span>
+<span class="c1">//如果将输出的文件名设置为&#39;-&#39;，则直接返回文件数据流</span>
+<span class="nb">passthru</span><span class="p">(</span><span class="s1">&#39;/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -&#39;</span><span class="p">);</span>
+<span class="nv">$fileName</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">cachePath</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="nx">self</span><span class="o">::</span><span class="na">name</span><span class="p">();</span>
+<span class="nv">$content</span> <span class="o">=</span> <span class="nb">ob_get_clean</span><span class="p">();</span>
+<span class="c1">//写入图片文件，备用</span>
+<span class="c1">//file_put_contents($fileName, $content);</span>
+<span class="c1">//直接输出为图片</span>
+<span class="nb">header</span><span class="p">(</span><span class="s2">&quot;Content-type: image/png&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$content</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h3>中文乱码问题</h3>
 

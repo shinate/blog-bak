@@ -175,14 +175,6 @@
       
       
       
-      <a class="post-archive-iterm" href="http://codante.org/blog/2011/03/15/css-compatible-with-all-browsers-translucent-background-opaque-text.html">
-        <span class="post-archive-date">2011-03-15</span>
-        <span class="post-archive-title ">兼容各浏览器的半透明背景且不透明文字的CSS写法</span>
-      </a>
-      
-      
-      
-      
       <a class="post-archive-iterm" href="http://codante.org/blog/2011/03/08/date-with-aquarium-in-early-spring.html">
         <span class="post-archive-date">2011-03-08</span>
         <span class="post-archive-title ">初春我与海洋馆的约会</span>
@@ -844,82 +836,83 @@
 
   <div class="post-content english">
     <p>configure 脚本确定系统所具有一些特性，特别是 nginx 用来处理连接的方法。然后，它创建 Makefile 文件。
-在nginx安装完成后有一些配置信息是无法更改的，所以在创建makefile时需要对一些参数进行修改。在<a href="#%E9%99%84%E5%BD%951"><strong>附录1</strong></a>中列举了所有的configure所支持的参数。</p>
+在nginx安装完成后有一些配置信息是无法更改的，所以在创建makefile时需要对一些参数进行修改。在[<strong>附录1</strong>][0]中列举了所有的configure所支持的参数。</p>
 
-<h2><a href="123">附<strong>录1</strong></a></h2>
+<h2>[附<strong>录1</strong>][1]</h2>
 
-<p>configure 所有支持的选项
-* <strong>--prefix=</strong>&lt;path&gt; - Nginx安装路径。如果没有指定，默认为 /usr/local/nginx。
-* <strong>--sbin-path=</strong>&lt;path&gt; - Nginx可执行文件安装路径。只能安装时指定，如果没有指定，默认为&lt;prefix&gt;/sbin/nginx。
-* <strong>--conf-path=</strong>&lt;path&gt; - 在没有给定-c选项下默认的nginx.conf的路径。如果没有指定，默认为&lt;prefix&gt;/conf/nginx.conf。
-* <strong>--pid-path=</strong>&lt;path&gt; - 在nginx.conf中没有指定pid指令的情况下，默认的nginx.pid的路径。如果没有指定，默认为 &lt;prefix&gt;/logs/nginx.pid。
-* <strong>--lock-path=</strong>&lt;path&gt; - nginx.lock文件的路径。
-* <strong>--error-log-path=</strong>&lt;path&gt; - 在nginx.conf中没有指定error<em>log指令的情况下，默认的错误日志的路径。如果没有指定，默认为 &lt;prefix&gt;/logs/error.log。
-* <strong>--http-log-path=</strong>&lt;path&gt; - 在nginx.conf中没有指定access</em>log指令的情况下，默认的访问日志的路径。如果没有指定，默认为 &lt;prefix&gt;/logs/access.log。
-* <strong>--user=</strong>&lt;user&gt; - 在nginx.conf中没有指定user指令的情况下，默认的nginx使用的用户。如果没有指定，默认为 nobody。
-* <strong>--group=</strong>&lt;group&gt; - 在nginx.conf中没有指定user指令的情况下，默认的nginx使用的组。如果没有指定，默认为 nobody。
-* <strong>--builddir=DIR</strong> - 指定编译的目录
-* <strong>--with-rtsig_module</strong> - 启用 rtsig 模块
-* <strong>--with-select_module</strong><strong>--without-select_module</strong> - Whether or not to enable the select module. This module is enabled by default if a more suitable method such as kqueue, epoll, rtsig or /dev/poll is not discovered by configure.
-* //允许或不允许开启SELECT模式，如果 configure 没有找到更合适的模式，比如：kqueue(sun os),epoll (linux kenel 2.6+), rtsig(实时信号)或者/dev/poll(一种类似select的模式，底层实现与SELECT基本相 同，都是采用轮训方法) SELECT模式将是默认安装模式
-* <strong>--with-poll_module</strong><strong>--without-poll_module</strong> - Whether or not to enable the poll module. This module is enabled by default if a more suitable method such as kqueue, epoll, rtsig or /dev/poll is not discovered by configure.
-* <strong>--with-http<em>ssl</em>module</strong> - Enable ngx<em>http</em>ssl<em>module. Enables SSL support and the ability to handle HTTPS requests. Requires OpenSSL. On Debian, this is libssl-dev.
-* //开启HTTP SSL模块，使NGINX可以支持HTTPS请求。这个模块需要已经安装了OPENSSL，在DEBIAN上是libssl-dev
-* **--with-http</em>realip<em>module** - 启用 ngx</em>http<em>realip</em>module
-* <strong>--with-http<em>addition</em>module</strong> - 启用 ngx<em>http</em>addition<em>module
-* **--with-http</em>sub<em>module** - 启用 ngx</em>http<em>sub</em>module
-* <strong>--with-http<em>dav</em>module</strong> - 启用 ngx<em>http</em>dav<em>module
-* **--with-http</em>flv<em>module** - 启用 ngx</em>http<em>flv</em>module
-* <strong>--with-http<em>stub</em>status_module</strong> - 启用 &quot;server status&quot; 页
-* <strong>--without-http<em>charset</em>module</strong> - 禁用 ngx<em>http</em>charset<em>module
-* **--without-http</em>gzip<em>module** - 禁用 ngx</em>http<em>gzip</em>module. 如果启用，需要 zlib 。
-* <strong>--without-http<em>ssi</em>module</strong> - 禁用 ngx<em>http</em>ssi<em>module
-* **--without-http</em>userid<em>module** - 禁用 ngx</em>http<em>userid</em>module
-* <strong>--without-http<em>access</em>module</strong> - 禁用 ngx<em>http</em>access<em>module
-* **--without-http</em>auth<em>basic</em>module** - 禁用 ngx<em>http</em>auth<em>basic</em>module
-* <strong>--without-http<em>autoindex</em>module</strong> - 禁用 ngx<em>http</em>autoindex<em>module
-* **--without-http</em>geo<em>module** - 禁用 ngx</em>http<em>geo</em>module
-* <strong>--without-http<em>map</em>module</strong> - 禁用 ngx<em>http</em>map<em>module
-* **--without-http</em>referer<em>module** - 禁用 ngx</em>http<em>referer</em>module
-* <strong>--without-http<em>rewrite</em>module</strong> - 禁用 ngx<em>http</em>rewrite<em>module. 如果启用需要 PCRE 。
-* **--without-http</em>proxy<em>module** - 禁用 ngx</em>http<em>proxy</em>module
-* <strong>--without-http<em>fastcgi</em>module</strong> - 禁用 ngx<em>http</em>fastcgi<em>module
-* **--without-http</em>memcached<em>module** - 禁用 ngx</em>http<em>memcached</em>module
-* <strong>--without-http<em>limit</em>zone_module</strong> - 禁用 ngx<em>http</em>limit<em>zone</em>module
-* <strong>--without-http<em>empty</em>gif_module</strong> - 禁用 ngx<em>http</em>empty<em>gif</em>module
-* <strong>--without-http<em>browser</em>module</strong> - 禁用 ngx<em>http</em>browser<em>module
-* **--without-http</em>upstream<em>ip</em>hash<em>module** - 禁用 ngx</em>http<em>upstream</em>ip<em>hash</em>module
-* <strong>--with-http<em>perl</em>module</strong> - 启用 ngx<em>http</em>perl<em>module
-* **--with-perl</em>modules<em>path=PATH** - 指定 perl 模块的路径
-* <strong>--with-perl=PATH</strong> - 指定 perl 执行文件的路径
-* <strong>--http-log-path=PATH</strong> - Set path to the http access log
-* <strong>--http-client-body-temp-path=PATH</strong> - Set path to the http client request body temporary files
-* <strong>--http-proxy-temp-path=PATH</strong> - Set path to the http proxy temporary files
-* <strong>--http-fastcgi-temp-path=PATH</strong> - Set path to the http fastcgi temporary files
-* <strong>--without-http</strong> - 禁用 HTTP server
-* <strong>--with-mail</strong> - 启用 IMAP4/POP3/SMTP 代理模块
-* **--with-mail</em>ssl<em>module** - 启用 ngx</em>mail<em>ssl</em>module
-* <strong>--with-cc=PATH</strong> - 指定 C 编译器的路径
-* <strong>--with-cpp=PATH</strong> - 指定 C 预处理器的路径
-* <strong>--with-cc-opt=OPTIONS</strong> - Additional parameters which will be added to the variable CFLAGS. With the use of the system library PCRE in FreeBSD, it is necessary to indicate --with-cc-opt=&quot;-I /usr/local/include&quot;. If we are using select() and it is necessary to increase the number of file descriptors, then this also can be assigned here: --with-cc-opt=&quot;-D FD_SETSIZE=2048&quot;.
-* <strong>--with-ld-opt=OPTIONS</strong> - Additional parameters passed to the linker. With the use of the system library PCRE in FreeBSD, it is necessary to indicate --with-ld-opt=&quot;-L /usr/local/lib&quot;.
-* <strong>--with-cpu-opt=CPU</strong> - 为特定的 CPU 编译，有效的值包括：pentium, pentiumpro, pentium3, pentium4, athlon, opteron, amd64, sparc32, sparc64, ppc64
-* <strong>--without-pcre</strong> - 禁止 PCRE 库的使用。同时也会禁止 HTTP rewrite 模块。在 &quot;location&quot; 配置指令中的正则表达式也需要 PCRE 。
-* <strong>--with-pcre=DIR</strong> - 指定 PCRE 库的源代码的路径。
-* <strong>--with-pcre-opt=OPTIONS</strong> - Set additional options for PCRE building.
-* <strong>--with-md5=DIR</strong> - Set path to md5 library sources.
-* <strong>--with-md5-opt=OPTIONS</strong> - Set additional options for md5 building.
-* <strong>--with-md5-asm</strong> - Use md5 assembler sources.
-* <strong>--with-sha1=DIR</strong> - Set path to sha1 library sources.
-* <strong>--with-sha1-opt=OPTIONS</strong> - Set additional options for sha1 building.
-* <strong>--with-sha1-asm</strong> - Use sha1 assembler sources.
-* <strong>--with-zlib=DIR</strong> - Set path to zlib library sources.
-* <strong>--with-zlib-opt=OPTIONS</strong> - Set additional options for zlib building.
-* <strong>--with-zlib-asm=CPU</strong> - Use zlib assembler sources optimized for specified CPU, valid values are: pentium, pentiumpro
-* <strong>--with-openssl=DIR</strong> - Set path to OpenSSL library sources
-* <strong>--with-openssl-opt=OPTIONS</strong> - Set additional options for OpenSSL building
-* <strong>--with-debug</strong> - 启用调试日志
-* <strong>--add-module=PATH</strong> - 在指定的目录中查找并添加第三方模块</p>
+<p>configure 所有支持的选项</p>
+
+<ul>
+<li><strong>-prefix=</strong>&lt;path&gt; - Nginx安装路径。如果没有指定，默认为 /usr/local/nginx。</li>
+<li><strong>-sbin-path=</strong>&lt;path&gt; - Nginx可执行文件安装路径。只能安装时指定，如果没有指定，默认为&lt;prefix&gt;/sbin/nginx。</li>
+<li><strong>-conf-path=</strong>&lt;path&gt; - 在没有给定-c选项下默认的nginx.conf的路径。如果没有指定，默认为&lt;prefix&gt;/conf/nginx.conf。</li>
+<li><strong>-pid-path=</strong>&lt;path&gt; - 在nginx.conf中没有指定pid指令的情况下，默认的nginx.pid的路径。如果没有指定，默认为 &lt;prefix&gt;/logs/nginx.pid。</li>
+<li><strong>-lock-path=</strong>&lt;path&gt; - nginx.lock文件的路径。</li>
+<li><strong>-error-log-path=</strong>&lt;path&gt; - 在nginx.conf中没有指定error_log指令的情况下，默认的错误日志的路径。如果没有指定，默认为 &lt;prefix&gt;/logs/error.log。</li>
+<li><strong>-http-log-path=</strong>&lt;path&gt; - 在nginx.conf中没有指定access_log指令的情况下，默认的访问日志的路径。如果没有指定，默认为 &lt;prefix&gt;/logs/access.log。</li>
+<li><strong>-user=</strong>&lt;user&gt; - 在nginx.conf中没有指定user指令的情况下，默认的nginx使用的用户。如果没有指定，默认为 nobody。</li>
+<li><strong>-group=</strong>&lt;group&gt; - 在nginx.conf中没有指定user指令的情况下，默认的nginx使用的组。如果没有指定，默认为 nobody。</li>
+<li><strong>-builddir=DIR</strong> - 指定编译的目录</li>
+<li><strong>-with-rtsig_module</strong> - 启用 rtsig 模块</li>
+<li><strong>-with-select<em>module --without-select</em>module</strong> - Whether or not to enable the select module. This module is enabled by default if a more suitable method such as kqueue, epoll, rtsig or /dev/poll is not discovered by configure. 允许或不允许开启SELECT模式，如果 configure 没有找到更合适的模式，比如：kqueue(sun os),epoll (linux kenel 2.6+), rtsig(实时信号)或者/dev/poll(一种类似select的模式，底层实现与SELECT基本相 同，都是采用轮训方法) SELECT模式将是默认安装模式</li>
+<li><strong>-with-poll<em>module --without-poll</em>module</strong> - Whether or not to enable the poll module. This module is enabled by default if a more suitable method such as kqueue, epoll, rtsig or /dev/poll is not discovered by configure.</li>
+<li><strong>-with-http<em>ssl</em>module</strong> - Enable ngx<em>http</em>ssl_module. Enables SSL support and the ability to handle HTTPS requests. Requires OpenSSL. On Debian, this is libssl-dev. //开启HTTP SSL模块，使NGINX可以支持HTTPS请求。这个模块需要已经安装了OPENSSL，在DEBIAN上是libssl-dev</li>
+<li><strong>-with-http<em>realip</em>module</strong> - 启用 ngx<em>http</em>realip_module</li>
+<li><strong>-with-http<em>addition</em>module</strong> - 启用 ngx<em>http</em>addition_module</li>
+<li><strong>-with-http<em>sub</em>module</strong> - 启用 ngx<em>http</em>sub_module</li>
+<li><strong>-with-http<em>dav</em>module</strong> - 启用 ngx<em>http</em>dav_module</li>
+<li><strong>-with-http<em>flv</em>module</strong> - 启用 ngx<em>http</em>flv_module</li>
+<li><strong>-with-http<em>stub</em>status_module</strong> - 启用 &quot;server status&quot; 页</li>
+<li><strong>-without-http<em>charset</em>module</strong> - 禁用 ngx<em>http</em>charset_module</li>
+<li><strong>-without-http<em>gzip</em>module</strong> - 禁用 ngx<em>http</em>gzip_module. 如果启用，需要 zlib 。</li>
+<li><strong>-without-http<em>ssi</em>module</strong> - 禁用 ngx<em>http</em>ssi_module</li>
+<li><strong>-without-http<em>userid</em>module</strong> - 禁用 ngx<em>http</em>userid_module</li>
+<li><strong>-without-http<em>access</em>module</strong> - 禁用 ngx<em>http</em>access_module</li>
+<li><strong>-without-http<em>auth</em>basic_module</strong> - 禁用 ngx<em>http</em>auth<em>basic</em>module</li>
+<li><strong>-without-http<em>autoindex</em>module</strong> - 禁用 ngx<em>http</em>autoindex_module</li>
+<li><strong>-without-http<em>geo</em>module</strong> - 禁用 ngx<em>http</em>geo_module</li>
+<li><strong>-without-http<em>map</em>module</strong> - 禁用 ngx<em>http</em>map_module</li>
+<li><strong>-without-http<em>referer</em>module</strong> - 禁用 ngx<em>http</em>referer_module</li>
+<li><strong>-without-http<em>rewrite</em>module</strong> - 禁用 ngx<em>http</em>rewrite_module. 如果启用需要 PCRE 。</li>
+<li><strong>-without-http<em>proxy</em>module</strong> - 禁用 ngx<em>http</em>proxy_module</li>
+<li><strong>-without-http<em>fastcgi</em>module</strong> - 禁用 ngx<em>http</em>fastcgi_module</li>
+<li><strong>-without-http<em>memcached</em>module</strong> - 禁用 ngx<em>http</em>memcached_module</li>
+<li><strong>-without-http<em>limit</em>zone_module</strong> - 禁用 ngx<em>http</em>limit<em>zone</em>module</li>
+<li><strong>-without-http<em>empty</em>gif_module</strong> - 禁用 ngx<em>http</em>empty<em>gif</em>module</li>
+<li><strong>-without-http<em>browser</em>module</strong> - 禁用 ngx<em>http</em>browser_module</li>
+<li><strong>-without-http<em>upstream</em>ip<em>hash</em>module</strong> - 禁用 ngx<em>http</em>upstream<em>ip</em>hash_module</li>
+<li><strong>-with-http<em>perl</em>module</strong> - 启用 ngx<em>http</em>perl_module</li>
+<li><strong>-with-perl<em>modules</em>path=PATH</strong> - 指定 perl 模块的路径</li>
+<li><strong>-with-perl=PATH</strong> - 指定 perl 执行文件的路径</li>
+<li><strong>-http-log-path=PATH</strong> - Set path to the http access log</li>
+<li><strong>-http-client-body-temp-path=PATH</strong> - Set path to the http client request body temporary files</li>
+<li><strong>-http-proxy-temp-path=PATH</strong> - Set path to the http proxy temporary files</li>
+<li><strong>-http-fastcgi-temp-path=PATH</strong> - Set path to the http fastcgi temporary files</li>
+<li><strong>-without-http</strong> - 禁用 HTTP server</li>
+<li><strong>-with-mail</strong> - 启用 IMAP4/POP3/SMTP 代理模块</li>
+<li><strong>-with-mail<em>ssl</em>module</strong> - 启用 ngx<em>mail</em>ssl_module</li>
+<li><strong>-with-cc=PATH</strong> - 指定 C 编译器的路径</li>
+<li><strong>-with-cpp=PATH</strong> - 指定 C 预处理器的路径</li>
+<li><strong>-with-cc-opt=OPTIONS</strong> - Additional parameters which will be added to the variable CFLAGS. With the use of the system library PCRE in FreeBSD, it is necessary to indicate --with-cc-opt=&quot;-I /usr/local/include&quot;. If we are using select() and it is necessary to increase the number of file descriptors, then this also can be assigned here: --with-cc-opt=&quot;-D FD_SETSIZE=2048&quot;.</li>
+<li><strong>-with-ld-opt=OPTIONS</strong> - Additional parameters passed to the linker. With the use of the system library PCRE in FreeBSD, it is necessary to indicate --with-ld-opt=&quot;-L /usr/local/lib&quot;.</li>
+<li><strong>-with-cpu-opt=CPU</strong> - 为特定的 CPU 编译，有效的值包括：pentium, pentiumpro, pentium3, pentium4, athlon, opteron, amd64, sparc32, sparc64, ppc64</li>
+<li><strong>-without-pcre</strong> - 禁止 PCRE 库的使用。同时也会禁止 HTTP rewrite 模块。在 &quot;location&quot; 配置指令中的正则表达式也需要 PCRE 。</li>
+<li><strong>-with-pcre=DIR</strong> - 指定 PCRE 库的源代码的路径。</li>
+<li><strong>-with-pcre-opt=OPTIONS</strong> - Set additional options for PCRE building.</li>
+<li><strong>-with-md5=DIR</strong> - Set path to md5 library sources.</li>
+<li><strong>-with-md5-opt=OPTIONS</strong> - Set additional options for md5 building.</li>
+<li><strong>-with-md5-asm</strong> - Use md5 assembler sources.</li>
+<li><strong>-with-sha1=DIR</strong> - Set path to sha1 library sources.</li>
+<li><strong>-with-sha1-opt=OPTIONS</strong> - Set additional options for sha1 building.</li>
+<li><strong>-with-sha1-asm</strong> - Use sha1 assembler sources.</li>
+<li><strong>-with-zlib=DIR</strong> - Set path to zlib library sources.</li>
+<li><strong>-with-zlib-opt=OPTIONS</strong> - Set additional options for zlib building.</li>
+<li><strong>-with-zlib-asm=CPU</strong> - Use zlib assembler sources optimized for specified CPU, valid values are: pentium, pentiumpro</li>
+<li><strong>-with-openssl=DIR</strong> - Set path to OpenSSL library sources</li>
+<li><strong>-with-openssl-opt=OPTIONS</strong> - Set additional options for OpenSSL building</li>
+<li><strong>-with-debug</strong> - 启用调试日志</li>
+<li><strong>-add-module=PATH</strong> - 在指定的目录中查找并添加第三方模块</li>
+</ul>
 
   </div>
 

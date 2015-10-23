@@ -25,9 +25,9 @@ date_gmt: '2012-10-31 03:13:11 +0800'
 ## 获取软件
 
 ```bash
-\#tcl8.5
+#tcl8.5
 wget http://downloads.sourceforge.net/tcl/tcl8.5.12-src.tar.gz
-\#redis
+#redis
 wget http://redis.googlecode.com/files/redis-2.6.2.tar.gz
 ```
 
