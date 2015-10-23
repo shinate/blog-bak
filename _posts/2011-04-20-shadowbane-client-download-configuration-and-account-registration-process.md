@@ -29,7 +29,7 @@ date_gmt: '2011-04-20 05:39:57 +0800'
 绿色无公害版本，解压即可，然后在游戏目录里面的CONFIG子目录下，找到ArcaneIP.CFG文件，这个文件是服务器及端口地址。
 用记事本打开，删掉里面所有的内容，输入
 
-```code
+```
 SERVER= logon.playtocrush.com
 PORT= 6000
 ```

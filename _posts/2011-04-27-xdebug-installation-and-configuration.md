@@ -50,7 +50,7 @@ zend_extension=/servers/app/php/lib/php/extensions/no-debug-non-zts-20090626/xde
 
 关于xdebug配置的一些说明
 
-```code
+```
 ;xdebug配置
 [Xdebug]
 ;开启自动跟踪

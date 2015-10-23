@@ -859,21 +859,21 @@
 </code></pre></div>
 <p>默认的清晰度比较高，图片会很大，生成图片需要一定的时间。
 php</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php">exec(&#39;/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png&#39;);
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">exec(&#39;/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png&#39;);</span>
 </code></pre></div>
 <p>具体的使用方法</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php">&amp;lt;?php
-ob_start();
-//如果将输出的文件名设置为&#39;-&#39;，则直接返回文件数据流
-passthru(&#39;/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -&#39;);
-$fileName = self::cachePath() . &#39;/&#39; . self::name();
-$content = ob_get_clean();
-//写入图片文件，备用
-//file_put_contents($fileName, $content);
-//直接输出为图片
-header(&quot;Content-type: image/png&quot;);
-echo $content;
-?&amp;gt;
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">&amp;lt;?php</span>
+<span class="x">ob_start();</span>
+<span class="x">//如果将输出的文件名设置为&#39;-&#39;，则直接返回文件数据流</span>
+<span class="x">passthru(&#39;/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -&#39;);</span>
+<span class="x">$fileName = self::cachePath() . &#39;/&#39; . self::name();</span>
+<span class="x">$content = ob_get_clean();</span>
+<span class="x">//写入图片文件，备用</span>
+<span class="x">//file_put_contents($fileName, $content);</span>
+<span class="x">//直接输出为图片</span>
+<span class="x">header(&quot;Content-type: image/png&quot;);</span>
+<span class="x">echo $content;</span>
+<span class="x">?&amp;gt;</span>
 </code></pre></div>
 <h3>中文乱码问题</h3>
 

@@ -40,7 +40,7 @@ cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l
 
 两个双核超线程CPU：
 
-```code
+```
 processor   0 1 2 3 4 5 6 7
 physical id 0 0 0 0 1 1 1 1
 siblings    4 4 4 4 4 4 4 4

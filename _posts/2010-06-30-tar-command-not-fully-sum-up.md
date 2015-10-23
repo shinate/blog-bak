@@ -22,7 +22,7 @@ date_gmt: '2010-06-30 03:41:24 +0800'
 
 ## 常用选项
 
-```code
+```
 -z, --gzip, --ungzip
 filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩
 -c, --create
@@ -100,7 +100,7 @@ tar zxvf test.tar.gz -C /home/rhy/
 
 ### 排除式打包(参数 -X)
 
-```code
+```
 man tar:
 --exclude PATTERN
 exclude files based upon PATTERN

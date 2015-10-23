@@ -26,7 +26,7 @@ date_gmt: '2010-06-28 08:04:01 +0800'
 apache的默认设置公开了apache的版本号，操作系统，甚至还有已经安装了的apache组件。黑客们会利用这些信息更方便的去攻击你。并且，这些信息告诉了所有人：你的apache并没有经过配置
 你可以在httpd.conf文件中，加上或者修改两条代码，隐藏信息。
 
-```code
+```
 ServerSignature Off
 ServerTokens Prod
 ```
@@ -46,7 +46,7 @@ chown -R apache.apache /webserver/apache2/
 
 编辑httpd.conf
 
-```code
+```
 User apache
 Group apache
 ```
@@ -55,7 +55,7 @@ Group apache
 
 我们不希望apache有修改根目录的权限。 所以，建议你所有的网站都放在一个目录下面(我们称为/web，你可以象这样设置:
 
-```code
+```
 Order Deny,Allow
 Deny from all
 Options None
@@ -64,7 +64,7 @@ AllowOverride None
 
 由于设置了Options None 和AllowOverride None，这将关闭options权限和覆盖权限，你现在必须为每个文件夹加上独立的配置，为他们恢复Option和Override权限。
 
-```code
+```
 Order Allow,Deny
 Allow from all
 ```
@@ -73,7 +73,7 @@ Allow from all
 
 你可以在httpd.conf的Directory标签中间加上一个Options指令。 设置Options为None或者-Indexes
 
-```code
+```
 Options -Indexes
 ```
 
@@ -81,7 +81,7 @@ Options -Indexes
 
 也要添加一条Optoions指令到Directory 标签中, 使Options 为 None或者-Includes
 
-```code
+```
 Options -Includes
 ```
 
@@ -89,7 +89,7 @@ Options -Includes
 
 如果你不用CGI,那就在Directory标签中加上一条Options指令关掉他。 使Options为None或者-ExecCGI
 
-```code
+```
 Options -ExecCGI
 ```
 
@@ -98,7 +98,7 @@ Options -ExecCGI
 只允许访问真实的地址
 也是在directory中修改Options 为 -FollowSymLinks
 
-```code
+```
 Options -FollowSymLinks
 ```
 
@@ -106,13 +106,13 @@ Options -FollowSymLinks
 
 关闭所有选项
 
-```code
+```
 Options None
 ```
 
 关闭几个选项
 
-```code
+```
 Options -ExecCGI -FollowSymLinks -Indexes
 ```
 
@@ -120,13 +120,13 @@ Options -ExecCGI -FollowSymLinks -Indexes
 
 也在Directory标签中，但是AllowOverride指令
 
-```code
+```
 AllowOverride none
 ```
 
 如果你需要Overrides，需要确认他们不能被下载。改变他们的文件名，而不是原来的.htaccess, 比如可以改为.httpdoveride, 或者屏蔽所有的.ht开头的文件。
 
-```code
+```
 AccessFileName .httpdoverride
 Order allow,deny
 Deny from all
@@ -152,13 +152,13 @@ mod_security 是一个非常好用的Apache组件.
 去[module documentation][1] 看一下你到底需要哪些组件. 好多时候你会发现，你并不需要...。
 一行一行去查找你的httpd.conf里是否包含LoadModule, 可以用\#放在行首去关闭组件。 如果象搜索组件，可以运行:
 
-```code
+```
 grep LoadModule httpd.conf
 ```
 
 这里有些组件常常打开的，但是不需要。
 
-```code
+```
 mod_imap,mod_include,mod_info,mod_userdir,mod_status,mod0cgi,mod-autoindex.
 ```
 
@@ -166,7 +166,7 @@ mod_imap,mod_include,mod_info,mod_userdir,mod_status,mod0cgi,mod-autoindex.
 
 root有阅读apache配置文件和bin文件的权限。
 
-```code
+```
 chown -R root:root /usr/local/webserver/apache2
 chmod -R o-rwx /usr/local/webserver/apache2
 ```
@@ -175,7 +175,7 @@ chmod -R o-rwx /usr/local/webserver/apache2
 
 默认设置timeout指令是300秒。 你可以减小他，以预防一些潜在攻击。
 
-```code
+```
 Timeout 45
 ```
 
@@ -183,7 +183,7 @@ Timeout 45
 
 apache有很多指令来减小请求数，一个很好的指令是LimitRequestBody指令。 这条指令默认设置是无限的。 如果你想设置上传文件不能超过1MB， 你可以这样写:
 
-```code
+```
 LimitRequestBody 1048567
 ```
 
@@ -194,7 +194,7 @@ LimitRequestBody 1048567
 
 如果你运行了mod_dav,你会希望限制XML 请求的body大小。 LimitXMLRequestBody指令只有在Apache2中有。 并且他的默认值是1个millon字节大小，大约1M, 很多教材上说这里设置为0比较好，这就意味着多大的文件都可以上传，如果你需要上传大文件的话。 但是如果你简单的改变一下控制。 你可以大概的设置成10MB
 
-```code
+```
 LimitXMLRequestBody 10485760
 ```
 
@@ -207,7 +207,7 @@ apache有些设置可以限制并发请求。MaxClients就是服务器能承受�
 
 如果你有一些资源只能给特定的网段使用...176。16.0.0--176.16.0.16
 
-```code
+```
 Order Deny,Allow
 deny from all
 Allow from 176.16.0.0/16
@@ -215,7 +215,7 @@ Allow from 176.16.0.0/16
 
 或者也可以限定单一IP
 
-```code
+```
 Order Deny,Allow
 Deny from all
 Allow from 127.0.0.1

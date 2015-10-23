@@ -853,8 +853,8 @@
 <p>memcached其实就是个内存管理，所以首先要安装下libevent。</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://www.monkey.org/~provos/libevent-1.4.2-rc.tar.gz
 </code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">tar zxvf libevent-1.4.2-rc.tar.gz
-cd libevent-1.4.2-rc
-</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix=/usr/local/
+<span class="nb">cd </span>libevent-1.4.2-rc
+</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix<span class="o">=</span>/usr/local/
 make
 make install
 </code></pre></div>
@@ -865,8 +865,8 @@ make install
 </code></pre></div>
 <h2>安装memcached</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">tar zxf memcached-1.4.5.tar.gz
-cd memcached-1.4.5
-./configure --prefix=/usr/local/memcached --enable-64bit --with-libevent=/usr/lib64/
+<span class="nb">cd </span>memcached-1.4.5
+./configure --prefix<span class="o">=</span>/usr/local/memcached --enable-64bit --with-libevent<span class="o">=</span>/usr/lib64/
 </code></pre></div>
 <p>如果此时没有进行<strong>[*1]</strong>操作，<strong>make test</strong>会报错，但不影响安装。</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">make
@@ -875,7 +875,7 @@ cp memcached /usr/local/bin/
 cp memcached-debug /usr/local/bin/
 </code></pre></div>
 <h2>启动</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span> -r -c <span class="m">16382</span> -p 11211
 </code></pre></div>
 <p><strong>启动成功！</strong></p>
 
@@ -884,11 +884,11 @@ cp memcached-debug /usr/local/bin/
 <h3><strong>[*1]</strong>问题的处理</h3>
 
 <p>如果使用的64位系统并且没有执行<strong>[*1]</strong>操作，<strong>启动时</strong>会得到下面的错误。</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
+<div class="highlight"><pre><code class="language-text" data-lang="text">error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
 </code></pre></div>
 <p><strong>使用 &quot;LD_DEBUG=libs /usr/local/memcached/bin/memcached -v&quot; 进行检查</strong>
 得到以下结果</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">3566: find library=libevent-1.4.so.2 [0]; searching
+<div class="highlight"><pre><code class="language-text" data-lang="text">3566: find library=libevent-1.4.so.2 [0]; searching
 3566: search cache=/etc/ld.so.cache
 3566: search path=/lib64/tls/x86_64:/lib64/tls:/lib64/x86_64:/lib64:/usr/lib64/tls/x86_64:/usr/lib64/tls:/usr/lib64/x86_64:/usr/lib64 (system search path)
 3566: trying file=/lib64/tls/x86_64/libevent-1.4.so.2
@@ -906,7 +906,7 @@ cp memcached-debug /usr/local/bin/
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2
 </code></pre></div>
 <p>此时启动memcached</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span> -r -c <span class="m">16382</span> -p 11211
 </code></pre></div>
 <p>启动成功</p>
 
@@ -915,14 +915,14 @@ cp memcached-debug /usr/local/bin/
 <p>我下载的是稳定版本</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://pecl.php.net/get/memcache-2.2.5.tgz
 tar zxf memcache-2.2.5.tgz
-cd memcached-2.2.5
+<span class="nb">cd </span>memcached-2.2.5
 </code></pre></div>
 <p>执行</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/php5/bin/phpize
 </code></pre></div>
 <p>这命令没有加在bin里边-。-，直接运行了。
 安装的时候需要指定一下--with-php-config，否则可能会提示找不到路径。</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --enable-memcache --with-php-config=/usr/local/php5/bin/php-config --with-zlib-dir
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --enable-memcache --with-php-config<span class="o">=</span>/usr/local/php5/bin/php-config --with-zlib-dir
 make
 make install
 </code></pre></div>
@@ -931,7 +931,7 @@ make install
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /usr/local/Zend/etc/php.ini
 </code></pre></div>
 <p>在最后添加</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">[memcache]
+<div class="highlight"><pre><code class="language-text" data-lang="text">[memcache]
 extension=memcache.so
 </code></pre></div>
 <p>重启apache</p>
@@ -939,7 +939,7 @@ extension=memcache.so
 <h2>其他修改</h2>
 
 <p>加大同时打开文件数</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ulimit -n 10240
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">ulimit</span> -n 10240
 </code></pre></div>
 <h2>附录</h2>
 

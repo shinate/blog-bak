@@ -851,29 +851,29 @@
 <p>firefox目前还不能直接支持border-radius，所以只能使用其特有的属性。
 代码结构：-moz-border-radius: {1,4} | inherit
 如果设置四个角都是一样圆角的话，可以这样</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-moz-border-radius:5px;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">-moz-border-radius</span><span class="nd">:5px</span><span class="o">;</span>
 </code></pre></div>
 <p>当然也可根据需要对四个角单独设置，顺序是顺时针从左上开始，上左、上右、下右、下左，</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-moz-border-radius-topleft: 5px;
--moz-border-radius-topright: 5px;
--moz-border-radius-bottomright: 5px;
--moz-border-radius-bottomleft: 5px;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">-moz-border-radius-topleft</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="nt">-moz-border-radius-topright</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="nt">-moz-border-radius-bottomright</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="nt">-moz-border-radius-bottomleft</span><span class="o">:</span> <span class="nt">5px</span><span class="o">;</span>
 </code></pre></div>
 <p>也可以用合并起来一起设置</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-moz-border-radius:5px 0 5px 0;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">-moz-border-radius</span><span class="nd">:5px</span> <span class="nt">0</span> <span class="nt">5px</span> <span class="nt">0</span><span class="o">;</span>
 </code></pre></div>
 <h2>webkit</h2>
 
 <p>Safari, Google Chrome 都是基于Webkit 的。
 代码结构：-webkit-border-radius：{1,2} | inherit;
 如果设置四个角都是一样圆角的话，可以这样</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-webkit-border-radius:3px;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">-webkit-border-radius</span><span class="nd">:3px</span><span class="o">;</span>
 </code></pre></div>
 <p>如果是单独设置四个角的话，需要采取这种方式</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-webkit-border-top-left-radius:3px 5px;
--webkit-border-top-right-radius:3px 5px;
--webkit-border-bottom-right-radius:3px 5px;
--webkit-border-bottom-left-radius:3px 5px;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">-webkit-border-top-left-radius</span><span class="nd">:3px</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="nt">-webkit-border-top-right-radius</span><span class="nd">:3px</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="nt">-webkit-border-bottom-right-radius</span><span class="nd">:3px</span> <span class="nt">5px</span><span class="o">;</span>
+<span class="nt">-webkit-border-bottom-left-radius</span><span class="nd">:3px</span> <span class="nt">5px</span><span class="o">;</span>
 </code></pre></div>
 <p>webkit的每个角都能设置的更加细致，分别对每个角的x、y进行设置，表现出非正圆的弧形，带来的问题就是无法像火狐那样全部合并来写。
 如果是要合并的话，只能使用-webkit-border-radius:3px;或者-webkit-border-radius:3px 5px;</p>
@@ -890,11 +890,11 @@
 刚在网上翻了翻，还真有解决的办法。
 在样式表里增加行为(behavior)，什么东西？你懂的！以前写hover的时候用过，这里还得用。
 为了兼容IE，可以用以下代码：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">-moz-border-radius: 15px;
--khtml-border-radius: 15px;
--webkit-border-radius: 15px;
-border-radius: 15px;
-behavior: url(border-radius.htc);
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">-moz-border-radius</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
+<span class="nt">-khtml-border-radius</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
+<span class="nt">-webkit-border-radius</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
+<span class="nt">border-radius</span><span class="o">:</span> <span class="nt">15px</span><span class="o">;</span>
+<span class="nt">behavior</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="nt">border-radius</span><span class="nc">.htc</span><span class="o">);</span>
 </code></pre></div>
 <h2>效果演示</h2>
 

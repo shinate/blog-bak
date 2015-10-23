@@ -844,7 +844,7 @@
 
   <div class="post-content english">
     <h2>比较常用的</h2>
-<div class="highlight"><pre><code class="language-code" data-lang="code">/*匹配双字节字符(包括汉字在内)，可以用来计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）*/
+<div class="highlight"><pre><code class="language-text" data-lang="text">/*匹配双字节字符(包括汉字在内)，可以用来计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）*/
 [^x00-xff]
 /*匹配空白行的正则表达式，可以用来删除空白行*/
 ns*r
@@ -872,7 +872,7 @@ d+.d+.d+.d+
 <h2>匹配特定数字</h2>
 
 <p>处理大量数据时有用，具体应用时注意修正</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">/*匹配正整数*/
+<div class="highlight"><pre><code class="language-text" data-lang="text">/*匹配正整数*/
 ^[1-9]d*$
 /*匹配负整数*/
 ^-[1-9]d*$
@@ -894,7 +894,7 @@ d+.d+.d+.d+
 ^(-([1-9]d*.d*|0.d*[1-9]d*))|0?.0+|0$
 </code></pre></div>
 <h2>匹配特定字符串</h2>
-<div class="highlight"><pre><code class="language-code" data-lang="code">/*匹配由26个英文字母组成的字符串*/
+<div class="highlight"><pre><code class="language-text" data-lang="text">/*匹配由26个英文字母组成的字符串*/
 ^[A-Za-z]+$
 /*匹配由26个英文字母的大写组成的字符串*/
 ^[A-Z]+$
@@ -908,7 +908,7 @@ d+.d+.d+.d+
 <h2>表单验证</h2>
 
 <p>在使用RegularExpressionValidator验证控件时的验证功能及其验证表达式介绍如下:</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">/*只能输入数字*/
+<div class="highlight"><pre><code class="language-text" data-lang="text">/*只能输入数字*/
 ^[0-9]*$
 /*只能输入n位的数字*/
 ^d{n}$
@@ -958,7 +958,7 @@ d+.d+.d+.d+
 ^((0?[1-9])|((1|2)[0-9])|30|31)$
 </code></pre></div>
 <h2>特定的字符</h2>
-<div class="highlight"><pre><code class="language-code" data-lang="code">/*匹配中文字符的正则表达式*/
+<div class="highlight"><pre><code class="language-text" data-lang="text">/*匹配中文字符的正则表达式*/
 [u4e00-u9fa5]
 /*匹配双字节字符(包括汉字在内)*/
 [^x00-xff]
@@ -978,29 +978,29 @@ http://([w-]+.)+[w-]+(/[w- ./?%&amp;=]*)?
 <h3>计算字符串的长度</h3>
 
 <p>一个双字节字符长度计2，ASCII字符计1</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">String.prototype.len=function(){return this.replace([^x00-xff]/g,&quot;aa&quot;).length;}
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">len</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">([</span><span class="o">^</span><span class="nx">x00</span><span class="o">-</span><span class="nx">xff</span><span class="p">]</span><span class="o">/</span><span class="nx">g</span><span class="p">,</span><span class="s2">&quot;aa&quot;</span><span class="p">).</span><span class="nx">length</span><span class="p">;}</span>
 </code></pre></div>
 <h3>javascript中的trim</h3>
 
 <p>javascript中没有像vbscript那样的trim函数，我们就可以利用这个表达式来实现</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">String.prototype.trim = function(){return this.replace(/(^s*)|(s*$)/g, &quot;&quot;);}
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/(^s*)|(s*$)/g</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);}</span>
 </code></pre></div>
 <h3>分解和转换IP地址</h3>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">/*IP地址转换成对应数值*/
-function IP2V(ip){
-re=/(d+).(d+).(d+).(d+)/g //匹配IP地址的正则表达式
-if(re.test(ip)){
-return RegExp.$1*Math.pow(255,3))+RegExp.$2*Math.pow(255,2))+RegExp.$3*255+RegExp.$4*1;
-} else {
-throw new Error(&quot;Not a valid IP address!&quot;);
-}
-}
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*IP地址转换成对应数值*/</span>
+<span class="kd">function</span> <span class="nx">IP2V</span><span class="p">(</span><span class="nx">ip</span><span class="p">){</span>
+<span class="nx">re</span><span class="o">=</span><span class="sr">/(d+).(d+).(d+).(d+)/g</span> <span class="c1">//匹配IP地址的正则表达式</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">re</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">ip</span><span class="p">)){</span>
+<span class="k">return</span> <span class="nb">RegExp</span><span class="p">.</span><span class="nx">$1</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="nb">RegExp</span><span class="p">.</span><span class="nx">$2</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">+</span><span class="nb">RegExp</span><span class="p">.</span><span class="nx">$3</span><span class="o">*</span><span class="mi">255</span><span class="o">+</span><span class="nb">RegExp</span><span class="p">.</span><span class="nx">$4</span><span class="o">*</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&quot;Not a valid IP address!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h3>从URL地址中提取文件名</h3>
 
 <p>应用于javascript程序</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">s=&quot;http://www.9499.net/page1.htm&quot;;
-s=s.replace(/(.*/){0,}([^.]+).*/ig,&quot;$2&quot;) ;  //Page1.htm
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">s</span><span class="o">=</span><span class="s2">&quot;http://www.9499.net/page1.htm&quot;</span><span class="p">;</span>
+<span class="nx">s</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/(.*/</span><span class="p">){</span><span class="mi">0</span><span class="p">,}([</span><span class="o">^</span><span class="p">.]</span><span class="o">+</span><span class="p">).</span><span class="o">*</span><span class="sr">/ig,&quot;$2&quot;) ;  /</span><span class="o">/</span><span class="nx">Page1</span><span class="p">.</span><span class="nx">htm</span>
 </code></pre></div>
 <h3>限制表单里的文本框输入内容</h3>
 

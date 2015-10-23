@@ -36,7 +36,7 @@ Replace ? [y/N] : y     替换它,然后。。。耐心等待。报表出现
 报表样例
 PS:这是我的测试机。。。。没怎么用过。。。还是奔4的呢。。。
 
-```code
+```
 -- MYSQL PERFORMANCE TUNING PRIMER --
 - By: Matthew Montgomery -
 MySQL Version 5.1.30 i686

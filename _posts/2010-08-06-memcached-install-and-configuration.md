@@ -81,14 +81,14 @@ memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
 
 如果使用的64位系统并且没有执行**[*1]**操作，**启动时**会得到下面的错误。
 
-```code
+```
 error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
 ```
 
 **使用 "LD_DEBUG=libs /usr/local/memcached/bin/memcached -v" 进行检查**
 得到以下结果
 
-```code
+```
 3566: find library=libevent-1.4.so.2 [0]; searching
 3566: search cache=/etc/ld.so.cache
 3566: search path=/lib64/tls/x86_64:/lib64/tls:/lib64/x86_64:/lib64:/usr/lib64/tls/x86_64:/usr/lib64/tls:/usr/lib64/x86_64:/usr/lib64 (system search path)
@@ -152,7 +152,7 @@ vi /usr/local/Zend/etc/php.ini
 
 在最后添加
 
-```code
+```
 [memcache]
 extension=memcache.so
 ```

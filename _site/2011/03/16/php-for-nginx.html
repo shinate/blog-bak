@@ -848,44 +848,44 @@ PHP各个版本fpm补丁包下载 <a href="http://php-fpm.org/downloads/">http:/
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://cn.php.net/get/php-5.2.9.tar.gz/from/this/mirror
 wget http://php-fpm.org/downloads/php-5.2.9-fpm-0.5.10-unofficial.diff.gz
 tar zxf php-5.2.9.tar.gz
-gzip -cd php-5.2.9-fpm-0.5.10-unofficial.diff.gz | patch -d php-5.2.9 -p1
-cd php-5.2.9
-./configure \
---prefix=/servers/app/php \
---with-config-file-path=/servers/app/php/etc \
---with-mysql=/usr/local/mysql \
---with-mysqli=/usr/local/mysql/bin/mysql_config \
---with-iconv \
---with-freetype-dir \
---with-jpeg-dir \
---with-png-dir \
---with-zlib \
---with-libxml-dir=/usr \
---enable-xml \
---disable-rpath \
---enable-discard-path \
---enable-safe-mode \
---enable-bcmath \
---enable-shmop \
---enable-sysvsem \
---enable-inline-optimization \
---with-curl \
---with-curlwrappers \
---enable-mbregex \
---enable-fastcgi \
---enable-fpm \
---enable-force-cgi-redirect \
---enable-mbstring \
---with-mcrypt \
---with-gd \
---enable-gd-native-ttf \
---with-openssl \
---with-mhash \
---enable-pcntl \
---enable-sockets \
---with-ldap \
+gzip -cd php-5.2.9-fpm-0.5.10-unofficial.diff.gz <span class="p">|</span> patch -d php-5.2.9 -p1
+<span class="nb">cd </span>php-5.2.9
+./configure <span class="se">\</span>
+--prefix<span class="o">=</span>/servers/app/php <span class="se">\</span>
+--with-config-file-path<span class="o">=</span>/servers/app/php/etc <span class="se">\</span>
+--with-mysql<span class="o">=</span>/usr/local/mysql <span class="se">\</span>
+--with-mysqli<span class="o">=</span>/usr/local/mysql/bin/mysql_config <span class="se">\</span>
+--with-iconv <span class="se">\</span>
+--with-freetype-dir <span class="se">\</span>
+--with-jpeg-dir <span class="se">\</span>
+--with-png-dir <span class="se">\</span>
+--with-zlib <span class="se">\</span>
+--with-libxml-dir<span class="o">=</span>/usr <span class="se">\</span>
+--enable-xml <span class="se">\</span>
+--disable-rpath <span class="se">\</span>
+--enable-discard-path <span class="se">\</span>
+--enable-safe-mode <span class="se">\</span>
+--enable-bcmath <span class="se">\</span>
+--enable-shmop <span class="se">\</span>
+--enable-sysvsem <span class="se">\</span>
+--enable-inline-optimization <span class="se">\</span>
+--with-curl <span class="se">\</span>
+--with-curlwrappers <span class="se">\</span>
+--enable-mbregex <span class="se">\</span>
+--enable-fastcgi <span class="se">\</span>
+--enable-fpm <span class="se">\</span>
+--enable-force-cgi-redirect <span class="se">\</span>
+--enable-mbstring <span class="se">\</span>
+--with-mcrypt <span class="se">\</span>
+--with-gd <span class="se">\</span>
+--enable-gd-native-ttf <span class="se">\</span>
+--with-openssl <span class="se">\</span>
+--with-mhash <span class="se">\</span>
+--enable-pcntl <span class="se">\</span>
+--enable-sockets <span class="se">\</span>
+--with-ldap <span class="se">\</span>
 --with-ldap-sasl
-make ZEND_EXTRA_LIBS=&#39;-liconv&#39;
+make <span class="nv">ZEND_EXTRA_LIBS</span><span class="o">=</span><span class="s1">&#39;-liconv&#39;</span>
 make install
 </code></pre></div>
 <p>*缺失的库可以尝试用yum进行安装</p>

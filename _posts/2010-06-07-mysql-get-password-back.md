@@ -20,7 +20,7 @@ date_gmt: '2010-06-07 01:10:55 +0800'
 
 ## Mysql 数据库丢失root密码恢复
 
-```code
+```
 \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 Mysql 数据库丢失root密码恢复
 \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
@@ -53,7 +53,7 @@ mysql -u root -p -S /data/3306/mysql.sock
 
 ### 登陆后修改密码
 
-```code
+```
 mysql&gt; UPDATE mysql.user SET password=PASSWORD("hyran123") WHERE user='root';
 Query OK, 2 rows affected (0.00 sec)
 Rows matched: 2  Changed: 2  Warnings: 0

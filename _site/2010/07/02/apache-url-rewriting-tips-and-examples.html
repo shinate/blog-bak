@@ -863,16 +863,16 @@
 <h3>例子</h3>
 
 <p>一个完整的文件系统资源路径，它映射请求到你的文件系统的任意位置上，就像Alias指令那样。</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteRule ^/games.* /usr/local/games/web
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteRule ^/games.* /usr/local/games/web
 </code></pre></div>
 <p>一个网络资源的路径，如果DocumentRoot设置为/usr/local/apache2/htdocs ，那么，这个指令将http://example.com/foo转到路径/usr/local/apache2/htdocs/bar。</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteRule ^/foo$ /bar
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteRule ^/foo$ /bar
 </code></pre></div>
 <p>一个绝对的URL重写，跳转到另一url最直接的办法</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteRule ^/product/view$ http://site2.example.com/seeproduct.html [R]
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteRule ^/product/view$ http://site2.example.com/seeproduct.html [R]
 </code></pre></div>
 <p>由上面的例子引申出的，括号中的&quot;.<em>&quot;在匹配时赋值给了变量$1，$1可以作为任何匹配到的文字写入到替换规则中。一个请求</em><em>http://example.com/product/r14df/view</em><em>将被映射到路径</em><em>/var/web/productdb/r14df *</em>。</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteRule ^/product/(.*)/view$ /var/web/productdb/$1
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteRule ^/product/(.*)/view$ /var/web/productdb/$1
 </code></pre></div>
 <h2>RewriteCond重写条件</h2>
 
@@ -884,17 +884,17 @@
 <h3>例子</h3>
 
 <p>将符合此IP范围内的所有请求发送至域名：</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteCond %{REMOTE_ADDR} ^10\.2\.
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteCond %{REMOTE_ADDR} ^10\.2\.
 RewriteRule (.*) http://intranet.example.com$1
 </code></pre></div>
 <p>当有多个RewriteCond指令时，他们都会被RewriteRule所采用。例:当cookie中含有&quot;go&quot;的时候才处理请求字符串&quot;hack&quot;，否则拒绝，写法：</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteCond %{QUERY_STRING} hack
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteCond %{QUERY_STRING} hack
 RewriteCond %{HTTP_COOKIE} !go
 RewriteRule .* - [F]
 </code></pre></div>
 <p>注意：&quot;!&quot;感叹号是<strong>否定</strong>匹配，也就是说当条件中 cookie没有&quot;go&quot;且请求中含有&quot;hack&quot;，将会遭到拒绝。
 在RewriteCond指令中也有像RewriteRule中所用的&quot;$1&quot;、&quot;$2&quot;匹配变量，但写法列有不同，使用的符号是&quot;%&quot;，比如&quot;%1&quot;、&quot;%2&quot;。例：匹配主机名和目录，拼接成新的请求：</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteCond %{HTTP_HOST} (.*)
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteCond %{HTTP_HOST} (.*)
 RewriteRule ^/(.*) /sites/%1/$1
 </code></pre></div>
 <p>如果请求是<strong>http://example.com/foo/bar</strong> ，那么<strong>%1</strong>将包含<strong>example.com</strong>和<strong>$1</strong>将包含<strong>foo/bar</strong>。</p>
@@ -904,22 +904,22 @@ RewriteRule ^/(.*) /sites/%1/$1
 <h3>简单的替换</h3>
 
 <p>这个例子中我们替换<code>/~user</code>到<code>/u/user</code>和修复缺少末尾的斜杠<code>/u/user</code></p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteRule ^/~([^/]+)/?(.*) /u/$1/$2 [R]
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteRule ^/~([^/]+)/?(.*) /u/$1/$2 [R]
 RewriteRule ^/([uge])/( [^/]+ )$ /$1/$2/ [R]
 </code></pre></div>
 <h3>改变根目录</h3>
 
 <p>&quot;移动的DocumentRoot&quot;，将站点的根/改写为/e/www/</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteEngine on
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteEngine on
 RewriteRule ^/$ /e/www/ [R]
 </code></pre></div>
 <h3>无www的跳转到有www</h3>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteEngine on
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteEngine on
 RewriteCond %{http_host} ^domain.com [NC]
 RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,NC]
 </code></pre></div>
 <p>还是上面的例子，但是对于/mytest/my目录不跳转，也就是可以直接访问 http://domain.com/mytest/my</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteEngine on
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteEngine on
 RewriteCond %{HTTP_HOST} ^domain.com [NC]
 RewriteCond %{REQUEST_URI} !/mytest/my [NC]
 RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,NC]
@@ -927,12 +927,12 @@ RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,NC]
 <h3>结尾的斜线问题</h3>
 
 <p>在通常的情况下，当你访问 /~quux/foo 服务器会认为这是一个文件，它并不是像/~quux/foo/xxx.gif那样实际存在的，也许你只是忘记了加上&quot;/&quot;，但服务器会让你看到一个优雅的错误页面。为了解决这个问题，我们可以这样来写：</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteEngine on
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteEngine on
 RewriteBase /~quux/
 RewriteRule ^foo$ foo/ [R]
 </code></pre></div>
 <p>以上仅仅是针对一个目录的，下面的写法更加的暴力，任何文件甚至都能作为下一级目录的顶端来使用，我们就会看到/~quux/foo/xxx.gif/这种奇异现象</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteEngine on
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteEngine on
 RewriteBase /~quux/
 RewriteCond %{REQUEST_FILENAME}  -d
 RewriteRule ^(.+[^/])$ $1/  [R]
@@ -942,7 +942,7 @@ RewriteRule ^(.+[^/])$ $1/  [R]
 <p>我们伟达的wordpress就是这么做的，这种方式为我们集中管理各个应用（页面）提供了宝贵的经验和思路。
 下面的例子，用语言来解释：&quot;<strong>把/后面任何非真实存在的请求全部交给index.php来处理</strong>&quot;
 也就是说 http://youdomain.com/<strong>xxx/yyy/zzz/aaa.gif?ccc=ddd</strong>中，域名后面红色加粗的部分 xxx/yyy/zzz/aaa.gif?ccc=ddd 会当做一个字符串，全部交给index.php进行分析与处理。</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteEngine On
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -996,13 +996,13 @@ RewriteRule . /index.php [L]
 12. <strong>noescape|NE</strong> (在输出中不对URI作转义 no URI escaping)  </p>
 
 <p>此标记阻止mod_rewrite对重写结果应用常规的URI转义规则。 一般情况下，特殊字符(如&quot;%&quot;, &quot;$&quot;, &quot;;&quot;等)会被转义为等值的十六进制编码。 此标记可以阻止这样的转义，以允许百分号等符号出现在输出中，如：  </p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteRule /foo/(.*) /bar?arg=P1\%3d$1 [R,NE]
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteRule /foo/(.*) /bar?arg=P1\%3d$1 [R,NE]
 </code></pre></div>
 <p>可以使&quot;/foo/zed&quot;转向到一个安全的请求&quot;/bar?arg=P1=zed&quot;。
 13. <strong>passthrough|PT</strong> (移交给下一个处理器 pass through)  </p>
 
 <p>此标记强制重写引擎将内部结构request<em>rec中的uri字段设置为 filename字段的值，它只是一个小修改，使之能对来自其他URI到文件名翻译器的 Alias，ScriptAlias, Redirect 等指令的输出进行后续处理。举一个能说明其含义的例子： 如果要通过mod</em>rewrite的重写引擎重写/abc为/def， 然后通过mod_alias使/def转变为/ghi，可以这样:  </p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">RewriteRule ^/abc(.*) /def$1 [PT]
+<div class="highlight"><pre><code class="language-text" data-lang="text">RewriteRule ^/abc(.*) /def$1 [PT]
 </code></pre></div>
 <p>Alias /def /ghi如果省略了PT标记，虽然mod<em>rewrite运作正常， 即，作为一个使用API的URI到文件名翻译器， 它可以重写uri=/abc/...为filename=/def/...， 但是，后续的mod</em>alias在试图作URI到文件名的翻译时，则会失效。</p>
 

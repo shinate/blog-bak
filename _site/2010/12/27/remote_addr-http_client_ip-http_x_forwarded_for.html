@@ -843,44 +843,44 @@
   
 
   <div class="post-content english">
-    <div class="highlight"><pre><code class="language-php" data-lang="php">function real_ip() {
-static $realip = NULL;
-if ($realip !== NULL) {
-    return $realip;
-}
-if (isset($_SERVER)) {
-    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) {
-        $arr = explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);
-        /* 取X-Forwarded-For中第一个非unknown的有效IP字符串 */
-        foreach ($arr AS $ip) {
-            $ip = trim($ip);
-            if ($ip != &#39;unknown&#39;) {
-                $realip = $ip;
-                break;
-            }
-        }
-    } elseif (isset($_SERVER[&#39;HTTP_CLIENT_IP&#39;])) {
-        $realip = $_SERVER[&#39;HTTP_CLIENT_IP&#39;];
-    } else {
-        if (isset($_SERVER[&#39;REMOTE_ADDR&#39;])) {
-            $realip = $_SERVER[&#39;REMOTE_ADDR&#39;];
-        } else {
-            $realip = &#39;0.0.0.0&#39;;
-        }
-    }
-} else {
-    if (getenv(&#39;HTTP_X_FORWARDED_FOR&#39;)) {
-        $realip = getenv(&#39;HTTP_X_FORWARDED_FOR&#39;);
-    } elseif (getenv(&#39;HTTP_CLIENT_IP&#39;)) {
-        $realip = getenv(&#39;HTTP_CLIENT_IP&#39;);
-    } else {
-        $realip = getenv(&#39;REMOTE_ADDR&#39;);
-    }
-}
-preg_match(&quot;/[\d\.]{7,15}/&quot;, $realip, $onlineip);
-$realip = !empty($onlineip[0]) ? $onlineip[0] : &#39;0.0.0.0&#39;;
-return $realip;
-}
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">function real_ip() {</span>
+<span class="x">static $realip = NULL;</span>
+<span class="x">if ($realip !== NULL) {</span>
+<span class="x">    return $realip;</span>
+<span class="x">}</span>
+<span class="x">if (isset($_SERVER)) {</span>
+<span class="x">    if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) {</span>
+<span class="x">        $arr = explode(&#39;,&#39;, $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]);</span>
+<span class="x">        /* 取X-Forwarded-For中第一个非unknown的有效IP字符串 */</span>
+<span class="x">        foreach ($arr AS $ip) {</span>
+<span class="x">            $ip = trim($ip);</span>
+<span class="x">            if ($ip != &#39;unknown&#39;) {</span>
+<span class="x">                $realip = $ip;</span>
+<span class="x">                break;</span>
+<span class="x">            }</span>
+<span class="x">        }</span>
+<span class="x">    } elseif (isset($_SERVER[&#39;HTTP_CLIENT_IP&#39;])) {</span>
+<span class="x">        $realip = $_SERVER[&#39;HTTP_CLIENT_IP&#39;];</span>
+<span class="x">    } else {</span>
+<span class="x">        if (isset($_SERVER[&#39;REMOTE_ADDR&#39;])) {</span>
+<span class="x">            $realip = $_SERVER[&#39;REMOTE_ADDR&#39;];</span>
+<span class="x">        } else {</span>
+<span class="x">            $realip = &#39;0.0.0.0&#39;;</span>
+<span class="x">        }</span>
+<span class="x">    }</span>
+<span class="x">} else {</span>
+<span class="x">    if (getenv(&#39;HTTP_X_FORWARDED_FOR&#39;)) {</span>
+<span class="x">        $realip = getenv(&#39;HTTP_X_FORWARDED_FOR&#39;);</span>
+<span class="x">    } elseif (getenv(&#39;HTTP_CLIENT_IP&#39;)) {</span>
+<span class="x">        $realip = getenv(&#39;HTTP_CLIENT_IP&#39;);</span>
+<span class="x">    } else {</span>
+<span class="x">        $realip = getenv(&#39;REMOTE_ADDR&#39;);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+<span class="x">preg_match(&quot;/[\d\.]{7,15}/&quot;, $realip, $onlineip);</span>
+<span class="x">$realip = !empty($onlineip[0]) ? $onlineip[0] : &#39;0.0.0.0&#39;;</span>
+<span class="x">return $realip;</span>
+<span class="x">}</span>
 </code></pre></div>
 <p>一、没有使用代理服务器的情况：
   REMOTE<em>ADDR = 您的 IP

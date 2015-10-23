@@ -853,37 +853,37 @@
 <h2>盒尺寸</h2>
 
 <p>通常有下面四种书写方法:</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">property:value1; /*表示所有边都是一个值value1*/
-property:value1 value2;  /*表示top和bottom的值是value1,right和left的值是value2*/
-property:value1 value2 value3;  /*表示top的值是value1，right和left的值是value2，bottom的值是value3*/
-property:value1 value2 value3 value4;  /*四个值依次表示top,right,bottom,left*/
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">property</span><span class="nd">:value1</span><span class="o">;</span> <span class="c">/*表示所有边都是一个值value1*/</span>
+<span class="nt">property</span><span class="nd">:value1</span> <span class="nt">value2</span><span class="o">;</span>  <span class="c">/*表示top和bottom的值是value1,right和left的值是value2*/</span>
+<span class="nt">property</span><span class="nd">:value1</span> <span class="nt">value2</span> <span class="nt">value3</span><span class="o">;</span>  <span class="c">/*表示top的值是value1，right和left的值是value2，bottom的值是value3*/</span>
+<span class="nt">property</span><span class="nd">:value1</span> <span class="nt">value2</span> <span class="nt">value3</span> <span class="nt">value4</span><span class="o">;</span>  <span class="c">/*四个值依次表示top,right,bottom,left*/</span>
 </code></pre></div>
 <p>方便的记忆方法是顺时针，<strong>上 右 下 左</strong>。具体应用在margin和padding的例子如下：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">margin:1em 0 2em 0.5em;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">margin</span><span class="nd">:1em</span> <span class="nt">0</span> <span class="nt">2em</span> <span class="nt">0</span><span class="nc">.5em</span><span class="o">;</span>
 </code></pre></div>
 <h2>边框 border</h2>
 
 <p>边框的属性如下：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">border-width:1px;
-border-style:solid;
-border-color:\#000;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">border-width</span><span class="nd">:1px</span><span class="o">;</span>
+<span class="nt">border-style</span><span class="nd">:solid</span><span class="o">;</span>
+<span class="nt">border-color</span><span class="o">:</span><span class="err">\</span><span class="nf">#000</span><span class="o">;</span>
 </code></pre></div>
 <p>可以缩写为一句：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">border:1px solid \#000;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">border</span><span class="nd">:1px</span> <span class="nt">solid</span> <span class="err">\</span><span class="nf">#000</span><span class="o">;</span>
 </code></pre></div>
 <p>语法是border:尺寸样式颜色;</p>
 
 <h2>背景 Backgrounds</h2>
 
 <p>背景的属性如下：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">background-color:\#f00;
-background-image:url(background.gif);
-background-repeat:no-repeat;
-background-attachment:fixed;
-background-position:0 0;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">background-color</span><span class="o">:</span><span class="err">\</span><span class="nf">#f00</span><span class="o">;</span>
+<span class="nt">background-image</span><span class="nd">:url</span><span class="o">(</span><span class="nt">background</span><span class="nc">.gif</span><span class="o">);</span>
+<span class="nt">background-repeat</span><span class="nd">:no-repeat</span><span class="o">;</span>
+<span class="nt">background-attachment</span><span class="nd">:fixed</span><span class="o">;</span>
+<span class="nt">background-position</span><span class="nd">:0</span> <span class="nt">0</span><span class="o">;</span>
 </code></pre></div>
 <p>可以缩写为一句：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">background:\#f00 url(background.gif) no-repeat fixed 0 0;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">background</span><span class="o">:</span><span class="err">\</span><span class="nf">#f00</span> <span class="nt">url</span><span class="o">(</span><span class="nt">background</span><span class="nc">.gif</span><span class="o">)</span> <span class="nt">no-repeat</span> <span class="nt">fixed</span> <span class="nt">0</span> <span class="nt">0</span><span class="o">;</span>
 </code></pre></div>
 <p>语法是background:背景颜色背景图片填充类型附属定位;
 你可以省略其中一个或多个属性值，如果省略，该属性值将用浏览器默认值，默认值为：
@@ -896,15 +896,15 @@ position: <strong>0% 0%</strong></p>
 <h2>字体 fonts</h2>
 
 <p>字体的属性如下：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">font-style:italic;
-font-variant:small-caps;
-font-weight:bold;
-font-size:1em;
-line-height:140%;
-font-family:&quot;Lucida Grande&quot;,sans-serif;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">font-style</span><span class="nd">:italic</span><span class="o">;</span>
+<span class="nt">font-variant</span><span class="nd">:small-caps</span><span class="o">;</span>
+<span class="nt">font-weight</span><span class="nd">:bold</span><span class="o">;</span>
+<span class="nt">font-size</span><span class="nd">:1em</span><span class="o">;</span>
+<span class="nt">line-height</span><span class="nd">:140</span><span class="o">%;</span>
+<span class="nt">font-family</span><span class="o">:</span><span class="s2">&quot;Lucida Grande&quot;</span><span class="o">,</span><span class="nt">sans-serif</span><span class="o">;</span>
 </code></pre></div>
 <p>可以缩写为一句：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">font:italic small-caps bold 1em/140% &quot;Lucida Grande&quot;,sans-serif;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">font</span><span class="nd">:italic</span> <span class="nt">small-caps</span> <span class="nt">bold</span> <span class="nt">1em</span><span class="o">/</span><span class="nt">140</span><span class="o">%</span> <span class="s2">&quot;Lucida Grande&quot;</span><span class="o">,</span><span class="nt">sans-serif</span><span class="o">;</span>
 </code></pre></div>
 <p>注意，如果你缩写字体定义，至少要定义font-size和font-family两个值。</p>
 
@@ -912,12 +912,12 @@ font-family:&quot;Lucida Grande&quot;,sans-serif;
 
 <p>取消默认的圆点和序号可以这样写list-style:none;,
 list的属性如下:</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">list-style-type:square;
-list-style-position:inside;
-list-style-image:url(image.gif);
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">list-style-type</span><span class="nd">:square</span><span class="o">;</span>
+<span class="nt">list-style-position</span><span class="nd">:inside</span><span class="o">;</span>
+<span class="nt">list-style-image</span><span class="nd">:url</span><span class="o">(</span><span class="nt">image</span><span class="nc">.gif</span><span class="o">);</span>
 </code></pre></div>
 <p>可以缩写为一句：</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">list-style:square inside url(image.gif);
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">list-style</span><span class="nd">:square</span> <span class="nt">inside</span> <span class="nt">url</span><span class="o">(</span><span class="nt">image</span><span class="nc">.gif</span><span class="o">);</span>
 </code></pre></div>
   </div>
 

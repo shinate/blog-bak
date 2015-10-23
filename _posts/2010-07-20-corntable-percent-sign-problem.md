@@ -25,14 +25,14 @@ date_gmt: '2010-07-20 03:01:26 +0800'
 
 直接运行很正常，但是在 crotnab 里就出错。
 
-```code
+```
 /bin/sh: -c: line 1: unexpected EOF while looking for matching ``'
 /bin/sh: -c: line 2: syntax error: unexpected end of file
 ```
 
 google 了好一阵才找到答案。原来 crontab 里的 % 是有特殊意义的，在这里需要转义。man 5 crontab 可以看到，
 
-```code
+```
 Percent-signs (%) in the command, unless escaped with backslash (\), will be changed into newline characters, and all data after the first % will be sent to the command as standard input.
 ```
 

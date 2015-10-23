@@ -847,14 +847,14 @@
 
 <p>对某个文件进行处理</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">vi filename
-</code></pre></div><div class="highlight"><pre><code class="language-code" data-lang="code">:%s/^M/\r/g
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">:%s/^M/\r/g
 </code></pre></div>
 <h2>SED方法</h2>
 
 <h2>PERL方法</h2>
 
 <p>可对多文件批量处理</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">perl -p -i -e &quot;s/^M//g&quot; `find .`
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">perl -p -i -e <span class="s2">&quot;s/^M//g&quot;</span> <span class="sb">`</span>find .<span class="sb">`</span>
 </code></pre></div>
 <ul>
 <li><code>find .</code> 可以替换为任何文件或者多个文件，它的作用为提取所需的文件名。

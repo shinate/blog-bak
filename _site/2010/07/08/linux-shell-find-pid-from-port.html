@@ -843,7 +843,7 @@
   
 
   <div class="post-content english">
-    <div class="highlight"><pre><code class="language-bash" data-lang="bash">netstat -lnp|grep 端口号|grep -v grep|sed -n &#39;1p&#39;|awk &#39;{print $7}&#39;|awk -F/ &#39;{print $1}&#39;
+    <div class="highlight"><pre><code class="language-bash" data-lang="bash">netstat -lnp<span class="p">|</span>grep 端口号<span class="p">|</span>grep -v grep<span class="p">|</span>sed -n <span class="s1">&#39;1p&#39;</span><span class="p">|</span>awk <span class="s1">&#39;{print $7}&#39;</span><span class="p">|</span>awk -F/ <span class="s1">&#39;{print $1}&#39;</span>
 </code></pre></div>
   </div>
 

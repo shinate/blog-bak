@@ -849,21 +849,21 @@
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.41-linux-i686-glibc23.tar.gz/from/http://mysql.cdpa.nsysu.edu.tw/
 </code></pre></div>
 <h2>创建mysql用户</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">groupadd mysql;
-useradd -s /sign/nologin -g mysql -M mysql    \#-s /sign/nologin禁止其他所有的php，cookie。
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">groupadd mysql<span class="p">;</span>
+useradd -s /sign/nologin -g mysql -M mysql    <span class="se">\#</span>-s /sign/nologin禁止其他所有的php，cookie。
 </code></pre></div>
 <h2>编译</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix=/usr/local/mysql \
---with-unix-socket-path=/usr/local/mysql/tmp/mysql.sock \
---localstatedir=/usr/local/mysql/data \
---enable-assembler \
---with-mysqld-ldflags=-all-static \
---with-client-ldflags=-all-static \
---enable-thread-safe-client \
---with-mysqld-user=mysql \
---with-big-tables \
---without-debug \
---with-pthread;
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix<span class="o">=</span>/usr/local/mysql <span class="se">\</span>
+--with-unix-socket-path<span class="o">=</span>/usr/local/mysql/tmp/mysql.sock <span class="se">\</span>
+--localstatedir<span class="o">=</span>/usr/local/mysql/data <span class="se">\</span>
+--enable-assembler <span class="se">\</span>
+--with-mysqld-ldflags<span class="o">=</span>-all-static <span class="se">\</span>
+--with-client-ldflags<span class="o">=</span>-all-static <span class="se">\</span>
+--enable-thread-safe-client <span class="se">\</span>
+--with-mysqld-user<span class="o">=</span>mysql <span class="se">\</span>
+--with-big-tables <span class="se">\</span>
+--without-debug <span class="se">\</span>
+--with-pthread<span class="p">;</span>
 </code></pre></div>
 <h2>安装</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">make
@@ -878,7 +878,7 @@ make install
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p /usr/local/mysql/data
 </code></pre></div>
 <p>生成mysql.sock</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysql_install_db --user=mysql
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysql_install_db --user<span class="o">=</span>mysql
 </code></pre></div>
 <p>将软件的安装目录拥有者改为root用户</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">chown -R root /usr/local/mysql/
@@ -890,13 +890,13 @@ make install
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">chgrp -R mysql /usr/local/mysql/
 </code></pre></div>
 <h2>启动</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysqld_safe --user=mysql &amp;
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysqld_safe --user<span class="o">=</span>mysql <span class="p">&amp;</span>
 </code></pre></div>
 <h2>添加开机启动</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /etc/rc.local
 </code></pre></div>
 <p>添加一行</p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">/usr/local/mysql/bin/mysqld_safe --user=mysql &amp;
+<div class="highlight"><pre><code class="language-text" data-lang="text">/usr/local/mysql/bin/mysqld_safe --user=mysql &amp;
 </code></pre></div>
   </div>
 

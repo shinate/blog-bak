@@ -62,7 +62,7 @@ junction -s C:\movies D:\movies
 
 出现提示：
 
-```code
+```
 Created: C:\movies
 Targetted at: D:\movies
 ```

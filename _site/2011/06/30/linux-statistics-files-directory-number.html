@@ -844,18 +844,18 @@
 
   <div class="post-content english">
     <p>统计当前目录下的文件以及目录数量（不包括子目录）</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l | wc -l
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l <span class="p">|</span> wc -l
 </code></pre></div>
 <p>统计当前目录下的文件数量（遍历所有子目录）</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type f | wc -l
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type f <span class="p">|</span> wc -l
 </code></pre></div>
 <p>统计当前目录下的目录数量（遍历所有子目录）</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type d |  wc -l
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type d <span class="p">|</span>  wc -l
 </code></pre></div>
 <p>当然，也可以指定某个目录来使用</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">find /xxx/yyy ......
 ls -l /xxx/yyy......
-</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash"></code></pre></div>
+</code></pre></div>
   </div>
 
   <!-- post navigator -->

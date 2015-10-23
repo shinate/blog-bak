@@ -108,6 +108,6 @@ vi /etc/rc.local
 
 添加一行
 
-```code
+```
 /usr/local/mysql/bin/mysqld_safe --user=mysql &
 ```

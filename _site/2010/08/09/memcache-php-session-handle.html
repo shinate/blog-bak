@@ -863,12 +863,12 @@
 
 <p>PHP的基础memcache客户端
 <strong>在配置文件中进行设置：</strong></p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">session.save_handler = memcache
+<div class="highlight"><pre><code class="language-text" data-lang="text">session.save_handler = memcache
 session.save_path = &quot;tcp://127.0.0.1:11211&quot;
 </code></pre></div>
 <p><strong>或者在程序中如下测试：</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php">ini_set(&quot;session.save_handler&quot;,&quot;memcached&quot;);
-ini_set(&quot;session.save_path&quot;,&quot;tcp://127.0.0.1:11211&quot;);
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">ini_set(&quot;session.save_handler&quot;,&quot;memcached&quot;);</span>
+<span class="x">ini_set(&quot;session.save_path&quot;,&quot;tcp://127.0.0.1:11211&quot;);</span>
 </code></pre></div>
 <p>详见：<a href="http://cn.php.net/manual/en/memcache.ini.php">http://cn.php.net/manual/en/memcache.ini.php</a></p>
 
@@ -876,12 +876,12 @@ ini_set(&quot;session.save_path&quot;,&quot;tcp://127.0.0.1:11211&quot;);
 
 <p>基于libmemcached通用类库的memcache客户端
 <strong>在配置文件中进行设置：</strong></p>
-<div class="highlight"><pre><code class="language-code" data-lang="code">session.save_handler = memcached
+<div class="highlight"><pre><code class="language-text" data-lang="text">session.save_handler = memcached
 session.save_path = &quot;127.0.0.1:11211&quot;  //注意这里不需要tcp
 </code></pre></div>
 <p><strong>或者在程序中如下测试：</strong></p>
-<div class="highlight"><pre><code class="language-php" data-lang="php">ini_set(&quot;session.save_handler&quot;,&quot;memcached&quot;);
-ini_set(&quot;session.save_path&quot;,&quot;127.0.0.1:11211&quot;);
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">ini_set(&quot;session.save_handler&quot;,&quot;memcached&quot;);</span>
+<span class="x">ini_set(&quot;session.save_path&quot;,&quot;127.0.0.1:11211&quot;);</span>
 </code></pre></div>
 <p>详见：<a href="http://cn.php.net/manual/en/memcached.sessions.php">http://cn.php.net/manual/en/memcached.sessions.php</a></p>
 

@@ -856,12 +856,12 @@ eAccelerator作为PHP的扩展库存在，那么仅在PHP运行时，可以操�
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://bart.eaccelerator.net/source/0.9.5.3/eaccelerator-0.9.5.3.zip
 </code></pre></div>
 <h3>准备安装</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd eaccelerator-0.9.5.2
-export PHP_PREFIX=&quot;/usr/local/php5&quot;
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>eaccelerator-0.9.5.2
+<span class="nb">export </span><span class="nv">PHP_PREFIX</span><span class="o">=</span><span class="s2">&quot;/usr/local/php5&quot;</span>
 /usr/local/php5/bin/phpize
 </code></pre></div>
 <h3>编译安装</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --enable-eaccelerator=shared --with-php-config=$PHP_PREFIX/bin/php-config
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --enable-eaccelerator<span class="o">=</span>shared --with-php-config<span class="o">=</span><span class="nv">$PHP_PREFIX</span>/bin/php-config
 make
 make install
 </code></pre></div>
@@ -870,36 +870,36 @@ make install
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /tmp/xxx
 </code></pre></div>
 <p>这里的xxx自己来定义，想放哪里都行</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">chmod -R 0777 /tmp/xxx
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">chmod -R <span class="m">0777</span> /tmp/xxx
 </code></pre></div>
 <h2>配置</h2>
 
 <p>打开php.ini
 设置</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">extension_dir = &quot;/usr/local/php5/lib/php/extensions/no-debug-non-zts-20060613/&quot;
-session.save_path = &quot;/tmp/xxx&quot;
-extension=eaccelerator.so
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">extension_dir</span> <span class="o">=</span> <span class="s2">&quot;/usr/local/php5/lib/php/extensions/no-debug-non-zts-20060613/&quot;</span>
+session.save_path <span class="o">=</span> <span class="s2">&quot;/tmp/xxx&quot;</span>
+<span class="nv">extension</span><span class="o">=</span>eaccelerator.so
 </code></pre></div>
 <p>在最后添加</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">[eaccelerator]
-extension=eaccelerator.so
-eaccelerator.shm_size=&quot;32&quot;
-eaccelerator.cache_dir=&quot;/home/eaccelerator&quot;
-eaccelerator.enable=&quot;1&quot;
-eaccelerator.optimizer=&quot;1&quot;
-eaccelerator.check_mtime=&quot;1&quot;
-eaccelerator.debug=&quot;0&quot;
-eaccelerator.filter=&quot;&quot;
-eaccelerator.shm_max=&quot;0&quot;
-eaccelerator.shm_ttl=&quot;0&quot;
-eaccelerator.shm_prune_period=&quot;0&quot;
-eaccelerator.shm_only=&quot;0&quot;
-eaccelerator.compress=&quot;1&quot;
-eaccelerator.compress_level=&quot;9&quot;
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>eaccelerator<span class="o">]</span>
+<span class="nv">extension</span><span class="o">=</span>eaccelerator.so
+eaccelerator.shm_size<span class="o">=</span><span class="s2">&quot;32&quot;</span>
+eaccelerator.cache_dir<span class="o">=</span><span class="s2">&quot;/home/eaccelerator&quot;</span>
+eaccelerator.enable<span class="o">=</span><span class="s2">&quot;1&quot;</span>
+eaccelerator.optimizer<span class="o">=</span><span class="s2">&quot;1&quot;</span>
+eaccelerator.check_mtime<span class="o">=</span><span class="s2">&quot;1&quot;</span>
+eaccelerator.debug<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+eaccelerator.filter<span class="o">=</span><span class="s2">&quot;&quot;</span>
+eaccelerator.shm_max<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+eaccelerator.shm_ttl<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+eaccelerator.shm_prune_period<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+eaccelerator.shm_only<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+eaccelerator.compress<span class="o">=</span><span class="s2">&quot;1&quot;</span>
+eaccelerator.compress_level<span class="o">=</span><span class="s2">&quot;9&quot;</span>
 </code></pre></div>
 <p>保存退出</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /home/eaccelerator
-chmod -R 0777 /home/eaccelerator/
+chmod -R <span class="m">0777</span> /home/eaccelerator/
 </code></pre></div>
 <p><strong>重启apache，安装完毕</strong>
 建议运行一个php页面进行测试</p>

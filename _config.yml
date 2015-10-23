@@ -12,7 +12,7 @@ google_analytics: # google analytics id
 disqus_shortname: # disqus_shortname for disqus comment system
 
 # highlight
-highlighter: true
+highlighter: pygments
 markdown: redcarpet
 # markdown: kramdown
 

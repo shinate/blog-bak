@@ -844,15 +844,15 @@
 
   <div class="post-content english">
     <h2>清空文档</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">echo &quot;&quot;&amp;gt;filename
-</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">&amp;gt;filename
-</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /dev/null &amp;gt;filename
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&quot;&quot;</span><span class="p">&amp;</span>gt<span class="p">;</span>filename
+</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="p">&amp;</span>gt<span class="p">;</span>filename
+</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /dev/null <span class="p">&amp;</span>gt<span class="p">;</span>filename
 </code></pre></div>
 <h2>统计</h2>
 
 <p><strong>在apache的log中找出访问次数最多的10个IP。</strong></p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">awk &#39;{print $1}&#39; apache_log |sort |uniq -c|sort -nr|head
-</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">cat xxxxx | awk &#39;{print $2}&#39;|sort|uniq -c|sort -nr| head -10
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;{print $1}&#39;</span> apache_log <span class="p">|</span>sort <span class="p">|</span>uniq -c<span class="p">|</span>sort -nr<span class="p">|</span>head
+</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">cat xxxxx <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="p">|</span>sort<span class="p">|</span>uniq -c<span class="p">|</span>sort -nr<span class="p">|</span> head -10
 </code></pre></div>
   </div>
 

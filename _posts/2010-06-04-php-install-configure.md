@@ -65,7 +65,7 @@ cp php.ini-dist /usr/local/php5/lib/php.ini
 
 重启apache
 
-```code
+```
 遇到错误: httpd: Syntax error on line 54 of /usr/local/apache2/conf/httpd.conf: Cannot load /usr/local/apache2/modules/libphp5.so into server: /usr/local/apache2/modules/libphp5.so: cannot restore segment prot after reloc: Permission denied
 ```
 
@@ -87,7 +87,7 @@ vi /etc/selinux/config
 
 设置
 
-```code
+```
 SELINUX=disabled
 ```
 

@@ -849,7 +849,7 @@
 <h2>FireFox</h2>
 
 <p>rgba是CSS3中的属性，支持W3标准的浏览器都可以现实的，比如webkit核心的...</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">background:rgba(255, 0, 0, 0.5);
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">background</span><span class="nd">:rgba</span><span class="o">(</span><span class="nt">255</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">0</span><span class="nc">.5</span><span class="o">);</span>
 </code></pre></div>
 <p>background:rgba([red:0~255], [green:0~255], [blue:0~255], [alpha:0~1]);
 <a href="http://unite.codante.org/development/tester/transparent_background/rgba.html">演示地址</a></p>
@@ -864,32 +864,32 @@
 
 <p>这是以前经常使用的方法，利用透明滤镜来实现。
 问题在于，如果这个容器直接包含文本就没法实现文本不透明，必须加一层容器。</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css">&amp;lt;!--[if IE]&amp;gt;
-&amp;lt;style type=&quot;text/css&quot;&amp;gt;
-.t{
-    background:\#f00;
-    filter:alpha(opacity=50);
-    zoom:1
-}
-.t *{
-    position:relative
-}
-&amp;lt;/style&amp;gt;
-&amp;lt;![endif]--&amp;gt;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;!</span><span class="nt">--</span><span class="o">[</span><span class="nt">if</span> <span class="nt">IE</span><span class="o">]&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">style</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="nc">.t</span><span class="p">{</span>
+    <span class="k">background</span><span class="o">:</span><span class="err">\</span><span class="m">#f00</span><span class="p">;</span>
+    <span class="n">filter</span><span class="o">:</span><span class="n">alpha</span><span class="p">(</span><span class="k">opacity</span><span class="o">=</span><span class="m">50</span><span class="p">);</span>
+    <span class="n">zoom</span><span class="o">:</span><span class="m">1</span>
+<span class="p">}</span>
+<span class="nc">.t</span> <span class="o">*</span><span class="p">{</span>
+    <span class="k">position</span><span class="o">:</span><span class="k">relative</span>
+<span class="p">}</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">style</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;![</span><span class="nt">endif</span><span class="o">]</span><span class="nt">--</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
 </code></pre></div>
 <p>filter:alpha(opacity=[alpha:0~100]);
 <a href="http://unite.codante.org/development/tester/transparent_background/filter_alpha.html">演示地址</a></p>
 
 <h3>渐变效果滤镜</h3>
-<div class="highlight"><pre><code class="language-css" data-lang="css">&amp;lt;!--[if IE]&amp;gt;
-&amp;lt;style type=&quot;text/css&quot;&amp;gt;
-.t{
-    background:transparent;
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=\#80FF0000,endColorstr=\#80FF0000);
-    zoom:1;
-}
-&amp;lt;/style&amp;gt;
-&amp;lt;![endif]--&amp;gt;
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="o">&amp;</span><span class="nt">lt</span><span class="o">;!</span><span class="nt">--</span><span class="o">[</span><span class="nt">if</span> <span class="nt">IE</span><span class="o">]&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;</span><span class="nt">style</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="nc">.t</span><span class="p">{</span>
+    <span class="k">background</span><span class="o">:</span><span class="k">transparent</span><span class="p">;</span>
+    <span class="n">filter</span><span class="o">:</span><span class="n">progid</span><span class="o">:</span><span class="n">DXImageTransform</span><span class="o">.</span><span class="n">Microsoft</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">startColorstr</span><span class="o">=</span><span class="err">\</span><span class="m">#80FF0000</span><span class="o">,</span><span class="n">endColorstr</span><span class="o">=</span><span class="err">\</span><span class="m">#80FF0000</span><span class="p">);</span>
+    <span class="n">zoom</span><span class="o">:</span><span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;/</span><span class="nt">style</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
+<span class="o">&amp;</span><span class="nt">lt</span><span class="o">;![</span><span class="nt">endif</span><span class="o">]</span><span class="nt">--</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span>
 </code></pre></div>
 <p>filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#[[alpha:00~FF][red:00~FF][green:00~FF][blue:00~FF]], endColorstr=#[[alpha:00~FF][red:00~FF][green:00~FF][blue:00~FF]];
 00表示完全透明，FF就是全不透明，转换成十进制的范围就是0~255，如果想实现50%的透明需要进行一下换算，50/100 * 255 = 127.5，按128来算，转换成16进制为80。

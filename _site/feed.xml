@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Oct 2015 00:26:58 +0800</pubDate>
-    <lastBuildDate>Fri, 23 Oct 2015 00:26:58 +0800</lastBuildDate>
+    <pubDate>Fri, 23 Oct 2015 09:38:14 +0800</pubDate>
+    <lastBuildDate>Fri, 23 Oct 2015 09:38:14 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -28,26 +28,26 @@
 &lt;a href=&quot;http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html&quot; title=&quot;tcl&quot;&gt;http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;获取软件&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;\#tcl8.5
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;se&quot;&gt;\#&lt;/span&gt;tcl8.5
 wget http://downloads.sourceforge.net/tcl/tcl8.5.12-src.tar.gz
-\#redis
+&lt;span class=&quot;se&quot;&gt;\#&lt;/span&gt;redis
 wget http://redis.googlecode.com/files/redis-2.6.2.tar.gz
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;安装&lt;/h2&gt;
 
 &lt;h3&gt;tcl&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;tar -zxf tcl8.5.12-html.tar.gz --strip-components=1
-cd unix &amp;amp;&amp;amp; ./configure --prefix=/usr \
---enable-threads \
---mandir=/usr/share/man
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;tar -zxf tcl8.5.12-html.tar.gz --strip-components&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;unix &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--enable-threads &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--mandir&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/share/man
 make
-sed -e &amp;quot;s@^\(TCL_SRC_DIR=&amp;#39;\).*@/usr/include&amp;#39;@&amp;quot; \
--e &amp;quot;/TCL_B/s@=&amp;#39;\(-L\)\?.*unix@=&amp;#39;/usr/lib@&amp;quot; \
+sed -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;s@^\(TCL_SRC_DIR=&amp;#39;\).*@/usr/include&amp;#39;@&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+-e &lt;span class=&quot;s2&quot;&gt;&amp;quot;/TCL_B/s@=&amp;#39;\(-L\)\?.*unix@=&amp;#39;/usr/lib@&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 -i tclConfig.sh
 make install
 make install-private-headers
 ln -v -sf tclsh8.5 /usr/bin/tclsh
-chmod -v 755 /usr/lib/libtcl8.5.so
+chmod -v &lt;span class=&quot;m&quot;&gt;755&lt;/span&gt; /usr/lib/libtcl8.5.so
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Wed, 31 Oct 2012 11:13:11 +0800</pubDate>
         <link>http://codante.org/blog/2012/10/31/redis-install-and-configure.html</link>
@@ -74,21 +74,21 @@ chmod -v 755 /usr/lib/libtcl8.5.so
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;默认的清晰度比较高，图片会很大，生成图片需要一定的时间。
 php&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;exec(&amp;#39;/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png&amp;#39;);
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;exec(&amp;#39;/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png&amp;#39;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;具体的使用方法&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&amp;amp;lt;?php
-ob_start();
-//如果将输出的文件名设置为&amp;#39;-&amp;#39;，则直接返回文件数据流
-passthru(&amp;#39;/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -&amp;#39;);
-$fileName = self::cachePath() . &amp;#39;/&amp;#39; . self::name();
-$content = ob_get_clean();
-//写入图片文件，备用
-//file_put_contents($fileName, $content);
-//直接输出为图片
-header(&amp;quot;Content-type: image/png&amp;quot;);
-echo $content;
-?&amp;amp;gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;&amp;amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;ob_start();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;//如果将输出的文件名设置为&amp;#39;-&amp;#39;，则直接返回文件数据流&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;passthru(&amp;#39;/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;$fileName = self::cachePath() . &amp;#39;/&amp;#39; . self::name();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;$content = ob_get_clean();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;//写入图片文件，备用&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;//file_put_contents($fileName, $content);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;//直接输出为图片&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;header(&amp;quot;Content-type: image/png&amp;quot;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;echo $content;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;?&amp;amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;中文乱码问题&lt;/h3&gt;
 
@@ -135,7 +135,7 @@ echo $content;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;就能查到和iostat相关的安装包了。
 另外想安装一个程序，只记得一部分名称，也可以用这个办法来实现安装&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum search png |grep png
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum search png &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;grep png
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;就能找到我们想安装的libpng这个名称。&lt;/p&gt;
 </description>
@@ -1157,7 +1157,7 @@ There are mice next to the refrigerator, under the sink and inside the cupboard!
     
       <item>
         <title>haproxy设置websocket</title>
-        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-code&quot; data-lang=&quot;code&quot;&gt;frontend all 0.0.0.0:80
+        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;frontend all 0.0.0.0:80
    timeout client 86400000
    default_backend www_backend
    acl is_websocket hdr(Upgrade) -i WebSocket
@@ -1307,18 +1307,18 @@ There are mice next to the refrigerator, under the sink and inside the cupboard!
       <item>
         <title>Linux统计文件、目录数量</title>
         <description>&lt;p&gt;统计当前目录下的文件以及目录数量（不包括子目录）&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ls -l | wc -l
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ls -l &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; wc -l
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;统计当前目录下的文件数量（遍历所有子目录）&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;find . -type f | wc -l
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;find . -type f &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; wc -l
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;统计当前目录下的目录数量（遍历所有子目录）&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;find . -type d |  wc -l
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;find . -type d &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;  wc -l
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;当然，也可以指定某个目录来使用&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;find /xxx/yyy ......
 ls -l /xxx/yyy......
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Thu, 30 Jun 2011 10:59:37 +0800</pubDate>
         <link>http://codante.org/blog/2011/06/30/linux-statistics-files-directory-number.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2011/06/30/linux-statistics-files-directory-number.html</guid>
@@ -1332,9 +1332,9 @@ ls -l /xxx/yyy......
 
 &lt;h2&gt;下载及安装&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git clone git://github.com/joyent/node.git
-cd node
-./configure --prefix=/servers/app/node
-make &amp;amp;&amp;amp; make install
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;node
+./configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/servers/app/node
+make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;启动&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/servers/app/node/bin/node

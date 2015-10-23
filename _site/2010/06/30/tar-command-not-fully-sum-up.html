@@ -846,7 +846,7 @@
     <p>感谢老男孩赐予的知识。 老男孩（QQ:49000448， mail:49000448@qq.com）</p>
 
 <h2>常用选项</h2>
-<div class="highlight"><pre><code class="language-code" data-lang="code">-z, --gzip, --ungzip
+<div class="highlight"><pre><code class="language-text" data-lang="text">-z, --gzip, --ungzip
 filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩
 -c, --create
 create a new archive ||建立新的归档文件
@@ -874,15 +874,15 @@ only store files newer than DATE
 <p>不同方法对应不同的解压方式</p>
 
 <h3>方法1 (tar.gz)</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">\#打包
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\#</span>打包
 tar zcvf test.tar.gz ./test
-\#解压
+<span class="se">\#</span>解压
 tar zxvf test.tar.gz
 </code></pre></div>
 <h3>方法2 (tar.bz)</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">\#打包
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\#</span>打包
 tar jcvf test.tar.bz ./test
-\#解压
+<span class="se">\#</span>解压
 tar jxvf test.tar.bz
 </code></pre></div>
 <h3>错误的例子</h3>
@@ -906,28 +906,28 @@ tar: Error exit delayed from previous errors</p>
 tar zxvf test.tar.gz -C /home/rhy/
 </code></pre></div>
 <h3>排除式打包(参数 -X)</h3>
-<div class="highlight"><pre><code class="language-code" data-lang="code">man tar:
+<div class="highlight"><pre><code class="language-text" data-lang="text">man tar:
 --exclude PATTERN
 exclude files based upon PATTERN
 -X, --exclude-from FILE
 exclude files listed in FILE
 </code></pre></div>
 <h4>测试准备</h4>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /
 mkdir -p /test/baoliu
 mkdir -p /test/paichu
-touch exceptlist;echo &quot;paichu&quot;&amp;gt;exceptlist
+touch exceptlist<span class="p">;</span><span class="nb">echo</span> <span class="s2">&quot;paichu&quot;</span><span class="p">&amp;</span>gt<span class="p">;</span>exceptlist
 </code></pre></div>
 <h4>测试开始</h4>
 
 <p><strong>--exclude</strong> 参数</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /
-tar zcvf  paichu.tar.gz ./test --exclude=test/paichu
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /
+tar zcvf  paichu.tar.gz ./test --exclude<span class="o">=</span><span class="nb">test</span>/paichu
 ./test/
 ./test/baoliu/
 </code></pre></div>
 <p><strong>-X</strong> 参数</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /
 cat exceptlist
 paichu
 tar zcvfX paichuX.tar.gz /exceptlist ./test
@@ -935,9 +935,9 @@ tar zcvfX paichuX.tar.gz /exceptlist ./test
 ./test/baoliu/
 </code></pre></div>
 <h3>增量备份(参数 -N)</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">\#自00点以来的新文件。
-tar -N $(date -d yesterday +%F) zcvf a.tar.gz ./a
-\#自2009-09-26以来的新文件
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\#</span>自00点以来的新文件。
+tar -N <span class="k">$(</span>date -d yesterday +%F<span class="k">)</span> zcvf a.tar.gz ./a
+<span class="se">\#</span>自2009-09-26以来的新文件
 tar -N 2009-09-26 zcvf a.tar.gz ./a
 </code></pre></div>
   </div>

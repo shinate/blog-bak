@@ -85,14 +85,14 @@ make install
 
 添加以下信息
 
-```code
+```
 LoadModule dav_svn_module modules/mod_dav_svn.so
 LoadModule authz_svn_module modules/mod_authz_svn.so
 ```
 
 在末尾添加
 
-```code
+```
 &lt;Location /svn&gt;
 DAV svn
 SVNParentPath /home/nuptsoft/subversion_project  (此处配置你的版本库根目录)
@@ -140,7 +140,7 @@ repos2:/abc/aaa, ,表示对版本库2中的abc项目的aaa目录设置权限
 权限主体可以是用户组、用户或*，用户组在前面加@，*表示全部用户。权限可以是w、r、wr和空，空表示没有任何权限。
 示例：
 
-```code
+```
 [groups]
 admin = alan
 [/]

@@ -39,7 +39,7 @@ date_gmt: '2010-08-09 01:45:33 +0800'
 PHP的基础memcache客户端
 **在配置文件中进行设置：**
 
-```code
+```
 session.save_handler = memcache
 session.save_path = "tcp://127.0.0.1:11211"
 ```
@@ -58,7 +58,7 @@ ini_set("session.save_path","tcp://127.0.0.1:11211");
 基于libmemcached通用类库的memcache客户端
 **在配置文件中进行设置：**
 
-```code
+```
 session.save_handler = memcached
 session.save_path = "127.0.0.1:11211"  //注意这里不需要tcp
 ```

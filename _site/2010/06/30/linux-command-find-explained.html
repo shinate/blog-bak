@@ -851,14 +851,14 @@
 <h2>显示所有文件</h2>
 
 <p>显示多个目录文件列表(仅限于3层)</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">find test ryan hyran -maxdepth 3
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">find <span class="nb">test </span>ryan hyran -maxdepth 3
 </code></pre></div>
 <h2>按文件名、路径名查找</h2>
 
 <p>多参数，可用通配符</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">find -maxdepth 3 -name &#39;d*&#39;
-find -maxdepth 3 -name &#39;ji*\.sql&#39;
-find -path &#39;*server*&#39;
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">find -maxdepth <span class="m">3</span> -name <span class="s1">&#39;d*&#39;</span>
+find -maxdepth <span class="m">3</span> -name <span class="s1">&#39;ji*\.sql&#39;</span>
+find -path <span class="s1">&#39;*server*&#39;</span>
 </code></pre></div>
 <h2>按文件属性查找</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type f
@@ -866,14 +866,14 @@ find . -size -100M
 find . -size +1G
 find . -mtime +2
 find . -perm 755
-find . -perm -755  \#权限至少为755
+find . -perm -755  <span class="se">\#</span>权限至少为755
 </code></pre></div>
 <h2>组合查找</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type d -mtime +30
 find . -type f -mtime +15
 find . -type f -size +10M
-find . -type d -name &#39;server*&#39;
-find /ryan -name &#39;*.log&#39; -mtime +5
+find . -type d -name <span class="s1">&#39;server*&#39;</span>
+find /ryan -name <span class="s1">&#39;*.log&#39;</span> -mtime +5
 </code></pre></div>
 <h2>使用逻辑运算查找</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">/ryan目录下30天前访问过得大于20M的文件（-a and,-o or !）
@@ -882,10 +882,10 @@ find /ryan -type f -o -mtime +15
 find /ryan ! -user rhy
 </code></pre></div>
 <h2>对查找文件实施操作</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">\#删目录 30天以前
-find . -type d -mtime +30 |xargs rm -rf
-\#删文件 15天以前 \#删目录下文件用这个好
-find . -type f -mtime +15 |xargs rm -f
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\#</span>删目录 30天以前
+find . -type d -mtime +30 <span class="p">|</span>xargs rm -rf
+<span class="se">\#</span>删文件 15天以前 <span class="se">\#</span>删目录下文件用这个好
+find . -type f -mtime +15 <span class="p">|</span>xargs rm -f
 </code></pre></div>
   </div>
 
