@@ -848,7 +848,7 @@
 </code></pre></div>
 <h2>安装</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>xdebug-2.1.1
-<span class="se">\#</span>创建configure
+<span class="c">#创建configure</span>
 /servers/app/php/bin/phpize
 ./configure --enable-xdebug --with-php-config<span class="o">=</span>/servers/app/php/bin/php-config
 make
@@ -866,22 +866,22 @@ make install
 <h2>附录</h2>
 
 <p>关于xdebug配置的一些说明</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">;xdebug配置
-[Xdebug]
-;开启自动跟踪
-xdebug.auto_trace = On
-;开启异常跟踪
-xdebug.show_exception_trace = On
-;开启远程调试自动启动
-xdebug.remote_autostart = On
-;开启远程调试
-xdebug.remote_enable = On
-;收集变量
-xdebug.collect_vars = On
-;收集返回值
-xdebug.collect_return = On
-;收集参数
-xdebug.collect_params = On
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="c1">;xdebug配置</span>
+<span class="k">[Xdebug]</span>
+<span class="c1">;开启自动跟踪</span>
+<span class="na">xdebug.auto_trace</span> <span class="o">=</span> <span class="s">On</span>
+<span class="c1">;开启异常跟踪</span>
+<span class="na">xdebug.show_exception_trace</span> <span class="o">=</span> <span class="s">On</span>
+<span class="c1">;开启远程调试自动启动</span>
+<span class="na">xdebug.remote_autostart</span> <span class="o">=</span> <span class="s">On</span>
+<span class="c1">;开启远程调试</span>
+<span class="na">xdebug.remote_enable</span> <span class="o">=</span> <span class="s">On</span>
+<span class="c1">;收集变量</span>
+<span class="na">xdebug.collect_vars</span> <span class="o">=</span> <span class="s">On</span>
+<span class="c1">;收集返回值</span>
+<span class="na">xdebug.collect_return</span> <span class="o">=</span> <span class="s">On</span>
+<span class="c1">;收集参数</span>
+<span class="na">xdebug.collect_params</span> <span class="o">=</span> <span class="s">On</span>
 </code></pre></div>
   </div>
 
