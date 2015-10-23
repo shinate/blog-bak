@@ -583,14 +583,6 @@
       
       
       
-      <a class="post-archive-iterm" href="http://codante.org/blog/2010/08/17/pray-for-the-zhouqu-compatriots.html">
-        <span class="post-archive-date">2010-08-17</span>
-        <span class="post-archive-title ">为舟曲的同胞祈福，加油！</span>
-      </a>
-      
-      
-      
-      
       <a class="post-archive-iterm" href="http://codante.org/blog/2010/08/09/memcache-php-session-handle.html">
         <span class="post-archive-date">2010-08-09</span>
         <span class="post-archive-title checked">PHP中用Memcache存储Session数据</span>
@@ -837,15 +829,22 @@
   <div class="post-content english">
     <h2>优缺点</h2>
 
-<p><strong>优点：</strong>
-1. 使用内存存放session信息，不经过磁盘，数据库等，速度快
-2. 可以多台机器共用一个/组memcached服务器，达到多台机器共享session信息，方便多机集群的session问题处理。
-3. ...
-<strong>不足：</strong>
-1. 首先memcached的服务必须正常工作，否则php的session相关功能将不起作用,这样php的处理就多了一层外面的依赖。
-2. 由于memcached是使用内存的，这样当用户量比较大时，就可能由于内存方面原因导致session时长上的问题,session的实际失效时长达不到设定的失效时长(由于memcached在内存不够下的处理机制决定)
-3. 由于memcached的内存管理机制，当session存储的数据超过1MB的时候有数据丢失问题（不过一般不会有人在session中存放这么多的信息吧)。
-4. ...</p>
+<p><strong>优点：</strong></p>
+
+<ol>
+<li>使用内存存放session信息，不经过磁盘，数据库等，速度快</li>
+<li>可以多台机器共用一个/组memcached服务器，达到多台机器共享session信息，方便多机集群的session问题处理。</li>
+<li>...</li>
+</ol>
+
+<p><strong>不足：</strong></p>
+
+<ol>
+<li>首先memcached的服务必须正常工作，否则php的session相关功能将不起作用,这样php的处理就多了一层外面的依赖。</li>
+<li>由于memcached是使用内存的，这样当用户量比较大时，就可能由于内存方面原因导致session时长上的问题,session的实际失效时长达不到设定的失效时长(由于memcached在内存不够下的处理机制决定)</li>
+<li>由于memcached的内存管理机制，当session存储的数据超过1MB的时候有数据丢失问题（不过一般不会有人在session中存放这么多的信息吧)。</li>
+<li>...</li>
+</ol>
 
 <h2>实现</h2>
 
@@ -855,8 +854,8 @@
 
 <p>PHP的基础memcache客户端
 <strong>在配置文件中进行设置：</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">session.save_handler = memcache
-session.save_path = &quot;tcp://127.0.0.1:11211&quot;
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="na">session.save_handler</span> <span class="o">=</span> <span class="s">memcache</span>
+<span class="na">session.save_path</span> <span class="o">=</span> <span class="s">&quot;tcp://127.0.0.1:11211&quot;</span>
 </code></pre></div>
 <p><strong>或者在程序中如下测试：</strong></p>
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">ini_set(&quot;session.save_handler&quot;,&quot;memcached&quot;);</span>
@@ -868,8 +867,8 @@ session.save_path = &quot;tcp://127.0.0.1:11211&quot;
 
 <p>基于libmemcached通用类库的memcache客户端
 <strong>在配置文件中进行设置：</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">session.save_handler = memcached
-session.save_path = &quot;127.0.0.1:11211&quot;  //注意这里不需要tcp
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="na">session.save_handler</span> <span class="o">=</span> <span class="s">memcached</span>
+<span class="na">session.save_path</span> <span class="o">=</span> <span class="s">&quot;127.0.0.1:11211&quot;  //注意这里不需要tcp</span>
 </code></pre></div>
 <p><strong>或者在程序中如下测试：</strong></p>
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">ini_set(&quot;session.save_handler&quot;,&quot;memcached&quot;);</span>
@@ -896,7 +895,7 @@ memc.sess.key.8fvadbqo1lt2l6j98tbg7ao1d7</p>
     
 
     
-    <a class="post-nav-next" href="http://codante.org/blog/2010/08/17/pray-for-the-zhouqu-compatriots.html">为舟曲的同胞祈福，加油！</a>
+    <a class="post-nav-next" href="http://codante.org/blog/2010/08/27/long-island-trip.html">2010年5月，长岛之旅</a>
     
   </div>
   <!-- /post navigator -->

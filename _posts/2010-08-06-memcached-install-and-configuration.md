@@ -88,7 +88,7 @@ error while loading shared libraries: libevent-1.4.so.2: cannot open shared obje
 **使用 "LD_DEBUG=libs /usr/local/memcached/bin/memcached -v" 进行检查**
 得到以下结果
 
-```
+```access log
 3566: find library=libevent-1.4.so.2 [0]; searching
 3566: search cache=/etc/ld.so.cache
 3566: search path=/lib64/tls/x86_64:/lib64/tls:/lib64/x86_64:/lib64:/usr/lib64/tls/x86_64:/usr/lib64/tls:/usr/lib64/x86_64:/usr/lib64 (system search path)
@@ -170,14 +170,22 @@ ulimit -n 10240
 ## 附录
 
 开启了64位参数，可以分配4G以上的内存，如：
+
+```bash
 memcached -d -m 6144 -u root -t 64 -r -c 16382 -p 11211
+```
+
 可以更改端口：
+
+```bash
 memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
 memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11212
 memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11213
+```
 
 ### 启动参数
 
+```ini
 -d 启动deamon模式
 -m 最大占用内存，单位为M
 -u 运行账户
@@ -186,11 +194,14 @@ memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11213
 -c 最大可接受并发连接数
 -p 监听端口
 -l 监听ip
+```
 
 ### 进程管理
 
+```ini
 -d start 启动memcached服务
 -d restart 重起memcached服务
 -d stop|shutdown 关闭正在运行的memcached服务
 -d install 安装memcached服务
 -d uninstall 卸载memcached服务
+```
