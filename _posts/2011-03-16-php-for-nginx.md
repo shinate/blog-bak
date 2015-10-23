@@ -89,67 +89,69 @@ vi /servers/app/php/etc/php-fpm.conf
 
 需要修改的不是很多，重新设置一下pid，log，端口，进程数什么的，根据自己机器来定。
 放个简洁版的，注释太长，去了。
-[xml]
-&lt;?xml version="1.0" ?&gt;
-&lt;configuration&gt;
- &lt;section name="global_options"&gt;
- &lt;value name="pid_file"&gt;/servers/run/php-fpm-9000.pid&lt;/value&gt;
- &lt;value name="error_log"&gt;/servers/logs/php-fpm-9000.log&lt;/value&gt;
- &lt;value name="log_level"&gt;notice&lt;/value&gt;
- &lt;value name="emergency_restart_threshold"&gt;10&lt;/value&gt;
- &lt;value name="emergency_restart_interval"&gt;1m&lt;/value&gt;
- &lt;value name="process_control_timeout"&gt;5s&lt;/value&gt;
- &lt;value name="daemonize"&gt;yes&lt;/value&gt;
- &lt;/section&gt;
- &lt;workers&gt;
- &lt;section name="pool"&gt;
- &lt;value name="name"&gt;default&lt;/value&gt;
- &lt;value name="listen_address"&gt;127.0.0.1:9000&lt;/value&gt;
- &lt;value name="listen_options"&gt;
- &lt;value name="backlog"&gt;-1&lt;/value&gt;
- &lt;value name="owner"&gt;&lt;/value&gt;
- &lt;value name="group"&gt;&lt;/value&gt;
- &lt;value name="mode"&gt;0666&lt;/value&gt;
- &lt;/value&gt;
- &lt;value name="php_defines"&gt;
- &lt;value name="sendmail_path"&gt;/usr/sbin/sendmail -t -i&lt;/value&gt;
- &lt;value name="display_errors"&gt;0&lt;/value&gt;
- &lt;/value&gt;
- &lt;value name="user"&gt;nginx&lt;/value&gt;
- &lt;value name="group"&gt;nginx&lt;/value&gt;
- &lt;value name="pm"&gt;
- &lt;value name="style"&gt;static&lt;/value&gt;
- &lt;value name="max_children"&gt;128&lt;/value&gt;
- &lt;value name="apache_like"&gt;
- &lt;value name="StartServers"&gt;20&lt;/value&gt;
- &lt;value name="MinSpareServers"&gt;5&lt;/value&gt;
- &lt;value name="MaxSpareServers"&gt;35&lt;/value&gt;
- &lt;/value&gt;
- &lt;/value&gt;
- &lt;value name="request_terminate_timeout"&gt;0s&lt;/value&gt;
- &lt;value name="request_slowlog_timeout"&gt;0s&lt;/value&gt;
- &lt;value name="slowlog"&gt;logs/slow.log&lt;/value&gt;
- &lt;value name="rlimit_files"&gt;65535&lt;/value&gt;
- &lt;value name="rlimit_core"&gt;0&lt;/value&gt;
- &lt;value name="chroot"&gt;&lt;/value&gt;
- &lt;value name="chdir"&gt;&lt;/value&gt;
- &lt;value name="catch_workers_output"&gt;yes&lt;/value&gt;
- &lt;value name="max_requests"&gt;1024&lt;/value&gt;
- &lt;value name="allowed_clients"&gt;127.0.0.1&lt;/value&gt;
- &lt;value name="environment"&gt;
- &lt;value name="HOSTNAME"&gt;$HOSTNAME&lt;/value&gt;
- &lt;value name="PATH"&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
- &lt;value name="TMP"&gt;/tmp&lt;/value&gt;
- &lt;value name="TMPDIR"&gt;/tmp&lt;/value&gt;
- &lt;value name="TEMP"&gt;/tmp&lt;/value&gt;
- &lt;value name="OSTYPE"&gt;$OSTYPE&lt;/value&gt;
- &lt;value name="MACHTYPE"&gt;$MACHTYPE&lt;/value&gt;
- &lt;value name="MALLOC_CHECK_"&gt;2&lt;/value&gt;
- &lt;/value&gt;
- &lt;/section&gt;
- &lt;/workers&gt;
-&lt;/configuration&gt;
-[/xml]
+
+```xml
+<?xml version="1.0" ?>
+<configuration>
+    <section name="global_options">
+        <value name="pid_file">/servers/run/php-fpm-9000.pid</value>
+        <value name="error_log">/servers/logs/php-fpm-9000.log</value>
+        <value name="log_level">notice</value>
+        <value name="emergency_restart_threshold">10</value>
+        <value name="emergency_restart_interval">1m</value>
+        <value name="process_control_timeout">5s</value>
+        <value name="daemonize">yes</value>
+    </section>
+    <workers>
+        <section name="pool">
+            <value name="name">default</value>
+            <value name="listen_address">127.0.0.1:9000</value>
+            <value name="listen_options">
+                <value name="backlog">-1</value>
+                <value name="owner"></value>
+                <value name="group"></value>
+                <value name="mode">0666</value>
+            </value>
+            <value name="php_defines">
+                <value name="sendmail_path">/usr/sbin/sendmail -t -i</value>
+                <value name="display_errors">0</value>
+            </value>
+            <value name="user">nginx</value>
+            <value name="group">nginx</value>
+            <value name="pm">
+                <value name="style">static</value>
+                <value name="max_children">128</value>
+                <value name="apache_like">
+                    <value name="StartServers">20</value>
+                    <value name="MinSpareServers">5</value>
+                    <value name="MaxSpareServers">35</value>
+                </value>
+            </value>
+            <value name="request_terminate_timeout">0s</value>
+            <value name="request_slowlog_timeout">0s</value>
+            <value name="slowlog">logs/slow.log</value>
+            <value name="rlimit_files">65535</value>
+            <value name="rlimit_core">0</value>
+            <value name="chroot"></value>
+            <value name="chdir"></value>
+            <value name="catch_workers_output">yes</value>
+            <value name="max_requests">1024</value>
+            <value name="allowed_clients">127.0.0.1</value>
+            <value name="environment">
+                <value name="HOSTNAME">$HOSTNAME</value>
+                <value name="PATH">/usr/local/bin:/usr/bin:/bin</value>
+                <value name="TMP">/tmp</value>
+                <value name="TMPDIR">/tmp</value>
+                <value name="TEMP">/tmp</value>
+                <value name="OSTYPE">$OSTYPE</value>
+                <value name="MACHTYPE">$MACHTYPE</value>
+                <value name="MALLOC_CHECK_">2</value>
+            </value>
+        </section>
+    </workers>
+</configuration>
+```
+
 启动fastcgi
 
 ```bash

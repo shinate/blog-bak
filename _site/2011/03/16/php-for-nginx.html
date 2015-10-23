@@ -33,7 +33,7 @@
   </head>
   <body>
 
-    <div class="post-wrapper">
+    <div class="footer-clear post-wrapper">
 
   <!-- post archive trigger -->
   <div class="post-archive-trigger">
@@ -902,69 +902,68 @@ yum install libmcrypt-devel
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /servers/app/php/etc/php-fpm.conf
 </code></pre></div>
 <p>需要修改的不是很多，重新设置一下pid，log，端口，进程数什么的，根据自己机器来定。
-放个简洁版的，注释太长，去了。
-[xml]
-&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;configuration&gt;
- &lt;section name=&quot;global<em>options&quot;&gt;
- &lt;value name=&quot;pid</em>file&quot;&gt;/servers/run/php-fpm-9000.pid&lt;/value&gt;
- &lt;value name=&quot;error<em>log&quot;&gt;/servers/logs/php-fpm-9000.log&lt;/value&gt;
- &lt;value name=&quot;log</em>level&quot;&gt;notice&lt;/value&gt;
- &lt;value name=&quot;emergency<em>restart</em>threshold&quot;&gt;10&lt;/value&gt;
- &lt;value name=&quot;emergency<em>restart</em>interval&quot;&gt;1m&lt;/value&gt;
- &lt;value name=&quot;process<em>control</em>timeout&quot;&gt;5s&lt;/value&gt;
- &lt;value name=&quot;daemonize&quot;&gt;yes&lt;/value&gt;
- &lt;/section&gt;
- &lt;workers&gt;
- &lt;section name=&quot;pool&quot;&gt;
- &lt;value name=&quot;name&quot;&gt;default&lt;/value&gt;
- &lt;value name=&quot;listen<em>address&quot;&gt;127.0.0.1:9000&lt;/value&gt;
- &lt;value name=&quot;listen</em>options&quot;&gt;
- &lt;value name=&quot;backlog&quot;&gt;-1&lt;/value&gt;
- &lt;value name=&quot;owner&quot;&gt;&lt;/value&gt;
- &lt;value name=&quot;group&quot;&gt;&lt;/value&gt;
- &lt;value name=&quot;mode&quot;&gt;0666&lt;/value&gt;
- &lt;/value&gt;
- &lt;value name=&quot;php<em>defines&quot;&gt;
- &lt;value name=&quot;sendmail</em>path&quot;&gt;/usr/sbin/sendmail -t -i&lt;/value&gt;
- &lt;value name=&quot;display<em>errors&quot;&gt;0&lt;/value&gt;
- &lt;/value&gt;
- &lt;value name=&quot;user&quot;&gt;nginx&lt;/value&gt;
- &lt;value name=&quot;group&quot;&gt;nginx&lt;/value&gt;
- &lt;value name=&quot;pm&quot;&gt;
- &lt;value name=&quot;style&quot;&gt;static&lt;/value&gt;
- &lt;value name=&quot;max</em>children&quot;&gt;128&lt;/value&gt;
- &lt;value name=&quot;apache<em>like&quot;&gt;
- &lt;value name=&quot;StartServers&quot;&gt;20&lt;/value&gt;
- &lt;value name=&quot;MinSpareServers&quot;&gt;5&lt;/value&gt;
- &lt;value name=&quot;MaxSpareServers&quot;&gt;35&lt;/value&gt;
- &lt;/value&gt;
- &lt;/value&gt;
- &lt;value name=&quot;request</em>terminate<em>timeout&quot;&gt;0s&lt;/value&gt;
- &lt;value name=&quot;request</em>slowlog<em>timeout&quot;&gt;0s&lt;/value&gt;
- &lt;value name=&quot;slowlog&quot;&gt;logs/slow.log&lt;/value&gt;
- &lt;value name=&quot;rlimit</em>files&quot;&gt;65535&lt;/value&gt;
- &lt;value name=&quot;rlimit<em>core&quot;&gt;0&lt;/value&gt;
- &lt;value name=&quot;chroot&quot;&gt;&lt;/value&gt;
- &lt;value name=&quot;chdir&quot;&gt;&lt;/value&gt;
- &lt;value name=&quot;catch</em>workers<em>output&quot;&gt;yes&lt;/value&gt;
- &lt;value name=&quot;max</em>requests&quot;&gt;1024&lt;/value&gt;
- &lt;value name=&quot;allowed<em>clients&quot;&gt;127.0.0.1&lt;/value&gt;
- &lt;value name=&quot;environment&quot;&gt;
- &lt;value name=&quot;HOSTNAME&quot;&gt;$HOSTNAME&lt;/value&gt;
- &lt;value name=&quot;PATH&quot;&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
- &lt;value name=&quot;TMP&quot;&gt;/tmp&lt;/value&gt;
- &lt;value name=&quot;TMPDIR&quot;&gt;/tmp&lt;/value&gt;
- &lt;value name=&quot;TEMP&quot;&gt;/tmp&lt;/value&gt;
- &lt;value name=&quot;OSTYPE&quot;&gt;$OSTYPE&lt;/value&gt;
- &lt;value name=&quot;MACHTYPE&quot;&gt;$MACHTYPE&lt;/value&gt;
- &lt;value name=&quot;MALLOC</em>CHECK_&quot;&gt;2&lt;/value&gt;
- &lt;/value&gt;
- &lt;/section&gt;
- &lt;/workers&gt;
-&lt;/configuration&gt;
-[/xml]
-启动fastcgi</p>
+放个简洁版的，注释太长，去了。</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">&quot;global_options&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;pid_file&quot;</span><span class="nt">&gt;</span>/servers/run/php-fpm-9000.pid<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;error_log&quot;</span><span class="nt">&gt;</span>/servers/logs/php-fpm-9000.log<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;log_level&quot;</span><span class="nt">&gt;</span>notice<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;emergency_restart_threshold&quot;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;emergency_restart_interval&quot;</span><span class="nt">&gt;</span>1m<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;process_control_timeout&quot;</span><span class="nt">&gt;</span>5s<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;daemonize&quot;</span><span class="nt">&gt;</span>yes<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;workers&gt;</span>
+        <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">&quot;pool&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>default<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;listen_address&quot;</span><span class="nt">&gt;</span>127.0.0.1:9000<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;listen_options&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;backlog&quot;</span><span class="nt">&gt;</span>-1<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;owner&quot;</span><span class="nt">&gt;&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;group&quot;</span><span class="nt">&gt;&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;mode&quot;</span><span class="nt">&gt;</span>0666<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;php_defines&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;sendmail_path&quot;</span><span class="nt">&gt;</span>/usr/sbin/sendmail -t -i<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;display_errors&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;user&quot;</span><span class="nt">&gt;</span>nginx<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;group&quot;</span><span class="nt">&gt;</span>nginx<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;pm&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;style&quot;</span><span class="nt">&gt;</span>static<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;max_children&quot;</span><span class="nt">&gt;</span>128<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;apache_like&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;StartServers&quot;</span><span class="nt">&gt;</span>20<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;MinSpareServers&quot;</span><span class="nt">&gt;</span>5<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;MaxSpareServers&quot;</span><span class="nt">&gt;</span>35<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;request_terminate_timeout&quot;</span><span class="nt">&gt;</span>0s<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;request_slowlog_timeout&quot;</span><span class="nt">&gt;</span>0s<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;slowlog&quot;</span><span class="nt">&gt;</span>logs/slow.log<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;rlimit_files&quot;</span><span class="nt">&gt;</span>65535<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;rlimit_core&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;chroot&quot;</span><span class="nt">&gt;&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;chdir&quot;</span><span class="nt">&gt;&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;catch_workers_output&quot;</span><span class="nt">&gt;</span>yes<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;max_requests&quot;</span><span class="nt">&gt;</span>1024<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;allowed_clients&quot;</span><span class="nt">&gt;</span>127.0.0.1<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;environment&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;HOSTNAME&quot;</span><span class="nt">&gt;</span>$HOSTNAME<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;PATH&quot;</span><span class="nt">&gt;</span>/usr/local/bin:/usr/bin:/bin<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;TMP&quot;</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;TMPDIR&quot;</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;TEMP&quot;</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;OSTYPE&quot;</span><span class="nt">&gt;</span>$OSTYPE<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;MACHTYPE&quot;</span><span class="nt">&gt;</span>$MACHTYPE<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;MALLOC_CHECK_&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;/workers&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div>
+<p>启动fastcgi</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">/servers/app/php/sbin/php-fpm start
 </code></pre></div>
 <p>持续。。。</p>
@@ -988,31 +987,15 @@ yum install libmcrypt-devel
   <!-- /post navigator -->
 
   
-  <!-- disqus comment system -->
-  <div class="post-comment">
-    <div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = '';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-  </div>
-  <!-- /disqus comment system -->
-  
 
   <!-- footer -->
-  <div class="footer">
+  <footer class="footer">
   <a class="link-1" href="http://codante.org/blog">codante.org</a>
   <span>&copy;</span>
   <span><script type="text/javascript">document.write(new Date().getFullYear());</script></span>
   <br />
   <span>Powered by <a class="link-1" href="http://jekyllrb.com/">Jekyll</a> with <a class="link-1" href="https://github.com/kkninjae/book">Book</a> theme.</span>
-</div>
+</footer>
 
   <!-- /footer -->
 
