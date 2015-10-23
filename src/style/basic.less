@@ -74,22 +74,16 @@ img {
   position: absolute;
   bottom: 0;
   right: 0;
-  left: 340px;
+  left: 0;
   padding: 6px;
   line-height: 1.2em;
   text-align: center;
 }
 
-.footer-clear {
-  position: relative;
-  margin-bottom: -64px;
-  min-height: 100%;
-}
-
-.footer-clear:after {
-  content: "";
-  display: block;
-  height: 64px;
+@media (min-width: 769px) {
+  .footer {
+    left: 340px;
+  }
 }
 
 .link-1 {
