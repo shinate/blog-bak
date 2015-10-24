@@ -22,29 +22,29 @@ date_gmt: '2010-06-30 03:41:24 +0800'
 
 ## 常用选项
 
-```
+```bash
 -z, --gzip, --ungzip
-filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩
+#filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩
 -c, --create
-create a new archive ||建立新的归档文件
+#create a new archive ||建立新的归档文件
 -v, --verbose
-verbosely list files processed||处理过程中输出相关信息
+#verbosely list files processed||处理过程中输出相关信息
 -f, --file [HOSTNAME:]F
-use archive file or device F (default "-", meaning stdin/stdout)||对普通文件操作
+#use archive file or device F (default "-", meaning stdin/stdout)||对普通文件操作
 -x, --extract, --get
-extract files from an archive||从归档文件中解出文件
+#extract files from an archive||从归档文件中解出文件
 -j, --bzip2
-filter archive through bzip2, use to decompress .bz2 files||用GNU的bzip2压缩文件或解压
+#filter archive through bzip2, use to decompress .bz2 files||用GNU的bzip2压缩文件或解压
 -C, --directory DIR
-change to directory DIR
+#change to directory DIR
 --exclude PATTERN
-exclude files based upon PATTERN
+#exclude files based upon PATTERN
 -X, --exclude-from FILE
-exclude files listed in FILE
+#exclude files listed in FILE
 -Z, --compress, --uncompress
-filter the archive through compress||调用compress来压缩归档文件，与-x联用时调用compress完成解压缩
+#filter the archive through compress||调用compress来压缩归档文件，与-x联用时调用compress完成解压缩
 -N, --after-date DATE, --newer DATE
-only store files newer than DATE
+#only store files newer than DATE
 ```
 
 ## 举例
@@ -54,18 +54,18 @@ only store files newer than DATE
 ### 方法1 (tar.gz)
 
 ```bash
-\#打包
+#打包
 tar zcvf test.tar.gz ./test
-\#解压
+#解压
 tar zxvf test.tar.gz
 ```
 
 ### 方法2 (tar.bz)
 
 ```bash
-\#打包
+#打包
 tar jcvf test.tar.bz ./test
-\#解压
+#解压
 tar jxvf test.tar.bz
 ```
 
@@ -100,12 +100,12 @@ tar zxvf test.tar.gz -C /home/rhy/
 
 ### 排除式打包(参数 -X)
 
-```
-man tar:
+```bash
+#man tar:
 --exclude PATTERN
-exclude files based upon PATTERN
+#exclude files based upon PATTERN
 -X, --exclude-from FILE
-exclude files listed in FILE
+#exclude files listed in FILE
 ```
 
 #### 测试准备
@@ -142,8 +142,8 @@ tar zcvfX paichuX.tar.gz /exceptlist ./test
 ### 增量备份(参数 -N)
 
 ```bash
-\#自00点以来的新文件。
+#自00点以来的新文件。
 tar -N $(date -d yesterday +%F) zcvf a.tar.gz ./a
-\#自2009-09-26以来的新文件
+#自2009-09-26以来的新文件
 tar -N 2009-09-26 zcvf a.tar.gz ./a
 ```

@@ -798,43 +798,43 @@
     <p>感谢老男孩赐予的知识。 老男孩（QQ:49000448， mail:49000448@qq.com）</p>
 
 <h2>常用选项</h2>
-<div class="highlight"><pre><code class="language-text" data-lang="text">-z, --gzip, --ungzip
-filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">-z, --gzip, --ungzip
+<span class="c">#filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩</span>
 -c, --create
-create a new archive ||建立新的归档文件
+<span class="c">#create a new archive ||建立新的归档文件</span>
 -v, --verbose
-verbosely list files processed||处理过程中输出相关信息
--f, --file [HOSTNAME:]F
-use archive file or device F (default &quot;-&quot;, meaning stdin/stdout)||对普通文件操作
+<span class="c">#verbosely list files processed||处理过程中输出相关信息</span>
+-f, --file <span class="o">[</span>HOSTNAME:<span class="o">]</span>F
+<span class="c">#use archive file or device F (default &quot;-&quot;, meaning stdin/stdout)||对普通文件操作</span>
 -x, --extract, --get
-extract files from an archive||从归档文件中解出文件
+<span class="c">#extract files from an archive||从归档文件中解出文件</span>
 -j, --bzip2
-filter archive through bzip2, use to decompress .bz2 files||用GNU的bzip2压缩文件或解压
+<span class="c">#filter archive through bzip2, use to decompress .bz2 files||用GNU的bzip2压缩文件或解压</span>
 -C, --directory DIR
-change to directory DIR
+<span class="c">#change to directory DIR</span>
 --exclude PATTERN
-exclude files based upon PATTERN
+<span class="c">#exclude files based upon PATTERN</span>
 -X, --exclude-from FILE
-exclude files listed in FILE
+<span class="c">#exclude files listed in FILE</span>
 -Z, --compress, --uncompress
-filter the archive through compress||调用compress来压缩归档文件，与-x联用时调用compress完成解压缩
+<span class="c">#filter the archive through compress||调用compress来压缩归档文件，与-x联用时调用compress完成解压缩</span>
 -N, --after-date DATE, --newer DATE
-only store files newer than DATE
+<span class="c">#only store files newer than DATE</span>
 </code></pre></div>
 <h2>举例</h2>
 
 <p>不同方法对应不同的解压方式</p>
 
 <h3>方法1 (tar.gz)</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\#</span>打包
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#打包</span>
 tar zcvf test.tar.gz ./test
-<span class="se">\#</span>解压
+<span class="c">#解压</span>
 tar zxvf test.tar.gz
 </code></pre></div>
 <h3>方法2 (tar.bz)</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\#</span>打包
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#打包</span>
 tar jcvf test.tar.bz ./test
-<span class="se">\#</span>解压
+<span class="c">#解压</span>
 tar jxvf test.tar.bz
 </code></pre></div>
 <h3>错误的例子</h3>
@@ -858,11 +858,11 @@ tar: Error exit delayed from previous errors</p>
 tar zxvf test.tar.gz -C /home/rhy/
 </code></pre></div>
 <h3>排除式打包(参数 -X)</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">man tar:
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#man tar:</span>
 --exclude PATTERN
-exclude files based upon PATTERN
+<span class="c">#exclude files based upon PATTERN</span>
 -X, --exclude-from FILE
-exclude files listed in FILE
+<span class="c">#exclude files listed in FILE</span>
 </code></pre></div>
 <h4>测试准备</h4>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /
@@ -887,9 +887,9 @@ tar zcvfX paichuX.tar.gz /exceptlist ./test
 ./test/baoliu/
 </code></pre></div>
 <h3>增量备份(参数 -N)</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\#</span>自00点以来的新文件。
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#自00点以来的新文件。</span>
 tar -N <span class="k">$(</span>date -d yesterday +%F<span class="k">)</span> zcvf a.tar.gz ./a
-<span class="se">\#</span>自2009-09-26以来的新文件
+<span class="c">#自2009-09-26以来的新文件</span>
 tar -N 2009-09-26 zcvf a.tar.gz ./a
 </code></pre></div>
   </div>
