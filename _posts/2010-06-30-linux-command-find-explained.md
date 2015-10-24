@@ -67,7 +67,7 @@ find /ryan -name '*.log' -mtime +5
 ## 使用逻辑运算查找
 
 ```bash
-/ryan目录下30天前访问过得大于20M的文件（-a and,-o or !）
+#/ryan目录下30天前访问过得大于20M的文件（-a and,-o or !）
 find /ryan -size +20M -a atime 30
 find /ryan -type f -o -mtime +15
 find /ryan ! -user rhy
@@ -76,8 +76,9 @@ find /ryan ! -user rhy
 ## 对查找文件实施操作
 
 ```bash
-\#删目录 30天以前
+#删目录 30天以前
 find . -type d -mtime +30 |xargs rm -rf
-\#删文件 15天以前 \#删目录下文件用这个好
+#删文件 15天以前
+#删目录下文件用这个好
 find . -type f -mtime +15 |xargs rm -f
 ```

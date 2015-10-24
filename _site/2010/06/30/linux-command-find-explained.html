@@ -828,15 +828,16 @@ find . -type d -name <span class="s1">&#39;server*&#39;</span>
 find /ryan -name <span class="s1">&#39;*.log&#39;</span> -mtime +5
 </code></pre></div>
 <h2>使用逻辑运算查找</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/ryan目录下30天前访问过得大于20M的文件（-a and,-o or !）
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#/ryan目录下30天前访问过得大于20M的文件（-a and,-o or !）</span>
 find /ryan -size +20M -a atime 30
 find /ryan -type f -o -mtime +15
 find /ryan ! -user rhy
 </code></pre></div>
 <h2>对查找文件实施操作</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="se">\#</span>删目录 30天以前
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#删目录 30天以前</span>
 find . -type d -mtime +30 <span class="p">|</span>xargs rm -rf
-<span class="se">\#</span>删文件 15天以前 <span class="se">\#</span>删目录下文件用这个好
+<span class="c">#删文件 15天以前</span>
+<span class="c">#删目录下文件用这个好</span>
 find . -type f -mtime +15 <span class="p">|</span>xargs rm -f
 </code></pre></div>
   </div>
