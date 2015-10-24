@@ -59,7 +59,7 @@ vi /usr/local/apache2/conf/httpd.conf
 
 修改:
 
-```
+```ini
 DirectoryIndex index.html index.htm index.php
 User apache
 Group apache
@@ -67,11 +67,11 @@ Group apache
 
 添加:
 
-```
+```ini
 ServerName 127.0.0.1:80
 ```
 
-```
+```ini
 AddType application/x-httpd-php .php .php3
 AddType application/x-httpd-php-source .phps
 ```
@@ -90,7 +90,7 @@ vi /etc/rc.local
 
 添加
 
-```
+```bash
 /usr/local/apache2/bin/apachectl start
 ```
 

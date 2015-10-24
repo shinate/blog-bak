@@ -73,7 +73,7 @@ Allow from all
 
 你可以在httpd.conf的Directory标签中间加上一个Options指令。 设置Options为None或者-Indexes
 
-```
+```ini
 Options -Indexes
 ```
 

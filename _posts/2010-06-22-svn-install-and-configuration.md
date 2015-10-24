@@ -85,23 +85,23 @@ make install
 
 添加以下信息
 
-```
+```ini
 LoadModule dav_svn_module modules/mod_dav_svn.so
 LoadModule authz_svn_module modules/mod_authz_svn.so
 ```
 
 在末尾添加
 
-```
-&lt;Location /svn&gt;
-DAV svn
-SVNParentPath /home/nuptsoft/subversion_project  (此处配置你的版本库根目录)
-AuthType Basic
-AuthName "Subversion repository"  （此处字符串内容修改为提示对话框标题）
-AuthUserFile /home/nuptsoft/passwd    (此处修改为访问版本库用户的文件，用apache 的 htpasswd命令生成)
-AuthzSVNAccessFile /home/nuptsoft/auth （此处修改为访问版本库权限的文件）
-Require valid-user
-&lt;/Location&gt;
+```ini
+<Location /svn>
+  DAV svn
+  SVNParentPath /home/nuptsoft/subversion_project  (此处配置你的版本库根目录)
+  AuthType Basic
+  AuthName "Subversion repository"  （此处字符串内容修改为提示对话框标题）
+  AuthUserFile /home/nuptsoft/passwd    (此处修改为访问版本库用户的文件，用apache 的 htpasswd命令生成)
+  AuthzSVNAccessFile /home/nuptsoft/auth （此处修改为访问版本库权限的文件）
+  Require valid-user
+</Location>
 ```
 
 ### 创建版本库目录
@@ -125,19 +125,34 @@ svnadmin create /home/nuptsoft/subversion_project/test
 
 通过修改auth文件来配置权限
 用户组格式：
+
+```ini
 [groups]
-&lt;用户组名&gt; = &lt;用户1&gt;,&lt;用户2&gt;
+<用户组名> = <用户1>,<用户2>
+```
+
 其中，1个用户组可以包含1个或多个用户，用户间以逗号分隔。
 版本库目录格式：
-[&lt;版本库&gt;:/项目/目录]
-@&lt;用户组名&gt; = &lt;权限&gt;
-&lt;用户名&gt; = &lt;权限&gt;
+
+```ini
+[<版本库>:/项目/目录]
+@<用户组名> = <权限>
+<用户名> = <权限>
+```
+
 其中，方框号内部分可以有多种写法:
+
 /,表示根目录及以下。根目录是svnserve启动时指定的，我们指定为/opt/svndata。这样，/就是表示对全部版本库设置权限。
+
 repos1:/,表示对版本库1设置权限
+
 repos2:/abc, ,表示对版本库2中的abc项目设置权限
+
 repos2:/abc/aaa, ,表示对版本库2中的abc项目的aaa目录设置权限
+
 权限主体可以是用户组、用户或*，用户组在前面加@，*表示全部用户。权限可以是w、r、wr和空，空表示没有任何权限。
+
+
 示例：
 
 ```

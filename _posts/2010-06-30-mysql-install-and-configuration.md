@@ -30,7 +30,7 @@ wget http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.41-linux-i686-glibc2
 
 ```bash
 groupadd mysql;
-useradd -s /sign/nologin -g mysql -M mysql    \#-s /sign/nologin禁止其他所有的php，cookie。
+useradd -s /sign/nologin -g mysql -M mysql  #-s /sign/nologin禁止其他所有的php，cookie。
 ```
 
 ## 编译
