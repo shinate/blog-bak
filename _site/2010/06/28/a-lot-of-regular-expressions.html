@@ -932,9 +932,6 @@
 <span class="cm">/*验证用户密码，正确格式为：以字母开头，长度在6-18之间， 只能包含字符、数字和下划线*/</span>
 <span class="o">^</span><span class="p">[</span><span class="nx">a</span><span class="o">-</span><span class="nx">zA</span><span class="o">-</span><span class="nx">Z</span><span class="p">]</span><span class="err">\</span><span class="nx">w</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">17</span><span class="p">}</span><span class="nx">$</span>
 
-<span class="cm">/*验证是否含有^%&amp;&#39;,;=?$&quot;等字符*/</span>
-<span class="p">[</span><span class="o">^%&amp;</span><span class="err">\&#39;</span><span class="p">,;</span><span class="o">=?</span><span class="nx">$x22</span><span class="p">]</span><span class="o">+</span>
-
 <span class="cm">/*只能输入汉字*/</span>
 <span class="o">^</span><span class="p">[</span><span class="nx">u4e00</span><span class="o">-</span><span class="nx">u9fa5</span><span class="p">],{</span><span class="mi">0</span><span class="p">,}</span><span class="nx">$</span>
 
