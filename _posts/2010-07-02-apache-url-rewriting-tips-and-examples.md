@@ -39,25 +39,25 @@ date_gmt: '2010-07-02 06:47:26 +0800'
 
 一个完整的文件系统资源路径，它映射请求到你的文件系统的任意位置上，就像Alias指令那样。
 
-```
+```ini
 RewriteRule ^/games.* /usr/local/games/web
 ```
 
 一个网络资源的路径，如果DocumentRoot设置为/usr/local/apache2/htdocs ，那么，这个指令将http://example.com/foo转到路径/usr/local/apache2/htdocs/bar。
 
-```
+```ini
 RewriteRule ^/foo$ /bar
 ```
 
 一个绝对的URL重写，跳转到另一url最直接的办法
 
-```
+```ini
 RewriteRule ^/product/view$ http://site2.example.com/seeproduct.html [R]
 ```
 
 由上面的例子引申出的，括号中的".*"在匹配时赋值给了变量$1，$1可以作为任何匹配到的文字写入到替换规则中。一个请求**http://example.com/product/r14df/view**将被映射到路径**/var/web/productdb/r14df **。
 
-```
+```ini
 RewriteRule ^/product/(.*)/view$ /var/web/productdb/$1
 ```
 
@@ -72,14 +72,14 @@ RewriteRule ^/product/(.*)/view$ /var/web/productdb/$1
 
 将符合此IP范围内的所有请求发送至域名：
 
-```
+```ini
 RewriteCond %{REMOTE_ADDR} ^10\.2\.
 RewriteRule (.*) http://intranet.example.com$1
 ```
 
 当有多个RewriteCond指令时，他们都会被RewriteRule所采用。例:当cookie中含有"go"的时候才处理请求字符串"hack"，否则拒绝，写法：
 
-```
+```ini
 RewriteCond %{QUERY_STRING} hack
 RewriteCond %{HTTP_COOKIE} !go
 RewriteRule .* - [F]
@@ -88,7 +88,7 @@ RewriteRule .* - [F]
 注意："!"感叹号是**否定**匹配，也就是说当条件中 cookie没有"go"且请求中含有"hack"，将会遭到拒绝。
 在RewriteCond指令中也有像RewriteRule中所用的"$1"、"$2"匹配变量，但写法列有不同，使用的符号是"%"，比如"%1"、"%2"。例：匹配主机名和目录，拼接成新的请求：
 
-```
+```ini
 RewriteCond %{HTTP_HOST} (.*)
 RewriteRule ^/(.*) /sites/%1/$1
 ```
@@ -101,7 +101,7 @@ RewriteRule ^/(.*) /sites/%1/$1
 
 这个例子中我们替换`/~user`到`/u/user`和修复缺少末尾的斜杠`/u/user`
 
-```
+```ini
 RewriteRule ^/~([^/]+)/?(.*) /u/$1/$2 [R]
 RewriteRule ^/([uge])/( [^/]+ )$ /$1/$2/ [R]
 ```
@@ -110,14 +110,14 @@ RewriteRule ^/([uge])/( [^/]+ )$ /$1/$2/ [R]
 
 "移动的DocumentRoot"，将站点的根/改写为/e/www/
 
-```
+```ini
 RewriteEngine on
 RewriteRule ^/$ /e/www/ [R]
 ```
 
 ### 无www的跳转到有www
 
-```
+```ini
 RewriteEngine on
 RewriteCond %{http_host} ^domain.com [NC]
 RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,NC]
@@ -125,7 +125,7 @@ RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,NC]
 
 还是上面的例子，但是对于/mytest/my目录不跳转，也就是可以直接访问 http://domain.com/mytest/my
 
-```
+```ini
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^domain.com [NC]
 RewriteCond %{REQUEST_URI} !/mytest/my [NC]
@@ -136,7 +136,7 @@ RewriteRule ^(.*)$ http://www.domain.com/$1 [R=301,NC]
 
 在通常的情况下，当你访问 /~quux/foo 服务器会认为这是一个文件，它并不是像/~quux/foo/xxx.gif那样实际存在的，也许你只是忘记了加上"/"，但服务器会让你看到一个优雅的错误页面。为了解决这个问题，我们可以这样来写：
 
-```
+```ini
 RewriteEngine on
 RewriteBase /~quux/
 RewriteRule ^foo$ foo/ [R]
@@ -144,7 +144,7 @@ RewriteRule ^foo$ foo/ [R]
 
 以上仅仅是针对一个目录的，下面的写法更加的暴力，任何文件甚至都能作为下一级目录的顶端来使用，我们就会看到/~quux/foo/xxx.gif/这种奇异现象
 
-```
+```ini
 RewriteEngine on
 RewriteBase /~quux/
 RewriteCond %{REQUEST_FILENAME}  -d
@@ -157,7 +157,7 @@ RewriteRule ^(.+[^/])$ $1/  [R]
 下面的例子，用语言来解释："**把/后面任何非真实存在的请求全部交给index.php来处理**"
 也就是说 http://youdomain.com/**xxx/yyy/zzz/aaa.gif?ccc=ddd**中，域名后面红色加粗的部分 xxx/yyy/zzz/aaa.gif?ccc=ddd 会当做一个字符串，全部交给index.php进行分析与处理。
 
-```
+```ini
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -213,7 +213,7 @@ RewriteRule . /index.php [L]
   此标记阻止mod_rewrite对重写结果应用常规的URI转义规则。 一般情况下，特殊字符(如"%", "$", ";"等)会被转义为等值的十六进制编码。 此标记可以阻止这样的转义，以允许百分号等符号出现在输出中，如：  
   
 
-```
+```ini
 RewriteRule /foo/(.*) /bar?arg=P1\%3d$1 [R,NE]
 ```
 
@@ -223,7 +223,7 @@ RewriteRule /foo/(.*) /bar?arg=P1\%3d$1 [R,NE]
   此标记强制重写引擎将内部结构request_rec中的uri字段设置为 filename字段的值，它只是一个小修改，使之能对来自其他URI到文件名翻译器的 Alias，ScriptAlias, Redirect 等指令的输出进行后续处理。举一个能说明其含义的例子： 如果要通过mod_rewrite的重写引擎重写/abc为/def， 然后通过mod_alias使/def转变为/ghi，可以这样:  
   
 
-```
+```ini
 RewriteRule ^/abc(.*) /def$1 [PT]
 ```
 
