@@ -19,4 +19,4 @@ markdown: redcarpet
 
 
 # Build settings
-exclude: [node_modules, src, gulpfile.js, package.json]
+exclude: [node_modules, src, gulpfile.js, package.json, p]
