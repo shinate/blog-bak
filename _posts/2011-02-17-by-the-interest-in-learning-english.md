@@ -44,7 +44,7 @@ I was making love with her at this time yesterday
 
 ### 将来进行时
 
-I will be making love with herat this time tomorrow
+I will be making love with her at this time tomorrow
 
 ### 现在完成时
 
@@ -60,7 +60,7 @@ I will have made love with her by tomorrow.
 
 ### 现在完成进行时
 
-I have been making lovewith her for two hours.
+I have been making love with her for two hours.
 
 ### 过去完成进行时
 
