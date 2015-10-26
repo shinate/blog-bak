@@ -73,7 +73,7 @@ ini_set("session.save_handler","memcached");
 ini_set("session.save_path","127.0.0.1:11211");
 ```
 
-详见：[http://cn.php.net/manual/en/memcached.sessions.php][1]
+详见：[http://cn.php.net/manual/en/memcached.sessions.php][1]感觉
 
 ### 验证效果
 
