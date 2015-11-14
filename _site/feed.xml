@@ -5,27 +5,9 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 12 Nov 2015 10:38:32 +0800</pubDate>
-    <lastBuildDate>Thu, 12 Nov 2015 10:38:32 +0800</lastBuildDate>
+    <pubDate>Sat, 14 Nov 2015 19:13:21 +0800</pubDate>
+    <lastBuildDate>Sat, 14 Nov 2015 19:13:21 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
-    
-      <item>
-        <title>Html Highlight Eui</title>
-        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;any&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;eui&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Heading 1 heading 1 heading 1 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Heading 2 heading 2 heading 2 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Heading 3 heading 3 heading 3 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&amp;gt;&lt;/span&gt;Heading 4 heading 4 heading 4 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h5&amp;gt;&lt;/span&gt;Heading 5 heading 5 heading 5 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h5&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h6&amp;gt;&lt;/span&gt;Heading 6 heading 6 heading 6 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h6&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/any&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-        <pubDate>Thu, 12 Nov 2015 00:00:00 +0800</pubDate>
-        <link>http://codante.org/blog/2015/11/12/html-highlight-eui.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2015/11/12/html-highlight-eui.html</guid>
-        
-        
-      </item>
     
       <item>
         <title>Reborn</title>
@@ -1342,6 +1324,26 @@ ls -l /xxx/yyy......
         <pubDate>Thu, 30 Jun 2011 10:59:37 +0800</pubDate>
         <link>http://codante.org/blog/2011/06/30/linux-statistics-files-directory-number.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2011/06/30/linux-statistics-files-directory-number.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>nodejs安装及配置</title>
+        <description>&lt;h2&gt;下载及安装&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git clone git://github.com/joyent/node.git
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;node
+./configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/servers/app/node
+make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;启动&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/servers/app/node/bin/node
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;直接执行./node将进入nodejs的命令行&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jun 2011 14:55:54 +0800</pubDate>
+        <link>http://codante.org/blog/2011/06/20/nodejs-installation-and-configuration.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2011/06/20/nodejs-installation-and-configuration.html</guid>
         
         
       </item>
