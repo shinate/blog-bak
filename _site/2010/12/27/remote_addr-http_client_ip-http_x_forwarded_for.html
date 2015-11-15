@@ -642,36 +642,62 @@
 <span class="x">return $realip;</span>
 <span class="x">}</span>
 </code></pre></div>
-<p>一、没有使用代理服务器的情况：
-  REMOTE<em>ADDR = 您的 IP
-  HTTP</em>VIA = 没数值或不显示
-  HTTP<em>X</em>FORWARDED<em>FOR = 没数值或不显示
-二、使用透明代理服务器的情况：Transparent Proxies
-  REMOTE</em>ADDR = 最后一个代理服务器 IP
-  HTTP<em>VIA = 代理服务器 IP
-  HTTP</em>X<em>FORWARDED</em>FOR = 您的真实 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。
-  这类代理服务器还是将您的信息转发给您的访问对象，无法达到隐藏真实身份的目的。
-三、使用普通匿名代理服务器的情况：Anonymous Proxies
-  REMOTE<em>ADDR = 最后一个代理服务器 IP
-  HTTP</em>VIA = 代理服务器 IP
-  HTTP<em>X</em>FORWARDED<em>FOR = 代理服务器 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。
-隐藏了您的真实IP，但是向访问对象透露了您是使用代理服务器访问他们的。
-四、使用欺骗性代理服务器的情况：Distorting Proxies
-  REMOTE</em>ADDR = 代理服务器 IP
-  HTTP<em>VIA = 代理服务器 IP
-  HTTP</em>X<em>FORWARDED</em>FOR = 随机的 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。
-  告诉了访问对象您使用了代理服务器，但编造了一个虚假的随机IP代替您的真实IP欺骗它。
-五、使用高匿名代理服务器的情况：High Anonymity Proxies (Elite proxies)
-  REMOTE<em>ADDR = 代理服务器 IP
-  HTTP</em>VIA = 没数值或不显示
-  HTTP<em>X</em>FORWARDED<em>FOR = 没数值或不显示 ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。
-  完全用代理服务器的信息替代了您的所有信息，就象您就是完全使用那台代理服务器直接访问对象。
-REMOTE</em>ADDR 是你的客户端跟你的服务器&quot;握手&quot;时候的IP。如果使用了&quot;匿名代理&quot;，REMOTE<em>ADDR将显示代理服务器的IP。
-HTTP</em>CLIENT<em>IP 是代理服务器发送的HTTP头。如果是&quot;超级匿名代理&quot;，则返回none值。同样，REMOTE</em>ADDR也会被替换为这个代理服务器的IP。
-$<em>SERVER[&#39;REMOTE</em>ADDR&#39;]; //访问端（有可能是用户，有可能是代理的）IP
-$<em>SERVER[&#39;HTTP</em>CLIENT<em>IP&#39;];  //代理端的（有可能存在，可伪造）
-$</em>SERVER[&#39;HTTP<em>X</em>FORWARDED_FOR&#39;]; //用户是在哪个IP使用的代理（有可能存在，也可以伪造）</p>
+<h3>一、没有使用代理服务器的情况：</h3>
 
+<ul>
+<li>REMOTE_ADDR = 您的 IP</li>
+<li>HTTP_VIA = 没数值或不显示</li>
+<li>HTTP<em>X</em>FORWARDED_FOR = 没数值或不显示</li>
+</ul>
+
+<h3>二、使用透明代理服务器的情况：Transparent Proxies</h3>
+
+<ul>
+<li>REMOTE_ADDR = 最后一个代理服务器 IP</li>
+<li>HTTP_VIA = 代理服务器 IP</li>
+<li>HTTP<em>X</em>FORWARDED_FOR = 您的真实 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。</li>
+</ul>
+
+<p><em>这类代理服务器还是将您的信息转发给您的访问对象，无法达到隐藏真实身份的目的。</em></p>
+
+<h3>三、使用普通匿名代理服务器的情况：Anonymous Proxies</h3>
+
+<ul>
+<li>REMOTE_ADDR = 最后一个代理服务器 IP</li>
+<li>HTTP_VIA = 代理服务器 IP</li>
+<li>HTTP<em>X</em>FORWARDED_FOR = 代理服务器 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。</li>
+</ul>
+
+<p><em>隐藏了您的真实IP，但是向访问对象透露了您是使用代理服务器访问他们的。</em></p>
+
+<h3>四、使用欺骗性代理服务器的情况：Distorting Proxies</h3>
+
+<ul>
+<li>REMOTE_ADDR = 代理服务器 IP</li>
+<li>HTTP_VIA = 代理服务器 IP</li>
+<li>HTTP<em>X</em>FORWARDED_FOR = 随机的 IP ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。</li>
+</ul>
+
+<p><em>告诉了访问对象您使用了代理服务器，但编造了一个虚假的随机IP代替您的真实IP欺骗它。</em></p>
+
+<h3>五、使用高匿名代理服务器的情况：High Anonymity Proxies (Elite proxies)</h3>
+
+<ul>
+<li>REMOTE_ADDR = 代理服务器 IP</li>
+<li>HTTP_VIA = 没数值或不显示</li>
+<li>HTTP<em>X</em>FORWARDED_FOR = 没数值或不显示 ，经过多个代理服务器时，这个值类似如下：203.98.182.163, 203.98.182.163, 203.129.72.215。</li>
+</ul>
+
+<h2>完全用代理服务器的信息替代了您的所有信息，就象您就是完全使用那台代理服务器直接访问对象。</h2>
+
+<ul>
+<li>REMOTE<em>ADDR 是你的客户端跟你的服务器&quot;握手&quot;时候的IP。如果使用了&quot;匿名代理&quot;，REMOTE</em>ADDR将显示代理服务器的IP。</li>
+<li>HTTP<em>CLIENT</em>IP 是代理服务器发送的HTTP头。如果是&quot;超级匿名代理&quot;，则返回none值。同样，REMOTE_ADDR也会被替换为这个代理服务器的IP。</li>
+</ul>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$_SERVER[&#39;REMOTE_ADDR&#39;]; //访问端（有可能是用户，有可能是代理的）IP</span>
+<span class="x">$_SERVER[&#39;HTTP_CLIENT_IP&#39;];  //代理端的（有可能存在，可伪造）</span>
+<span class="x">$_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]; //用户是在哪个IP使用的代理（有可能存在，也可以伪造）</span>
+</code></pre></div>
   </div>
 
   <!-- post navigator -->
