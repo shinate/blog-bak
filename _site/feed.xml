@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 19 Nov 2015 14:19:34 +0800</pubDate>
-    <lastBuildDate>Thu, 19 Nov 2015 14:19:34 +0800</lastBuildDate>
+    <pubDate>Thu, 19 Nov 2015 14:22:11 +0800</pubDate>
+    <lastBuildDate>Thu, 19 Nov 2015 14:22:11 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -20,7 +20,7 @@ layout: post&lt;/p&gt;
 
 &lt;h3&gt;Factory Method（工厂方法）&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;0&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/699ef9c0jw1ey699h2iq8j20fw077gm9.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -403,8 +403,6 @@ layout: post&lt;/p&gt;
 &lt;p&gt;各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。这是Opdyke和Johnson所描述过的“重分解以一般化”的一个很好的例子。首先识别现有代码中的不同之处，并且将不同之处分离为新的操作。最后，用一个调用这些新的操作的模板方法来替换这些不同的代码。&lt;/p&gt;
 
 &lt;p&gt;控制子类扩展。模板方法只在特定点调用“hook ”操作（参见效果一节），这样就只允许在这些点进行扩展。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://ww2.sinaimg.cn/large/699ef9c0jw1ey699h2iq8j20fw077gm9.jpg&quot;&gt;0&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 19 Nov 2015 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2015/11/19/design-pattern.html</link>
