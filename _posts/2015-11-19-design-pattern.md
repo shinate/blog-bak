@@ -6,7 +6,7 @@ title: 设计模式
 ## 创建型
 
 ### Factory Method（工厂方法）
-![](http://ww2.sinaimg.cn/large/699ef9c0jw1ey699h2iq8j20fw077gm9.jpg)
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey69scmmiaj20eo050jrp.jpg)
 
 #### 意图：
 
@@ -21,7 +21,7 @@ title: 设计模式
 当类将创建对象的职责委托给多个帮助子类中的某一个，并且你希望将哪一个帮助子类是代理者这一信息局部化的时候。
 
 ### Abstract Factory（抽象工厂）
-clip_image002
+![](http://ww2.sinaimg.cn/large/699ef9c0jw1ey699h2iq8j20fw077gm9.jpg)
 
 #### 意图：
 
@@ -38,7 +38,7 @@ clip_image002
 当你提供一个产品类库，而只想显示它们的接口而不是实现时。
 
 ### Builder（建造者）
-clip_image003
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey69xu3hijj20fb05a74h.jpg)
 
 #### 意图：
 
@@ -51,7 +51,7 @@ clip_image003
 当构造过程必须允许被构造的对象有不同的表示时。
 
 ### Prototype（原型）
-clip_image004
+![](http://ww4.sinaimg.cn/large/699ef9c0jw1ey69ydhs0jj20dr06cwes.jpg)
 
 #### 意图：
 
@@ -66,7 +66,7 @@ clip_image004
 当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些。
 
 ### Singleton（单例）
-clip_image005
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey69zvor67j20az03u0st.jpg)
 
 #### 意图：
 
@@ -81,7 +81,7 @@ clip_image005
 ## 结构型
 
 ### Adapter Class/Object（适配器）
-clip_image006
+![](http://ww2.sinaimg.cn/large/699ef9c0jw1ey6a0dj8smj20ed0an3z2.jpg)
 
 #### 意图：
 
@@ -93,10 +93,10 @@ clip_image006
 
 你想创建一个可以复用的类，该类可以与其他不相关的类或不可预见的类（即那些接口可能不一定兼容的类）协同工作。
 
-（仅适用于对象Adapter ）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配它的父类接口。
+（仅适用于对象Adapter）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配它的父类接口。
 
 ### Bridge（桥接）
-clip_image007
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey6a0vnhksj20fe067wes.jpg)
 
 #### 意图：
 
@@ -112,16 +112,16 @@ clip_image007
 
 （C++）你想对客户完全隐藏抽象的实现部分。在C++中，类的表示在类接口中是可见的。
 
-有许多类要生成。这样一种类层次结构说明你必须将一个对象分解成两个部分。Rumbaugh 称这种类层次结构为“嵌套的普化”（nested generalizations ）。
+有许多类要生成。这样一种类层次结构说明你必须将一个对象分解成两个部分。Rumbaugh 称这种类层次结构为“嵌套的普化”（nested generalizations）。
 
-你想在多个对象间共享实现（可能使用引用计数），但同时要求客户并不知道这一点。一个简单的例子便是Coplien 的String 类，在这个类中多个对象可以共享同一个字符串表示（StringRep ）。
+你想在多个对象间共享实现（可能使用引用计数），但同时要求客户并不知道这一点。一个简单的例子便是Coplien 的String 类，在这个类中多个对象可以共享同一个字符串表示（StringRep）。
 
 ### Composite（组合）
-clip_image008
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey6a1znrvmj20fb06ut93.jpg)
 
 #### 意图：
 
-将对象组合成树形结构以表示“部分-整体”的层次结构。C o m p o s i t e 使得用户对单个对象和组合对象的使用具有一致性。
+将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使得用户对单个对象和组合对象的使用具有一致性。
 
 #### 适用性：
 
@@ -129,8 +129,7 @@ clip_image008
 
 你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。
 
-### Decorator（装饰）
-clip_image009
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey6a6mopmxj20fd06sq3d.jpg)
 
 #### 意图：
 
@@ -145,7 +144,7 @@ clip_image009
 当不能采用生成子类的方法进行扩充时。一种情况是，可能有大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长。另一种情况可能是因为类定义被隐藏，或类定义不能用于生成子类。
 
 ### Facade（外观）
-clip_image010
+![](http://ww3.sinaimg.cn/large/699ef9c0jw1ey6a78rls0j20d7054q32.jpg)
 
 #### 意图：
 
@@ -160,7 +159,7 @@ clip_image010
 当你需要构建一个层次结构的子系统时，使用facade模式定义子系统中每层的入口点。如果子系统之间是相互依赖的，你可以让它们仅通过facade进行通讯，从而简化了它们之间的依赖关系。
 
 ### Flyweight（享元）
-clip_image011
+![](http://ww3.sinaimg.cn/large/699ef9c0jw1ey6a7pbw4dj20ft09xaaq.jpg)
 
 #### 意图：
 
@@ -179,7 +178,7 @@ clip_image011
 应用程序不依赖于对象标识。由于Flyweight 对象可以被共享，对于概念上明显有别的对象，标识测试将返回真值。
 
 ### Proxy（代理）
-clip_image012
+![](http://ww3.sinaimg.cn/large/699ef9c0jw1ey6a9bnfsjj20du05ht8u.jpg)
 
 #### 意图：
 
@@ -188,10 +187,10 @@ clip_image012
 #### 适用性：
 
 在需要用比较通用和复杂的对象指针代替简单的指针的时候，使用Proxy模式。下面是一 些可以使用Proxy 模式常见情况：
-1. 远程代理（Remote Proxy ）为一个对象在不同的地址空间提供局部代表。 NEXTSTEP使用NXProxy 类实现了这一目的。Coplien称这种代理为“大使” （Ambassador ）。
-2. 虚代理（Virtual Proxy ）根据需要创建开销很大的对象。在动机一节描述的ImageProxy 就是这样一种代理的例子。
-3. 保护代理（Protection Proxy ）控制对原始对象的访问。保护代理用于对象应该有不同 的访问权限的时候。例如，在Choices 操作系统中KemelProxies为操作系统对象提供 了访问保护。
-4. 智能指引（Smart Reference ）取代了简单的指针，它在访问对象时执行一些附加操作。 它的典型用途包括：
+1. 远程代理（Remote Proxy）为一个对象在不同的地址空间提供局部代表。 NEXTSTEP使用NXProxy 类实现了这一目的。Coplien称这种代理为“大使” （Ambassador）。
+2. 虚代理（Virtual Proxy）根据需要创建开销很大的对象。在动机一节描述的ImageProxy 就是这样一种代理的例子。
+3. 保护代理（Protection Proxy）控制对原始对象的访问。保护代理用于对象应该有不同 的访问权限的时候。例如，在Choices 操作系统中KemelProxies为操作系统对象提供 了访问保护。
+4. 智能指引（Smart Reference）取代了简单的指针，它在访问对象时执行一些附加操作。 它的典型用途包括：
 
 对指向实际对象的引用计数，这样当该对象没有引用时，可以自动释放它（也称为SmartPointers）。
 
@@ -202,7 +201,7 @@ clip_image012
 ## 行为型
 
 ### Interpreter（解释器）
-clip_image013
+![](http://ww4.sinaimg.cn/large/699ef9c0jw1ey6a85310dj20bw068jrn.jpg)
 
 #### 意图：
 
@@ -217,7 +216,7 @@ clip_image013
 效率不是一个关键问题最高效的解释器通常不是通过直接解释语法分析树实现的，而是首先将它们转换成另一种形式。例如，正则表达式通常被转换成状态机。但即使在这种情况下，转换器仍可用解释器模式实现，该模式仍是有用的。
 
 ### Template Method（模板方法）
-clip_image014
+![](http://ww4.sinaimg.cn/large/699ef9c0jw1ey6a9tl0h2j20ad05zweo.jpg)
 
 #### 意图：
 
@@ -232,7 +231,7 @@ clip_image014
 控制子类扩展。模板方法只在特定点调用“hook ”操作（参见效果一节），这样就只允许在这些点进行扩展。
 
 ### Chain of Responsibility（责任链）
-clip_image015
+![](http://ww4.sinaimg.cn/large/699ef9c0jw1ey6abfcf5vj20aa0560su.jpg)
 
 #### 意图：
 
@@ -247,7 +246,7 @@ clip_image015
 可处理一个请求的对象集合应被动态指定。
 
 ### Command（命令）
-clip_image016
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey6abppgarj20fe04u74i.jpg)
 
 #### 意图：
 
@@ -266,7 +265,7 @@ clip_image016
 用构建在原语操作上的高层操作构造一个系统。这样一种结构在支持事务（transaction）的信息系统中很常见。一个事务封装了对数据的一组变动。Command模式提供了对事务进行建模的方法。Command有一个公共的接口，使得你可以用同一种方式调用所有的事务。同时使用该模式也易于添加新事务以扩展系统。
 
 ### Iterator（迭代器）
-clip_image017
+![](http://ww3.sinaimg.cn/large/699ef9c0jw1ey6ac8tkioj20ek06qmxh.jpg)
 
 #### 意图：
 
@@ -281,7 +280,7 @@ clip_image017
 为遍历不同的聚合结构提供一个统一的接口（即，支持多态迭代）。
 
 ### Mediator（中介者）
-clip_image018
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey6acknpu0j20dz03rdfx.jpg)
 
 #### 意图：
 
@@ -296,7 +295,7 @@ clip_image018
 想定制一个分布在多个类中的行为，而又不想生成太多的子类。
 
 ### Memento（备忘录）
-clip_image019
+![](http://ww1.sinaimg.cn/large/699ef9c0jw1ey6acxk2jij20f104faab.jpg)
 
 #### 意图：
 
@@ -309,7 +308,7 @@ clip_image019
 如果一个用接口来让其它对象直接得到这些状态，将会暴露对象的实现细节并破坏对象的封装性。
 
 ### Observer（观察者）
-clip_image020
+![](http://ww2.sinaimg.cn/large/699ef9c0jw1ey6ad7vvbsj20fe05pt98.jpg)
 
 #### 意图：
 
@@ -324,7 +323,7 @@ clip_image020
 当一个对象必须通知其它对象，而它又不能假定其它对象是谁。换言之，你不希望这些对象是紧密耦合的。
 
 ### State（状态）
-clip_image021
+![](http://ww4.sinaimg.cn/large/699ef9c0jw1ey6adna8v1j20ck04njri.jpg)
 
 #### 意图：
 
@@ -337,7 +336,7 @@ clip_image021
 一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态。这个状态通常用一个或多个枚举常量表示。通常，有多个操作包含这一相同的条件结构。State模式将每一个条件分支放入一个独立的类中。这使得你可以根据对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化。
 
 ### Strategy（策略）
-clip_image022
+![](http://ww2.sinaimg.cn/large/699ef9c0jw1ey6adz59bqj20el04o74k.jpg)
 
 #### 意图：
 
@@ -354,7 +353,7 @@ clip_image022
 一个类定义了多种行为，并且这些行为在这个类的操作中以多个条件语句的形式出现。将相关的条件分支移入它们各自的Strategy类中以代替这些条件语句。
 
 ### Visitor（访问者）
-clip_image023
+![](http://ww4.sinaimg.cn/large/699ef9c0jw1ey6aedb8whj20ad05x74i.jpg)
 
 #### 意图：
 

@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 19 Nov 2015 14:22:58 +0800</pubDate>
-    <lastBuildDate>Thu, 19 Nov 2015 14:22:58 +0800</lastBuildDate>
+    <pubDate>Thu, 19 Nov 2015 14:53:20 +0800</pubDate>
+    <lastBuildDate>Thu, 19 Nov 2015 14:53:20 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -15,7 +15,7 @@
 
 &lt;h3&gt;Factory Method（工厂方法）&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/699ef9c0jw1ey699h2iq8j20fw077gm9.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey69scmmiaj20eo050jrp.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -31,7 +31,7 @@
 
 &lt;h3&gt;Abstract Factory（抽象工厂）&lt;/h3&gt;
 
-&lt;p&gt;clip_image002&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/699ef9c0jw1ey699h2iq8j20fw077gm9.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -49,7 +49,7 @@
 
 &lt;h3&gt;Builder（建造者）&lt;/h3&gt;
 
-&lt;p&gt;clip_image003&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey69xu3hijj20fb05a74h.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -63,7 +63,7 @@
 
 &lt;h3&gt;Prototype（原型）&lt;/h3&gt;
 
-&lt;p&gt;clip_image004&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/699ef9c0jw1ey69ydhs0jj20dr06cwes.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -79,7 +79,7 @@
 
 &lt;h3&gt;Singleton（单例）&lt;/h3&gt;
 
-&lt;p&gt;clip_image005&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey69zvor67j20az03u0st.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -95,7 +95,7 @@
 
 &lt;h3&gt;Adapter Class/Object（适配器）&lt;/h3&gt;
 
-&lt;p&gt;clip_image006&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/699ef9c0jw1ey6a0dj8smj20ed0an3z2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -107,11 +107,11 @@
 
 &lt;p&gt;你想创建一个可以复用的类，该类可以与其他不相关的类或不可预见的类（即那些接口可能不一定兼容的类）协同工作。&lt;/p&gt;
 
-&lt;p&gt;（仅适用于对象Adapter ）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配它的父类接口。&lt;/p&gt;
+&lt;p&gt;（仅适用于对象Adapter）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配它的父类接口。&lt;/p&gt;
 
 &lt;h3&gt;Bridge（桥接）&lt;/h3&gt;
 
-&lt;p&gt;clip_image007&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey6a0vnhksj20fe067wes.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -127,17 +127,17 @@
 
 &lt;p&gt;（C++）你想对客户完全隐藏抽象的实现部分。在C++中，类的表示在类接口中是可见的。&lt;/p&gt;
 
-&lt;p&gt;有许多类要生成。这样一种类层次结构说明你必须将一个对象分解成两个部分。Rumbaugh 称这种类层次结构为“嵌套的普化”（nested generalizations ）。&lt;/p&gt;
+&lt;p&gt;有许多类要生成。这样一种类层次结构说明你必须将一个对象分解成两个部分。Rumbaugh 称这种类层次结构为“嵌套的普化”（nested generalizations）。&lt;/p&gt;
 
-&lt;p&gt;你想在多个对象间共享实现（可能使用引用计数），但同时要求客户并不知道这一点。一个简单的例子便是Coplien 的String 类，在这个类中多个对象可以共享同一个字符串表示（StringRep ）。&lt;/p&gt;
+&lt;p&gt;你想在多个对象间共享实现（可能使用引用计数），但同时要求客户并不知道这一点。一个简单的例子便是Coplien 的String 类，在这个类中多个对象可以共享同一个字符串表示（StringRep）。&lt;/p&gt;
 
 &lt;h3&gt;Composite（组合）&lt;/h3&gt;
 
-&lt;p&gt;clip_image008&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey6a1znrvmj20fb06ut93.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
-&lt;p&gt;将对象组合成树形结构以表示“部分-整体”的层次结构。C o m p o s i t e 使得用户对单个对象和组合对象的使用具有一致性。&lt;/p&gt;
+&lt;p&gt;将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使得用户对单个对象和组合对象的使用具有一致性。&lt;/p&gt;
 
 &lt;h4&gt;适用性：&lt;/h4&gt;
 
@@ -145,9 +145,7 @@
 
 &lt;p&gt;你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。&lt;/p&gt;
 
-&lt;h3&gt;Decorator（装饰）&lt;/h3&gt;
-
-&lt;p&gt;clip_image009&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey6a6mopmxj20fd06sq3d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -163,7 +161,7 @@
 
 &lt;h3&gt;Facade（外观）&lt;/h3&gt;
 
-&lt;p&gt;clip_image010&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/699ef9c0jw1ey6a78rls0j20d7054q32.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -179,7 +177,7 @@
 
 &lt;h3&gt;Flyweight（享元）&lt;/h3&gt;
 
-&lt;p&gt;clip_image011&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/699ef9c0jw1ey6a7pbw4dj20ft09xaaq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -199,7 +197,7 @@
 
 &lt;h3&gt;Proxy（代理）&lt;/h3&gt;
 
-&lt;p&gt;clip_image012&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/699ef9c0jw1ey6a9bnfsjj20du05ht8u.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -208,10 +206,10 @@
 &lt;h4&gt;适用性：&lt;/h4&gt;
 
 &lt;p&gt;在需要用比较通用和复杂的对象指针代替简单的指针的时候，使用Proxy模式。下面是一 些可以使用Proxy 模式常见情况：
-1. 远程代理（Remote Proxy ）为一个对象在不同的地址空间提供局部代表。 NEXTSTEP使用NXProxy 类实现了这一目的。Coplien称这种代理为“大使” （Ambassador ）。
-2. 虚代理（Virtual Proxy ）根据需要创建开销很大的对象。在动机一节描述的ImageProxy 就是这样一种代理的例子。
-3. 保护代理（Protection Proxy ）控制对原始对象的访问。保护代理用于对象应该有不同 的访问权限的时候。例如，在Choices 操作系统中KemelProxies为操作系统对象提供 了访问保护。
-4. 智能指引（Smart Reference ）取代了简单的指针，它在访问对象时执行一些附加操作。 它的典型用途包括：&lt;/p&gt;
+1. 远程代理（Remote Proxy）为一个对象在不同的地址空间提供局部代表。 NEXTSTEP使用NXProxy 类实现了这一目的。Coplien称这种代理为“大使” （Ambassador）。
+2. 虚代理（Virtual Proxy）根据需要创建开销很大的对象。在动机一节描述的ImageProxy 就是这样一种代理的例子。
+3. 保护代理（Protection Proxy）控制对原始对象的访问。保护代理用于对象应该有不同 的访问权限的时候。例如，在Choices 操作系统中KemelProxies为操作系统对象提供 了访问保护。
+4. 智能指引（Smart Reference）取代了简单的指针，它在访问对象时执行一些附加操作。 它的典型用途包括：&lt;/p&gt;
 
 &lt;p&gt;对指向实际对象的引用计数，这样当该对象没有引用时，可以自动释放它（也称为SmartPointers）。&lt;/p&gt;
 
@@ -223,7 +221,7 @@
 
 &lt;h3&gt;Interpreter（解释器）&lt;/h3&gt;
 
-&lt;p&gt;clip_image013&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/699ef9c0jw1ey6a85310dj20bw068jrn.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -239,7 +237,7 @@
 
 &lt;h3&gt;Template Method（模板方法）&lt;/h3&gt;
 
-&lt;p&gt;clip_image014&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/699ef9c0jw1ey6a9tl0h2j20ad05zweo.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -255,7 +253,7 @@
 
 &lt;h3&gt;Chain of Responsibility（责任链）&lt;/h3&gt;
 
-&lt;p&gt;clip_image015&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/699ef9c0jw1ey6abfcf5vj20aa0560su.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -271,7 +269,7 @@
 
 &lt;h3&gt;Command（命令）&lt;/h3&gt;
 
-&lt;p&gt;clip_image016&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey6abppgarj20fe04u74i.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -291,7 +289,7 @@
 
 &lt;h3&gt;Iterator（迭代器）&lt;/h3&gt;
 
-&lt;p&gt;clip_image017&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/699ef9c0jw1ey6ac8tkioj20ek06qmxh.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -307,7 +305,7 @@
 
 &lt;h3&gt;Mediator（中介者）&lt;/h3&gt;
 
-&lt;p&gt;clip_image018&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey6acknpu0j20dz03rdfx.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -323,7 +321,7 @@
 
 &lt;h3&gt;Memento（备忘录）&lt;/h3&gt;
 
-&lt;p&gt;clip_image019&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ey6acxk2jij20f104faab.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -337,7 +335,7 @@
 
 &lt;h3&gt;Observer（观察者）&lt;/h3&gt;
 
-&lt;p&gt;clip_image020&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/699ef9c0jw1ey6ad7vvbsj20fe05pt98.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -353,7 +351,7 @@
 
 &lt;h3&gt;State（状态）&lt;/h3&gt;
 
-&lt;p&gt;clip_image021&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/699ef9c0jw1ey6adna8v1j20ck04njri.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -367,7 +365,7 @@
 
 &lt;h3&gt;Strategy（策略）&lt;/h3&gt;
 
-&lt;p&gt;clip_image022&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/699ef9c0jw1ey6adz59bqj20el04o74k.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
@@ -385,7 +383,7 @@
 
 &lt;h3&gt;Visitor（访问者）&lt;/h3&gt;
 
-&lt;p&gt;clip_image023&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/699ef9c0jw1ey6aedb8whj20ad05x74i.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 
 &lt;h4&gt;意图：&lt;/h4&gt;
 
