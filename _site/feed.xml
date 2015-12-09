@@ -5,9 +5,22 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Nov 2015 16:09:58 +0800</pubDate>
-    <lastBuildDate>Wed, 25 Nov 2015 16:09:58 +0800</lastBuildDate>
+    <pubDate>Wed, 09 Dec 2015 09:37:28 +0800</pubDate>
+    <lastBuildDate>Wed, 09 Dec 2015 09:37:28 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Blender 3D 技巧收集</title>
+        <description>&lt;h3&gt;Modifiers cannot be applied to multi-user data&lt;/h3&gt;
+
+&lt;p&gt;Press U &amp;gt; Objects and Data. Then apply your modifier. Using just Object will make the object a new, separate datablock for the mesh (but will ignore modifiers). However, using Object and Data will make both the objects mesh and it&amp;#39;s modifiers a new, separate datablock.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Dec 2015 00:00:00 +0800</pubDate>
+        <link>http://codante.org/blog/2015/12/10/blender-skill.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2015/12/10/blender-skill.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>设计模式</title>
@@ -1697,28 +1710,6 @@ php&lt;/p&gt;
         <pubDate>Fri, 01 Jul 2011 11:21:47 +0800</pubDate>
         <link>http://codante.org/blog/2011/07/01/cydia-change-the-mode-to-switch-three-modes.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2011/07/01/cydia-change-the-mode-to-switch-three-modes.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Linux统计文件、目录数量</title>
-        <description>&lt;p&gt;统计当前目录下的文件以及目录数量（不包括子目录）&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ls -l &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; wc -l
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;统计当前目录下的文件数量（遍历所有子目录）&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;find . -type f &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; wc -l
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;统计当前目录下的目录数量（遍历所有子目录）&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;find . -type d &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;  wc -l
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;当然，也可以指定某个目录来使用&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;find /xxx/yyy ......
-ls -l /xxx/yyy......
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-        <pubDate>Thu, 30 Jun 2011 10:59:37 +0800</pubDate>
-        <link>http://codante.org/blog/2011/06/30/linux-statistics-files-directory-number.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2011/06/30/linux-statistics-files-directory-number.html</guid>
         
         
       </item>
