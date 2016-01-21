@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Jan 2016 17:37:26 +0800</pubDate>
-    <lastBuildDate>Thu, 21 Jan 2016 17:37:26 +0800</lastBuildDate>
+    <pubDate>Thu, 21 Jan 2016 17:38:37 +0800</pubDate>
+    <lastBuildDate>Thu, 21 Jan 2016 17:38:37 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -50,7 +50,7 @@ int1 -le int2　　　　int1小于等于int2为真
     
       <item>
         <title>Git 配置及指令</title>
-        <description>&lt;h3&gt;新建代码库&lt;/h3&gt;
+        <description>&lt;h2&gt;新建代码库&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 在当前目录新建一个Git代码库
 $ git init
 # 新建一个目录，将其初始化为Git代码库
@@ -58,7 +58,7 @@ $ git init [project-name]
 # 下载一个项目和它的整个代码历史
 $ git clone [url]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;配置&lt;/h3&gt;
+&lt;h2&gt;配置&lt;/h2&gt;
 
 &lt;p&gt;Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 ```&lt;/p&gt;
@@ -77,7 +77,7 @@ $ git clone [url]
 $ git config [--lcoal] user.email &amp;quot;[email address]&amp;quot;
 ```&lt;/p&gt;
 
-&lt;h3&gt;增加/删除文件&lt;/h3&gt;
+&lt;h2&gt;增加/删除文件&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 添加指定文件到暂存区
 $ git add [file1] [file2] ...
 # 添加指定目录到暂存区，包括子目录
@@ -91,7 +91,7 @@ $ git rm --cached [file]
 # 改名文件，并且将这个改名放入暂存区
 $ git mv [file-original] [file-renamed]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;代码提交&lt;/h3&gt;
+&lt;h2&gt;代码提交&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 提交暂存区到仓库区
 $ git commit -m [message]
 # 提交暂存区的指定文件到仓库区
@@ -106,7 +106,7 @@ $ git commit --amend -m [message]
 # 重做上一次commit，并包括指定文件的新变化
 $ git commit --amend [file1] [file2] ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;分支&lt;/h3&gt;
+&lt;h2&gt;分支&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 列出所有本地分支
 $ git branch
 # 列出所有远程分支
@@ -137,7 +137,7 @@ $ git branch -d [branch-name]
 $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;标签&lt;/h3&gt;
+&lt;h2&gt;标签&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 列出所有tag
 $ git tag
 # 新建一个tag在当前commit
@@ -153,7 +153,7 @@ $ git push [remote] --tags
 # 新建一个分支，指向某个tag
 $ git checkout -b [branch] [tag]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;查看信息&lt;/h3&gt;
+&lt;h2&gt;查看信息&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 显示有变更的文件
 $ git status
 # 显示当前分支的版本历史
@@ -184,7 +184,7 @@ $ git show [commit]:[filename]
 # 显示当前分支的最近几次提交
 $ git reflog
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;远程同步&lt;/h3&gt;
+&lt;h2&gt;远程同步&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 下载远程仓库的所有变动
 $ git fetch [remote]
 # 显示所有远程仓库
@@ -202,7 +202,7 @@ $ git push [remote] --force
 # 推送所有分支到远程仓库
 $ git push [remote] --all
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;撤销&lt;/h3&gt;
+&lt;h2&gt;撤销&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 恢复暂存区的指定文件到工作区
 $ git checkout [file]
 # 恢复某个commit的指定文件到工作区
@@ -223,7 +223,7 @@ $ git reset --keep [commit]
 # 后者的所有变化都将被前者抵消，并且应用到当前分支
 $ git revert [commit]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;submodule&lt;/h3&gt;
+&lt;h2&gt;submodule&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 添加一个submodule
 $ git submodule add [url] [dir]
 # 初始化
@@ -231,16 +231,14 @@ $ git submodule init [dir]
 # 更新
 $ git submodule update [dir]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;克隆一个带有submodule的远程代码仓库&lt;/h4&gt;
+&lt;h3&gt;克隆一个带有submodule的远程代码仓库&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ git clone [url]
 $ git submodule init
 $ git submodule update
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;或者
-&lt;code&gt;
-$ git clone --recursive [url]
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ git clone --recursive [url]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
