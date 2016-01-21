@@ -808,6 +808,24 @@ $ git reset --keep [commit]
 # 后者的所有变化都将被前者抵消，并且应用到当前分支
 $ git revert [commit]
 </code></pre></div>
+<h3>submodule</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># 添加一个submodule
+$ git submodule add [url] [dir]
+# 初始化
+$ git submodule init [dir]
+# 更新
+$ git submodule update [dir]
+</code></pre></div>
+<h4>克隆一个带有submodule的远程代码仓库</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ git clone [url]
+$ git submodule init
+$ git submodule update
+</code></pre></div>
+<p>或者
+<code>
+$ git clone --recursive [url]
+</code></p>
+
 <h2>Reference</h2>
 
 <ul>

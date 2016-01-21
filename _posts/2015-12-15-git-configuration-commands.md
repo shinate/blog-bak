@@ -177,6 +177,29 @@ $ git reset --keep [commit]
 $ git revert [commit]
 ```
 
+### submodule
+```
+# 添加一个submodule
+$ git submodule add [url] [dir]
+# 初始化
+$ git submodule init [dir]
+# 更新
+$ git submodule update [dir]
+```
+
+#### 克隆一个带有submodule的远程代码仓库
+```
+$ git clone [url]
+$ git submodule init
+$ git submodule update
+```
+或者
+```
+$ git clone --recursive [url]
+```
+
+
+
 ## Reference
 - [git官方doc](https://git-scm.com/docs)
 - [常用Git命令清单 by ruanyifeng](http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html)
