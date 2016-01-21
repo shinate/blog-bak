@@ -5,20 +5,45 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Dec 2015 19:24:00 +0800</pubDate>
-    <lastBuildDate>Fri, 18 Dec 2015 19:24:00 +0800</lastBuildDate>
+    <pubDate>Thu, 21 Jan 2016 17:25:06 +0800</pubDate>
+    <lastBuildDate>Thu, 21 Jan 2016 17:25:06 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
-        <title>TEST Chrome plugin</title>
-        <description>&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ez413cs7csj203f03zjrb.jpg&quot; alt=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ez413cs7csj203f03zjrb.jpg&quot;&gt;
-&lt;img src=&quot;http://ww3.sinaimg.cn/large/699ef9c0jw1ez413csxjqj204a0460sp.jpg&quot; alt=&quot;http://ww3.sinaimg.cn/large/699ef9c0jw1ez413csxjqj204a0460sp.jpg&quot;&gt;
-&lt;img src=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ez413croxsj203r04iwef.jpg&quot; alt=&quot;http://ww1.sinaimg.cn/large/699ef9c0jw1ez413croxsj203r04iwef.jpg&quot;&gt;
-&lt;img src=&quot;http://ww3.sinaimg.cn/large/699ef9c0jw1ez413cuhfaj2040047mx5.jpg&quot; alt=&quot;http://ww3.sinaimg.cn/large/699ef9c0jw1ez413cuhfaj2040047mx5.jpg&quot;&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 18 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://codante.org/blog/2015/12/18/wb-is-a-good-image-disk.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2015/12/18/wb-is-a-good-image-disk.html</guid>
+        <title>Shell if</title>
+        <description>&lt;h2&gt;字符串判断&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;str1 = str2　　　　　　当两个串有相同内容、长度时为真 
+str1 != str2　　　　　 当串str1和str2不等时为真 
+-n str1　　　　　　　 当串的长度大于0时为真(串非空) 
+-z str1　　　　　　　 当串的长度为0时为真(空串) 
+str1　　　　　　　　   当串str1为非空时为真
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;数字的判断&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;int1 -eq int2　　　　两数相等为真 
+int1 -ne int2　　　　两数不等为真 
+int1 -gt int2　　　　int1大于int2为真 
+int1 -ge int2　　　　int1大于等于int2为真 
+int1 -lt int2　　　　int1小于int2为真 
+int1 -le int2　　　　int1小于等于int2为真
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;文件的判断&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-r file　　　　　用户可读为真 
+-w file　　　　　用户可写为真 
+-x file　　　　　用户可执行为真 
+-f file　　　　　文件为正规文件为真 
+-d file　　　　　文件为目录为真 
+-c file　　　　　文件为字符特殊文件为真 
+-b file　　　　　文件为块特殊文件为真 
+-s file　　　　　文件大小非0时为真 
+-t file　　　　　当文件描述符(默认为1)指定的设备为终端时为真
+4、复杂逻辑判断
+-a 　 　　　　　 与 
+-o　　　　　　　 或 
+!　　　　　　　　非
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
+        <link>http://codante.org/blog/2016/01/21/shell-if.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2016/01/21/shell-if.html</guid>
         
         
       </item>

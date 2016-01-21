@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TEST Chrome plugin</title>
+<title>Shell if</title>
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="http://codante.org/blog" />
@@ -47,9 +47,9 @@
       
       
       
-      <a class="post-archive-iterm" href="http://codante.org/blog/2015/12/18/wb-is-a-good-image-disk.html">
-        <span class="post-archive-date">2015-12-18</span>
-        <span class="post-archive-title checked">TEST Chrome plugin</span>
+      <a class="post-archive-iterm" href="http://codante.org/blog/2016/01/21/shell-if.html">
+        <span class="post-archive-date">2016-01-21</span>
+        <span class="post-archive-title checked">Shell if</span>
       </a>
       
       
@@ -625,8 +625,8 @@
 
   <!-- post header -->
   <div class="post-header">
-    <h1>TEST Chrome plugin</h1>
-    <span>2015-12-18</span>
+    <h1>Shell if</h1>
+    <span>2016-01-21</span>
   </div>
 
   <!-- post content -->
@@ -635,11 +635,36 @@
   
 
   <div class="post-content english">
-    <p><img src="http://ww1.sinaimg.cn/large/699ef9c0jw1ez413cs7csj203f03zjrb.jpg" alt="http://ww1.sinaimg.cn/large/699ef9c0jw1ez413cs7csj203f03zjrb.jpg">
-<img src="http://ww3.sinaimg.cn/large/699ef9c0jw1ez413csxjqj204a0460sp.jpg" alt="http://ww3.sinaimg.cn/large/699ef9c0jw1ez413csxjqj204a0460sp.jpg">
-<img src="http://ww1.sinaimg.cn/large/699ef9c0jw1ez413croxsj203r04iwef.jpg" alt="http://ww1.sinaimg.cn/large/699ef9c0jw1ez413croxsj203r04iwef.jpg">
-<img src="http://ww3.sinaimg.cn/large/699ef9c0jw1ez413cuhfaj2040047mx5.jpg" alt="http://ww3.sinaimg.cn/large/699ef9c0jw1ez413cuhfaj2040047mx5.jpg"></p>
-
+    <h2>字符串判断</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">str1 = str2　　　　　　当两个串有相同内容、长度时为真 
+str1 != str2　　　　　 当串str1和str2不等时为真 
+-n str1　　　　　　　 当串的长度大于0时为真(串非空) 
+-z str1　　　　　　　 当串的长度为0时为真(空串) 
+str1　　　　　　　　   当串str1为非空时为真
+</code></pre></div>
+<h2>数字的判断</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">int1 -eq int2　　　　两数相等为真 
+int1 -ne int2　　　　两数不等为真 
+int1 -gt int2　　　　int1大于int2为真 
+int1 -ge int2　　　　int1大于等于int2为真 
+int1 -lt int2　　　　int1小于int2为真 
+int1 -le int2　　　　int1小于等于int2为真
+</code></pre></div>
+<h2>文件的判断</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">-r file　　　　　用户可读为真 
+-w file　　　　　用户可写为真 
+-x file　　　　　用户可执行为真 
+-f file　　　　　文件为正规文件为真 
+-d file　　　　　文件为目录为真 
+-c file　　　　　文件为字符特殊文件为真 
+-b file　　　　　文件为块特殊文件为真 
+-s file　　　　　文件大小非0时为真 
+-t file　　　　　当文件描述符(默认为1)指定的设备为终端时为真
+4、复杂逻辑判断
+-a 　 　　　　　 与 
+-o　　　　　　　 或 
+!　　　　　　　　非
+</code></pre></div>
   </div>
 
   <!-- post navigator -->
