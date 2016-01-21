@@ -2,7 +2,7 @@
 
 comments=$1
 if [ -z $1 ];then
-    comments = "new post"
+    comments="new post"
 fi
 
 gulp
