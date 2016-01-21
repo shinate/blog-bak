@@ -1,12 +1,8 @@
 ---
 layout: post
-title: Mac通过Bash shell打开默认浏览器
+title: Mac系统用bash shell用默认浏览器打开网址
 ---
 
 ```bash
-openUrl() {
-  if [ -n $1 ]; then
-    open -a "$(VERSIONER_PERL_PREFER_32_BIT=true perl -MMac::InternetConfig -le 'print +(GetICHelper "http")[1]')" $1
-  fi
-}
+open http://codante.org -a "$(VERSIONER_PERL_PREFER_32_BIT=true perl -MMac::InternetConfig -le 'print +(GetICHelper "http")[1]')"
 ```

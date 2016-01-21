@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mac通过Bash shell打开默认浏览器</title>
+<title>Mac系统用bash shell用默认浏览器打开网址</title>
 
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="http://codante.org/blog" />
@@ -57,7 +57,7 @@
       
       <a class="post-archive-iterm" href="http://codante.org/blog/2016/01/21/bash-shell-open-default-web-browser-on-mac.html">
         <span class="post-archive-date">2016-01-21</span>
-        <span class="post-archive-title checked">Mac通过Bash shell打开默认浏览器</span>
+        <span class="post-archive-title checked">Mac系统用bash shell用默认浏览器打开网址</span>
       </a>
       
       
@@ -633,7 +633,7 @@
 
   <!-- post header -->
   <div class="post-header">
-    <h1>Mac通过Bash shell打开默认浏览器</h1>
+    <h1>Mac系统用bash shell用默认浏览器打开网址</h1>
     <span>2016-01-21</span>
   </div>
 
@@ -643,11 +643,7 @@
   
 
   <div class="post-content english">
-    <div class="highlight"><pre><code class="language-bash" data-lang="bash">openUrl<span class="o">()</span> <span class="o">{</span>
-  <span class="k">if</span> <span class="o">[</span> -n <span class="nv">$1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    open -a <span class="s2">&quot;$(VERSIONER_PERL_PREFER_32_BIT=true perl -MMac::InternetConfig -le &#39;print +(GetICHelper &quot;</span>http<span class="s2">&quot;)[1]&#39;)&quot;</span> <span class="nv">$1</span>
-  <span class="k">fi</span>
-<span class="o">}</span>
+    <div class="highlight"><pre><code class="language-bash" data-lang="bash">open http://codante.org -a <span class="s2">&quot;$(VERSIONER_PERL_PREFER_32_BIT=true perl -MMac::InternetConfig -le &#39;print +(GetICHelper &quot;</span>http<span class="s2">&quot;)[1]&#39;)&quot;</span>
 </code></pre></div>
   </div>
 

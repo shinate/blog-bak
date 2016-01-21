@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Jan 2016 23:07:14 +0800</pubDate>
-    <lastBuildDate>Thu, 21 Jan 2016 23:07:14 +0800</lastBuildDate>
+    <pubDate>Thu, 21 Jan 2016 23:11:18 +0800</pubDate>
+    <lastBuildDate>Thu, 21 Jan 2016 23:11:18 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -50,12 +50,8 @@ int1 -le int2　　　　int1小于等于int2为真
       </item>
     
       <item>
-        <title>Mac通过Bash shell打开默认浏览器</title>
-        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;openUrl&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -n &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
-    open -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;$(VERSIONER_PERL_PREFER_32_BIT=true perl -MMac::InternetConfig -le &amp;#39;print +(GetICHelper &amp;quot;&lt;/span&gt;http&lt;span class=&quot;s2&quot;&gt;&amp;quot;)[1]&amp;#39;)&amp;quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        <title>Mac系统用bash shell用默认浏览器打开网址</title>
+        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;open http://codante.org -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;$(VERSIONER_PERL_PREFER_32_BIT=true perl -MMac::InternetConfig -le &amp;#39;print +(GetICHelper &amp;quot;&lt;/span&gt;http&lt;span class=&quot;s2&quot;&gt;&amp;quot;)[1]&amp;#39;)&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/01/21/bash-shell-open-default-web-browser-on-mac.html</link>
