@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Jan 2016 17:41:46 +0800</pubDate>
-    <lastBuildDate>Thu, 21 Jan 2016 17:41:46 +0800</lastBuildDate>
+    <pubDate>Thu, 21 Jan 2016 17:43:26 +0800</pubDate>
+    <lastBuildDate>Thu, 21 Jan 2016 17:43:26 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -14,8 +14,8 @@
         <description>&lt;h2&gt;字符串判断&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;str1 = str2　　　　　　当两个串有相同内容、长度时为真 
 str1 != str2　　　　　 当串str1和str2不等时为真 
--n str1　　　　　　　 当串的长度大于0时为真(串非空) 
--z str1　　　　　　　 当串的长度为0时为真(空串) 
+-n str1　　　　　　　  当串的长度大于0时为真(串非空) 
+-z str1　　　　　　　  当串的长度为0时为真(空串) 
 str1　　　　　　　　   当串str1为非空时为真
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;数字的判断&lt;/h2&gt;
@@ -36,8 +36,9 @@ int1 -le int2　　　　int1小于等于int2为真
 -b file　　　　　文件为块特殊文件为真 
 -s file　　　　　文件大小非0时为真 
 -t file　　　　　当文件描述符(默认为1)指定的设备为终端时为真
-4、复杂逻辑判断
--a 　 　　　　　 与 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;复杂逻辑判断&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-a 　 　　　　　 与 
 -o　　　　　　　 或 
 !　　　　　　　　非
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
