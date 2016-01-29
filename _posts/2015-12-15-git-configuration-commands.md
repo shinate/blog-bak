@@ -5,7 +5,7 @@ title: Git 配置及指令
 
 ## 新建代码库
 
-```
+```bash
 # 在当前目录新建一个Git代码库
 $ git init
 # 新建一个目录，将其初始化为Git代码库
@@ -30,7 +30,7 @@ $ git config [--lcoal] user.email "[email address]"
 
 ## 增加/删除文件
 
-```
+```bash
 # 添加指定文件到暂存区
 $ git add [file1] [file2] ...
 # 添加指定目录到暂存区，包括子目录
@@ -47,7 +47,7 @@ $ git mv [file-original] [file-renamed]
 
 ## 代码提交
 
-```
+```bash
 # 提交暂存区到仓库区
 $ git commit -m [message]
 # 提交暂存区的指定文件到仓库区
@@ -65,7 +65,7 @@ $ git commit --amend [file1] [file2] ...
 
 ## 分支
 
-```
+```bash
 # 列出所有本地分支
 $ git branch
 # 列出所有远程分支
@@ -99,7 +99,7 @@ $ git branch -dr [remote/branch]
 
 ## 标签
 
-```
+```bash
 # 列出所有tag
 $ git tag
 # 新建一个tag在当前commit
@@ -118,7 +118,7 @@ $ git checkout -b [branch] [tag]
 
 ## 查看信息
 
-```
+```bash
 # 显示有变更的文件
 $ git status
 # 显示当前分支的版本历史
@@ -152,7 +152,7 @@ $ git reflog
 
 ## 远程同步
 
-```
+```bash
 # 下载远程仓库的所有变动
 $ git fetch [remote]
 # 显示所有远程仓库
@@ -173,7 +173,7 @@ $ git push [remote] --all
 
 ## 撤销
 
-```
+```bash
 # 恢复暂存区的指定文件到工作区
 $ git checkout [file]
 # 恢复某个commit的指定文件到工作区
@@ -197,7 +197,7 @@ $ git revert [commit]
 
 ## submodule
 
-```
+```bash
 # 添加一个submodule
 $ git submodule add [url] [dir]
 # 初始化
@@ -208,7 +208,7 @@ $ git submodule update [dir]
 
 ### 克隆一个带有submodule的远程代码仓库
 
-```
+```bash
 $ git clone [url]
 $ git submodule init
 $ git submodule update
@@ -216,7 +216,7 @@ $ git submodule update
 
 或者
 
-```
+```bash
 $ git clone --recursive [url]
 ```
 
