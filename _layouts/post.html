@@ -10,21 +10,7 @@ layout: default
   <!-- /post archive trigger -->
 
   <!-- post archive -->
-  <div class="post-archive">
-    <div class="post-archive-iterms">
-      {% for post in site.posts %}
-      {% if page.url == post.url %}
-      {% assign status = 'checked' %}
-      {% else %}
-      {% assign status = '' %}
-      {% endif %}
-      <a class="post-archive-iterm" href="{{ post.url | prepend: site.url }}">
-        <span class="post-archive-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-        <span class="post-archive-title {{ status }}">{{ post.title }}</span>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
+  <div class="post-archive"></div>
   <!-- /post archive -->
 
   <!-- post header -->

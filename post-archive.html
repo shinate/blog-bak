@@ -1,0 +1,12 @@
+---
+title: Post archive
+permalink: /post-archive.html
+---
+<div class="post-archive-iterms">
+    {% for post in site.posts %}
+    <a class="post-archive-iterm" href="{{ post.url | prepend: site.url }}">
+        <span class="post-archive-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <span class="post-archive-title">{{ post.title }}</span>
+    </a>
+    {% endfor %}
+</div>

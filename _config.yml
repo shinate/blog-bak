@@ -5,8 +5,8 @@ description: ""
 avatar: "/assets/img/avatar.png"
 # destination: "./_site/blog"
 # baseurl: "/blog" # the subpath of your site, e.g. /blog/
-url: "http://codante.org/blog"
-# url: "http://127.0.0.1:4000"
+# url: "http://codante.org/blog"
+url: "http://127.0.0.1:8000"
 hostname: "codante.org"
 favicon: # path/to/favicon for site. e.g. /assets/img/favicon.ico
 google_analytics: # google analytics id
@@ -20,4 +20,4 @@ markdown: redcarpet
 
 
 # Build settings
-exclude: [node_modules, src, gulpfile.js, package.json, build.sh]
+exclude: [node_modules, src, gulpfile.js, package.json, build.sh, bower_components]
