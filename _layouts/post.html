@@ -7,6 +7,7 @@ layout: default
   <div class="post-archive-trigger">
     <div class="post-archive-icon"></div>
   </div>
+  <!-- /post archive trigger -->
 
   <!-- post archive -->
   <div class="post-archive">
@@ -24,12 +25,14 @@ layout: default
       {% endfor %}
     </div>
   </div>
+  <!-- /post archive -->
 
   <!-- post header -->
   <div class="post-header">
     <h1>{{ page.title }}</h1>
     <span>{{ page.date | date: "%Y-%m-%d" }}</span>
   </div>
+  <!-- /post header -->
 
   <!-- post content -->
   {% if page.tags contains 'chinese' %}
@@ -41,6 +44,7 @@ layout: default
   <div class="post-content {{ type }}">
     {{ content }}
   </div>
+  <!-- /post content -->
 
   <!-- post navigator -->
   <div class="post-nav">

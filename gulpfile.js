@@ -12,7 +12,7 @@ var CONF = {
 
 gulp.task('default', ['build']);
 
-gulp.task('build', ['style']);
+gulp.task('build', ['style', 'script']);
 
 gulp.task('style', function () {
     return gulp.src([
@@ -20,6 +20,21 @@ gulp.task('style', function () {
     ])
         .pipe(less())
         .pipe(minifycss())
+        .pipe(rename({'suffix': '.min'}))
+        .pipe(through.obj(function (file, enc, cb) {
+            file.contents = new Buffer('---\n---\n' + file.contents.toString());
+            this.push(file);
+            return cb();
+        }))
+        .pipe(gulp.dest(CONF.build + '/css/'));
+});
+
+gulp.task('script', function () {
+    return gulp.src([
+        CONF.src + '/js/c.js'
+    ])
+        .pipe(uglify())
+        .pipe(rename({'suffix': '.min'}))
         .pipe(through.obj(function (file, enc, cb) {
             file.contents = new Buffer('---\n---\n' + file.contents.toString());
             this.push(file);
