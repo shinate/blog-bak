@@ -17,8 +17,9 @@ date: '2010-07-08 15:09:39 +0800'
 date_gmt: '2010-07-08 07:09:39 +0800'
 ---
 
-## 著名端口1 tcpmux TCP 端口服务多路复用
+## 著名端口
 
+- 1 tcpmux TCP 端口服务多路复用
 - 5 rje 远程作业入口
 - 7 echo Echo 服务
 - 9 discard 用于连接测试的空服务
@@ -131,8 +132,9 @@ date_gmt: '2010-07-08 07:09:39 +0800'
 - 994 ircs 通过安全套接字层的互联网中继聊天（IRCS）
 - 995 pop3s 通过安全套接字层的邮局协议版本3（POPS3）
 
-## UNIX 特有的端口512/tcp exec 用于对远程执行的进程进行验证
+## UNIX 特有的端口
 
+- 512/tcp exec 用于对远程执行的进程进行验证
 - 512/udp biff [comsat] 异步邮件客户（biff）和服务（comsat）
 - 513/tcp login 远程登录（rlogin）
 - 513/udp who [whod] 登录的用户列表
@@ -157,8 +159,9 @@ date_gmt: '2010-07-08 07:09:39 +0800'
 - 548 afpovertcp 通过传输控制协议（TCP）的 Appletalk 文件编制协议（AFP）
 - 556 remotefs [rfs_server, rfs] Brunhoff 的远程文件系统（RFS）
 
-## 注册的端口1080 socks SOCKS 网络应用程序代理服务
+## 注册的端口
 
+- 1080 socks SOCKS 网络应用程序代理服务
 - 1236 bvcontrol [rmtcfg] Garcilis Packeten 远程配置服务器[a]
 - 1300 h323hostcallsc H.323 电话会议主机电话安全
 - 1433 ms-sql-s Microsoft SQL 服务器
@@ -241,14 +244,16 @@ date_gmt: '2010-07-08 07:09:39 +0800'
 - 2. 在 /etc/services 中的注释：端口 2600 到 2606 被 zebra 软件包未经注册而使用。主要名称是被注册的名称，被 zebra 使用的未注册名称被列为别
 - 3. /etc/services 文件中的注释：该端口被注册为 wnn6，但是还在 FreeWnn 软件包中使用了未注册的"wnn4"。
 
-## 数据报传递协议端口1/ddp rtmp 路由表管理协议
+## 数据报传递协议端口
 
+- 1/ddp rtmp 路由表管理协议
 - 2/ddp nbp 名称绑定协议
 - 4/ddp echo AppleTalk Echo 协议
 - 6/ddp zip 区块信息协议
 
-## Kerberos（工程 Athena/MIT）端口751 kerberos_master Kerberos 验证
+## Kerberos（工程 Athena/MIT）端口
 
+- 751 kerberos_master Kerberos 验证
 - 752 passwd_server Kerberos 口令（kpasswd）服务器
 - 754 krb5_prop Kerberos v5 从属传播
 - 760 krbupdate [kreg] Kerberos 注册
@@ -256,8 +261,9 @@ date_gmt: '2010-07-08 07:09:39 +0800'
 - 2053 knetd Kerberos 多路分用器
 - 2105 eklogin Kerberos v5 加密的远程登录（rlogin）
 
-## 未注册的端口15/tcp netstat 网络状态（netstat）
+## 未注册的端口
 
+- 15/tcp netstat 网络状态（netstat）
 - 98/tcp linuxconf Linuxconf Linux 管理工具
 - 106 poppassd 邮局协议口令改变守护进程（POPPASSD）
 - 465/tcp smtps 通过安全套接字层的简单邮件传输协议（SMTPS）
