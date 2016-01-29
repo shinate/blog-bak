@@ -16,7 +16,8 @@ gulp.task('build', ['style', 'script']);
 
 gulp.task('style', function () {
     return gulp.src([
-        CONF.src + '/style/style.less'
+        CONF.src + '/style/style.less',
+        CONF.src + '/style/highlight/monokai_sublime.css'
     ])
         .pipe(less())
         .pipe(minifycss())
