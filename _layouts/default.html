@@ -15,6 +15,10 @@
     <script src="{{ "/assets/js/highlight.pack.js" | prepend: site.url }}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script src="{{ "/assets/js/c.min.js" | prepend: site.url }}"></script>
+    <script>
+      $CONFIG = {};
+      $CONFIG.url = '{{ site.url }}';
+    </script>
     <!-- /scripts -->
     <!-- /head -->
   </head>

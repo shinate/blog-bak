@@ -51,7 +51,7 @@ $(document).ready(function () {
         });
     }
 
-    $.get('/post-archive.html', function (ret) {
+    $.get($CONFIG.url + '/post-archive.html', function (ret) {
         var PA = $('.post-archive')
         PA.html(ret);
         var current = PA.find('[href="' + window.location.href + '"]');
