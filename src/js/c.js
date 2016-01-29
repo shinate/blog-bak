@@ -50,9 +50,8 @@ $(document).ready(function () {
             }
         });
     }
-
-    $.get($CONFIG.url + '/post-archive.html', function (ret) {
-        var PA = $('.post-archive')
+    var PA = $('.post-archive');
+    PA.length && $.get($CONFIG.url + '/post-archive.html', function (ret) {
         PA.html(ret);
         var current = PA.find('[href="' + window.location.href + '"]');
         current.find('.post-archive-title').addClass('checked');
