@@ -20,7 +20,7 @@ date_gmt: '2010-06-07 01:10:55 +0800'
 
 ## Mysql 数据库丢失root密码恢复
 
-```
+```bash
 \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 Mysql 数据库丢失root密码恢复
 \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
@@ -53,13 +53,13 @@ mysql -u root -p -S /data/3306/mysql.sock
 
 ### 登陆后修改密码
 
-```
-mysql&gt; UPDATE mysql.user SET password=PASSWORD("hyran123") WHERE user='root';
+```bash
+mysql> UPDATE mysql.user SET password=PASSWORD("hyran123") WHERE user='root';
 Query OK, 2 rows affected (0.00 sec)
 Rows matched: 2  Changed: 2  Warnings: 0
-mysql&gt;FLUSH PRIVILEGES;
+mysql> FLUSH PRIVILEGES;
 Query OK, 0 rows affected (0.00 sec)
-mysql&gt; quit
+mysql> quit
 Bye
 ```
 
@@ -67,10 +67,10 @@ Bye
 
 ```bash
 /data/3306/mysql restart
-[root@ryan01 3306]\# mysql -u root -p'hyran123′ -S /data/3306/mysql.sock
+[root@ryan01 3306]# mysql -u root -p密码 -S /data/3306/mysql.sock
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 1
 Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
-mysql&gt;
+mysql>;
 ```
