@@ -56,7 +56,6 @@ $(document).ready(function () {
         PA.html(ret);
         var current = PA.find('[href="' + window.location.href + '"]');
         current.find('.post-archive-title').addClass('checked');
-        console.log(current.height());
         PA.scrollTop(current.offset().top - (($(window).height() - current.height()) / 2));
     });
 });
