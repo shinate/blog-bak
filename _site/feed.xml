@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 29 Jan 2016 18:25:21 +0800</pubDate>
-    <lastBuildDate>Fri, 29 Jan 2016 18:25:21 +0800</lastBuildDate>
+    <pubDate>Fri, 29 Jan 2016 19:24:40 +0800</pubDate>
+    <lastBuildDate>Fri, 29 Jan 2016 19:24:40 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -73,13 +73,13 @@ $ git clone [url]
 &lt;h2&gt;配置&lt;/h2&gt;
 
 &lt;p&gt;Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 显示当前的Git配置
-$ git config -l [--local]
-# 编辑Git配置文件
-$ git config -e [--global]
-# 设置提交代码时的用户信息
-$ git config [--local] user.name &amp;quot;[name]&amp;quot;
-$ git config [--lcoal] user.email &amp;quot;[email address]&amp;quot;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 显示当前的Git配置&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config -l &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;--local&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 编辑Git配置文件&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config -e &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;--global&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 设置提交代码时的用户信息&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;--local&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; user.name &lt;span class=&quot;s2&quot;&gt;&amp;quot;[name]&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;--lcoal&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; user.email &lt;span class=&quot;s2&quot;&gt;&amp;quot;[email address]&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;增加/删除文件&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 添加指定文件到暂存区

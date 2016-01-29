@@ -18,7 +18,7 @@ $ git clone [url]
 
 Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
-```
+```bash
 # 显示当前的Git配置
 $ git config -l [--local]
 # 编辑Git配置文件
