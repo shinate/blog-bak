@@ -51,11 +51,11 @@ $(document).ready(function () {
         });
     }
 
-    $.get($CONFIG.url + '/post-archive.html', function (ret) {
-        var PA = $('.post-archive')
-        PA.html(ret);
-        var current = PA.find('[href="' + window.location.href + '"]');
-        current.find('.post-archive-title').addClass('checked');
-        PA.scrollTop(current.offset().top - (($(window).height() - current.height()) / 2));
-    });
+    //$.get($CONFIG.url + '/post-archive.html', function (ret) {
+    //    var PA = $('.post-archive')
+    //    PA.html(ret);
+    //    var current = PA.find('[href="' + window.location.href + '"]');
+    //    current.find('.post-archive-title').addClass('checked');
+    //    PA.scrollTop(current.offset().top - (($(window).height() - current.height()) / 2));
+    //});
 });
