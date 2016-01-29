@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Jan 2016 23:11:18 +0800</pubDate>
-    <lastBuildDate>Thu, 21 Jan 2016 23:11:18 +0800</lastBuildDate>
+    <pubDate>Fri, 29 Jan 2016 14:56:02 +0800</pubDate>
+    <lastBuildDate>Fri, 29 Jan 2016 14:56:02 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -72,23 +72,15 @@ $ git clone [url]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;配置&lt;/h2&gt;
 
-&lt;p&gt;Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
-```&lt;/p&gt;
-
-&lt;h1&gt;显示当前的Git配置&lt;/h1&gt;
-
-&lt;p&gt;$ git config -l [--local]&lt;/p&gt;
-
-&lt;h1&gt;编辑Git配置文件&lt;/h1&gt;
-
-&lt;p&gt;$ git config -e [--global]&lt;/p&gt;
-
-&lt;h1&gt;设置提交代码时的用户信息&lt;/h1&gt;
-
-&lt;p&gt;$ git config [--local] user.name &amp;quot;[name]&amp;quot;
+&lt;p&gt;Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 显示当前的Git配置
+$ git config -l [--local]
+# 编辑Git配置文件
+$ git config -e [--global]
+# 设置提交代码时的用户信息
+$ git config [--local] user.name &amp;quot;[name]&amp;quot;
 $ git config [--lcoal] user.email &amp;quot;[email address]&amp;quot;
-```&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;增加/删除文件&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# 添加指定文件到暂存区
 $ git add [file1] [file2] ...

@@ -653,23 +653,15 @@ $ git clone [url]
 </code></pre></div>
 <h2>配置</h2>
 
-<p>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
-```</p>
-
-<h1>显示当前的Git配置</h1>
-
-<p>$ git config -l [--local]</p>
-
-<h1>编辑Git配置文件</h1>
-
-<p>$ git config -e [--global]</p>
-
-<h1>设置提交代码时的用户信息</h1>
-
-<p>$ git config [--local] user.name &quot;[name]&quot;
+<p>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># 显示当前的Git配置
+$ git config -l [--local]
+# 编辑Git配置文件
+$ git config -e [--global]
+# 设置提交代码时的用户信息
+$ git config [--local] user.name &quot;[name]&quot;
 $ git config [--lcoal] user.email &quot;[email address]&quot;
-```</p>
-
+</code></pre></div>
 <h2>增加/删除文件</h2>
 <div class="highlight"><pre><code class="language-text" data-lang="text"># 添加指定文件到暂存区
 $ git add [file1] [file2] ...
