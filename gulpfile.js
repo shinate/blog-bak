@@ -40,5 +40,5 @@ gulp.task('script', function () {
             this.push(file);
             return cb();
         }))
-        .pipe(gulp.dest(CONF.build + '/css/'));
+        .pipe(gulp.dest(CONF.build + '/js/'));
 });
