@@ -55,7 +55,7 @@ mysql -u root -p -S /data/3306/mysql.sock
 ### 登陆后修改密码
 
 ```bash
-mysql> UPDATE mysql.user SET password=PASSWORD("hyran123") WHERE user='root';
+mysql> UPDATE mysql.user SET password=PASSWORD("新密码") WHERE user='root';
 Query OK, 2 rows affected (0.00 sec)
 Rows matched: 2  Changed: 2  Warnings: 0
 mysql> FLUSH PRIVILEGES;
@@ -68,7 +68,7 @@ Bye
 
 ```bash
 /data/3306/mysql restart
-[root@ryan01 3306]# mysql -u root -p密码 -S /data/3306/mysql.sock
+[root@ryan01 3306]# mysql -u root -p新密码 -S /data/3306/mysql.sock
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 1
