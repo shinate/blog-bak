@@ -57,4 +57,8 @@ $(document).ready(function () {
         current.find('.post-archive-title').addClass('checked');
         PA.scrollTop(current.offset().top - (($(window).height() - current.height()) / 2));
     });
+
+    $('.post-archive-iterms').on('click', 'a.post-archive-iterm', function () {
+        console.log($(this).attr('href'));
+    })
 });
