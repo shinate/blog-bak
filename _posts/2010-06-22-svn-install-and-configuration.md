@@ -184,4 +184,4 @@ somebody =
 当CollabNet的电话到来时，Karl立即答应了加入项目中，而且Jim让他的雇主 RedHat Software同意让他在这个项目中不定期工作。CollabNet雇用了Karl和Ben Collins-Sussman，并在5月开始了详细设计工作。在得到了来自CollabNet的Brian Behlendorf、Jason Robbins和Greg Stein（当时是一名活跃在WebDAV/DeltaV规范过程的自由程序员）很多创意的帮助下，Subversion很快地引起了一个活跃开发者社区 的注意。它找出并欢迎很多同样在CVS上受到挫折的社员能来为这个项目做点什么。
 Subversion 最初的设计Team定下了几个简单的目标。 它必须在功能上可取代 CVS，也就是说, 所有 CVS 可做到的事, 它都要能够作到。 在修正最明显的瑕疵的同时, 还要保留相同的开发模式。 还有, Subversion 应该要和 CVS 很相像, 任何 CVS 使用者只要花费少许的力气, 就可以很快地上手。
 经过十四个月的编码后, Subversion 于2001年8月31日开始实现 "自行管理"。 也就是说, 开发人员不再使用 CVS 来管理 Subversion 的代码, 而以 Subversion 自己来管理。
-[0]: http://codante.org/apache-install-and-configuration
+[0]: apache-install-and-configuration
