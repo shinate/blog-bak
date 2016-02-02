@@ -185,4 +185,4 @@ somebody =
 Subversion 最初的设计Team定下了几个简单的目标。 它必须在功能上可取代 CVS，也就是说, 所有 CVS 可做到的事, 它都要能够作到。 在修正最明显的瑕疵的同时, 还要保留相同的开发模式。 还有, Subversion 应该要和 CVS 很相像, 任何 CVS 使用者只要花费少许的力气, 就可以很快地上手。
 经过十四个月的编码后, Subversion 于2001年8月31日开始实现 "自行管理"。 也就是说, 开发人员不再使用 CVS 来管理 Subversion 的代码, 而以 Subversion 自己来管理。
 
-[0]: /blog/2010/06/23/apache-install-and-configuration
+[0]: /blog/2010/06/23/apache-install-and-configuration.html
