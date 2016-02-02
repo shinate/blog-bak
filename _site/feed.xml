@@ -5,21 +5,21 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 30 Jan 2016 10:13:50 +0800</pubDate>
-    <lastBuildDate>Sat, 30 Jan 2016 10:13:50 +0800</lastBuildDate>
+    <pubDate>Tue, 02 Feb 2016 16:40:52 +0800</pubDate>
+    <lastBuildDate>Tue, 02 Feb 2016 16:40:52 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Shell if</title>
         <description>&lt;h2&gt;字符串判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;str1 = str2　　　　　　当两个串有相同内容、长度时为真 
-str1 != str2　　　　　 当串str1和str2不等时为真 
--n str1　　　　　　　  当串的长度大于0时为真(串非空) 
--z str1　　　　　　　  当串的长度为0时为真(空串) 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;str1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; str2　　　　　　当两个串有相同内容、长度时为真 
+str1 !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; str2　　　　　 当串str1和str2不等时为真 
+-n str1　　　　　　　  当串的长度大于0时为真&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;串非空&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+-z str1　　　　　　　  当串的长度为0时为真&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;空串&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
 str1　　　　　　　　   当串str1为非空时为真
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;数字的判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;int1 -eq int2　　　　两数相等为真 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;int1 -eq int2　　　　两数相等为真 
 int1 -ne int2　　　　两数不等为真 
 int1 -gt int2　　　　int1大于int2为真 
 int1 -ge int2　　　　int1大于等于int2为真 
@@ -27,7 +27,7 @@ int1 -lt int2　　　　int1小于int2为真
 int1 -le int2　　　　int1小于等于int2为真
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;文件的判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-r file　　　　　用户可读为真 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;-r file　　　　　用户可读为真 
 -w file　　　　　用户可写为真 
 -x file　　　　　用户可执行为真 
 -f file　　　　　文件为正规文件为真 
@@ -35,10 +35,10 @@ int1 -le int2　　　　int1小于等于int2为真
 -c file　　　　　文件为字符特殊文件为真 
 -b file　　　　　文件为块特殊文件为真 
 -s file　　　　　文件大小非0时为真 
--t file　　　　　当文件描述符(默认为1)指定的设备为终端时为真
+-t file　　　　　当文件描述符&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;默认为1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;指定的设备为终端时为真
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;复杂逻辑判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-a 　 　　　　　 与 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;-a 　 　　　　　 与 
 -o　　　　　　　 或 
 !　　　　　　　　非
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
