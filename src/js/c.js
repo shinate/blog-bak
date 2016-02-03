@@ -1,64 +1,108 @@
 $(document).ready(function () {
 
-    // H2 random color
-    (function () {
-        function randomColor(tags, property, colors) {
-            for (var i = 0; i < tags.length; i++) {
-                var color = colors[i % colors.length];
-                $(tags[i]).css(property, color);
-            }
+    if (!isBP()) {
+
+        randomColor();
+
+        // show off-canvas menu
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            $(".post-archive").css("top", $(".post-header").height() + 29);
+            var $postArchive = $(".post-archive-icon, .post-archive");
+            $postArchive.click(function () {
+                if ($postArchive.hasClass("post-archive-triggered")) {
+                    $postArchive.removeClass("post-archive-triggered");
+                } else {
+                    $postArchive.addClass("post-archive-triggered");
+                }
+            });
         }
 
-        var randomColorTargets = {
-            "target_1": {
-                "tag": ".post-content h2",
-                "property": "border-color",
-                "colors": ["#6599ff", "#92cd00", "#ff0000"]
-            }
-        }
+        var PA = $('.post-archive');
 
-        for (var target in randomColorTargets) {
-            if (randomColorTargets.hasOwnProperty(target)) {
-                var target_v = randomColorTargets[target];
-                randomColor($(target_v["tag"]), target_v["property"], target_v["colors"]);
-            }
-        }
-    })();
-
-    // insert caption for post imgs
-    //var caption = "";
-    //if ($(".post-content").hasClass("chinese")) {
-    //    caption = "图";
-    //} else {
-    //    caption = "Figure";
-    //}
-    //var imgs = $(".post-content img");
-    //for (var i = 0; i < imgs.length; i++) {
-    //    $(imgs[i]).parent().append("<p style='text-align:center'>" + caption + " " + (i + 1) + "</p>");
-    //}
-
-    // show off-canvas menu
-    if (window.matchMedia('(max-width: 768px)').matches) {
-        $(".post-archive").css("top", $(".post-header").height() + 29);
-        var $postArchive = $(".post-archive-icon, .post-archive");
-        $postArchive.click(function () {
-            // console.log("click");
-            if ($postArchive.hasClass("post-archive-triggered")) {
-                $postArchive.removeClass("post-archive-triggered");
-            } else {
-                $postArchive.addClass("post-archive-triggered");
-            }
+        PA.length && $.get($CONFIG.url + '/post-archive.html', function (ret) {
+            PA.html(ret);
+            var current = PA.find('[href="' + noHashUrl() + '"]');
+            archiveFocus(current);
         });
+
     }
-    var PA = $('.post-archive');
-    PA.length && $.get($CONFIG.url + '/post-archive.html', function (ret) {
-        PA.html(ret);
-        var current = PA.find('[href="' + window.location.href + '"]');
-        current.find('.post-archive-title').addClass('checked');
-        PA.scrollTop(current.offset().top - (($(window).height() - current.height()) / 2));
+
+    $('.post-archive').on('click', '.post-archive-iterm', function (evt) {
+        var el = $(this);
+        var url = el.attr('href');
+        window.history.pushState({URL: url}, null, url);
+        BPLoad(url);
+        archiveFocus(el);
+        evt.preventDefault();
+        return false;
     });
 
-    $('.post-archive-iterms').on('click', 'a.post-archive-iterm', function () {
-        console.log($(this).attr('href'));
-    })
+    $(window).on('popstate', function () {
+        console.log('pop')
+        var state = window.history.state;
+        BPLoad(state.URL);
+        archiveFocus($('.post-archive [href="' + state.URL + '"]'));
+    });
 });
+
+var BPLoad = function (url, cb) {
+    var frameLoader = $('<iframe></iframe>');
+    var name = 'BP_' + new Date;
+
+    frameLoader.on('load', function () {
+        var el = $(this);
+        var innerDocument = $(window.frames[name].document);
+        $('.post-header').html(innerDocument.find('.post-header').html());
+        $('.post-content').html(innerDocument.find('.post-content').html());
+        $('title').text(innerDocument.find('title').text());
+        randomColor();
+        el.off('load', arguments.callee);
+        el.remove();
+    });
+    frameLoader.attr('src', url + '#_b_p_');
+    frameLoader.attr('name', name);
+    frameLoader.appendTo($(document.body));
+};
+
+var archiveFocus = function (target) {
+    var _p = $('.post-archive');
+    _p.find('.checked').removeClass('checked');
+    target.addClass('checked');
+    _p.scrollTop(_p.scrollTop() + target.position().top - ((_p.height() - target.height()) / 2));
+};
+
+
+// H2 random color
+function randomColor() {
+    function randomColor(tags, property, colors) {
+        for (var i = 0; i < tags.length; i++) {
+            var color = colors[i % colors.length];
+            $(tags[i]).css(property, color);
+        }
+    }
+
+    var randomColorTargets = {
+        "target_1": {
+            "tag": ".post-content h2",
+            "property": "border-color",
+            "colors": ["#6599ff", "#92cd00", "#ff0000"]
+        }
+    }
+
+    for (var target in randomColorTargets) {
+        if (randomColorTargets.hasOwnProperty(target)) {
+            var target_v = randomColorTargets[target];
+            randomColor($(target_v["tag"]), target_v["property"], target_v["colors"]);
+        }
+    }
+}
+
+function isBP() {
+    return window.location.hash.indexOf('_b_p_') > 0;
+}
+
+function noHashUrl() {
+    var _p = window.location.href;
+    var _i = _p.indexOf('#');
+    return _i < 0 ? _p : _p.substr(0, i);
+}
