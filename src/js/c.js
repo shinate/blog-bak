@@ -40,7 +40,6 @@ $(document).ready(function () {
     });
 
     $(window).on('popstate', function () {
-        console.log('pop')
         var state = window.history.state;
         BPLoad(state.URL);
         archiveFocus($('.post-archive [href="' + state.URL + '"]'));
