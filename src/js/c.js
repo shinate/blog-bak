@@ -32,6 +32,7 @@ $(document).ready(function () {
     }
 
     if ('pushState' in window.history) {
+
         $('.post-archive').on('click', '.post-archive-iterm', function (evt) {
             var el = $(this);
             var url = el.attr('href');
@@ -47,6 +48,7 @@ $(document).ready(function () {
             BPLoad(state.URL);
             archiveFocus($('.post-archive [href="' + state.URL + '"]'));
         });
+
     }
 });
 
