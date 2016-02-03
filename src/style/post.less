@@ -8,7 +8,7 @@
   overflow-x: hidden;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 800px) {
   .post-wrapper {
     padding-left: 340px;
     overflow-x: visible;
@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 800px) {
   .post-archive-trigger {
     display: none;
   }
@@ -70,13 +70,13 @@
   top: 8px;
 }
 
-.post-archive-triggered.post-archive-icon:before {
+.post-archive-icon.post-archive-triggered:before {
   -webkit-transform: translate(-6px, 5px) rotate(-45deg) scaleX(0.5);
   -moz-transform: translate(-6px, 5px) rotate(-45deg) scaleX(0.5);
   transform: translate(-6px, 5px) rotate(-45deg) scaleX(0.5);
 }
 
-.post-archive-triggered.post-archive-icon:after {
+.post-archive-icon.post-archive-triggered:after {
   -webkit-transform: translate(-6px, -5px) rotate(45deg) scaleX(0.5);
   -moz-transform: translate(-6px, -5px) rotate(45deg) scaleX(0.5);
   transform: translate(-6px, -5px) rotate(45deg) scaleX(0.5);
@@ -84,35 +84,30 @@
 
 /* post archive */
 .post-archive {
-  position: absolute;
+  position: fixed;
+  z-index: 1;
+  top: 0;
   left: 100%;
+  bottom: 0;
   background-color: rgba(255, 255, 255, 0.4);
   width: 100%;
-  height: 100%;
   -webkit-transition: left .7s;
   -moz-transition: left .7s;
   transition: left .7s;
 }
 
-@media (min-width: 600px) {
-  .post-archive {
-    margin-left: 10%;
-    width: 80%;
-  }
-}
-
-@media (min-width: 769px) {
+@media (min-width: 800px) {
   .post-archive {
     position: fixed;
-    top: 0;
     left: 0;
+    bottom: 0;
     margin-left: 0;
     background-color: #fff;
     width: 340px;
   }
 }
 
-.post-archive-triggered.post-archive {
+.post-archive.post-archive-triggered {
   left: 0;
 }
 
@@ -251,7 +246,7 @@
   padding: 23.8px 18.2px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .post-header,
   .post-content,
   .post-nav,
@@ -280,15 +275,6 @@
 
   .post-nav {
     border: 0 none;
-  }
-}
-
-@media (min-width: 769px) {
-  .post-header,
-  .post-content,
-  .post-nav,
-  .post-comment {
-    // max-width: 700px;
   }
 }
 

@@ -5,13 +5,15 @@ $(document).ready(function () {
         randomColor();
 
         // show off-canvas menu
-        if (window.matchMedia('(max-width: 768px)').matches) {
-            $(".post-archive").css("top", $(".post-header").height() + 29);
+        if (window.matchMedia('(max-width: 800px)').matches) {
+            $(".post-archive").css("top", $(".post-header").height());
             var $postArchive = $(".post-archive-icon, .post-archive");
-            $postArchive.click(function () {
+            $postArchive.on('click', function () {
                 if ($postArchive.hasClass("post-archive-triggered")) {
+                    $(document.body).css('overflow', '');
                     $postArchive.removeClass("post-archive-triggered");
                 } else {
+                    $(document.body).css('overflow', 'hidden');
                     $postArchive.addClass("post-archive-triggered");
                 }
             });
@@ -56,6 +58,7 @@ var BPLoad = function (url, cb) {
             var innerDocument = $(window.frames[name].document);
             $('.post-header').html(innerDocument.find('.post-header').html());
             $('.post-content').html(innerDocument.find('.post-content').html());
+            $('.post-nav').html(innerDocument.find('.post-nav').html());
             $('title').text(innerDocument.find('title').text());
             randomColor();
         }
