@@ -52,17 +52,20 @@ var BPLoad = function (url, cb) {
 
     frameLoader.on('load', function () {
         var el = $(this);
-        var innerDocument = $(window.frames[name].document);
-        $('.post-header').html(innerDocument.find('.post-header').html());
-        $('.post-content').html(innerDocument.find('.post-content').html());
-        $('title').text(innerDocument.find('title').text());
-        randomColor();
+        if (window._b_p_active_name === name) {
+            var innerDocument = $(window.frames[name].document);
+            $('.post-header').html(innerDocument.find('.post-header').html());
+            $('.post-content').html(innerDocument.find('.post-content').html());
+            $('title').text(innerDocument.find('title').text());
+            randomColor();
+        }
         el.off('load', arguments.callee);
         el.remove();
     });
     frameLoader.attr('src', url + '#_b_p_');
     frameLoader.attr('name', name);
     frameLoader.appendTo($(document.body));
+    window._b_p_active_name = name;
 };
 
 var archiveFocus = function (target) {
