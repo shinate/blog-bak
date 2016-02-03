@@ -25,6 +25,8 @@ $(document).ready(function () {
             archiveFocus(current);
         });
 
+        window.history.replaceState({URL: noHashUrl()}, null, window.location.href);
+
     }
 
     $('.post-archive').on('click', '.post-archive-iterm', function (evt) {
