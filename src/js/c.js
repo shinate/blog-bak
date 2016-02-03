@@ -31,21 +31,23 @@ $(document).ready(function () {
 
     }
 
-    $('.post-archive').on('click', '.post-archive-iterm', function (evt) {
-        var el = $(this);
-        var url = el.attr('href');
-        window.history.pushState({URL: url}, null, url);
-        BPLoad(url);
-        archiveFocus(el);
-        evt.preventDefault();
-        return false;
-    });
+    if ('pushState' in window.history) {
+        $('.post-archive').on('click', '.post-archive-iterm', function (evt) {
+            var el = $(this);
+            var url = el.attr('href');
+            window.history.pushState({URL: url}, null, url);
+            BPLoad(url);
+            archiveFocus(el);
+            evt.preventDefault();
+            return false;
+        });
 
-    $(window).on('popstate', function () {
-        var state = window.history.state;
-        BPLoad(state.URL);
-        archiveFocus($('.post-archive [href="' + state.URL + '"]'));
-    });
+        $(window).on('popstate', function () {
+            var state = window.history.state;
+            BPLoad(state.URL);
+            archiveFocus($('.post-archive [href="' + state.URL + '"]'));
+        });
+    }
 });
 
 var BPLoad = function (url, cb) {
