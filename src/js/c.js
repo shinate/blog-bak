@@ -47,7 +47,7 @@ $(document).ready(function () {
 });
 
 var BPLoad = function (url, cb) {
-    var frameLoader = $('<iframe></iframe>');
+    var frameLoader = $('<iframe class="BPLoader"></iframe>');
     var name = 'BP_' + new Date;
 
     frameLoader.on('load', function () {
