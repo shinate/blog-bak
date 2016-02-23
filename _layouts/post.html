@@ -21,10 +21,10 @@ layout: default
   <!-- /post header -->
 
   <!-- post content -->
-  {% if page.tags contains 'chinese' %}
-  {% assign type = 'chinese' %}
-  {% else %}
+  {% if page.tags contains 'english' %}
   {% assign type = 'english' %}
+  {% else %}
+  {% assign type = 'chinese' %}
   {% endif %}
 
   <div class="post-content {{ type }}">
