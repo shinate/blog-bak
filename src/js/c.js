@@ -45,11 +45,9 @@ var HANDLE = {
     BPLink: function (evt) {
         var el = $(this);
         var url = el.attr('href');
-        console.log(el, url);
-        return false;
         window.history.pushState({URL: url}, null, url);
         BPLoad(url);
-        archiveFocus(el);
+        archiveFocus($('.post-archive [href="' + url + '"]'));
         evt.preventDefault();
         return false;
     },
