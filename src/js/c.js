@@ -31,26 +31,33 @@ $(document).ready(function () {
 
     }
 
+    // !! SUPPORT BP !!
     if ('pushState' in window.history) {
 
-        $('.post-archive').on('click', '.post-archive-iterm', function (evt) {
-            var el = $(this);
-            var url = el.attr('href');
-            window.history.pushState({URL: url}, null, url);
-            BPLoad(url);
-            archiveFocus(el);
-            evt.preventDefault();
-            return false;
-        });
-
-        $(window).on('popstate', function () {
-            var state = window.history.state;
-            BPLoad(state.URL);
-            archiveFocus($('.post-archive [href="' + state.URL + '"]'));
-        });
+        $('.post-archive,.post-nav').on('click', 'a', HANDLE.BPLink);
+        $(window).on('popstate', HANDLE.BPPop);
 
     }
 });
+
+var HANDLE = {
+    // link
+    BPLink: function (evt) {
+        var el = $(this);
+        var url = el.attr('href');
+        window.history.pushState({URL: url}, null, url);
+        BPLoad(url);
+        archiveFocus(el);
+        evt.preventDefault();
+        return false;
+    },
+    // History
+    BPPop: function () {
+        var state = window.history.state;
+        BPLoad(state.URL);
+        archiveFocus($('.post-archive [href="' + state.URL + '"]'));
+    }
+};
 
 var BPLoad = function (url, cb) {
     var frameLoader = $('<iframe class="BPLoader"></iframe>');
