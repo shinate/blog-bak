@@ -13,7 +13,6 @@ favicon: "/assets/img/favicon.ico"
 google_analytics: # google analytics id
 baidu_analytics: "b73a1c414265340e2dd6a77fa1ac1b75"
 disqus_shortname: # disqus_shortname for disqus comment system
-duoshuo_shortname: "codante"
 
 # highlight
 highlighter: pygments
