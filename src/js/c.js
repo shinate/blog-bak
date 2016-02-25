@@ -32,7 +32,7 @@ $(document).ready(function () {
     }
 
     var ua = window.navigator.userAgent.toLowerCase();
-    
+
     // !! SUPPORT BP !!
     if (!/msie/.test(ua) && !(/gecko/.test(ua) && !/(compatible|webkit)/.test(ua)) && 'pushState' in window.history) {
 
@@ -66,11 +66,9 @@ var BPLoad = function (url, cb) {
     var name = 'BP_' + (+new Date);
 
     frameLoader.on('load', function () {
-        console.log(1);
         var el = $(this);
         if (window._b_p_active_name === name) {
             var innerDocument = $(window.frames[name].document);
-            console.log(innerDocument);
             $('.post-header').html(innerDocument.find('.post-header').html());
             $('.post-content').html(innerDocument.find('.post-content').html());
             $('.post-nav').html(innerDocument.find('.post-nav').html());
