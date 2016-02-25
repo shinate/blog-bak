@@ -35,30 +35,30 @@
 
     <div class="footer-clear post-wrapper">
 
-  <!-- post archive trigger -->
-  <div class="post-archive-trigger">
-    <div class="post-archive-icon"></div>
-  </div>
-  <!-- /post archive trigger -->
+    <!-- post archive trigger -->
+    <div class="post-archive-trigger">
+        <div class="post-archive-icon"></div>
+    </div>
+    <!-- /post archive trigger -->
 
-  <!-- post archive -->
-  <div class="post-archive"></div>
-  <!-- /post archive -->
+    <!-- post archive -->
+    <div class="post-archive"></div>
+    <!-- /post archive -->
 
-  <!-- post header -->
-  <div class="post-header">
-    <h1>怪物猎人，护石代码分析，护石的修改与自定义制作！</h1>
-    <span>2010-12-29</span>
-  </div>
-  <!-- /post header -->
+    <!-- post header -->
+    <div class="post-header">
+        <h1>怪物猎人，护石代码分析，护石的修改与自定义制作！</h1>
+        <span>2010-12-29</span>
+    </div>
+    <!-- /post header -->
 
-  <!-- post content -->
-  
-  
-  
+    <!-- post content -->
+    
+    
+    
 
-  <div class="post-content chinese">
-    <h2>全面剖析</h2>
+    <div class="post-content chinese">
+        <h2>全面剖析</h2>
 
 <p>用道具箱第一栏进行测试，第一栏的地址为0x01349364。
 一个护石用12个8位元进行控制，它们分别代表：[01][02][0304][0506]07,0809,1011,12[有无装备][装备类型][修正值,装备属性][修正值][属性1][属性2][强化玉][1][强化玉][2][强化玉][3]</p>
@@ -540,29 +540,50 @@ D2 03 灭瓶珠 1
 </code></pre></div>
 <p>未完持续......</p>
 
-  </div>
-  <!-- /post content -->
+    </div>
+    <!-- /post content -->
 
-  <!-- post navigator -->
-  <div class="post-nav">
-    
-    <a class="post-nav-previous" href="http://codante.org/blog/2010/12/27/remote_addr-http_client_ip-http_x_forwarded_for.html">REMOTE_ADDR，HTTP_CLIENT_IP，HTTP_X_FORWARDED_FOR</a>
+    <!-- post navigator -->
+    <div class="post-nav">
+        
+        <a class="post-nav-previous" href="http://codante.org/blog/2010/12/27/remote_addr-http_client_ip-http_x_forwarded_for.html">REMOTE_ADDR，HTTP_CLIENT_IP，HTTP_X_FORWARDED_FOR</a>
+        
+
+        
+        <div class="post-nav-sep"></div>
+        
+
+        
+        <a class="post-nav-next" href="http://codante.org/blog/2011/01/10/2011-1-7-gathered-xiangbala-grilled-wings.html">[2011.1.7]齐聚香巴拉烤翅</a>
+        
+    </div>
+    <!-- /post navigator -->
+
     
 
     
-    <div class="post-nav-sep"></div>
+    <!-- duoshuo comment system -->
+    <div class="post-comment">
+        <div id="duoshuo_post_comment"></div>
+<script>var duoshuoQuery = {short_name: 'codante'};</script>
+<script src="http://static.duoshuo.com/embed.js"></script>
+<script>
+    function loadComments(id, url) {
+        var el = $('<div></div>');
+        el.attr('data-thread-key', id);
+        el.attr('data-url', url);
+        DUOSHUO.EmbedThread(el.get(0));
+        $('#duoshuo_post_comment').append(el);
+    }
+
+    loadComments('/2010/12/29/monster-hunter-guardian-stone-analysis-and-production', 'http://codante.org/blog/2010/12/29/monster-hunter-guardian-stone-analysis-and-production.html');
+</script>
+    </div>
+    <!-- /duoshuo comment system -->
     
 
-    
-    <a class="post-nav-next" href="http://codante.org/blog/2011/01/10/2011-1-7-gathered-xiangbala-grilled-wings.html">[2011.1.7]齐聚香巴拉烤翅</a>
-    
-  </div>
-  <!-- /post navigator -->
-
-  
-
-  <!-- footer -->
-  <footer class="footer">
+    <!-- footer -->
+    <footer class="footer">
   <a class="link-1" href="http://codante.org/blog">codante.org</a>
   <span>&copy;</span>
   <span><script type="text/javascript">document.write(new Date().getFullYear());</script></span>
@@ -570,7 +591,7 @@ D2 03 灭瓶珠 1
   <span>Powered by <a class="link-1" href="http://jekyllrb.com/">Jekyll</a> with <a class="link-1" href="https://github.com/kkninjae/book">Book</a> theme.</span>
 </footer>
 
-  <!-- /footer -->
+    <!-- /footer -->
 
 </div>
 

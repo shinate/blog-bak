@@ -35,57 +35,78 @@
 
     <div class="footer-clear post-wrapper">
 
-  <!-- post archive trigger -->
-  <div class="post-archive-trigger">
-    <div class="post-archive-icon"></div>
-  </div>
-  <!-- /post archive trigger -->
+    <!-- post archive trigger -->
+    <div class="post-archive-trigger">
+        <div class="post-archive-icon"></div>
+    </div>
+    <!-- /post archive trigger -->
 
-  <!-- post archive -->
-  <div class="post-archive"></div>
-  <!-- /post archive -->
+    <!-- post archive -->
+    <div class="post-archive"></div>
+    <!-- /post archive -->
 
-  <!-- post header -->
-  <div class="post-header">
-    <h1>全世界最短的IE判断方法</h1>
-    <span>2011-03-31</span>
-  </div>
-  <!-- /post header -->
+    <!-- post header -->
+    <div class="post-header">
+        <h1>全世界最短的IE判断方法</h1>
+        <span>2011-03-31</span>
+    </div>
+    <!-- /post header -->
 
-  <!-- post content -->
-  
-  
-  
+    <!-- post content -->
+    
+    
+    
 
-  <div class="post-content chinese">
-    <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">isIE</span> <span class="o">=</span> <span class="o">!-</span><span class="p">[</span><span class="mi">1</span><span class="p">,];</span>
+    <div class="post-content chinese">
+        <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">isIE</span> <span class="o">=</span> <span class="o">!-</span><span class="p">[</span><span class="mi">1</span><span class="p">,];</span>
 </code></pre></div>
 <p>仅仅需要6bytes即可进行判断，利用了IE与标准浏览器在处理数组的toString方法时的差异来完成的。
 对于标准游览器，如果数组里面最后一个字符为逗号，js的引擎会自动剔除它。</p>
 
-  </div>
-  <!-- /post content -->
+    </div>
+    <!-- /post content -->
 
-  <!-- post navigator -->
-  <div class="post-nav">
-    
-    <a class="post-nav-previous" href="http://codante.org/blog/2011/03/16/php-for-nginx.html">PHP for Nginx</a>
+    <!-- post navigator -->
+    <div class="post-nav">
+        
+        <a class="post-nav-previous" href="http://codante.org/blog/2011/03/16/php-for-nginx.html">PHP for Nginx</a>
+        
+
+        
+        <div class="post-nav-sep"></div>
+        
+
+        
+        <a class="post-nav-next" href="http://codante.org/blog/2011/04/27/xdebug-installation-and-configuration.html">xdebug安装及配置</a>
+        
+    </div>
+    <!-- /post navigator -->
+
     
 
     
-    <div class="post-nav-sep"></div>
+    <!-- duoshuo comment system -->
+    <div class="post-comment">
+        <div id="duoshuo_post_comment"></div>
+<script>var duoshuoQuery = {short_name: 'codante'};</script>
+<script src="http://static.duoshuo.com/embed.js"></script>
+<script>
+    function loadComments(id, url) {
+        var el = $('<div></div>');
+        el.attr('data-thread-key', id);
+        el.attr('data-url', url);
+        DUOSHUO.EmbedThread(el.get(0));
+        $('#duoshuo_post_comment').append(el);
+    }
+
+    loadComments('/2011/03/31/ie-to-determine-the-shortest-way-around-the-world', 'http://codante.org/blog/2011/03/31/ie-to-determine-the-shortest-way-around-the-world.html');
+</script>
+    </div>
+    <!-- /duoshuo comment system -->
     
 
-    
-    <a class="post-nav-next" href="http://codante.org/blog/2011/04/27/xdebug-installation-and-configuration.html">xdebug安装及配置</a>
-    
-  </div>
-  <!-- /post navigator -->
-
-  
-
-  <!-- footer -->
-  <footer class="footer">
+    <!-- footer -->
+    <footer class="footer">
   <a class="link-1" href="http://codante.org/blog">codante.org</a>
   <span>&copy;</span>
   <span><script type="text/javascript">document.write(new Date().getFullYear());</script></span>
@@ -93,7 +114,7 @@
   <span>Powered by <a class="link-1" href="http://jekyllrb.com/">Jekyll</a> with <a class="link-1" href="https://github.com/kkninjae/book">Book</a> theme.</span>
 </footer>
 
-  <!-- /footer -->
+    <!-- /footer -->
 
 </div>
 

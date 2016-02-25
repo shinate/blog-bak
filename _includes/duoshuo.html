@@ -1,0 +1,14 @@
+<div id="duoshuo_post_comment"></div>
+<script>var duoshuoQuery = {short_name: '{{ site.duoshuo_shortname }}'};</script>
+<script src="http://static.duoshuo.com/embed.js"></script>
+<script>
+    function loadComments(id, url) {
+        var el = $('<div></div>');
+        el.attr('data-thread-key', id);
+        el.attr('data-url', url);
+        DUOSHUO.EmbedThread(el.get(0));
+        $('#duoshuo_post_comment').append(el);
+    }
+
+    loadComments('{{ page.id }}', '{{ page.url | prepend: site.url }}');
+</script>

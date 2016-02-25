@@ -35,30 +35,30 @@
 
     <div class="footer-clear post-wrapper">
 
-  <!-- post archive trigger -->
-  <div class="post-archive-trigger">
-    <div class="post-archive-icon"></div>
-  </div>
-  <!-- /post archive trigger -->
+    <!-- post archive trigger -->
+    <div class="post-archive-trigger">
+        <div class="post-archive-icon"></div>
+    </div>
+    <!-- /post archive trigger -->
 
-  <!-- post archive -->
-  <div class="post-archive"></div>
-  <!-- /post archive -->
+    <!-- post archive -->
+    <div class="post-archive"></div>
+    <!-- /post archive -->
 
-  <!-- post header -->
-  <div class="post-header">
-    <h1>SVN安装及配置流程</h1>
-    <span>2010-06-22</span>
-  </div>
-  <!-- /post header -->
+    <!-- post header -->
+    <div class="post-header">
+        <h1>SVN安装及配置流程</h1>
+        <span>2010-06-22</span>
+    </div>
+    <!-- /post header -->
 
-  <!-- post content -->
-  
-  
-  
+    <!-- post content -->
+    
+    
+    
 
-  <div class="post-content chinese">
-    <h2>卸载系统自带的svn</h2>
+    <div class="post-content chinese">
+        <h2>卸载系统自带的svn</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rpm -e --allmatches subversion
 </code></pre></div>
 <h2>安装apr</h2>
@@ -192,29 +192,50 @@ somebody =
 Subversion 最初的设计Team定下了几个简单的目标。 它必须在功能上可取代 CVS，也就是说, 所有 CVS 可做到的事, 它都要能够作到。 在修正最明显的瑕疵的同时, 还要保留相同的开发模式。 还有, Subversion 应该要和 CVS 很相像, 任何 CVS 使用者只要花费少许的力气, 就可以很快地上手。
 经过十四个月的编码后, Subversion 于2001年8月31日开始实现 &quot;自行管理&quot;。 也就是说, 开发人员不再使用 CVS 来管理 Subversion 的代码, 而以 Subversion 自己来管理。</p>
 
-  </div>
-  <!-- /post content -->
+    </div>
+    <!-- /post content -->
 
-  <!-- post navigator -->
-  <div class="post-nav">
-    
-    <a class="post-nav-previous" href="http://codante.org/blog/2010/06/18/php-header-example.html">PHP中header的使用范例</a>
+    <!-- post navigator -->
+    <div class="post-nav">
+        
+        <a class="post-nav-previous" href="http://codante.org/blog/2010/06/18/php-header-example.html">PHP中header的使用范例</a>
+        
+
+        
+        <div class="post-nav-sep"></div>
+        
+
+        
+        <a class="post-nav-next" href="http://codante.org/blog/2010/06/23/apache-install-and-configuration.html">linux下的httpd(apache)安装及配置</a>
+        
+    </div>
+    <!-- /post navigator -->
+
     
 
     
-    <div class="post-nav-sep"></div>
+    <!-- duoshuo comment system -->
+    <div class="post-comment">
+        <div id="duoshuo_post_comment"></div>
+<script>var duoshuoQuery = {short_name: 'codante'};</script>
+<script src="http://static.duoshuo.com/embed.js"></script>
+<script>
+    function loadComments(id, url) {
+        var el = $('<div></div>');
+        el.attr('data-thread-key', id);
+        el.attr('data-url', url);
+        DUOSHUO.EmbedThread(el.get(0));
+        $('#duoshuo_post_comment').append(el);
+    }
+
+    loadComments('/2010/06/22/svn-install-and-configuration', 'http://codante.org/blog/2010/06/22/svn-install-and-configuration.html');
+</script>
+    </div>
+    <!-- /duoshuo comment system -->
     
 
-    
-    <a class="post-nav-next" href="http://codante.org/blog/2010/06/23/apache-install-and-configuration.html">linux下的httpd(apache)安装及配置</a>
-    
-  </div>
-  <!-- /post navigator -->
-
-  
-
-  <!-- footer -->
-  <footer class="footer">
+    <!-- footer -->
+    <footer class="footer">
   <a class="link-1" href="http://codante.org/blog">codante.org</a>
   <span>&copy;</span>
   <span><script type="text/javascript">document.write(new Date().getFullYear());</script></span>
@@ -222,7 +243,7 @@ Subversion 最初的设计Team定下了几个简单的目标。 它必须在功�
   <span>Powered by <a class="link-1" href="http://jekyllrb.com/">Jekyll</a> with <a class="link-1" href="https://github.com/kkninjae/book">Book</a> theme.</span>
 </footer>
 
-  <!-- /footer -->
+    <!-- /footer -->
 
 </div>
 

@@ -3,61 +3,69 @@ layout: default
 ---
 <div class="footer-clear post-wrapper">
 
-  <!-- post archive trigger -->
-  <div class="post-archive-trigger">
-    <div class="post-archive-icon"></div>
-  </div>
-  <!-- /post archive trigger -->
+    <!-- post archive trigger -->
+    <div class="post-archive-trigger">
+        <div class="post-archive-icon"></div>
+    </div>
+    <!-- /post archive trigger -->
 
-  <!-- post archive -->
-  <div class="post-archive"></div>
-  <!-- /post archive -->
+    <!-- post archive -->
+    <div class="post-archive"></div>
+    <!-- /post archive -->
 
-  <!-- post header -->
-  <div class="post-header">
-    <h1>{{ page.title }}</h1>
-    <span>{{ page.date | date: "%Y-%m-%d" }}</span>
-  </div>
-  <!-- /post header -->
+    <!-- post header -->
+    <div class="post-header">
+        <h1>{{ page.title }}</h1>
+        <span>{{ page.date | date: "%Y-%m-%d" }}</span>
+    </div>
+    <!-- /post header -->
 
-  <!-- post content -->
-  {% if page.tags contains 'english' %}
-  {% assign type = 'english' %}
-  {% else %}
-  {% assign type = 'chinese' %}
-  {% endif %}
-
-  <div class="post-content {{ type }}">
-    {{ content }}
-  </div>
-  <!-- /post content -->
-
-  <!-- post navigator -->
-  <div class="post-nav">
-    {% if page.previous %}
-    <a class="post-nav-previous" href="{{ page.previous.url | prepend: site.url }}">{{ page.previous.title }}</a>
+    <!-- post content -->
+    {% if page.tags contains 'english' %}
+    {% assign type = 'english' %}
+    {% else %}
+    {% assign type = 'chinese' %}
     {% endif %}
 
-    {% if page.previous and page.next %}
-    <div class="post-nav-sep"></div>
+    <div class="post-content {{ type }}">
+        {{ content }}
+    </div>
+    <!-- /post content -->
+
+    <!-- post navigator -->
+    <div class="post-nav">
+        {% if page.previous %}
+        <a class="post-nav-previous" href="{{ page.previous.url | prepend: site.url }}">{{ page.previous.title }}</a>
+        {% endif %}
+
+        {% if page.previous and page.next %}
+        <div class="post-nav-sep"></div>
+        {% endif %}
+
+        {% if page.next %}
+        <a class="post-nav-next" href="{{ page.next.url | prepend: site.url }}">{{ page.next.title }}</a>
+        {% endif %}
+    </div>
+    <!-- /post navigator -->
+
+    {% if site.disqus_shortname %}
+    <!-- disqus comment system -->
+    <div class="post-comment">
+        {% include disqus.html %}
+    </div>
+    <!-- /disqus comment system -->
     {% endif %}
 
-    {% if page.next %}
-    <a class="post-nav-next" href="{{ page.next.url | prepend: site.url }}">{{ page.next.title }}</a>
+    {% if site.duoshuo_shortname %}
+    <!-- duoshuo comment system -->
+    <div class="post-comment">
+        {% include duoshuo.html %}
+    </div>
+    <!-- /duoshuo comment system -->
     {% endif %}
-  </div>
-  <!-- /post navigator -->
 
-  {% if site.disqus_shortname %}
-  <!-- disqus comment system -->
-  <div class="post-comment">
-    {% include disqus.html %}
-  </div>
-  <!-- /disqus comment system -->
-  {% endif %}
-
-  <!-- footer -->
-  {% include footer.html %}
-  <!-- /footer -->
+    <!-- footer -->
+    {% include footer.html %}
+    <!-- /footer -->
 
 </div>

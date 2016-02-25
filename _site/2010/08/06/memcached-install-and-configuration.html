@@ -35,30 +35,30 @@
 
     <div class="footer-clear post-wrapper">
 
-  <!-- post archive trigger -->
-  <div class="post-archive-trigger">
-    <div class="post-archive-icon"></div>
-  </div>
-  <!-- /post archive trigger -->
+    <!-- post archive trigger -->
+    <div class="post-archive-trigger">
+        <div class="post-archive-icon"></div>
+    </div>
+    <!-- /post archive trigger -->
 
-  <!-- post archive -->
-  <div class="post-archive"></div>
-  <!-- /post archive -->
+    <!-- post archive -->
+    <div class="post-archive"></div>
+    <!-- /post archive -->
 
-  <!-- post header -->
-  <div class="post-header">
-    <h1>memcached安装及配置</h1>
-    <span>2010-08-06</span>
-  </div>
-  <!-- /post header -->
+    <!-- post header -->
+    <div class="post-header">
+        <h1>memcached安装及配置</h1>
+        <span>2010-08-06</span>
+    </div>
+    <!-- /post header -->
 
-  <!-- post content -->
-  
-  
-  
+    <!-- post content -->
+    
+    
+    
 
-  <div class="post-content chinese">
-    <h2>优点和缺点</h2>
+    <div class="post-content chinese">
+        <h2>优点和缺点</h2>
 
 <p>memcached部分实现的是内存空间分配和回收,以及存储服务监听和提供.对于分布式的实现,取决于客户端的使用和构造.我们使用的客户端是完全支持分布式的.只是可能会出现某些问题.
 诸如一旦出现网络问题, 网络问题导致某个分布式服务器中的一台失去联系之后,到这台机器恢复正常工作的这段时间内, 写入分布式服务器的数据将基本不可以获取. 可以通过采用分布式hash表的方式解决这个问题.</p>
@@ -186,29 +186,50 @@ memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span>
 <span class="err">-d</span> <span class="err">install</span> <span class="err">安装memcached服务</span>
 <span class="err">-d</span> <span class="err">uninstall</span> <span class="err">卸载memcached服务</span>
 </code></pre></div>
-  </div>
-  <!-- /post content -->
+    </div>
+    <!-- /post content -->
 
-  <!-- post navigator -->
-  <div class="post-nav">
-    
-    <a class="post-nav-previous" href="http://codante.org/blog/2010/07/20/corntable-percent-sign-problem.html">crontable中的百分号"%"问题</a>
+    <!-- post navigator -->
+    <div class="post-nav">
+        
+        <a class="post-nav-previous" href="http://codante.org/blog/2010/07/20/corntable-percent-sign-problem.html">crontable中的百分号"%"问题</a>
+        
+
+        
+        <div class="post-nav-sep"></div>
+        
+
+        
+        <a class="post-nav-next" href="http://codante.org/blog/2010/08/09/memcache-php-session-handle.html">PHP中用Memcache存储Session数据</a>
+        
+    </div>
+    <!-- /post navigator -->
+
     
 
     
-    <div class="post-nav-sep"></div>
+    <!-- duoshuo comment system -->
+    <div class="post-comment">
+        <div id="duoshuo_post_comment"></div>
+<script>var duoshuoQuery = {short_name: 'codante'};</script>
+<script src="http://static.duoshuo.com/embed.js"></script>
+<script>
+    function loadComments(id, url) {
+        var el = $('<div></div>');
+        el.attr('data-thread-key', id);
+        el.attr('data-url', url);
+        DUOSHUO.EmbedThread(el.get(0));
+        $('#duoshuo_post_comment').append(el);
+    }
+
+    loadComments('/2010/08/06/memcached-install-and-configuration', 'http://codante.org/blog/2010/08/06/memcached-install-and-configuration.html');
+</script>
+    </div>
+    <!-- /duoshuo comment system -->
     
 
-    
-    <a class="post-nav-next" href="http://codante.org/blog/2010/08/09/memcache-php-session-handle.html">PHP中用Memcache存储Session数据</a>
-    
-  </div>
-  <!-- /post navigator -->
-
-  
-
-  <!-- footer -->
-  <footer class="footer">
+    <!-- footer -->
+    <footer class="footer">
   <a class="link-1" href="http://codante.org/blog">codante.org</a>
   <span>&copy;</span>
   <span><script type="text/javascript">document.write(new Date().getFullYear());</script></span>
@@ -216,7 +237,7 @@ memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span>
   <span>Powered by <a class="link-1" href="http://jekyllrb.com/">Jekyll</a> with <a class="link-1" href="https://github.com/kkninjae/book">Book</a> theme.</span>
 </footer>
 
-  <!-- /footer -->
+    <!-- /footer -->
 
 </div>
 

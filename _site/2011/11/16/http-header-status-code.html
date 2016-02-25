@@ -35,30 +35,30 @@
 
     <div class="footer-clear post-wrapper">
 
-  <!-- post archive trigger -->
-  <div class="post-archive-trigger">
-    <div class="post-archive-icon"></div>
-  </div>
-  <!-- /post archive trigger -->
+    <!-- post archive trigger -->
+    <div class="post-archive-trigger">
+        <div class="post-archive-icon"></div>
+    </div>
+    <!-- /post archive trigger -->
 
-  <!-- post archive -->
-  <div class="post-archive"></div>
-  <!-- /post archive -->
+    <!-- post archive -->
+    <div class="post-archive"></div>
+    <!-- /post archive -->
 
-  <!-- post header -->
-  <div class="post-header">
-    <h1>HTTP状态码</h1>
-    <span>2011-11-16</span>
-  </div>
-  <!-- /post header -->
+    <!-- post header -->
+    <div class="post-header">
+        <h1>HTTP状态码</h1>
+        <span>2011-11-16</span>
+    </div>
+    <!-- /post header -->
 
-  <!-- post content -->
-  
-  
-  
+    <!-- post content -->
+    
+    
+    
 
-  <div class="post-content chinese">
-    <h2>常见的</h2>
+    <div class="post-content chinese">
+        <h2>常见的</h2>
 
 <ul>
 <li><p>200 - OK，服务器成功返回网页</p>
@@ -164,29 +164,50 @@
 <li>510 : Not Extended</li>
 </ul>
 
-  </div>
-  <!-- /post content -->
+    </div>
+    <!-- /post content -->
 
-  <!-- post navigator -->
-  <div class="post-nav">
-    
-    <a class="post-nav-previous" href="http://codante.org/blog/2011/07/01/cydia-change-the-mode-to-switch-three-modes.html">Cydia更改模式-三种模式自由切换</a>
+    <!-- post navigator -->
+    <div class="post-nav">
+        
+        <a class="post-nav-previous" href="http://codante.org/blog/2011/07/01/cydia-change-the-mode-to-switch-three-modes.html">Cydia更改模式-三种模式自由切换</a>
+        
+
+        
+        <div class="post-nav-sep"></div>
+        
+
+        
+        <a class="post-nav-next" href="http://codante.org/blog/2012/04/17/haproxy-websocket.html">haproxy设置websocket</a>
+        
+    </div>
+    <!-- /post navigator -->
+
     
 
     
-    <div class="post-nav-sep"></div>
+    <!-- duoshuo comment system -->
+    <div class="post-comment">
+        <div id="duoshuo_post_comment"></div>
+<script>var duoshuoQuery = {short_name: 'codante'};</script>
+<script src="http://static.duoshuo.com/embed.js"></script>
+<script>
+    function loadComments(id, url) {
+        var el = $('<div></div>');
+        el.attr('data-thread-key', id);
+        el.attr('data-url', url);
+        DUOSHUO.EmbedThread(el.get(0));
+        $('#duoshuo_post_comment').append(el);
+    }
+
+    loadComments('/2011/11/16/http-header-status-code', 'http://codante.org/blog/2011/11/16/http-header-status-code.html');
+</script>
+    </div>
+    <!-- /duoshuo comment system -->
     
 
-    
-    <a class="post-nav-next" href="http://codante.org/blog/2012/04/17/haproxy-websocket.html">haproxy设置websocket</a>
-    
-  </div>
-  <!-- /post navigator -->
-
-  
-
-  <!-- footer -->
-  <footer class="footer">
+    <!-- footer -->
+    <footer class="footer">
   <a class="link-1" href="http://codante.org/blog">codante.org</a>
   <span>&copy;</span>
   <span><script type="text/javascript">document.write(new Date().getFullYear());</script></span>
@@ -194,7 +215,7 @@
   <span>Powered by <a class="link-1" href="http://jekyllrb.com/">Jekyll</a> with <a class="link-1" href="https://github.com/kkninjae/book">Book</a> theme.</span>
 </footer>
 
-  <!-- /footer -->
+    <!-- /footer -->
 
 </div>
 
