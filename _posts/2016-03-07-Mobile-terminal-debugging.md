@@ -14,7 +14,7 @@ npm install -g weinre
 ## 启动
 
 ```bash
-wernre --boundHost \[IP\] --httpPort \[PORT\]
+wernre --boundHost [IP] --httpPort [PORT]
 ```
 
 进入相应网址，按提示配置及访问
