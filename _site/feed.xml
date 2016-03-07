@@ -5,8 +5,8 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Mar 2016 17:08:46 +0800</pubDate>
-    <lastBuildDate>Mon, 07 Mar 2016 17:08:46 +0800</lastBuildDate>
+    <pubDate>Mon, 07 Mar 2016 17:09:18 +0800</pubDate>
+    <lastBuildDate>Mon, 07 Mar 2016 17:09:18 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -14,10 +14,10 @@
         <description>&lt;h1&gt;weinre&lt;/h1&gt;
 
 &lt;h2&gt;安装&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;npm install -g weinre
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;npm install -g weinre
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;启动&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wernre --boundHost \[IP\] --httpPort \[PORT\]
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;wernre --boundHost &lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;IP&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt; --httpPort &lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;PORT&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;进入相应网址，按提示配置及访问&lt;/p&gt;
 </description>

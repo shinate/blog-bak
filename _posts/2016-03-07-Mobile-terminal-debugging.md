@@ -7,13 +7,13 @@ title: 移动端前端调试工具
 
 ## 安装
 
-```
+```bash
 npm install -g weinre
 ```
 
 ## 启动
 
-```
+```bash
 wernre --boundHost \[IP\] --httpPort \[PORT\]
 ```
 
