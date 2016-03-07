@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 在命令行让MAC说话
+title: 在命令行让MAC说话唱歌
 ---
 
 ## 调用say
