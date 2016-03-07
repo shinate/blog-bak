@@ -5,9 +5,28 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 Feb 2016 18:13:34 +0800</pubDate>
-    <lastBuildDate>Thu, 25 Feb 2016 18:13:34 +0800</lastBuildDate>
+    <pubDate>Mon, 07 Mar 2016 17:08:46 +0800</pubDate>
+    <lastBuildDate>Mon, 07 Mar 2016 17:08:46 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>移动端前端调试工具</title>
+        <description>&lt;h1&gt;weinre&lt;/h1&gt;
+
+&lt;h2&gt;安装&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;npm install -g weinre
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;启动&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wernre --boundHost \[IP\] --httpPort \[PORT\]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;进入相应网址，按提示配置及访问&lt;/p&gt;
+</description>
+        <pubDate>Mon, 07 Mar 2016 00:00:00 +0800</pubDate>
+        <link>http://codante.org/blog/2016/03/07/Mobile-terminal-debugging.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2016/03/07/Mobile-terminal-debugging.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>进制转换与位移运算</title>
@@ -815,50 +834,6 @@ php&lt;/p&gt;
         <pubDate>Fri, 24 Aug 2012 20:08:17 +0800</pubDate>
         <link>http://codante.org/blog/2012/08/24/linux-php-screenshot.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2012/08/24/linux-php-screenshot.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>yum使用说明</title>
-        <description>&lt;p&gt;在Centos中yum安装和卸载软件的使用方法&lt;/p&gt;
-
-&lt;h2&gt;安装&lt;/h2&gt;
-
-&lt;h3&gt;单一软件&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum -y install httpd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;多个类似软件&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum -y install httpd*
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;多个非类似软件&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum -y install httpd php php-gd mysql
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;卸载&lt;/h2&gt;
-
-&lt;h3&gt;单一软件&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum -y remove httpd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;多个相类似软件&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum -y remove httpd*
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;多个非类似软件&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum -y remove httpd php php-gd mysql
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;yum search&lt;/h2&gt;
-
-&lt;p&gt;假如我要执行iostat这个命令来查看CPU与存储设备状态，可是执行却发现没有这个命令，于是执行yum install iostat，结果说找不到该软件，使用下面的办法可以解决&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum search iostat
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;就能查到和iostat相关的安装包了。
-另外想安装一个程序，只记得一部分名称，也可以用这个办法来实现安装&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;yum search png &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;grep png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;就能找到我们想安装的libpng这个名称。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 11 Jul 2012 15:50:37 +0800</pubDate>
-        <link>http://codante.org/blog/2012/07/11/yum-man.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2012/07/11/yum-man.html</guid>
         
         
       </item>
