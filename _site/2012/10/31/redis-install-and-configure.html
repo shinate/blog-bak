@@ -62,27 +62,27 @@
 <a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" title="tcl">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
 
 <h2>获取软件</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">#tcl8.5
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#tcl8.5</span>
 wget http://downloads.sourceforge.net/tcl/tcl8.5.12-src.tar.gz
-#redis
+<span class="c">#redis</span>
 wget http://redis.googlecode.com/files/redis-2.6.2.tar.gz
-</code></pre></figure>
+</code></pre></div>
 <h2>安装</h2>
 
 <h3>tcl</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">tar -zxf tcl8.5.12-html.tar.gz --strip-components=1
-cd unix &amp;&amp; ./configure --prefix=/usr \
---enable-threads \
---mandir=/usr/share/man
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">tar -zxf tcl8.5.12-html.tar.gz --strip-components<span class="o">=</span>1
+<span class="nb">cd </span>unix <span class="o">&amp;&amp;</span> ./configure --prefix<span class="o">=</span>/usr <span class="se">\</span>
+--enable-threads <span class="se">\</span>
+--mandir<span class="o">=</span>/usr/share/man
 make
-sed -e &quot;s@^\(TCL_SRC_DIR=&#39;\).*@/usr/include&#39;@&quot; \
--e &quot;/TCL_B/s@=&#39;\(-L\)\?.*unix@=&#39;/usr/lib@&quot; \
+sed -e <span class="s2">"s@^</span><span class="se">\(</span><span class="s2">TCL_SRC_DIR='</span><span class="se">\)</span><span class="s2">.*@/usr/include'@"</span> <span class="se">\</span>
+-e <span class="s2">"/TCL_B/s@='</span><span class="se">\(</span><span class="s2">-L</span><span class="se">\)\?</span><span class="s2">.*unix@='/usr/lib@"</span> <span class="se">\</span>
 -i tclConfig.sh
 make install
 make install-private-headers
 ln -v -sf tclsh8.5 /usr/bin/tclsh
 chmod -v 755 /usr/lib/libtcl8.5.so
-</code></pre></figure>
+</code></pre></div>
   </div>
   <!-- /post content -->
 
