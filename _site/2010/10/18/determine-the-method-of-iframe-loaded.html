@@ -56,19 +56,21 @@
   
 
   <div class="post-content chinese">
-    <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var iframe = document.createElement(&quot;iframe&quot;);
-iframe.src = &quot;http://www.planabc.net&quot;;
-if (iframe.attachEvent){
-iframe.attachEvent(&quot;onload&quot;, function(){
-    alert(&quot;Local iframe is now loaded.&quot;);
-});
-} else {
-iframe.onload = function(){
-    alert(&quot;Local iframe is now loaded.&quot;);
-};
-}
-document.body.appendChild(iframe);
-</code></pre></figure>
+    <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"iframe"</span><span class="p">);</span>
+<span class="nx">iframe</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"http://www.planabc.net"</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">iframe</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">){</span>
+<span class="nx">iframe</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s2">"onload"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"Local iframe is now loaded."</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="nx">iframe</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"Local iframe is now loaded."</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="p">}</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">iframe</span><span class="p">);</span>
+</code></pre>
+</div>
+
   </div>
   <!-- /post content -->
 

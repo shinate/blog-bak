@@ -56,53 +56,77 @@
   
 
   <div class="post-content chinese">
-    <h2>优点和缺点</h2>
+    <h2 id="section">优点和缺点</h2>
 
 <p>memcached部分实现的是内存空间分配和回收,以及存储服务监听和提供.对于分布式的实现,取决于客户端的使用和构造.我们使用的客户端是完全支持分布式的.只是可能会出现某些问题.
 诸如一旦出现网络问题, 网络问题导致某个分布式服务器中的一台失去联系之后,到这台机器恢复正常工作的这段时间内, 写入分布式服务器的数据将基本不可以获取. 可以通过采用分布式hash表的方式解决这个问题.</p>
 
-<h2>安装 libevent</h2>
+<h2 id="libevent">安装 libevent</h2>
 
 <p>memcached其实就是个内存管理，所以首先要安装下libevent。</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://www.monkey.org/~provos/libevent-1.4.2-rc.tar.gz
-</code></pre></figure><figure class="highlight"><pre><code class="language-bash" data-lang="bash">tar zxvf libevent-1.4.2-rc.tar.gz
-cd libevent-1.4.2-rc
-</code></pre></figure><figure class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix=/usr/local/
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://www.monkey.org/~provos/libevent-1.4.2-rc.tar.gz
+</code></pre>
+</div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>tar zxvf libevent-1.4.2-rc.tar.gz
+<span class="nb">cd </span>libevent-1.4.2-rc
+</code></pre>
+</div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>./configure --prefix<span class="o">=</span>/usr/local/
 make
 make install
-</code></pre></figure>
-<h3>[*1]64位系统</h3>
+</code></pre>
+</div>
+
+<h3 id="section-1">[*1]64位系统</h3>
 
 <p>如果系统是64位，需要执行下面的命令，原因见后文。</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2
-</code></pre></figure>
-<h2>安装memcached</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">tar zxf memcached-1.4.5.tar.gz
-cd memcached-1.4.5
-./configure --prefix=/usr/local/memcached --enable-64bit --with-libevent=/usr/lib64/
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2
+</code></pre>
+</div>
+
+<h2 id="memcached">安装memcached</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>tar zxf memcached-1.4.5.tar.gz
+<span class="nb">cd </span>memcached-1.4.5
+./configure --prefix<span class="o">=</span>/usr/local/memcached --enable-64bit --with-libevent<span class="o">=</span>/usr/lib64/
+</code></pre>
+</div>
+
 <p>如果此时没有进行<strong>[*1]</strong>操作，<strong>make test</strong>会报错，但不影响安装。</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">make
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>make
 make install
 cp memcached /usr/local/bin/
 cp memcached-debug /usr/local/bin/
-</code></pre></figure>
-<h2>启动</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
-</code></pre></figure>
+</code></pre>
+</div>
+
+<h2 id="section-2">启动</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
+</code></pre>
+</div>
+
 <p><strong>启动成功！</strong></p>
 
-<h2>问题</h2>
+<h2 id="section-3">问题</h2>
 
-<h3><strong>[*1]</strong>问题的处理</h3>
+<h3 id="section-4"><strong>[*1]</strong>问题的处理</h3>
 
 <p>如果使用的64位系统并且没有执行<strong>[*1]</strong>操作，<strong>启动时</strong>会得到下面的错误。</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
-</code></pre></figure>
-<p><strong>使用 &quot;LD_DEBUG=libs /usr/local/memcached/bin/memcached -v&quot; 进行检查</strong>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
+</code></pre>
+</div>
+
+<p><strong>使用 “LD_DEBUG=libs /usr/local/memcached/bin/memcached -v” 进行检查</strong>
 得到以下结果</p>
 
-<p><code>access log
+<p><code class="highlighter-rouge">access log
 3566: find library=libevent-1.4.so.2 [0]; searching
 3566: search cache=/etc/ld.so.cache
 3566: search path=/lib64/tls/x86_64:/lib64/tls:/lib64/x86_64:/lib64:/usr/lib64/tls/x86_64:/usr/lib64/tls:/usr/lib64/x86_64:/usr/lib64 (system search path)
@@ -118,72 +142,108 @@ cp memcached-debug /usr/local/bin/
 /usr/local/memcached/bin/memcached: error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
 </code></p>
 
-<p>可以看出&quot;/usr/local/memcached/bin/memcached: error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory&quot; 64位系统只会去找lib64下的包，我的处理办法是在lib64下建立个软连接：</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2
-</code></pre></figure>
+<p>可以看出”/usr/local/memcached/bin/memcached: error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory” 64位系统只会去找lib64下的包，我的处理办法是在lib64下建立个软连接：</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2
+</code></pre>
+</div>
+
 <p>此时启动memcached</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
+</code></pre>
+</div>
+
 <p>启动成功</p>
 
-<h2>安装php支持模块</h2>
+<h2 id="php">安装php支持模块</h2>
 
 <p>我下载的是稳定版本</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://pecl.php.net/get/memcache-2.2.5.tgz
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://pecl.php.net/get/memcache-2.2.5.tgz
 tar zxf memcache-2.2.5.tgz
-cd memcached-2.2.5
-</code></pre></figure>
+<span class="nb">cd </span>memcached-2.2.5
+</code></pre>
+</div>
+
 <p>执行</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/php5/bin/phpize
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>/usr/local/php5/bin/phpize
+</code></pre>
+</div>
+
 <p>这命令没有加在bin里边-。-，直接运行了。
-安装的时候需要指定一下--with-php-config，否则可能会提示找不到路径。</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --enable-memcache --with-php-config=/usr/local/php5/bin/php-config --with-zlib-dir
+安装的时候需要指定一下–with-php-config，否则可能会提示找不到路径。</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>./configure --enable-memcache --with-php-config<span class="o">=</span>/usr/local/php5/bin/php-config --with-zlib-dir
 make
 make install
-</code></pre></figure>
+</code></pre>
+</div>
+
 <p>提示/usr/local/php5/lib/php/extensions/no-debug-non-zts-20060613/
 之前安装eaccelerator.so的时候遇到过，而且在php.ini里边也修改过模块的路径，所以<strong>不用管它</strong>。</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vi /usr/local/Zend/etc/php.ini
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>vi /usr/local/Zend/etc/php.ini
+</code></pre>
+</div>
+
 <p>在最后添加</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">[memcache]
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[memcache]
 extension=memcache.so
-</code></pre></figure>
+</code></pre>
+</div>
+
 <p>重启apache</p>
 
-<h2>其他修改</h2>
+<h2 id="section-5">其他修改</h2>
 
 <p>加大同时打开文件数</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ulimit -n 10240
-</code></pre></figure>
-<h2>附录</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">ulimit</span> -n 10240
+</code></pre>
+</div>
+
+<h2 id="section-6">附录</h2>
 
 <p>开启了64位参数，可以分配4G以上的内存，如：</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 6144 -u root -t 64 -r -c 16382 -p 11211
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>memcached -d -m 6144 -u root -t 64 -r -c 16382 -p 11211
+</code></pre>
+</div>
+
 <p>可以更改端口：</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
 memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11212
 memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11213
-</code></pre></figure>
-<h3>启动参数</h3>
-<figure class="highlight"><pre><code class="language-ini" data-lang="ini">-d 启动deamon模式
--m 最大占用内存，单位为M
--u 运行账户
--t 并发线程数，最好不超过cpu数
--r maximize core file limit
--c 最大可接受并发连接数
--p 监听端口
--l 监听ip
-</code></pre></figure>
-<h3>进程管理</h3>
-<figure class="highlight"><pre><code class="language-ini" data-lang="ini">-d start 启动memcached服务
--d restart 重起memcached服务
--d stop|shutdown 关闭正在运行的memcached服务
--d install 安装memcached服务
--d uninstall 卸载memcached服务
-</code></pre></figure>
+</code></pre>
+</div>
+
+<h3 id="section-7">启动参数</h3>
+
+<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">-d</span> <span class="err">启动deamon模式</span>
+<span class="err">-m</span> <span class="err">最大占用内存，单位为M</span>
+<span class="err">-u</span> <span class="err">运行账户</span>
+<span class="err">-t</span> <span class="err">并发线程数，最好不超过cpu数</span>
+<span class="err">-r</span> <span class="err">maximize</span> <span class="err">core</span> <span class="err">file</span> <span class="err">limit</span>
+<span class="err">-c</span> <span class="err">最大可接受并发连接数</span>
+<span class="err">-p</span> <span class="err">监听端口</span>
+<span class="err">-l</span> <span class="err">监听ip</span>
+</code></pre>
+</div>
+
+<h3 id="section-8">进程管理</h3>
+
+<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">-d</span> <span class="err">start</span> <span class="err">启动memcached服务</span>
+<span class="err">-d</span> <span class="err">restart</span> <span class="err">重起memcached服务</span>
+<span class="err">-d</span> <span class="err">stop|shutdown</span> <span class="err">关闭正在运行的memcached服务</span>
+<span class="err">-d</span> <span class="err">install</span> <span class="err">安装memcached服务</span>
+<span class="err">-d</span> <span class="err">uninstall</span> <span class="err">卸载memcached服务</span>
+</code></pre>
+</div>
+
   </div>
   <!-- /post content -->
 

@@ -57,19 +57,31 @@
 
   <div class="post-content chinese">
     <p>写个 crontab ，命令是类似这样的</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/path/to/script `date +%Y-%m-%d`
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>/path/to/script <span class="sb">`</span>date +%Y-%m-%d<span class="sb">`</span>
+</code></pre>
+</div>
+
 <p>直接运行很正常，但是在 crotnab 里就出错。</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">/bin/sh: -c: line 1: unexpected EOF while looking for matching ``&#39;
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/bin/sh: -c: line 1: unexpected EOF while looking for matching ``'
 /bin/sh: -c: line 2: syntax error: unexpected end of file
-</code></pre></figure>
+</code></pre>
+</div>
+
 <p>google 了好一阵才找到答案。原来 crontab 里的 % 是有特殊意义的，在这里需要转义。man 5 crontab 可以看到，</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">Percent-signs (%) in the command, unless escaped with backslash (\), will be changed into newline characters, and all data after the first % will be sent to the command as standard input.
-</code></pre></figure>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Percent-signs (%) in the command, unless escaped with backslash (\), will be changed into newline characters, and all data after the first % will be sent to the command as standard input.
+</code></pre>
+</div>
+
 <p><strong>% 如果没有用 \ 转义，就会被替换成换行。所以之前的 crontab 就出错了。</strong>
 解决办法：可以在 % 前面都加个 \ ，对于这个例子，写成 date +\%Y-\%m-\%d。</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/path/to/script `date +\%Y-\%m-\%d`
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>/path/to/script <span class="sb">`</span>date +<span class="se">\%</span>Y-<span class="se">\%</span>m-<span class="se">\%</span>d<span class="sb">`</span>
+</code></pre>
+</div>
+
 <p>感谢神仙赐予的知识</p>
 
   </div>

@@ -58,37 +58,61 @@
   <div class="post-content chinese">
     <p>在Centos中yum安装和卸载软件的使用方法</p>
 
-<h2>安装</h2>
+<h2 id="section">安装</h2>
 
-<h3>单一软件</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd
-</code></pre></figure>
-<h3>多个类似软件</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd*
-</code></pre></figure>
-<h3>多个非类似软件</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd php php-gd mysql
-</code></pre></figure>
-<h2>卸载</h2>
+<h3 id="section-1">单一软件</h3>
 
-<h3>单一软件</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd
-</code></pre></figure>
-<h3>多个相类似软件</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd*
-</code></pre></figure>
-<h3>多个非类似软件</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd php php-gd mysql
-</code></pre></figure>
-<h2>yum search</h2>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum -y install httpd
+</code></pre>
+</div>
+
+<h3 id="section-2">多个类似软件</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum -y install httpd<span class="k">*</span>
+</code></pre>
+</div>
+
+<h3 id="section-3">多个非类似软件</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum -y install httpd php php-gd mysql
+</code></pre>
+</div>
+
+<h2 id="section-4">卸载</h2>
+
+<h3 id="section-5">单一软件</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum -y remove httpd
+</code></pre>
+</div>
+
+<h3 id="section-6">多个相类似软件</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum -y remove httpd<span class="k">*</span>
+</code></pre>
+</div>
+
+<h3 id="section-7">多个非类似软件</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum -y remove httpd php php-gd mysql
+</code></pre>
+</div>
+
+<h2 id="yum-search">yum search</h2>
 
 <p>假如我要执行iostat这个命令来查看CPU与存储设备状态，可是执行却发现没有这个命令，于是执行yum install iostat，结果说找不到该软件，使用下面的办法可以解决</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum search iostat
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum search iostat
+</code></pre>
+</div>
+
 <p>就能查到和iostat相关的安装包了。
 另外想安装一个程序，只记得一部分名称，也可以用这个办法来实现安装</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum search png |grep png
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum search png |grep png
+</code></pre>
+</div>
+
 <p>就能找到我们想安装的libpng这个名称。</p>
 
   </div>

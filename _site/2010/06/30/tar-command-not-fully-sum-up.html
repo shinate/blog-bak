@@ -58,101 +58,134 @@
   <div class="post-content chinese">
     <p>感谢老男孩赐予的知识。 老男孩（QQ:49000448， mail:49000448@qq.com）</p>
 
-<h2>常用选项</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">-z, --gzip, --ungzip
-#filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩
+<h2 id="section">常用选项</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>-z, --gzip, --ungzip
+<span class="c">#filter the archive through gzip||调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩</span>
 -c, --create
-#create a new archive ||建立新的归档文件
+<span class="c">#create a new archive ||建立新的归档文件</span>
 -v, --verbose
-#verbosely list files processed||处理过程中输出相关信息
--f, --file [HOSTNAME:]F
-#use archive file or device F (default &quot;-&quot;, meaning stdin/stdout)||对普通文件操作
+<span class="c">#verbosely list files processed||处理过程中输出相关信息</span>
+-f, --file <span class="o">[</span>HOSTNAME:]F
+<span class="c">#use archive file or device F (default "-", meaning stdin/stdout)||对普通文件操作</span>
 -x, --extract, --get
-#extract files from an archive||从归档文件中解出文件
+<span class="c">#extract files from an archive||从归档文件中解出文件</span>
 -j, --bzip2
-#filter archive through bzip2, use to decompress .bz2 files||用GNU的bzip2压缩文件或解压
+<span class="c">#filter archive through bzip2, use to decompress .bz2 files||用GNU的bzip2压缩文件或解压</span>
 -C, --directory DIR
-#change to directory DIR
+<span class="c">#change to directory DIR</span>
 --exclude PATTERN
-#exclude files based upon PATTERN
+<span class="c">#exclude files based upon PATTERN</span>
 -X, --exclude-from FILE
-#exclude files listed in FILE
+<span class="c">#exclude files listed in FILE</span>
 -Z, --compress, --uncompress
-#filter the archive through compress||调用compress来压缩归档文件，与-x联用时调用compress完成解压缩
+<span class="c">#filter the archive through compress||调用compress来压缩归档文件，与-x联用时调用compress完成解压缩</span>
 -N, --after-date DATE, --newer DATE
-#only store files newer than DATE
-</code></pre></figure>
-<h2>举例</h2>
+<span class="c">#only store files newer than DATE</span>
+</code></pre>
+</div>
+
+<h2 id="section-1">举例</h2>
 
 <p>不同方法对应不同的解压方式</p>
 
-<h3>方法1 (tar.gz)</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">#打包
+<h3 id="targz">方法1 (tar.gz)</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#打包</span>
 tar zcvf test.tar.gz ./test
-#解压
+<span class="c">#解压</span>
 tar zxvf test.tar.gz
-</code></pre></figure>
-<h3>方法2 (tar.bz)</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">#打包
+</code></pre>
+</div>
+
+<h3 id="tarbz">方法2 (tar.bz)</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#打包</span>
 tar jcvf test.tar.bz ./test
-#解压
+<span class="c">#解压</span>
 tar jxvf test.tar.bz
-</code></pre></figure>
-<h3>错误的例子</h3>
+</code></pre>
+</div>
+
+<h3 id="section-2">错误的例子</h3>
 
 <p>命令必须对应相应的包，否则无法解压。</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">tar zxvf test.tar.bz
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>tar zxvf test.tar.bz
+</code></pre>
+</div>
+
 <p>报错：
 gzip: stdin: not in gzip format
 tar: Child returned status 1
 tar: Error exit delayed from previous error</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">tar jxvf test.tar.gz
-</code></pre></figure>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>tar jxvf test.tar.gz
+</code></pre>
+</div>
+
 <p>报错：
 bzip2: (stdin) is not a bzip2 file.
 tar: Child returned status 2
 tar: Error exit delayed from previous errors</p>
 
-<h3>指定解压路径(参数 -C)</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">tar jxvf test.tar.bz -C /home/rhy/
+<h3 id="c">指定解压路径(参数 -C)</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>tar jxvf test.tar.bz -C /home/rhy/
 tar zxvf test.tar.gz -C /home/rhy/
-</code></pre></figure>
-<h3>排除式打包(参数 -X)</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">#man tar:
+</code></pre>
+</div>
+
+<h3 id="x">排除式打包(参数 -X)</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#man tar:</span>
 --exclude PATTERN
-#exclude files based upon PATTERN
+<span class="c">#exclude files based upon PATTERN</span>
 -X, --exclude-from FILE
-#exclude files listed in FILE
-</code></pre></figure>
-<h4>测试准备</h4>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /
+<span class="c">#exclude files listed in FILE</span>
+</code></pre>
+</div>
+
+<h4 id="section-3">测试准备</h4>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> /
 mkdir -p /test/baoliu
 mkdir -p /test/paichu
-touch exceptlist;echo &quot;paichu&quot;&amp;gt;exceptlist
-</code></pre></figure>
-<h4>测试开始</h4>
+touch exceptlist;echo <span class="s2">"paichu"</span>&amp;gt;exceptlist
+</code></pre>
+</div>
 
-<p><strong>--exclude</strong> 参数</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /
-tar zcvf  paichu.tar.gz ./test --exclude=test/paichu
+<h4 id="section-4">测试开始</h4>
+
+<p><strong>–exclude</strong> 参数</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> /
+tar zcvf  paichu.tar.gz ./test --exclude<span class="o">=</span><span class="nb">test</span>/paichu
 ./test/
 ./test/baoliu/
-</code></pre></figure>
+</code></pre>
+</div>
+
 <p><strong>-X</strong> 参数</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> /
 cat exceptlist
 paichu
 tar zcvfX paichuX.tar.gz /exceptlist ./test
 ./test/
 ./test/baoliu/
-</code></pre></figure>
-<h3>增量备份(参数 -N)</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">#自00点以来的新文件。
-tar -N $(date -d yesterday +%F) zcvf a.tar.gz ./a
-#自2009-09-26以来的新文件
+</code></pre>
+</div>
+
+<h3 id="n">增量备份(参数 -N)</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#自00点以来的新文件。</span>
+tar -N <span class="k">$(</span>date -d yesterday +%F<span class="k">)</span> zcvf a.tar.gz ./a
+<span class="c">#自2009-09-26以来的新文件</span>
 tar -N 2009-09-26 zcvf a.tar.gz ./a
-</code></pre></figure>
+</code></pre>
+</div>
+
   </div>
   <!-- /post content -->
 
