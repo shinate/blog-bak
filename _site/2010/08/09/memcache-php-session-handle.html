@@ -56,73 +56,60 @@
   
 
   <div class="post-content chinese">
-    <h2 id="section">优缺点</h2>
+    <h2>优缺点</h2>
 
 <p><strong>优点：</strong></p>
 
 <ol>
-  <li>使用内存存放session信息，不经过磁盘，数据库等，速度快</li>
-  <li>可以多台机器共用一个/组memcached服务器，达到多台机器共享session信息，方便多机集群的session问题处理。</li>
-  <li>…</li>
+<li>使用内存存放session信息，不经过磁盘，数据库等，速度快</li>
+<li>可以多台机器共用一个/组memcached服务器，达到多台机器共享session信息，方便多机集群的session问题处理。</li>
+<li>...</li>
 </ol>
 
 <p><strong>不足：</strong></p>
 
 <ol>
-  <li>首先memcached的服务必须正常工作，否则php的session相关功能将不起作用,这样php的处理就多了一层外面的依赖。</li>
-  <li>由于memcached是使用内存的，这样当用户量比较大时，就可能由于内存方面原因导致session时长上的问题,session的实际失效时长达不到设定的失效时长(由于memcached在内存不够下的处理机制决定)</li>
-  <li>由于memcached的内存管理机制，当session存储的数据超过1MB的时候有数据丢失问题（不过一般不会有人在session中存放这么多的信息吧)。</li>
-  <li>…</li>
+<li>首先memcached的服务必须正常工作，否则php的session相关功能将不起作用,这样php的处理就多了一层外面的依赖。</li>
+<li>由于memcached是使用内存的，这样当用户量比较大时，就可能由于内存方面原因导致session时长上的问题,session的实际失效时长达不到设定的失效时长(由于memcached在内存不够下的处理机制决定)</li>
+<li>由于memcached的内存管理机制，当session存储的数据超过1MB的时候有数据丢失问题（不过一般不会有人在session中存放这么多的信息吧)。</li>
+<li>...</li>
 </ol>
 
-<h2 id="section-1">实现</h2>
+<h2>实现</h2>
 
 <p>在PHP中有两种实现：</p>
 
-<h3 id="memcache">memcache</h3>
+<h3>memcache</h3>
 
 <p>PHP的基础memcache客户端
 <strong>在配置文件中进行设置：</strong></p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="py">session.save_handler</span> <span class="p">=</span> <span class="s">memcache</span>
-<span class="py">session.save_path</span> <span class="p">=</span> <span class="s">"tcp://127.0.0.1:11211"</span>
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">session.save_handler = memcache
+session.save_path = &quot;tcp://127.0.0.1:11211&quot;
+</code></pre></figure>
 <p><strong>或者在程序中如下测试：</strong></p>
-
-<div class="language-php highlighter-rouge"><pre class="highlight"><code>ini_set("session.save_handler","memcached");
-ini_set("session.save_path","tcp://127.0.0.1:11211");
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-php" data-lang="php">ini_set(&quot;session.save_handler&quot;,&quot;memcached&quot;);
+ini_set(&quot;session.save_path&quot;,&quot;tcp://127.0.0.1:11211&quot;);
+</code></pre></figure>
 <p>详见：<a href="http://cn.php.net/manual/en/memcache.ini.php">http://cn.php.net/manual/en/memcache.ini.php</a></p>
 
-<h3 id="memcached">memcached</h3>
+<h3>memcached</h3>
 
 <p>基于libmemcached通用类库的memcache客户端
 <strong>在配置文件中进行设置：</strong></p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="py">session.save_handler</span> <span class="p">=</span> <span class="s">memcached</span>
-<span class="py">session.save_path</span> <span class="p">=</span> <span class="s">"127.0.0.1:11211"</span>  <span class="s">//注意这里不需要tcp</span>
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">session.save_handler = memcached
+session.save_path = &quot;127.0.0.1:11211&quot;  //注意这里不需要tcp
+</code></pre></figure>
 <p><strong>或者在程序中如下测试：</strong></p>
-
-<div class="language-php highlighter-rouge"><pre class="highlight"><code>ini_set("session.save_handler","memcached");
-ini_set("session.save_path","127.0.0.1:11211");
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-php" data-lang="php">ini_set(&quot;session.save_handler&quot;,&quot;memcached&quot;);
+ini_set(&quot;session.save_path&quot;,&quot;127.0.0.1:11211&quot;);
+</code></pre></figure>
 <p>详见：<a href="http://cn.php.net/manual/en/memcached.sessions.php">http://cn.php.net/manual/en/memcached.sessions.php</a>感觉</p>
 
-<h3 id="section-2">验证效果</h3>
+<h3>验证效果</h3>
 
 <p>通过<a href="http://livebookmark.net/memcachephp/memcachephp.zip">memcachephp</a>来查询是否session数据被正确设置了：
 The session keys are stored under the prefix memc.sess.key
 memc.sess.key.8fvadbqo1lt2l6j98tbg7ao1d7</p>
-
 
   </div>
   <!-- /post content -->

@@ -58,70 +58,49 @@
   <div class="post-content chinese">
     <p>感谢老男孩赐予的知识。 老男孩（QQ:49000448， mail:49000448@qq.com）</p>
 
-<h2 id="section">查看帮助（很重要）</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find --help
-</code></pre>
-</div>
-
-<h2 id="section-1">显示所有文件</h2>
+<h2>查看帮助（很重要）</h2>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">find --help
+</code></pre></figure>
+<h2>显示所有文件</h2>
 
 <p>显示多个目录文件列表(仅限于3层)</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find <span class="nb">test </span>ryan hyran -maxdepth 3
-</code></pre>
-</div>
-
-<h2 id="section-2">按文件名、路径名查找</h2>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">find test ryan hyran -maxdepth 3
+</code></pre></figure>
+<h2>按文件名、路径名查找</h2>
 
 <p>多参数，可用通配符</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find -maxdepth 3 -name <span class="s1">'d*'</span>
-find -maxdepth 3 -name <span class="s1">'ji*\.sql'</span>
-find -path <span class="s1">'*server*'</span>
-</code></pre>
-</div>
-
-<h2 id="section-3">按文件属性查找</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find . -type f
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">find -maxdepth 3 -name &#39;d*&#39;
+find -maxdepth 3 -name &#39;ji*\.sql&#39;
+find -path &#39;*server*&#39;
+</code></pre></figure>
+<h2>按文件属性查找</h2>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type f
 find . -size -100M
 find . -size +1G
 find . -mtime +2
 find . -perm 755
-find . -perm -755  <span class="se">\#</span>权限至少为755
-</code></pre>
-</div>
-
-<h2 id="section-4">组合查找</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find . -type d -mtime +30
+find . -perm -755  \#权限至少为755
+</code></pre></figure>
+<h2>组合查找</h2>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type d -mtime +30
 find . -type f -mtime +15
 find . -type f -size +10M
-find . -type d -name <span class="s1">'server*'</span>
-find /ryan -name <span class="s1">'*.log'</span> -mtime +5
-</code></pre>
-</div>
-
-<h2 id="section-5">使用逻辑运算查找</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#/ryan目录下30天前访问过得大于20M的文件（-a and,-o or !）</span>
+find . -type d -name &#39;server*&#39;
+find /ryan -name &#39;*.log&#39; -mtime +5
+</code></pre></figure>
+<h2>使用逻辑运算查找</h2>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">#/ryan目录下30天前访问过得大于20M的文件（-a and,-o or !）
 find /ryan -size +20M -a atime 30
 find /ryan -type f -o -mtime +15
 find /ryan ! -user rhy
-</code></pre>
-</div>
-
-<h2 id="section-6">对查找文件实施操作</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#删目录 30天以前</span>
+</code></pre></figure>
+<h2>对查找文件实施操作</h2>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">#删目录 30天以前
 find . -type d -mtime +30 |xargs rm -rf
-<span class="c">#删文件 15天以前</span>
-<span class="c">#删目录下文件用这个好</span>
+#删文件 15天以前
+#删目录下文件用这个好
 find . -type f -mtime +15 |xargs rm -f
-</code></pre>
-</div>
-
+</code></pre></figure>
   </div>
   <!-- /post content -->
 
