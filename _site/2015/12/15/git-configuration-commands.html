@@ -56,34 +56,27 @@
   
 
   <div class="post-content chinese">
-    <h2 id="section">新建代码库</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 在当前目录新建一个Git代码库</span>
+    <h2>新建代码库</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 在当前目录新建一个Git代码库</span>
 <span class="gp">$ </span>git init
 <span class="c"># 新建一个目录，将其初始化为Git代码库</span>
 <span class="gp">$ </span>git init <span class="o">[</span>project-name]
 <span class="c"># 下载一个项目和它的整个代码历史</span>
 <span class="gp">$ </span>git clone <span class="o">[</span>url]
-</code></pre>
-</div>
-
-<h2 id="section-1">配置</h2>
+</code></pre></div>
+<h2>配置</h2>
 
 <p>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 显示当前的Git配置</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 显示当前的Git配置</span>
 <span class="gp">$ </span>git config -l <span class="o">[</span>--local]
 <span class="c"># 编辑Git配置文件</span>
 <span class="gp">$ </span>git config -e <span class="o">[</span>--global]
 <span class="c"># 设置提交代码时的用户信息</span>
 <span class="gp">$ </span>git config <span class="o">[</span>--local] user.name <span class="s2">"[name]"</span>
 <span class="gp">$ </span>git config <span class="o">[</span>--lcoal] user.email <span class="s2">"[email address]"</span>
-</code></pre>
-</div>
-
-<h2 id="section-2">增加/删除文件</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 添加指定文件到暂存区</span>
+</code></pre></div>
+<h2>增加/删除文件</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 添加指定文件到暂存区</span>
 <span class="gp">$ </span>git add <span class="o">[</span>file1] <span class="o">[</span>file2] ...
 <span class="c"># 添加指定目录到暂存区，包括子目录</span>
 <span class="gp">$ </span>git add <span class="o">[</span>dir]
@@ -95,12 +88,9 @@
 <span class="gp">$ </span>git rm --cached <span class="o">[</span>file]
 <span class="c"># 改名文件，并且将这个改名放入暂存区</span>
 <span class="gp">$ </span>git mv <span class="o">[</span>file-original] <span class="o">[</span>file-renamed]
-</code></pre>
-</div>
-
-<h2 id="section-3">代码提交</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 提交暂存区到仓库区</span>
+</code></pre></div>
+<h2>代码提交</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 提交暂存区到仓库区</span>
 <span class="gp">$ </span>git commit -m <span class="o">[</span>message]
 <span class="c"># 提交暂存区的指定文件到仓库区</span>
 <span class="gp">$ </span>git commit <span class="o">[</span>file1] <span class="o">[</span>file2] ... -m <span class="o">[</span>message]
@@ -113,12 +103,9 @@
 <span class="gp">$ </span>git commit --amend -m <span class="o">[</span>message]
 <span class="c"># 重做上一次commit，并包括指定文件的新变化</span>
 <span class="gp">$ </span>git commit --amend <span class="o">[</span>file1] <span class="o">[</span>file2] ...
-</code></pre>
-</div>
-
-<h2 id="section-4">分支</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 列出所有本地分支</span>
+</code></pre></div>
+<h2>分支</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 列出所有本地分支</span>
 <span class="gp">$ </span>git branch
 <span class="c"># 列出所有远程分支</span>
 <span class="gp">$ </span>git branch -r
@@ -147,12 +134,9 @@
 <span class="c"># 删除远程分支</span>
 <span class="gp">$ </span>git push origin --delete <span class="o">[</span>branch-name]
 <span class="gp">$ </span>git branch -dr <span class="o">[</span>remote/branch]
-</code></pre>
-</div>
-
-<h2 id="section-5">标签</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 列出所有tag</span>
+</code></pre></div>
+<h2>标签</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 列出所有tag</span>
 <span class="gp">$ </span>git tag
 <span class="c"># 新建一个tag在当前commit</span>
 <span class="gp">$ </span>git tag <span class="o">[</span>tag]
@@ -166,12 +150,9 @@
 <span class="gp">$ </span>git push <span class="o">[</span>remote] --tags
 <span class="c"># 新建一个分支，指向某个tag</span>
 <span class="gp">$ </span>git checkout -b <span class="o">[</span>branch] <span class="o">[</span>tag]
-</code></pre>
-</div>
-
-<h2 id="section-6">查看信息</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 显示有变更的文件</span>
+</code></pre></div>
+<h2>查看信息</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 显示有变更的文件</span>
 <span class="gp">$ </span>git status
 <span class="c"># 显示当前分支的版本历史</span>
 <span class="gp">$ </span>git log
@@ -200,12 +181,9 @@
 <span class="gp">$ </span>git show <span class="o">[</span>commit]:[filename]
 <span class="c"># 显示当前分支的最近几次提交</span>
 <span class="gp">$ </span>git reflog
-</code></pre>
-</div>
-
-<h2 id="section-7">远程同步</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 下载远程仓库的所有变动</span>
+</code></pre></div>
+<h2>远程同步</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 下载远程仓库的所有变动</span>
 <span class="gp">$ </span>git fetch <span class="o">[</span>remote]
 <span class="c"># 显示所有远程仓库</span>
 <span class="gp">$ </span>git remote -v
@@ -221,12 +199,9 @@
 <span class="gp">$ </span>git push <span class="o">[</span>remote] --force
 <span class="c"># 推送所有分支到远程仓库</span>
 <span class="gp">$ </span>git push <span class="o">[</span>remote] --all
-</code></pre>
-</div>
-
-<h2 id="section-8">撤销</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 恢复暂存区的指定文件到工作区</span>
+</code></pre></div>
+<h2>撤销</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 恢复暂存区的指定文件到工作区</span>
 <span class="gp">$ </span>git checkout <span class="o">[</span>file]
 <span class="c"># 恢复某个commit的指定文件到工作区</span>
 <span class="gp">$ </span>git checkout <span class="o">[</span>commit] <span class="o">[</span>file]
@@ -245,38 +220,28 @@
 <span class="c"># 新建一个commit，用来撤销指定commit</span>
 <span class="c"># 后者的所有变化都将被前者抵消，并且应用到当前分支</span>
 <span class="gp">$ </span>git revert <span class="o">[</span>commit]
-</code></pre>
-</div>
-
-<h2 id="submodule">submodule</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># 添加一个submodule</span>
+</code></pre></div>
+<h2>submodule</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 添加一个submodule</span>
 <span class="gp">$ </span>git submodule add <span class="o">[</span>url] <span class="o">[</span>dir]
 <span class="c"># 初始化</span>
 <span class="gp">$ </span>git submodule init <span class="o">[</span>dir]
 <span class="c"># 更新</span>
 <span class="gp">$ </span>git submodule update <span class="o">[</span>dir]
-</code></pre>
-</div>
-
-<h3 id="submodule-1">克隆一个带有submodule的远程代码仓库</h3>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git clone <span class="o">[</span>url]
+</code></pre></div>
+<h3>克隆一个带有submodule的远程代码仓库</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>git clone <span class="o">[</span>url]
 <span class="gp">$ </span>git submodule init
 <span class="gp">$ </span>git submodule update
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>或者</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>git clone --recursive <span class="o">[</span>url]
+</code></pre></div>
+<h2>Reference</h2>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git clone --recursive <span class="o">[</span>url]
-</code></pre>
-</div>
-
-<h2 id="reference">Reference</h2>
 <ul>
-  <li><a href="https://git-scm.com/docs">git官方doc</a></li>
-  <li><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用Git命令清单 by ruanyifeng</a></li>
+<li><a href="https://git-scm.com/docs">git官方doc</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用Git命令清单 by ruanyifeng</a></li>
 </ul>
 
   </div>
