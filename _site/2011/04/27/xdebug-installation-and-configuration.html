@@ -56,40 +56,30 @@
   
 
   <div class="post-content chinese">
-    <h2 id="section">下载</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://www.xdebug.org/files/xdebug-2.1.1.tgz
-</code></pre>
-</div>
-
-<h2 id="section-1">安装</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>xdebug-2.1.1
+    <h2>下载</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://www.xdebug.org/files/xdebug-2.1.1.tgz
+</code></pre></div>
+<h2>安装</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>xdebug-2.1.1
 <span class="c">#创建configure</span>
 /servers/app/php/bin/phpize
 ./configure --enable-xdebug --with-php-config<span class="o">=</span>/servers/app/php/bin/php-config
 make
 make install
-</code></pre>
-</div>
-
-<h2 id="section-2">配置</h2>
+</code></pre></div>
+<h2>配置</h2>
 
 <p>xdebug必须用zend_extension加载
 编辑php.ini文件，在最末位添加上：</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">zend_extension</span><span class="o">=</span>/servers/app/php/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">zend_extension</span><span class="o">=</span>/servers/app/php/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so
+</code></pre></div>
 <p>必须写绝对路径！觉得长的话自己去ln个短的，具体怎么部署这里就不多说了。
 <strong>Zend Optimizer和xdebug不兼容，如果已经安装了Zend Optimizer，先注释掉吧。</strong></p>
 
-<h2 id="section-3">附录</h2>
+<h2>附录</h2>
 
 <p>关于xdebug配置的一些说明</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="c">;xdebug配置
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="c">;xdebug配置
 </span><span class="nn">[Xdebug]</span>
 <span class="c">;开启自动跟踪
 </span><span class="py">xdebug.auto_trace</span> <span class="p">=</span> <span class="s">On</span>
@@ -105,9 +95,7 @@ make install
 </span><span class="py">xdebug.collect_return</span> <span class="p">=</span> <span class="s">On</span>
 <span class="c">;收集参数
 </span><span class="py">xdebug.collect_params</span> <span class="p">=</span> <span class="s">On</span>
-</code></pre>
-</div>
-
+</code></pre></div>
   </div>
   <!-- /post content -->
 

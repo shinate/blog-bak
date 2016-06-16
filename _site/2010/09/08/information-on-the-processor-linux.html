@@ -56,36 +56,27 @@
   
 
   <div class="post-content chinese">
-    <h3 id="cpu">逻辑CPU个数</h3>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>cat /proc/cpuinfo | grep <span class="s2">"processor"</span> | wc -l
-</code></pre>
-</div>
-
-<h3 id="cpu-1">物理CPU个数</h3>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>cat /proc/cpuinfo | grep <span class="s2">"physical id"</span> | sort | uniq | wc -l
-</code></pre>
-</div>
-
-<p>“siblings”指的是一个物理CPU有几个逻辑CPU。
-“cpu cores”指的是一个物理CPU有几个核。
+    <h3>逻辑CPU个数</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep <span class="s2">"processor"</span> | wc -l
+</code></pre></div>
+<h3>物理CPU个数</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep <span class="s2">"physical id"</span> | sort | uniq | wc -l
+</code></pre></div>
+<p>&quot;siblings&quot;指的是一个物理CPU有几个逻辑CPU。
+&quot;cpu cores&quot;指的是一个物理CPU有几个核。
 不应该按照flags里是否有ht标志来判断系统是否有超线程能力，而应该：
-* 如果”siblings”和”cpu cores”<strong>一致</strong>，则说明<strong>不支持</strong>超线程，或者<strong>超线程未打开</strong>。
-* 如果”siblings”是”cpu cores”<strong>的两倍</strong>，则说明<strong>支持</strong>超线程，并且<strong>超线程已打开</strong>。</p>
+* 如果&quot;siblings&quot;和&quot;cpu cores&quot;<strong>一致</strong>，则说明<strong>不支持</strong>超线程，或者<strong>超线程未打开</strong>。
+* 如果&quot;siblings&quot;是&quot;cpu cores&quot;<strong>的两倍</strong>，则说明<strong>支持</strong>超线程，并且<strong>超线程已打开</strong>。</p>
 
-<h3 id="section">举例说明</h3>
+<h3>举例说明</h3>
 
 <p>两个双核超线程CPU：</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>processor   0 1 2 3 4 5 6 7
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">processor   0 1 2 3 4 5 6 7
 physical id 0 0 0 0 1 1 1 1
 siblings    4 4 4 4 4 4 4 4
 core id     0 0 1 1 0 0 1 1
 cpu cores   2 2 2 2 2 2 2 2
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>感谢老男赐予的知识。</p>
 
   </div>
