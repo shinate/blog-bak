@@ -57,11 +57,11 @@
 
   <div class="post-content chinese">
     <h3>逻辑CPU个数</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep &quot;processor&quot; | wc -l
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep <span class="s2">"processor"</span> | wc -l
+</code></pre></div>
 <h3>物理CPU个数</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep &quot;physical id&quot; | sort | uniq | wc -l
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep <span class="s2">"physical id"</span> | sort | uniq | wc -l
+</code></pre></div>
 <p>&quot;siblings&quot;指的是一个物理CPU有几个逻辑CPU。
 &quot;cpu cores&quot;指的是一个物理CPU有几个核。
 不应该按照flags里是否有ht标志来判断系统是否有超线程能力，而应该：
@@ -71,12 +71,12 @@
 <h3>举例说明</h3>
 
 <p>两个双核超线程CPU：</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">processor   0 1 2 3 4 5 6 7
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">processor   0 1 2 3 4 5 6 7
 physical id 0 0 0 0 1 1 1 1
 siblings    4 4 4 4 4 4 4 4
 core id     0 0 1 1 0 0 1 1
 cpu cores   2 2 2 2 2 2 2 2
-</code></pre></figure>
+</code></pre></div>
 <p>感谢老男赐予的知识。</p>
 
   </div>

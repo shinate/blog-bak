@@ -79,27 +79,27 @@
 <h2>命令格式</h2>
 
 <h3>创建</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">junction [-s] 链接路径 源路径
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">junction <span class="o">[</span>-s] 链接路径 源路径
+</code></pre></div>
 <p>*其中参数-s为递归子文件夹</p>
 
 <h3>删除</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">junction -d 链接路径
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">junction -d 链接路径
+</code></pre></div>
 <h2>举例</h2>
 
 <p>D盘中有个文件夹movies，存储大量的视频，想实现访问C:\movies等于访问D&quot;\movies的效果。
 首先确保C盘下不存在 movies文件夹，之后开始-&gt;运行(windows功能键+R也可)，出入cmd调出命令行，执行以下代码：</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">junction -s C:\movies D:\movies
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">junction -s C:<span class="se">\m</span>ovies D:<span class="se">\m</span>ovies
+</code></pre></div>
 <p>出现提示：</p>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">Created: C:\movies
+<div class="highlight"><pre><code class="language-" data-lang="">Created: C:\movies
 Targetted at: D:\movies
-</code></pre></figure>
+</code></pre></div>
 <p>此时，软链接创建完毕。
 而删除时只需要：</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">junction -d C:\movies
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">junction -d C:<span class="se">\m</span>ovies
+</code></pre></div>
 <p>很方便吧~
 用这种方法可以配合同步网盘，将比较大的硬盘用来存储，工作盘可以挪到系统盘上。</p>
 

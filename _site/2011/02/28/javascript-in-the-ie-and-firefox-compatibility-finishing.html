@@ -108,12 +108,12 @@ Firefox：input.type属性为读写。</p>
 <p>window.event只能在IE下运行，而不能在Firefox下运行，这是因为Firefox的event只能在事件发生的现场使用。
 Firefox：必须从源处加入event作参数传递。IE忽略该参数，用window.event来读取该event。
 <strong>解决方法：</strong></p>
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">&amp;lt;script language=&quot;javascript&quot;&amp;gt;
-function fun(e) {
-    e = e ? e : (window.event ? window.event : null);
-}
-&amp;lt;/script&amp;gt;
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">script</span> <span class="nx">language</span><span class="o">=</span><span class="s2">"javascript"</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">fun</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span> <span class="o">=</span> <span class="nx">e</span> <span class="p">?</span> <span class="nx">e</span> <span class="p">:</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">event</span> <span class="p">?</span> <span class="nb">window</span><span class="p">.</span><span class="nx">event</span> <span class="p">:</span> <span class="kc">null</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="sr">/script&amp;gt</span><span class="err">;
+</span></code></pre></div>
 <h2>event.x与event.y</h2>
 
 <p>说明:IE下,even对象有x,y属性,但是没有pageX,pageY属性;Firefox下,even对象有pageX,pageY属性,但是没有x,y属性.
@@ -184,23 +184,23 @@ IE：支持pointer
 
 <p>innerText在IE中能正常工作。但是innerText在FireFox中却不行，需用textContent。
 <strong>解决方法：</strong></p>
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">if(navigator.appName.indexOf(&quot;Explorer&quot;) &amp;gt; -1){
-    document.getElementById(&#39;element&#39;).innerText = &quot;my text&quot;;
-} else{
-    document.getElementById(&#39;element&#39;).textC;
-}
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">appName</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"Explorer"</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'element'</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"my text"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'element'</span><span class="p">).</span><span class="nx">textC</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2>对table的操作</h2>
 
 <p>IE，Firefox以及其它浏览器对于 table 标签的操作都各不相同，在IE中不允许对table和tr的innerHTML赋值，使用js增加一个tr时，使用appendChild方法也不管用。
 <strong>解决方法：</strong></p>
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">//向table追加一个空行：
-var row = otable.insertRow(-1);
-var cell = document.createElement(&quot;td&quot;);
-cell.innerHTML = &quot; &quot;;
-cell.className = &quot;a&quot;;
-row.appendChild(cell);
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//向table追加一个空行：</span>
+<span class="kd">var</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">otable</span><span class="p">.</span><span class="nx">insertRow</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">cell</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"td"</span><span class="p">);</span>
+<span class="nx">cell</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">" "</span><span class="p">;</span>
+<span class="nx">cell</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s2">"a"</span><span class="p">;</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">cell</span><span class="p">);</span>
+</code></pre></div>
 <h2>options集合</h2>
 
 <p>对select的options集合操作
@@ -208,19 +208,19 @@ row.appendChild(cell);
 <em>**注意在 add后赋值元素，否则会失败。</em>*</p>
 
 <h2>XMLHTTP</h2>
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">if (window.XMLHttpRequest) {
-    xmlhttp = new XMLHttpRequest();
-} else if (window.ActiveXObject) {  // code for IE
-    xmlhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
-}
-if (xmlhttp){
-    xmlhttp.onreadystatechange = xmlhttpChange;
-    xmlhttp.open(&quot;GET&quot;,url,true);
-    xmlhttp.send();
-}
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// code for IE</span>
+    <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">"Microsoft.XMLHTTP"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">){</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="nx">xmlhttpChange</span><span class="p">;</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span><span class="nx">url</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span>
 
-```Firefox
-</code></pre></figure>
+<span class="err">```</span><span class="nx">Firefox</span>
+</code></pre></div>
   </div>
   <!-- /post content -->
 
