@@ -56,8 +56,9 @@
   
 
   <div class="post-content chinese">
-    <h2>实现方法</h2>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getQueryString</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+    <h2 id="section">实现方法</h2>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getQueryString</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
 <span class="k">if</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"?"</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span> <span class="o">||</span> <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="o">+</span><span class="s1">'='</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
 <span class="k">return</span> <span class="s1">''</span><span class="p">;</span>
 <span class="p">}</span>
@@ -77,15 +78,20 @@
 <span class="p">};</span>
 <span class="c1">//http://localhost/test.html?aa=bb&amp;test=cc+dd&amp;ee=ff</span>
 <span class="nx">alert</span><span class="p">(</span><span class="nx">getQueryString</span><span class="p">(</span><span class="s1">'test'</span><span class="p">));</span>
-</code></pre></div>
-<h2>正则的方法</h2>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getQueryStringRegExp</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+</code></pre>
+</div>
+
+<h2 id="section-1">正则的方法</h2>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getQueryStringRegExp</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
 <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">"(^|\\?|&amp;)"</span><span class="o">+</span> <span class="nx">name</span> <span class="o">+</span><span class="s2">"=([^&amp;]*)(\\s|&amp;|$)"</span><span class="p">,</span> <span class="s2">"i"</span><span class="p">);</span>
 <span class="k">return</span> <span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">))</span> <span class="p">?</span> <span class="nx">unescape</span><span class="p">(</span><span class="nb">RegExp</span><span class="p">.</span><span class="nx">$2</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\+</span><span class="sr">/g</span><span class="p">,</span> <span class="s2">" "</span><span class="p">))</span> <span class="p">:</span> <span class="s2">""</span><span class="p">;</span>
 <span class="p">};</span>
 <span class="c1">//http://localhost/test.html?aa=bb&amp;test=cc+dd&amp;ee=ff</span>
 <span class="nx">alert</span><span class="p">(</span><span class="nx">getQueryStringRegExp</span><span class="p">(</span><span class="s1">'test'</span><span class="p">));</span>
-</code></pre></div>
+</code></pre>
+</div>
+
   </div>
   <!-- /post content -->
 
