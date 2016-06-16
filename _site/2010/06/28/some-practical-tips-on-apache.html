@@ -58,123 +58,84 @@
   <div class="post-content chinese">
     <p>原文地址: <a href="http://www.petefreitag.com/item/505.cfm">http://www.petefreitag.com/item/505.cfm</a></p>
 
-<h2 id="apache">隐藏Apache的版本号</h2>
+<h2>隐藏Apache的版本号</h2>
 
 <p>另外包括一些其他的信息
 apache的默认设置公开了apache的版本号，操作系统，甚至还有已经安装了的apache组件。黑客们会利用这些信息更方便的去攻击你。并且，这些信息告诉了所有人：你的apache并没有经过配置
 你可以在httpd.conf文件中，加上或者修改两条代码，隐藏信息。</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">ServerSignature</span> <span class="err">Off</span>
-<span class="err">ServerTokens</span> <span class="err">Prod</span>
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">ServerSignature Off
+ServerTokens Prod
+</code></pre></figure>
 <p>ServerSignature apache生成的一些页面底部,比如404页面,文件列表页面等等。
-ServerTokens指向被用来设置Server的http头回响。设置为Prod可以让HTTP头回响显示成这样….
+ServerTokens指向被用来设置Server的http头回响。设置为Prod可以让HTTP头回响显示成这样....
 Server: Apache
 如果是个超级偏执狂，你可以修改源代码或者使用mod_security，来显示比Apache更多的东西.</p>
 
-<h2 id="apache-1">确定运行apache的用户组</h2>
+<h2>确定运行apache的用户组</h2>
 
 <p>很多apache安装之后他们是运行在nobody之下的。所以,每个运行在nobody之下的apache，将会被同组的邮件服务器攻击。所以</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>chown -R apache.apache /webserver/apache2/
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">chown -R apache.apache /webserver/apache2/
+</code></pre></figure>
 <p>编辑httpd.conf</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">User</span> <span class="err">apache</span>
-<span class="err">Group</span> <span class="err">apache</span>
-</code></pre>
-</div>
-
-<h2 id="section">确认根目录的东西是关闭的</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">User apache
+Group apache
+</code></pre></figure>
+<h2>确认根目录的东西是关闭的</h2>
 
 <p>我们不希望apache有修改根目录的权限。 所以，建议你所有的网站都放在一个目录下面(我们称为/web，你可以象这样设置:</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Order</span> <span class="err">Deny,Allow</span>
-<span class="err">Deny</span> <span class="err">from</span> <span class="err">all</span>
-<span class="err">Options</span> <span class="err">None</span>
-<span class="err">AllowOverride</span> <span class="err">None</span>
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Order Deny,Allow
+Deny from all
+Options None
+AllowOverride None
+</code></pre></figure>
 <p>由于设置了Options None 和AllowOverride None，这将关闭options权限和覆盖权限，你现在必须为每个文件夹加上独立的配置，为他们恢复Option和Override权限。</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Order</span> <span class="err">Allow,Deny</span>
-<span class="err">Allow</span> <span class="err">from</span> <span class="err">all</span>
-</code></pre>
-</div>
-
-<h2 id="section-1">关闭文件夹浏览</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Order Allow,Deny
+Allow from all
+</code></pre></figure>
+<h2>关闭文件夹浏览</h2>
 
 <p>你可以在httpd.conf的Directory标签中间加上一个Options指令。 设置Options为None或者-Indexes</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Options</span> <span class="err">-Indexes</span>
-</code></pre>
-</div>
-
-<h2 id="side-includes">关闭服务器的side includes</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Options -Indexes
+</code></pre></figure>
+<h2>关闭服务器的side includes</h2>
 
 <p>也要添加一条Optoions指令到Directory 标签中, 使Options 为 None或者-Includes</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Options</span> <span class="err">-Includes</span>
-</code></pre>
-</div>
-
-<h2 id="cgi">关掉CGI</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Options -Includes
+</code></pre></figure>
+<h2>关掉CGI</h2>
 
 <p>如果你不用CGI,那就在Directory标签中加上一条Options指令关掉他。 使Options为None或者-ExecCGI</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Options</span> <span class="err">-ExecCGI</span>
-</code></pre>
-</div>
-
-<h2 id="section-2">禁用伪链接</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Options -ExecCGI
+</code></pre></figure>
+<h2>禁用伪链接</h2>
 
 <p>只允许访问真实的地址
 也是在directory中修改Options 为 -FollowSymLinks</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Options</span> <span class="err">-FollowSymLinks</span>
-</code></pre>
-</div>
-
-<h2 id="section-3">关闭多选项</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Options -FollowSymLinks
+</code></pre></figure>
+<h2>关闭多选项</h2>
 
 <p>关闭所有选项</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Options</span> <span class="err">None</span>
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Options None
+</code></pre></figure>
 <p>关闭几个选项</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Options</span> <span class="err">-ExecCGI</span> <span class="err">-FollowSymLinks</span> <span class="err">-Indexes</span>
-</code></pre>
-</div>
-
-<h2 id="htaccess-">关闭 .htaccess 文件的支持</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Options -ExecCGI -FollowSymLinks -Indexes
+</code></pre></figure>
+<h2>关闭 .htaccess 文件的支持</h2>
 
 <p>也在Directory标签中，但是AllowOverride指令</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">AllowOverride</span> <span class="err">none</span>
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">AllowOverride none
+</code></pre></figure>
 <p>如果你需要Overrides，需要确认他们不能被下载。改变他们的文件名，而不是原来的.htaccess, 比如可以改为.httpdoveride, 或者屏蔽所有的.ht开头的文件。</p>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">AccessFileName .httpdoverride
+Order allow,deny
+Deny from all
+Satisfy All
+</code></pre></figure>
+<h2>运行 mod_security</h2>
 
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">AccessFileName</span> <span class="err">.httpdoverride</span>
-<span class="err">Order</span> <span class="err">allow,deny</span>
-<span class="err">Deny</span> <span class="err">from</span> <span class="err">all</span>
-<span class="err">Satisfy</span> <span class="err">All</span>
-</code></pre>
-</div>
-
-<h2 id="modsecurity">运行 mod_security</h2>
-
-<p>mod_security 是一个非常好用的Apache组件.
-通过mod_security你可以达到以下效果:
+<p>mod<em>security 是一个非常好用的Apache组件.
+通过mod</em>security你可以达到以下效果:
 1. 简单的过滤
 2. 正则表达式过滤
 3. URL 编码验证
@@ -185,94 +146,66 @@ Server: Apache
 8. 服务器身份掩藏
 9. 内置Chroot支持</p>
 
-<h2 id="section-4">关掉一些不需要的组件</h2>
+<h2>关掉一些不需要的组件</h2>
 
-<p>去<a href="http://httpd.apache.org/docs/2.0/mod/">module documentation</a> 看一下你到底需要哪些组件. 好多时候你会发现，你并不需要…。
+<p>去<a href="http://httpd.apache.org/docs/2.0/mod/">module documentation</a> 看一下你到底需要哪些组件. 好多时候你会发现，你并不需要...。
 一行一行去查找你的httpd.conf里是否包含LoadModule, 可以用#放在行首去关闭组件。 如果象搜索组件，可以运行:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>grep LoadModule httpd.conf
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">grep LoadModule httpd.conf
+</code></pre></figure>
 <p>这里有些组件常常打开的，但是不需要。</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">mod_imap,mod_include,mod_info,mod_userdir,mod_status,mod0cgi,mod-autoindex.</span>
-</code></pre>
-</div>
-
-<h2 id="section-5">限制目录权限</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">mod_imap,mod_include,mod_info,mod_userdir,mod_status,mod0cgi,mod-autoindex.
+</code></pre></figure>
+<h2>限制目录权限</h2>
 
 <p>root有阅读apache配置文件和bin文件的权限。</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>chown -R root:root /usr/local/webserver/apache2
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">chown -R root:root /usr/local/webserver/apache2
 chmod -R o-rwx /usr/local/webserver/apache2
-</code></pre>
-</div>
-
-<h2 id="timeout">减少Timeout值</h2>
+</code></pre></figure>
+<h2>减少Timeout值</h2>
 
 <p>默认设置timeout指令是300秒。 你可以减小他，以预防一些潜在攻击。</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Timeout</span> <span class="err">45</span>
-</code></pre>
-</div>
-
-<h2 id="section-6">减小最大请求</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Timeout 45
+</code></pre></figure>
+<h2>减小最大请求</h2>
 
 <p>apache有很多指令来减小请求数，一个很好的指令是LimitRequestBody指令。 这条指令默认设置是无限的。 如果你想设置上传文件不能超过1MB， 你可以这样写:</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">LimitRequestBody</span> <span class="err">1048567</span>
-</code></pre>
-</div>
-
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">LimitRequestBody 1048567
+</code></pre></figure>
 <p>如果不允许问文件上传。你可以设得更小。
 其他得指令，可以看看LimitRequestFields,LimitrequestFieldSize , LimitRequestLine. 这些指令都是默认设置。但是你必须去优化他们，成为你需要的。 可以看看这个<a href="http://httpd.apache.org/docs/2.0/mod/core.html">文档</a></p>
 
-<h2 id="xml-body">限制XML body区的大小</h2>
+<h2>限制XML body区的大小</h2>
 
 <p>如果你运行了mod_dav,你会希望限制XML 请求的body大小。 LimitXMLRequestBody指令只有在Apache2中有。 并且他的默认值是1个millon字节大小，大约1M, 很多教材上说这里设置为0比较好，这就意味着多大的文件都可以上传，如果你需要上传大文件的话。 但是如果你简单的改变一下控制。 你可以大概的设置成10MB</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">LimitXMLRequestBody</span> <span class="err">10485760</span>
-</code></pre>
-</div>
-
-<h2 id="section-7">限制并发</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">LimitXMLRequestBody 10485760
+</code></pre></figure>
+<h2>限制并发</h2>
 
 <p>apache有些设置可以限制并发请求。MaxClients就是服务器能承受的最大用户值。
 其他的指令比如MaxSpareServers，MaxRequestsPerChild, Apache2上的 ThreadsPerChild,ServerLimit,和MaxSpareThreads 和你的系统硬件配置的配合都是很重要的。</p>
 
-<h2 id="ip">IP限制地址段</h2>
+<h2>IP限制地址段</h2>
 
-<p>如果你有一些资源只能给特定的网段使用…176。16.0.0–176.16.0.16</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Order</span> <span class="err">Deny,Allow</span>
-<span class="err">deny</span> <span class="err">from</span> <span class="err">all</span>
-<span class="err">Allow</span> <span class="err">from</span> <span class="err">176.16.0.0/16</span>
-</code></pre>
-</div>
-
+<p>如果你有一些资源只能给特定的网段使用...176。16.0.0--176.16.0.16</p>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Order Deny,Allow
+deny from all
+Allow from 176.16.0.0/16
+</code></pre></figure>
 <p>或者也可以限定单一IP</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">Order</span> <span class="err">Deny,Allow</span>
-<span class="err">Deny</span> <span class="err">from</span> <span class="err">all</span>
-<span class="err">Allow</span> <span class="err">from</span> <span class="err">127.0.0.1</span>
-</code></pre>
-</div>
-
-<h2 id="keepalive">调整KeepAlive(永久保持)设置</h2>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">MaxKeepAliveRequests</span> <span class="err">--&gt;</span> <span class="err">100</span>  <span class="err">(你需要的数)</span>
-<span class="err">KeepAliveTimeout</span> <span class="err">--&gt;</span> <span class="err">15</span>  <span class="err">(你需要的数)</span>
-</code></pre>
-</div>
-
-<h2 id="chrootapache">在Chroot环境运行apache</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">Order Deny,Allow
+Deny from all
+Allow from 127.0.0.1
+</code></pre></figure>
+<h2>调整KeepAlive(永久保持)设置</h2>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini">MaxKeepAliveRequests --&gt; 100  (你需要的数)
+KeepAliveTimeout --&gt; 15  (你需要的数)
+</code></pre></figure>
+<h2>在Chroot环境运行apache</h2>
 
 <p>chroot allows you to run a program in its own isolated jail. This prevents a break in on one service from being able to effect anything else on the server.
-It can be fairly tricky to set this up using chroot due to library dependencies. I mentioned above that the mod_security module has built in chroot support. It makes the process as simple as adding a mod_security directive to your configuration:
+It can be fairly tricky to set this up using chroot due to library dependencies. I mentioned above that the mod<em>security module has built in chroot support. It makes the process as simple as adding a mod</em>security directive to your configuration:
 SecChrootDir /chroot/apache
 There are however some caveats however, so check out the docs for more info.</p>
-
 
   </div>
   <!-- /post content -->

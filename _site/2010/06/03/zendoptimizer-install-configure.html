@@ -56,42 +56,30 @@
   
 
   <div class="post-content chinese">
-    <h2 id="zend-optimizer">什么是Zend Optimizer？</h2>
+    <h2>什么是Zend Optimizer？</h2>
 
 <p>Zend Optimizer用优化代码的方法来提高PHP 4.0应用程序的执行速度。实现的原理是对那些在被最终执行之前由运行编译器(Run-Time Compiler)产生的代码进行优化。
 一般情况下，执行使用Zend Optimizer的PHP程序比不使用的要快40%到100%。这意味着网站的访问者可以更快的浏览网页，从而完成更多的事务，创造更好的客户满意度。更快的反应同时也意味着可以节省硬件投资，并增强网站所提供的服务。
 Zend Optimizer能给PHP用户带来很多益处，特别是那些运营网站的人。快速运行PHP程序可以显著降低服务器的CPU负载，并可以减少一半的反应时间，也就是从访问者点击链接到服务器开始读取页面之间的时间。</p>
 
-<h2 id="section">安装过程</h2>
+<h2>安装过程</h2>
 
-<h3 id="section-1">软件包下载</h3>
+<h3>软件包下载</h3>
 
-<h4 id="bit">32-bit</h4>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://downloads.zend.com/optimizer/3.3.3/ZendOptimizer-3.3.3-linux-glibc23-i386.tar.gz
-</code></pre>
-</div>
-
-<h4 id="bit-1">64-bit</h4>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://downloads.zend.com/optimizer/3.3.3/ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz
-</code></pre>
-</div>
-
-<h3 id="section-2">安装</h3>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>./install
-</code></pre>
-</div>
-
+<h4>32-bit</h4>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://downloads.zend.com/optimizer/3.3.3/ZendOptimizer-3.3.3-linux-glibc23-i386.tar.gz
+</code></pre></figure>
+<h4>64-bit</h4>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://downloads.zend.com/optimizer/3.3.3/ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz
+</code></pre></figure>
+<h3>安装</h3>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">./install
+</code></pre></figure>
 <p>按照提示输入</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>Zend路径：/usr/local/Zend
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">Zend路径：/usr/local/Zend
 php.ini：/usr/local/php5/lib/
 apache启动文件：/usr/local/apache2/bin/apachectl
-</code></pre>
-</div>
-
+</code></pre></figure>
 <p>生成php.ini新路径：/usr/local/Zend/etc
 apache自动重启，安装完毕</p>
 
