@@ -54,15 +54,13 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <p>统计访问量最多的前N个IP，倒序排列</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat 日志文件 <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="p">|</span>sort<span class="p">|</span>uniq -c<span class="p">|</span>sort -r -n -k1<span class="p">|</span>head -数量
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat 日志文件 | awk <span class="s1">'{print $1}'</span>|sort|uniq -c|sort -r -n -k1|head -数量
 </code></pre></div>
 <p>统计访问量最多的50个IP，倒序排列，并且排除包含&quot;bot&quot;和&quot;spider&quot;的记录</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat access_20100921.log <span class="p">|</span>egrep -v <span class="s2">&quot;bot|spider&quot;</span><span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="p">|</span>sort<span class="p">|</span>uniq -c<span class="p">|</span>sort -r -n -k1<span class="p">|</span>head -50
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat access_20100921.log |egrep -v <span class="s2">"bot|spider"</span>| awk <span class="s1">'{print $1}'</span>|sort|uniq -c|sort -r -n -k1|head -50
 </code></pre></div>
   </div>
   <!-- /post content -->

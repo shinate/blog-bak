@@ -54,8 +54,6 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <h2>优点和缺点</h2>
@@ -90,7 +88,7 @@ cp memcached /usr/local/bin/
 cp memcached-debug /usr/local/bin/
 </code></pre></div>
 <h2>启动</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span> -r -c <span class="m">16382</span> -p 11211
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
 </code></pre></div>
 <p><strong>启动成功！</strong></p>
 
@@ -99,7 +97,7 @@ cp memcached-debug /usr/local/bin/
 <h3><strong>[*1]</strong>问题的处理</h3>
 
 <p>如果使用的64位系统并且没有执行<strong>[*1]</strong>操作，<strong>启动时</strong>会得到下面的错误。</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
+<div class="highlight"><pre><code class="language-" data-lang="">error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
 </code></pre></div>
 <p><strong>使用 &quot;LD_DEBUG=libs /usr/local/memcached/bin/memcached -v&quot; 进行检查</strong>
 得到以下结果</p>
@@ -124,7 +122,7 @@ cp memcached-debug /usr/local/bin/
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2
 </code></pre></div>
 <p>此时启动memcached</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span> -r -c <span class="m">16382</span> -p 11211
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
 </code></pre></div>
 <p>启动成功</p>
 
@@ -149,7 +147,7 @@ make install
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /usr/local/Zend/etc/php.ini
 </code></pre></div>
 <p>在最后添加</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[memcache]
+<div class="highlight"><pre><code class="language-" data-lang="">[memcache]
 extension=memcache.so
 </code></pre></div>
 <p>重启apache</p>
@@ -162,12 +160,12 @@ extension=memcache.so
 <h2>附录</h2>
 
 <p>开启了64位参数，可以分配4G以上的内存，如：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m <span class="m">6144</span> -u root -t <span class="m">64</span> -r -c <span class="m">16382</span> -p 11211
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 6144 -u root -t 64 -r -c 16382 -p 11211
 </code></pre></div>
 <p>可以更改端口：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span> -r -c <span class="m">16382</span> -p 11211
-memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span> -r -c <span class="m">16382</span> -p 11212
-memcached -d -m <span class="m">1024</span> -u root -t <span class="m">64</span> -r -c <span class="m">16382</span> -p 11213
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11211
+memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11212
+memcached -d -m 1024 -u root -t 64 -r -c 16382 -p 11213
 </code></pre></div>
 <h3>启动参数</h3>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">-d</span> <span class="err">启动deamon模式</span>

@@ -54,8 +54,6 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <p>感谢老男孩赐予的知识。 老男孩（QQ:49000448， mail:49000448@qq.com）</p>
@@ -67,8 +65,8 @@
 <span class="c">#create a new archive ||建立新的归档文件</span>
 -v, --verbose
 <span class="c">#verbosely list files processed||处理过程中输出相关信息</span>
--f, --file <span class="o">[</span>HOSTNAME:<span class="o">]</span>F
-<span class="c">#use archive file or device F (default &quot;-&quot;, meaning stdin/stdout)||对普通文件操作</span>
+-f, --file <span class="o">[</span>HOSTNAME:]F
+<span class="c">#use archive file or device F (default "-", meaning stdin/stdout)||对普通文件操作</span>
 -x, --extract, --get
 <span class="c">#extract files from an archive||从归档文件中解出文件</span>
 -j, --bzip2
@@ -131,7 +129,7 @@ tar zxvf test.tar.gz -C /home/rhy/
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /
 mkdir -p /test/baoliu
 mkdir -p /test/paichu
-touch exceptlist<span class="p">;</span><span class="nb">echo</span> <span class="s2">&quot;paichu&quot;</span><span class="p">&amp;</span>gt<span class="p">;</span>exceptlist
+touch exceptlist;echo <span class="s2">"paichu"</span>&amp;gt;exceptlist
 </code></pre></div>
 <h4>测试开始</h4>
 

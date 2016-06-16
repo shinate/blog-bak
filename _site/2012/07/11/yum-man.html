@@ -54,8 +54,6 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <p>在Centos中yum安装和卸载软件的使用方法</p>
@@ -66,7 +64,7 @@
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd
 </code></pre></div>
 <h3>多个类似软件</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd*
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd<span class="k">*</span>
 </code></pre></div>
 <h3>多个非类似软件</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd php php-gd mysql
@@ -77,7 +75,7 @@
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd
 </code></pre></div>
 <h3>多个相类似软件</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd*
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd<span class="k">*</span>
 </code></pre></div>
 <h3>多个非类似软件</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd php php-gd mysql
@@ -89,7 +87,7 @@
 </code></pre></div>
 <p>就能查到和iostat相关的安装包了。
 另外想安装一个程序，只记得一部分名称，也可以用这个办法来实现安装</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum search png <span class="p">|</span>grep png
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum search png |grep png
 </code></pre></div>
 <p>就能找到我们想安装的libpng这个名称。</p>
 

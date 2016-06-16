@@ -54,15 +54,13 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <h3>逻辑CPU个数</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo <span class="p">|</span> grep <span class="s2">&quot;processor&quot;</span> <span class="p">|</span> wc -l
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep <span class="s2">"processor"</span> | wc -l
 </code></pre></div>
 <h3>物理CPU个数</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo <span class="p">|</span> grep <span class="s2">&quot;physical id&quot;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> wc -l
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep <span class="s2">"physical id"</span> | sort | uniq | wc -l
 </code></pre></div>
 <p>&quot;siblings&quot;指的是一个物理CPU有几个逻辑CPU。
 &quot;cpu cores&quot;指的是一个物理CPU有几个核。
@@ -73,11 +71,11 @@
 <h3>举例说明</h3>
 
 <p>两个双核超线程CPU：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">processor   <span class="m">0</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> 7
-physical id <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> 1
-siblings    <span class="m">4</span> <span class="m">4</span> <span class="m">4</span> <span class="m">4</span> <span class="m">4</span> <span class="m">4</span> <span class="m">4</span> 4
-core id     <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> 1
-cpu cores   <span class="m">2</span> <span class="m">2</span> <span class="m">2</span> <span class="m">2</span> <span class="m">2</span> <span class="m">2</span> <span class="m">2</span> 2
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">processor   0 1 2 3 4 5 6 7
+physical id 0 0 0 0 1 1 1 1
+siblings    4 4 4 4 4 4 4 4
+core id     0 0 1 1 0 0 1 1
+cpu cores   2 2 2 2 2 2 2 2
 </code></pre></div>
 <p>感谢老男赐予的知识。</p>
 

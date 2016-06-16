@@ -54,8 +54,6 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <p>我用的是5.2.9，所以就以它为例，为了运行为FastCGI模式，需要打上fpm补丁包。
@@ -63,7 +61,7 @@ PHP各个版本fpm补丁包下载 <a href="http://php-fpm.org/downloads/">http:/
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://cn.php.net/get/php-5.2.9.tar.gz/from/this/mirror
 wget http://php-fpm.org/downloads/php-5.2.9-fpm-0.5.10-unofficial.diff.gz
 tar zxf php-5.2.9.tar.gz
-gzip -cd php-5.2.9-fpm-0.5.10-unofficial.diff.gz <span class="p">|</span> patch -d php-5.2.9 -p1
+gzip -cd php-5.2.9-fpm-0.5.10-unofficial.diff.gz | patch -d php-5.2.9 -p1
 <span class="nb">cd </span>php-5.2.9
 ./configure <span class="se">\</span>
 --prefix<span class="o">=</span>/servers/app/php <span class="se">\</span>
@@ -100,7 +98,7 @@ gzip -cd php-5.2.9-fpm-0.5.10-unofficial.diff.gz <span class="p">|</span> patch 
 --enable-sockets <span class="se">\</span>
 --with-ldap <span class="se">\</span>
 --with-ldap-sasl
-make <span class="nv">ZEND_EXTRA_LIBS</span><span class="o">=</span><span class="s1">&#39;-liconv&#39;</span>
+make <span class="nv">ZEND_EXTRA_LIBS</span><span class="o">=</span><span class="s1">'-liconv'</span>
 make install
 </code></pre></div>
 <p>*缺失的库可以尝试用yum进行安装</p>
@@ -118,61 +116,61 @@ yum install libmcrypt-devel
 </code></pre></div>
 <p>需要修改的不是很多，重新设置一下pid，log，端口，进程数什么的，根据自己机器来定。
 放个简洁版的，注释太长，去了。</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" ?&gt;</span>
 <span class="nt">&lt;configuration&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">&quot;global_options&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;pid_file&quot;</span><span class="nt">&gt;</span>/servers/run/php-fpm-9000.pid<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;error_log&quot;</span><span class="nt">&gt;</span>/servers/logs/php-fpm-9000.log<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;log_level&quot;</span><span class="nt">&gt;</span>notice<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;emergency_restart_threshold&quot;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;emergency_restart_interval&quot;</span><span class="nt">&gt;</span>1m<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;process_control_timeout&quot;</span><span class="nt">&gt;</span>5s<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;daemonize&quot;</span><span class="nt">&gt;</span>yes<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">"global_options"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"pid_file"</span><span class="nt">&gt;</span>/servers/run/php-fpm-9000.pid<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"error_log"</span><span class="nt">&gt;</span>/servers/logs/php-fpm-9000.log<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"log_level"</span><span class="nt">&gt;</span>notice<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"emergency_restart_threshold"</span><span class="nt">&gt;</span>10<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"emergency_restart_interval"</span><span class="nt">&gt;</span>1m<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"process_control_timeout"</span><span class="nt">&gt;</span>5s<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"daemonize"</span><span class="nt">&gt;</span>yes<span class="nt">&lt;/value&gt;</span>
     <span class="nt">&lt;/section&gt;</span>
     <span class="nt">&lt;workers&gt;</span>
-        <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">&quot;pool&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>default<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;listen_address&quot;</span><span class="nt">&gt;</span>127.0.0.1:9000<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;listen_options&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;backlog&quot;</span><span class="nt">&gt;</span>-1<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;owner&quot;</span><span class="nt">&gt;&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;group&quot;</span><span class="nt">&gt;&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;mode&quot;</span><span class="nt">&gt;</span>0666<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">"pool"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;</span>default<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"listen_address"</span><span class="nt">&gt;</span>127.0.0.1:9000<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"listen_options"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"backlog"</span><span class="nt">&gt;</span>-1<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"owner"</span><span class="nt">&gt;&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"group"</span><span class="nt">&gt;&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"mode"</span><span class="nt">&gt;</span>0666<span class="nt">&lt;/value&gt;</span>
             <span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;php_defines&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;sendmail_path&quot;</span><span class="nt">&gt;</span>/usr/sbin/sendmail -t -i<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;display_errors&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"php_defines"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"sendmail_path"</span><span class="nt">&gt;</span>/usr/sbin/sendmail -t -i<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"display_errors"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/value&gt;</span>
             <span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;user&quot;</span><span class="nt">&gt;</span>nginx<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;group&quot;</span><span class="nt">&gt;</span>nginx<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;pm&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;style&quot;</span><span class="nt">&gt;</span>static<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;max_children&quot;</span><span class="nt">&gt;</span>128<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;apache_like&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;StartServers&quot;</span><span class="nt">&gt;</span>20<span class="nt">&lt;/value&gt;</span>
-                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;MinSpareServers&quot;</span><span class="nt">&gt;</span>5<span class="nt">&lt;/value&gt;</span>
-                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;MaxSpareServers&quot;</span><span class="nt">&gt;</span>35<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"user"</span><span class="nt">&gt;</span>nginx<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"group"</span><span class="nt">&gt;</span>nginx<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"pm"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"style"</span><span class="nt">&gt;</span>static<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"max_children"</span><span class="nt">&gt;</span>128<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"apache_like"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"StartServers"</span><span class="nt">&gt;</span>20<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"MinSpareServers"</span><span class="nt">&gt;</span>5<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"MaxSpareServers"</span><span class="nt">&gt;</span>35<span class="nt">&lt;/value&gt;</span>
                 <span class="nt">&lt;/value&gt;</span>
             <span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;request_terminate_timeout&quot;</span><span class="nt">&gt;</span>0s<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;request_slowlog_timeout&quot;</span><span class="nt">&gt;</span>0s<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;slowlog&quot;</span><span class="nt">&gt;</span>logs/slow.log<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;rlimit_files&quot;</span><span class="nt">&gt;</span>65535<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;rlimit_core&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;chroot&quot;</span><span class="nt">&gt;&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;chdir&quot;</span><span class="nt">&gt;&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;catch_workers_output&quot;</span><span class="nt">&gt;</span>yes<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;max_requests&quot;</span><span class="nt">&gt;</span>1024<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;allowed_clients&quot;</span><span class="nt">&gt;</span>127.0.0.1<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;environment&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;HOSTNAME&quot;</span><span class="nt">&gt;</span>$HOSTNAME<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;PATH&quot;</span><span class="nt">&gt;</span>/usr/local/bin:/usr/bin:/bin<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;TMP&quot;</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;TMPDIR&quot;</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;TEMP&quot;</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;OSTYPE&quot;</span><span class="nt">&gt;</span>$OSTYPE<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;MACHTYPE&quot;</span><span class="nt">&gt;</span>$MACHTYPE<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">&quot;MALLOC_CHECK_&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"request_terminate_timeout"</span><span class="nt">&gt;</span>0s<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"request_slowlog_timeout"</span><span class="nt">&gt;</span>0s<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"slowlog"</span><span class="nt">&gt;</span>logs/slow.log<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"rlimit_files"</span><span class="nt">&gt;</span>65535<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"rlimit_core"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"chroot"</span><span class="nt">&gt;&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"chdir"</span><span class="nt">&gt;&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"catch_workers_output"</span><span class="nt">&gt;</span>yes<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"max_requests"</span><span class="nt">&gt;</span>1024<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"allowed_clients"</span><span class="nt">&gt;</span>127.0.0.1<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"environment"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"HOSTNAME"</span><span class="nt">&gt;</span>$HOSTNAME<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"PATH"</span><span class="nt">&gt;</span>/usr/local/bin:/usr/bin:/bin<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"TMP"</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"TMPDIR"</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"TEMP"</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"OSTYPE"</span><span class="nt">&gt;</span>$OSTYPE<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"MACHTYPE"</span><span class="nt">&gt;</span>$MACHTYPE<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"MALLOC_CHECK_"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/value&gt;</span>
             <span class="nt">&lt;/value&gt;</span>
         <span class="nt">&lt;/section&gt;</span>
     <span class="nt">&lt;/workers&gt;</span>

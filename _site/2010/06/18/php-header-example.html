@@ -54,26 +54,24 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <h2>成功</h2>
 
 <p>// See related links for more status codes  </p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;HTTP/1.1 200 OK&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('HTTP/1.1 200 OK');
 </code></pre></div>
 <h2>页面未找到</h2>
 
 <p>Page was not found
 //Use this header instruction to fix 404 headers
 //produced by url rewriting...</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;HTTP/1.1 404 Not Found&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('HTTP/1.1 404 Not Found');
 </code></pre></div>
 <h2>拒绝访问</h2>
 
 <p>Access forbidden</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;HTTP/1.1 403 Forbidden&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('HTTP/1.1 403 Forbidden');
 </code></pre></div>
 <h2>永久转向</h2>
 
@@ -81,95 +79,95 @@
 The page moved permanently should be used for
 all redrictions, because search engines know
 what&#39;s going on and can easily update their urls.</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;HTTP/1.1 301 Moved Permanently&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('HTTP/1.1 301 Moved Permanently');
 </code></pre></div>
 <h2>服务器内部错误</h2>
 
 <p>Server error</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;HTTP/1.1 500 Internal Server Error&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('HTTP/1.1 500 Internal Server Error');
 </code></pre></div>
 <h2>页面跳转</h2>
 
 <p>Redirect to a new location</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;Location: http://www.example.org/&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('Location: http://www.example.org/');
 </code></pre></div>
 <h2>一定时间后重定向</h2>
 
 <p>Redriect with a delay</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;Refresh: 10; url=http://www.example.org/&#39;);</span>
-<span class="x">print &#39;You will be redirected in 10 seconds&#39;;</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('Refresh: 10; url=http://www.example.org/');
+print 'You will be redirected in 10 seconds';
 </code></pre></div>
 <p>当然,还可以这样:</p>
 
 <h3>通过html实现</h3>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">&amp;lt;meta http-equiv=&quot;refresh&quot; content=&quot;10;http://www.example.org/ /&amp;gt;</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="ni">&amp;lt;</span>meta http-equiv="refresh" content="10;http://www.example.org/ /<span class="ni">&amp;gt;</span>
 </code></pre></div>
 <h2>重置技术支持信息</h2>
 
 <p>override X-Powered-By value</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;X-Powered-By: PHP/4.4.0&#39;);</span>
-<span class="x">header(&#39;X-Powered-By: Brain/0.6b&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('X-Powered-By: PHP/4.4.0');
+header('X-Powered-By: Brain/0.6b');
 </code></pre></div>
 <h2>设定语言</h2>
 
 <p>content language (en = English)</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;Content-language: en&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('Content-language: en');
 </code></pre></div>
 <h2>最后编辑时间</h2>
 
 <p>last modified
 对缓存页面有很好的帮助</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$time = time() - 60; // or filemtime($fn), etc</span>
-<span class="x">header(&#39;Last-Modified: &#39;.gmdate(&#39;D, d M Y H:i:s&#39;, $time).&#39; GMT&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">$time = time() - 60; // or filemtime($fn), etc
+header('Last-Modified: '.gmdate('D, d M Y H:i:s', $time).' GMT');
 </code></pre></div>
 <h2>已缓存的</h2>
 
 <p>Not Modified
 // header for telling the browser that the content
 // did not get changed</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;HTTP/1.1 304 Not Modified&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('HTTP/1.1 304 Not Modified');
 </code></pre></div>
 <h2>设定内容长度</h2>
 
 <p>set content length (good for caching)</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;Content-Length: 1234&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('Content-Length: 1234');
 </code></pre></div>
 <h2>用于下载的文件头</h2>
 
 <p>Headers for an download:</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;Content-Type: application/octet-stream&#39;);</span>
-<span class="x">header(&#39;Content-Disposition: attachment; filename=&quot;example.zip&quot;&#39;);</span>
-<span class="x">header(&#39;Content-Transfer-Encoding: binary&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('Content-Type: application/octet-stream');
+header('Content-Disposition: attachment; filename="example.zip"');
+header('Content-Transfer-Encoding: binary');
 </code></pre></div>
 <p>读取文件内容:</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">readfile(&#39;example.zip&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">readfile('example.zip');
 </code></pre></div>
 <h2>不使用缓存</h2>
 
 <p>Disable caching of the current document</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;Cache-Control: no-cache, no-store, max-age=0, must-revalidate&#39;);</span>
-<span class="x">header(&#39;Expires: Mon, 26 Jul 1997 05:00:00 GMT&#39;); // Date in the past</span>
-<span class="x">header(&#39;Pragma: no-cache&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('Cache-Control: no-cache, no-store, max-age=0, must-revalidate');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+header('Pragma: no-cache');
 </code></pre></div>
 <h2>设置页面类型</h2>
 
 <p>set content type</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;Content-Type: text/html; charset=iso-8859-1&#39;);</span>
-<span class="x">header(&#39;Content-Type: text/html; charset=utf-8&#39;);</span>
-<span class="x">header(&#39;Content-Type: text/plain&#39;); // plain text file</span>
-<span class="x">header(&#39;Content-Type: image/jpeg&#39;); // JPG picture</span>
-<span class="x">header(&#39;Content-Type: application/zip&#39;); // ZIP file</span>
-<span class="x">header(&#39;Content-Type: application/pdf&#39;); // PDF file</span>
-<span class="x">header(&#39;Content-Type: audio/mpeg&#39;); // Audio MPEG (MP3,...) file</span>
-<span class="x">header(&#39;Content-Type: application/x-shockwave-flash&#39;); // Flash animation</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('Content-Type: text/html; charset=iso-8859-1');
+header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: text/plain'); // plain text file
+header('Content-Type: image/jpeg'); // JPG picture
+header('Content-Type: application/zip'); // ZIP file
+header('Content-Type: application/pdf'); // PDF file
+header('Content-Type: audio/mpeg'); // Audio MPEG (MP3,...) file
+header('Content-Type: application/x-shockwave-flash'); // Flash animation
 </code></pre></div>
 <h2>弹出一个消息框</h2>
 
 <p>show sign in box</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">header(&#39;HTTP/1.1 401 Unauthorized&#39;);</span>
-<span class="x">header(&#39;WWW-Authenticate: Basic realm=&quot;Top Secret&quot;&#39;);</span>
-<span class="x">print &#39;Text that will be displayed if the user hits cancel or &#39;;</span>
-<span class="x">print &#39;enters wrong login data&#39;;</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php">header('HTTP/1.1 401 Unauthorized');
+header('WWW-Authenticate: Basic realm="Top Secret"');
+print 'Text that will be displayed if the user hits cancel or ';
+print 'enters wrong login data';
 </code></pre></div>
   </div>
   <!-- /post content -->

@@ -54,8 +54,6 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <h2>依赖</h2>
@@ -77,13 +75,13 @@ wget http://redis.googlecode.com/files/redis-2.6.2.tar.gz
 --enable-threads <span class="se">\</span>
 --mandir<span class="o">=</span>/usr/share/man
 make
-sed -e <span class="s2">&quot;s@^\(TCL_SRC_DIR=&#39;\).*@/usr/include&#39;@&quot;</span> <span class="se">\</span>
--e <span class="s2">&quot;/TCL_B/s@=&#39;\(-L\)\?.*unix@=&#39;/usr/lib@&quot;</span> <span class="se">\</span>
+sed -e <span class="s2">"s@^</span><span class="se">\(</span><span class="s2">TCL_SRC_DIR='</span><span class="se">\)</span><span class="s2">.*@/usr/include'@"</span> <span class="se">\</span>
+-e <span class="s2">"/TCL_B/s@='</span><span class="se">\(</span><span class="s2">-L</span><span class="se">\)\?</span><span class="s2">.*unix@='/usr/lib@"</span> <span class="se">\</span>
 -i tclConfig.sh
 make install
 make install-private-headers
 ln -v -sf tclsh8.5 /usr/bin/tclsh
-chmod -v <span class="m">755</span> /usr/lib/libtcl8.5.so
+chmod -v 755 /usr/lib/libtcl8.5.so
 </code></pre></div>
   </div>
   <!-- /post content -->

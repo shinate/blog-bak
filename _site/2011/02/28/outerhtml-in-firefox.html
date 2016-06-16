@@ -54,8 +54,6 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <p>此方法是直接将outerHTML添加为HTMLElement的动态方法，可供直接调用。</p>
@@ -63,7 +61,7 @@
    <span class="k">if</span> <span class="p">(</span><span class="nx">HTMLElement</span><span class="p">)</span> <span class="p">{</span>
           <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nx">HTMLElement</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
           <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">__defineGetter__</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="nx">element</span><span class="p">.</span><span class="nx">__defineGetter__</span><span class="p">(</span><span class="s2">&quot;outerHTML&quot;</span><span class="p">,</span>
+                 <span class="nx">element</span><span class="p">.</span><span class="nx">__defineGetter__</span><span class="p">(</span><span class="s2">"outerHTML"</span><span class="p">,</span>
                        <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
                               <span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">;</span>
                               <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">parent</span><span class="p">.</span><span class="nx">tagName</span><span class="p">);</span>

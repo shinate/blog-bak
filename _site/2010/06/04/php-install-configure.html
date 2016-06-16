@@ -54,8 +54,6 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <h2>下载软件包</h2>
@@ -94,7 +92,7 @@ make install
 <h2>启动中遇到的问题</h2>
 
 <p>重启apache</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">遇到错误: httpd: Syntax error on line 54 of /usr/local/apache2/conf/httpd.conf: Cannot load /usr/local/apache2/modules/libphp5.so into server: /usr/local/apache2/modules/libphp5.so: cannot restore segment prot after reloc: Permission denied
+<div class="highlight"><pre><code class="language-" data-lang="">遇到错误: httpd: Syntax error on line 54 of /usr/local/apache2/conf/httpd.conf: Cannot load /usr/local/apache2/modules/libphp5.so into server: /usr/local/apache2/modules/libphp5.so: cannot restore segment prot after reloc: Permission denied
 </code></pre></div>
 <h3>解决办法1</h3>
 
@@ -107,7 +105,7 @@ make install
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /etc/selinux/config
 </code></pre></div>
 <p>设置</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">SELINUX=disabled
+<div class="highlight"><pre><code class="language-" data-lang="">SELINUX=disabled
 </code></pre></div>
 <p><strong>重启apache，安装完毕</strong></p>
 

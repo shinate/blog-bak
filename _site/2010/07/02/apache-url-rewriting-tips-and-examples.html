@@ -54,8 +54,6 @@
 
   <!-- post content -->
   
-  
-  
 
   <div class="post-content chinese">
     <h2>环境需求</h2>
@@ -84,7 +82,7 @@
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">^/foo$</span> <span class="err">/bar</span>
 </code></pre></div>
 <p>一个绝对的URL重写，跳转到另一url最直接的办法</p>
-<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">^/product/view$</span> <span class="err">http://site2.example.com/seeproduct.html</span> <span class="k">[R]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">^/product/view$</span> <span class="err">http://site2.example.com/seeproduct.html</span> <span class="nn">[R]</span>
 </code></pre></div>
 <p>由上面的例子引申出的，括号中的&quot;.<em>&quot;在匹配时赋值给了变量$1，$1可以作为任何匹配到的文字写入到替换规则中。一个请求</em><em>http://example.com/product/r14df/view</em><em>将被映射到路径</em><em>/var/web/productdb/r14df *</em>。</p>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">^/product/(.*)/view$</span> <span class="err">/var/web/productdb/$1</span>
@@ -105,7 +103,7 @@
 <p>当有多个RewriteCond指令时，他们都会被RewriteRule所采用。例:当cookie中含有&quot;go&quot;的时候才处理请求字符串&quot;hack&quot;，否则拒绝，写法：</p>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteCond</span> <span class="err">%{QUERY_STRING}</span> <span class="err">hack</span>
 <span class="err">RewriteCond</span> <span class="err">%{HTTP_COOKIE}</span> <span class="err">!go</span>
-<span class="err">RewriteRule</span> <span class="err">.*</span> <span class="err">-</span> <span class="k">[F]</span>
+<span class="err">RewriteRule</span> <span class="err">.*</span> <span class="err">-</span> <span class="nn">[F]</span>
 </code></pre></div>
 <p>注意：&quot;!&quot;感叹号是<strong>否定</strong>匹配，也就是说当条件中 cookie没有&quot;go&quot;且请求中含有&quot;hack&quot;，将会遭到拒绝。
 在RewriteCond指令中也有像RewriteRule中所用的&quot;$1&quot;、&quot;$2&quot;匹配变量，但写法列有不同，使用的符号是&quot;%&quot;，比如&quot;%1&quot;、&quot;%2&quot;。例：匹配主机名和目录，拼接成新的请求：</p>
@@ -119,38 +117,38 @@
 <h3>简单的替换</h3>
 
 <p>这个例子中我们替换<code>/~user</code>到<code>/u/user</code>和修复缺少末尾的斜杠<code>/u/user</code></p>
-<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">^/~(</span><span class="k">[^/]+)/?(.*) /u/$1/$2 [R]</span>
-<span class="err">RewriteRule</span> <span class="err">^/(</span><span class="k">[uge])/( [^/]+ )$ /$1/$2/ [R]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">^/~(</span><span class="nn">[^/]</span><span class="err">+)/?(.*)</span> <span class="err">/u/$1/$2</span> <span class="nn">[R]</span>
+<span class="err">RewriteRule</span> <span class="err">^/(</span><span class="nn">[uge]</span><span class="err">)/(</span> <span class="nn">[^/]</span><span class="err">+</span> <span class="err">)$</span> <span class="err">/$1/$2/</span> <span class="nn">[R]</span>
 </code></pre></div>
 <h3>改变根目录</h3>
 
 <p>&quot;移动的DocumentRoot&quot;，将站点的根/改写为/e/www/</p>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteEngine</span> <span class="err">on</span>
-<span class="err">RewriteRule</span> <span class="err">^/$</span> <span class="err">/e/www/</span> <span class="k">[R]</span>
+<span class="err">RewriteRule</span> <span class="err">^/$</span> <span class="err">/e/www/</span> <span class="nn">[R]</span>
 </code></pre></div>
 <h3>无www的跳转到有www</h3>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteEngine</span> <span class="err">on</span>
-<span class="err">RewriteCond</span> <span class="err">%{http_host}</span> <span class="err">^domain.com</span> <span class="k">[NC]</span>
-<span class="na">RewriteRule ^(.*)$ http://www.domain.com/$1 [R</span><span class="o">=</span><span class="s">301,NC]</span>
+<span class="err">RewriteCond</span> <span class="err">%{http_host}</span> <span class="err">^domain.com</span> <span class="nn">[NC]</span>
+<span class="err">RewriteRule</span> <span class="err">^(.*)$</span> <span class="err">http://www.domain.com/$1</span> <span class="nn">[R=301,NC]</span>
 </code></pre></div>
 <p>还是上面的例子，但是对于/mytest/my目录不跳转，也就是可以直接访问 http://domain.com/mytest/my</p>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteEngine</span> <span class="err">on</span>
-<span class="err">RewriteCond</span> <span class="err">%{HTTP_HOST}</span> <span class="err">^domain.com</span> <span class="k">[NC]</span>
-<span class="err">RewriteCond</span> <span class="err">%{REQUEST_URI}</span> <span class="err">!/mytest/my</span> <span class="k">[NC]</span>
-<span class="na">RewriteRule ^(.*)$ http://www.domain.com/$1 [R</span><span class="o">=</span><span class="s">301,NC]</span>
+<span class="err">RewriteCond</span> <span class="err">%{HTTP_HOST}</span> <span class="err">^domain.com</span> <span class="nn">[NC]</span>
+<span class="err">RewriteCond</span> <span class="err">%{REQUEST_URI}</span> <span class="err">!/mytest/my</span> <span class="nn">[NC]</span>
+<span class="err">RewriteRule</span> <span class="err">^(.*)$</span> <span class="err">http://www.domain.com/$1</span> <span class="nn">[R=301,NC]</span>
 </code></pre></div>
 <h3>结尾的斜线问题</h3>
 
 <p>在通常的情况下，当你访问 /~quux/foo 服务器会认为这是一个文件，它并不是像/~quux/foo/xxx.gif那样实际存在的，也许你只是忘记了加上&quot;/&quot;，但服务器会让你看到一个优雅的错误页面。为了解决这个问题，我们可以这样来写：</p>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteEngine</span> <span class="err">on</span>
 <span class="err">RewriteBase</span> <span class="err">/~quux/</span>
-<span class="err">RewriteRule</span> <span class="err">^foo$</span> <span class="err">foo/</span> <span class="k">[R]</span>
+<span class="err">RewriteRule</span> <span class="err">^foo$</span> <span class="err">foo/</span> <span class="nn">[R]</span>
 </code></pre></div>
 <p>以上仅仅是针对一个目录的，下面的写法更加的暴力，任何文件甚至都能作为下一级目录的顶端来使用，我们就会看到/~quux/foo/xxx.gif/这种奇异现象</p>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteEngine</span> <span class="err">on</span>
 <span class="err">RewriteBase</span> <span class="err">/~quux/</span>
 <span class="err">RewriteCond</span> <span class="err">%{REQUEST_FILENAME}</span>  <span class="err">-d</span>
-<span class="err">RewriteRule</span> <span class="err">^(.+</span><span class="k">[^/])$ $1/  [R]</span>
+<span class="err">RewriteRule</span> <span class="err">^(.+</span><span class="nn">[^/]</span><span class="err">)$</span> <span class="err">$1/</span>  <span class="nn">[R]</span>
 </code></pre></div>
 <h3>将url的解释权交给某个页面</h3>
 
@@ -161,7 +159,7 @@
 <span class="err">RewriteBase</span> <span class="err">/</span>
 <span class="err">RewriteCond</span> <span class="err">%{REQUEST_FILENAME}</span> <span class="err">!-f</span>
 <span class="err">RewriteCond</span> <span class="err">%{REQUEST_FILENAME}</span> <span class="err">!-d</span>
-<span class="err">RewriteRule</span> <span class="err">.</span> <span class="err">/index.php</span> <span class="k">[L]</span>
+<span class="err">RewriteRule</span> <span class="err">.</span> <span class="err">/index.php</span> <span class="nn">[L]</span>
 </code></pre></div>
 <h2>参数列表</h2>
 
@@ -183,14 +181,14 @@
 <li><p><strong>qsappend|QSA</strong> (追加请求串 query string append)<br>此标记强制重写引擎在已有的替换串中追加一个请求串，而不是简单的替换。 如果需要通过重写规则在请求串中增加信息，就可以使用这个标记。</p></li>
 <li><p><strong>noescape|NE</strong> (在输出中不对URI作转义 no URI escaping)<br>此标记阻止mod_rewrite对重写结果应用常规的URI转义规则。 一般情况下，特殊字符(如&quot;%&quot;, &quot;$&quot;, &quot;;&quot;等)会被转义为等值的十六进制编码。 此标记可以阻止这样的转义，以允许百分号等符号出现在输出中，如：</p></li>
 </ol>
-<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="na">RewriteRule /foo/(.*) /bar?arg</span><span class="o">=</span><span class="s">P1\%3d$1 [R,NE]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">/foo/(.*)</span> <span class="err">/bar?</span><span class="py">arg</span><span class="p">=</span><span class="s">P1</span><span class="se">\%</span><span class="s">3d$1 [R,NE]</span>
 </code></pre></div>
 <p>可以使&quot;/foo/zed&quot;转向到一个安全的请求&quot;/bar?arg=P1=zed&quot;。</p>
 
 <ol>
 <li><strong>passthrough|PT</strong> (移交给下一个处理器 pass through)<br>此标记强制重写引擎将内部结构request<em>rec中的uri字段设置为 filename字段的值，它只是一个小修改，使之能对来自其他URI到文件名翻译器的 Alias，ScriptAlias, Redirect 等指令的输出进行后续处理。举一个能说明其含义的例子： 如果要通过mod</em>rewrite的重写引擎重写/abc为/def， 然后通过mod_alias使/def转变为/ghi，可以这样:</li>
 </ol>
-<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">^/abc(.*)</span> <span class="err">/def$1</span> <span class="k">[PT]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">RewriteRule</span> <span class="err">^/abc(.*)</span> <span class="err">/def$1</span> <span class="nn">[PT]</span>
 </code></pre></div>
 <p>Alias /def /ghi如果省略了PT标记，虽然mod<em>rewrite运作正常， 即，作为一个使用API的URI到文件名翻译器， 它可以重写uri=/abc/...为filename=/def/...， 但是，后续的mod</em>alias在试图作URI到文件名的翻译时，则会失效。</p>
 
