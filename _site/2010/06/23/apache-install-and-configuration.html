@@ -57,51 +57,51 @@
 
   <div class="post-content chinese">
     <h2>下载安装包</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://apache.etoak.com/httpd/httpd-2.2.11.tar.gz
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://apache.etoak.com/httpd/httpd-2.2.11.tar.gz
+</code></pre></div>
 <h2>创建apache用户</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">groupadd apache;useradd -g apache apache
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">groupadd apache;useradd -g apache apache
+</code></pre></div>
 <h2>编译安装</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix=/usr/local/apache2 \
---enable-modules=all \
---enable-ssl \
---enable-so \
---enable-rewrite \
---enable-mime-magic \
---enable-file-cache \
---enable-cache \
---enable-disk-cache \
---enable-mem-cache \
---enable-static-rotatelogs \
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix<span class="o">=</span>/usr/local/apache2 <span class="se">\</span>
+--enable-modules<span class="o">=</span>all <span class="se">\</span>
+--enable-ssl <span class="se">\</span>
+--enable-so <span class="se">\</span>
+--enable-rewrite <span class="se">\</span>
+--enable-mime-magic <span class="se">\</span>
+--enable-file-cache <span class="se">\</span>
+--enable-cache <span class="se">\</span>
+--enable-disk-cache <span class="se">\</span>
+--enable-mem-cache <span class="se">\</span>
+--enable-static-rotatelogs <span class="se">\</span>
 --enable-vhost-alias
 make
 make install
-</code></pre></figure>
+</code></pre></div>
 <h2>配置</h2>
 
 <h3>修改apache配置文件</h3>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vi /usr/local/apache2/conf/httpd.conf
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /usr/local/apache2/conf/httpd.conf
+</code></pre></div>
 <p>修改:</p>
-<figure class="highlight"><pre><code class="language-ini" data-lang="ini">DirectoryIndex index.html index.htm index.php
-User apache
-Group apache
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">DirectoryIndex</span> <span class="err">index.html</span> <span class="err">index.htm</span> <span class="err">index.php</span>
+<span class="err">User</span> <span class="err">apache</span>
+<span class="err">Group</span> <span class="err">apache</span>
+</code></pre></div>
 <p>添加:</p>
-<figure class="highlight"><pre><code class="language-ini" data-lang="ini">ServerName 127.0.0.1:80
-</code></pre></figure><figure class="highlight"><pre><code class="language-ini" data-lang="ini">AddType application/x-httpd-php .php .php3
-AddType application/x-httpd-php-source .phps
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">ServerName</span> <span class="err">127.0.0.1:80</span>
+</code></pre></div><div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">AddType</span> <span class="err">application/x-httpd-php</span> <span class="err">.php</span> <span class="err">.php3</span>
+<span class="err">AddType</span> <span class="err">application/x-httpd-php-source</span> <span class="err">.phps</span>
+</code></pre></div>
 <h2>启动apache</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/apache2/bin/apachectl start
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/apache2/bin/apachectl start
+</code></pre></div>
 <h2>设置开机启动</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vi /etc/rc.local
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /etc/rc.local
+</code></pre></div>
 <p>添加</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/apache2/bin/apachectl start
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/apache2/bin/apachectl start
+</code></pre></div>
 <p>感谢老男赐予的文档...</p>
 
   </div>

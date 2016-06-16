@@ -57,19 +57,19 @@
 
   <div class="post-content chinese">
     <h2>调用say</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/bin/say 那啥那啥啥
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/bin/say 那啥那啥啥
+</code></pre></div>
 <h2>参数</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"># -v 选择声音，默认是Siri(say -v Samantha)
-# -o 输出为音频文件，(say -v Cellos -o &quot;xxx.m4a&quot;)
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># -v 选择声音，默认是Siri(say -v Samantha)</span>
+<span class="c"># -o 输出为音频文件，(say -v Cellos -o "xxx.m4a")</span>
+</code></pre></div>
 <h2>写脚本的时候为了兼容linux系统，可以包个方法</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">function VT (){
-    if [[ (-f /usr/bin/say) &amp;&amp; (-n &quot;${1}&quot;) ]]; then
-        /usr/bin/say &quot;${1}&quot;
-    fi
-}
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="k">function </span>VT <span class="o">(){</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="o">(</span>-f /usr/bin/say<span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span>-n <span class="s2">"</span><span class="k">${</span><span class="nv">1</span><span class="k">}</span><span class="s2">"</span><span class="o">)</span> <span class="o">]]</span>; <span class="k">then</span>
+        /usr/bin/say <span class="s2">"</span><span class="k">${</span><span class="nv">1</span><span class="k">}</span><span class="s2">"</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
+</code></pre></div>
   </div>
   <!-- /post content -->
 

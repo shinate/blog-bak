@@ -59,58 +59,58 @@
     <p>感谢老男孩赐予的知识。 老男孩（QQ:49000448， mail:49000448@qq.com）</p>
 
 <h2>下载源码包</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.41-linux-i686-glibc23.tar.gz/from/http://mysql.cdpa.nsysu.edu.tw/
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.41-linux-i686-glibc23.tar.gz/from/http://mysql.cdpa.nsysu.edu.tw/
+</code></pre></div>
 <h2>创建mysql用户</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">groupadd mysql;
-useradd -s /sign/nologin -g mysql -M mysql  #-s /sign/nologin禁止其他所有的php，cookie。
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">groupadd mysql;
+useradd -s /sign/nologin -g mysql -M mysql  <span class="c">#-s /sign/nologin禁止其他所有的php，cookie。</span>
+</code></pre></div>
 <h2>编译</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix=/usr/local/mysql \
---with-unix-socket-path=/usr/local/mysql/tmp/mysql.sock \
---localstatedir=/usr/local/mysql/data \
---enable-assembler \
---with-mysqld-ldflags=-all-static \
---with-client-ldflags=-all-static \
---enable-thread-safe-client \
---with-mysqld-user=mysql \
---with-big-tables \
---without-debug \
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --prefix<span class="o">=</span>/usr/local/mysql <span class="se">\</span>
+--with-unix-socket-path<span class="o">=</span>/usr/local/mysql/tmp/mysql.sock <span class="se">\</span>
+--localstatedir<span class="o">=</span>/usr/local/mysql/data <span class="se">\</span>
+--enable-assembler <span class="se">\</span>
+--with-mysqld-ldflags<span class="o">=</span>-all-static <span class="se">\</span>
+--with-client-ldflags<span class="o">=</span>-all-static <span class="se">\</span>
+--enable-thread-safe-client <span class="se">\</span>
+--with-mysqld-user<span class="o">=</span>mysql <span class="se">\</span>
+--with-big-tables <span class="se">\</span>
+--without-debug <span class="se">\</span>
 --with-pthread;
-</code></pre></figure>
+</code></pre></div>
 <h2>安装</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">make
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">make
 make install
-</code></pre></figure>
+</code></pre></div>
 <h2>初始化数据库</h2>
 
 <p>拷贝MySQL的配置文件到/etc目录下</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cp support-files/my-huge.cnf /etc/my.cnf
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp support-files/my-huge.cnf /etc/my.cnf
+</code></pre></div>
 <p>创建数据文件夹</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p /usr/local/mysql/data
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p /usr/local/mysql/data
+</code></pre></div>
 <p>生成mysql.sock</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysql_install_db --user=mysql
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysql_install_db --user<span class="o">=</span>mysql
+</code></pre></div>
 <p>将软件的安装目录拥有者改为root用户</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">chown -R root /usr/local/mysql/
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">chown -R root /usr/local/mysql/
+</code></pre></div>
 <p>将存放数据库的目录拥有者改为mysql用户</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">chown -R mysql /usr/local/mysql/data
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">chown -R mysql /usr/local/mysql/data
+</code></pre></div>
 <p>将软件的安装目录属组改为mysql组</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">chgrp -R mysql /usr/local/mysql/
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">chgrp -R mysql /usr/local/mysql/
+</code></pre></div>
 <h2>启动</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysqld_safe --user=mysql &amp;
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysqld_safe --user<span class="o">=</span>mysql &amp;
+</code></pre></div>
 <h2>添加开机启动</h2>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vi /etc/rc.local
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /etc/rc.local
+</code></pre></div>
 <p>添加一行</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysqld_safe --user=mysql &amp;
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/mysql/bin/mysqld_safe --user<span class="o">=</span>mysql &amp;
+</code></pre></div>
   </div>
   <!-- /post content -->
 

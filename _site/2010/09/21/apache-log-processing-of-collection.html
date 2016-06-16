@@ -57,11 +57,11 @@
 
   <div class="post-content chinese">
     <p>统计访问量最多的前N个IP，倒序排列</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cat 日志文件 | awk &#39;{print $1}&#39;|sort|uniq -c|sort -r -n -k1|head -数量
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat 日志文件 | awk <span class="s1">'{print $1}'</span>|sort|uniq -c|sort -r -n -k1|head -数量
+</code></pre></div>
 <p>统计访问量最多的50个IP，倒序排列，并且排除包含&quot;bot&quot;和&quot;spider&quot;的记录</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cat access_20100921.log |egrep -v &quot;bot|spider&quot;| awk &#39;{print $1}&#39;|sort|uniq -c|sort -r -n -k1|head -50
-</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat access_20100921.log |egrep -v <span class="s2">"bot|spider"</span>| awk <span class="s1">'{print $1}'</span>|sort|uniq -c|sort -r -n -k1|head -50
+</code></pre></div>
   </div>
   <!-- /post content -->
 
