@@ -57,8 +57,9 @@
 
   <div class="post-content chinese">
     <p>我用的是5.2.9，所以就以它为例，为了运行为FastCGI模式，需要打上fpm补丁包。
-PHP各个版本fpm补丁包下载 <a href="http://php-fpm.org/downloads/">http://php-fpm.org/downloads/</a></p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://cn.php.net/get/php-5.2.9.tar.gz/from/this/mirror
+PHP各个版本fpm补丁包下载 [http://php-fpm.org/downloads/][0]</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://cn.php.net/get/php-5.2.9.tar.gz/from/this/mirror
 wget http://php-fpm.org/downloads/php-5.2.9-fpm-0.5.10-unofficial.diff.gz
 tar zxf php-5.2.9.tar.gz
 gzip -cd php-5.2.9-fpm-0.5.10-unofficial.diff.gz | patch -d php-5.2.9 -p1
@@ -100,23 +101,35 @@ gzip -cd php-5.2.9-fpm-0.5.10-unofficial.diff.gz | patch -d php-5.2.9 -p1
 --with-ldap-sasl
 make <span class="nv">ZEND_EXTRA_LIBS</span><span class="o">=</span><span class="s1">'-liconv'</span>
 make install
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>*缺失的库可以尝试用yum进行安装</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum install libjpeg-devel
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>yum install libjpeg-devel
 yum install libpng-devel
 yum install libXpm-devel
 yum install libmcrypt-devel
-</code></pre></div>
-<p>等... 看报错信息就好了
+</code></pre>
+</div>
+
+<p>等… 看报错信息就好了
 然后，复制配置文件到php安装目录中的etc下。</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp php.ini-dist /servers/app/php/etc/php.ini
-</code></pre></div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>cp php.ini-dist /servers/app/php/etc/php.ini
+</code></pre>
+</div>
+
 <p>编辑fpm的文件</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /servers/app/php/etc/php-fpm.conf
-</code></pre></div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>vi /servers/app/php/etc/php-fpm.conf
+</code></pre>
+</div>
+
 <p>需要修改的不是很多，重新设置一下pid，log，端口，进程数什么的，根据自己机器来定。
 放个简洁版的，注释太长，去了。</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" ?&gt;</span>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" ?&gt;</span>
 <span class="nt">&lt;configuration&gt;</span>
     <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">"global_options"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"pid_file"</span><span class="nt">&gt;</span>/servers/run/php-fpm-9000.pid<span class="nt">&lt;/value&gt;</span>
@@ -175,11 +188,17 @@ yum install libmcrypt-devel
         <span class="nt">&lt;/section&gt;</span>
     <span class="nt">&lt;/workers&gt;</span>
 <span class="nt">&lt;/configuration&gt;</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>启动fastcgi</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/servers/app/php/sbin/php-fpm start
-</code></pre></div>
-<p>持续。。。</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>/servers/app/php/sbin/php-fpm start
+</code></pre>
+</div>
+
+<p>持续。。。
+[0]: http://php-fpm.org/downloads/</p>
 
   </div>
   <!-- /post content -->
