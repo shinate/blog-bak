@@ -56,32 +56,23 @@
   
 
   <div class="post-content chinese">
-    <h2 id="vi">VI</h2>
+    <h2>VI</h2>
 
 <p>对某个文件进行处理</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vi filename
+</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">:%s/^M/\r/g
+</code></pre></div>
+<h2>SED方法</h2>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>vi filename
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>:%s/^M/\r/g
-</code></pre>
-</div>
-
-<h2 id="sed">SED方法</h2>
-
-<h2 id="perl">PERL方法</h2>
+<h2>PERL方法</h2>
 
 <p>可对多文件批量处理</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>perl -p -i -e <span class="s2">"s/^M//g"</span> <span class="sb">`</span>find .<span class="sb">`</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">perl -p -i -e <span class="s2">"s/^M//g"</span> <span class="sb">`</span>find .<span class="sb">`</span>
+</code></pre></div>
 <ul>
-  <li><code class="highlighter-rouge">find .</code> 可以替换为任何文件或者多个文件，它的作用为提取所需的文件名。
-<strong>*注意：^M字符需要使用 Ctrl+v+m来输入</strong>
-持续……</li>
+<li><code>find .</code> 可以替换为任何文件或者多个文件，它的作用为提取所需的文件名。
+<em>**注意：^M字符需要使用 Ctrl+v+m来输入</em>*
+持续......</li>
 </ul>
 
   </div>
