@@ -68,31 +68,31 @@
 <h3>执行</h3>
 
 <p>命令行调用</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png
+</code></pre></figure>
 <p>默认的清晰度比较高，图片会很大，生成图片需要一定的时间。
 php</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php">exec('/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png');
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php">exec(&#39;/servers/app/qtwebkit/wkHtmlToImage weibo.com weibo.com.png&#39;);
+</code></pre></figure>
 <p>具体的使用方法</p>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-<span class="nb">ob_start</span><span class="p">();</span>
-<span class="c1">//如果将输出的文件名设置为'-'，则直接返回文件数据流
-</span><span class="nb">passthru</span><span class="p">(</span><span class="s1">'/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -'</span><span class="p">);</span>
-<span class="nv">$fileName</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">cachePath</span><span class="p">()</span> <span class="o">.</span> <span class="s1">'/'</span> <span class="o">.</span> <span class="nx">self</span><span class="o">::</span><span class="na">name</span><span class="p">();</span>
-<span class="nv">$content</span> <span class="o">=</span> <span class="nb">ob_get_clean</span><span class="p">();</span>
-<span class="c1">//写入图片文件，备用
+<figure class="highlight"><pre><code class="language-php" data-lang="php">&lt;?php
+ob_start();
+//如果将输出的文件名设置为&#39;-&#39;，则直接返回文件数据流
+passthru(&#39;/servers/app/qtwebkit/wkHtmlToImage --width 800 --height 600 -quality 85 weibo.com -&#39;);
+$fileName = self::cachePath() . &#39;/&#39; . self::name();
+$content = ob_get_clean();
+//写入图片文件，备用
 //file_put_contents($fileName, $content);
 //直接输出为图片
-</span><span class="nb">header</span><span class="p">(</span><span class="s2">"Content-type: image/png"</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$content</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
-</code></pre></div>
+header(&quot;Content-type: image/png&quot;);
+echo $content;
+?&gt;
+</code></pre></figure>
 <h3>中文乱码问题</h3>
 
 <p>主要看服务器是否支持中文语言，如果截图中出现乱码，直接装个中文包就好了。</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum install fonts-chinese
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install fonts-chinese
+</code></pre></figure>
   </div>
   <!-- /post content -->
 

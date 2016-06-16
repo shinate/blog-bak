@@ -57,19 +57,19 @@
 
   <div class="post-content chinese">
     <p><strong>MAC触摸板也支持touch，加入了区分判断</strong></p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// IOS desktop has touch events, make them busting</span>
-        <span class="kd">var</span> <span class="nx">hasTouch</span> <span class="o">=</span> <span class="o">!!</span><span class="p">((</span><span class="s1">'ontouchstart'</span> <span class="k">in</span> <span class="nx">global</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="sr">/Mac OS X /</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">global</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">))</span> <span class="o">||</span> <span class="nx">global</span><span class="p">.</span><span class="nx">DocumentTouch</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span> <span class="k">instanceof</span> <span class="nx">global</span><span class="p">.</span><span class="nx">DocumentTouch</span><span class="p">);</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="na">hasTouch</span><span class="p">:</span> <span class="nx">hasTouch</span><span class="p">,</span>
-            <span class="na">startEvt</span><span class="p">:</span> <span class="nx">hasTouch</span> <span class="p">?</span> <span class="s1">'touchstart'</span> <span class="p">:</span> <span class="s1">'mousedown'</span><span class="p">,</span>
-            <span class="na">moveEvt</span><span class="p">:</span> <span class="nx">hasTouch</span> <span class="p">?</span> <span class="s1">'touchmove'</span> <span class="p">:</span> <span class="s1">'mousemove'</span><span class="p">,</span>
-            <span class="na">endEvt</span><span class="p">:</span> <span class="nx">hasTouch</span> <span class="p">?</span> <span class="s1">'touchend'</span> <span class="p">:</span> <span class="s1">'mouseup'</span><span class="p">,</span>
-            <span class="na">cancelEvt</span><span class="p">:</span> <span class="nx">hasTouch</span> <span class="p">?</span> <span class="s1">'touchcancel'</span> <span class="p">:</span> <span class="s1">'mouseout'</span><span class="p">,</span>
-            <span class="na">resizeEvt</span><span class="p">:</span> <span class="s1">'onorientationchange'</span> <span class="k">in</span> <span class="nx">global</span> <span class="p">?</span> <span class="s1">'orientationchange'</span> <span class="p">:</span> <span class="s1">'resize'</span>
-        <span class="p">};</span>
-    <span class="p">})();</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">(function () {
+        // IOS desktop has touch events, make them busting
+        var hasTouch = !!((&#39;ontouchstart&#39; in global &amp;&amp; !/Mac OS X /.test(global.navigator.userAgent)) || global.DocumentTouch &amp;&amp; document instanceof global.DocumentTouch);
+        return {
+            hasTouch: hasTouch,
+            startEvt: hasTouch ? &#39;touchstart&#39; : &#39;mousedown&#39;,
+            moveEvt: hasTouch ? &#39;touchmove&#39; : &#39;mousemove&#39;,
+            endEvt: hasTouch ? &#39;touchend&#39; : &#39;mouseup&#39;,
+            cancelEvt: hasTouch ? &#39;touchcancel&#39; : &#39;mouseout&#39;,
+            resizeEvt: &#39;onorientationchange&#39; in global ? &#39;orientationchange&#39; : &#39;resize&#39;
+        };
+    })();
+</code></pre></figure>
   </div>
   <!-- /post content -->
 

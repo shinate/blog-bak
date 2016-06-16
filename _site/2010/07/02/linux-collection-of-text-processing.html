@@ -57,16 +57,16 @@
 
   <div class="post-content chinese">
     <h2>清空文档</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">""</span>&amp;gt;filename
-</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">&amp;gt;filename
-</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /dev/null &amp;gt;filename
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">echo &quot;&quot;&amp;gt;filename
+</code></pre></figure><figure class="highlight"><pre><code class="language-bash" data-lang="bash">&amp;gt;filename
+</code></pre></figure><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cat /dev/null &amp;gt;filename
+</code></pre></figure>
 <h2>统计</h2>
 
 <p><strong>在apache的log中找出访问次数最多的10个IP。</strong></p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">awk <span class="s1">'{print $1}'</span> apache_log |sort |uniq -c|sort -nr|head
-</code></pre></div><div class="highlight"><pre><code class="language-bash" data-lang="bash">cat xxxxx | awk <span class="s1">'{print $2}'</span>|sort|uniq -c|sort -nr| head -10
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">awk &#39;{print $1}&#39; apache_log |sort |uniq -c|sort -nr|head
+</code></pre></figure><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cat xxxxx | awk &#39;{print $2}&#39;|sort|uniq -c|sort -nr| head -10
+</code></pre></figure>
   </div>
   <!-- /post content -->
 

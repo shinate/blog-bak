@@ -56,8 +56,8 @@
   
 
   <div class="post-content chinese">
-    <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">isIE</span> <span class="o">=</span> <span class="o">!-</span><span class="p">[</span><span class="mi">1</span><span class="p">,];</span>
-</code></pre></div>
+    <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">var isIE = !-[1,];
+</code></pre></figure>
 <p>仅仅需要6bytes即可进行判断，利用了IE与标准浏览器在处理数组的toString方法时的差异来完成的。
 对于标准游览器，如果数组里面最后一个字符为逗号，js的引擎会自动剔除它。</p>
 

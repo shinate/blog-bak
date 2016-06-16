@@ -73,109 +73,109 @@
 <h3>背景闪烁</h3>
 
 <p>IE6的背景闪烁Bug Fix</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
-<span class="py">zoom</span><span class="p">:</span> <span class="n">expression</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="err">{</span>
-<span class="n">document</span><span class="p">.</span><span class="n">execCommand</span><span class="p">(</span><span class="s2">'BackgroundImageCache'</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
-<span class="err">el.style.zoom</span> <span class="err">=</span> <span class="err">'1';</span>
-<span class="p">}</span><span class="o">(</span><span class="nt">this</span><span class="o">));</span>
-<span class="err">}</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-css" data-lang="css">body {
+zoom: expression(function(el){
+document.execCommand(&#39;BackgroundImageCache&#39;, false, true);
+el.style.zoom = &#39;1&#39;;
+}(this));
+}
+</code></pre></figure>
 <h3>input样式</h3>
 
 <p>给不同 type 的 input 赋予不同的样式</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">input</span> <span class="p">{</span>
-<span class="py">zoom</span><span class="p">:</span> <span class="n">expression</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="err">{</span>
-    <span class="n">el</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">zoom</span> <span class="err">=</span> <span class="s1">"1"</span><span class="p">;</span>
-    <span class="err">el.className</span> <span class="err">?</span> <span class="err">el.className+="</span> <span class="err">"+el.</span><span class="py">type</span> <span class="p">:</span> <span class="n">el</span><span class="p">.</span><span class="n">className</span><span class="err">=</span><span class="n">el</span><span class="p">.</span><span class="n">type</span><span class="p">;</span>
-<span class="p">}</span><span class="o">(</span><span class="nt">this</span><span class="o">));</span>
-<span class="err">}</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-css" data-lang="css">input {
+zoom: expression(function(el){
+    el.style.zoom = &quot;1&quot;;
+    el.className ? el.className+=&quot; &quot;+el.type : el.className=el.type;
+}(this));
+}
+</code></pre></figure>
 <h3>隔行换色</h3>
 
 <p>zebra lists</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.test</span> <span class="p">{</span>
-<span class="nl">unicode-bidi</span><span class="p">:</span> <span class="n">expression</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="err">{</span>
-    <span class="n">el</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">unicodeBidi</span> <span class="err">=</span> <span class="s1">"normal"</span><span class="p">;</span>
-    <span class="err">var</span> <span class="err">childs</span> <span class="err">=</span> <span class="err">el.getElementsByTagName("li");</span>
-    <span class="err">for(var</span> <span class="err">i=0;</span> <span class="err">i</span>
-        <span class="err">(i</span> <span class="err">%</span> <span class="err">2)?childs[i].className+="</span> <span class="err">even":childs[i].className+="</span> <span class="err">odd";</span>
-    <span class="p">}</span>
-<span class="err">}</span><span class="o">(</span><span class="nt">this</span><span class="o">));</span>
-<span class="err">}</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-css" data-lang="css">.test {
+unicode-bidi: expression(function(el){
+    el.style.unicodeBidi = &quot;normal&quot;;
+    var childs = el.getElementsByTagName(&quot;li&quot;);
+    for(var i=0; i
+        (i % 2)?childs[i].className+=&quot; even&quot;:childs[i].className+=&quot; odd&quot;;
+    }
+}(this));
+}
+</code></pre></figure>
 <h3>:befor,:after</h3>
 
 <p>模拟&quot; :before&quot; 或者 &quot;:after&quot;</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.test</span> <span class="p">{</span>
-<span class="nl">letter-spacing</span><span class="p">:</span> <span class="n">expression</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="err">{</span>
-    <span class="n">el</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">letterSpacing</span> <span class="err">=</span> <span class="s1">"0"</span><span class="p">;</span>
-    <span class="err">var</span> <span class="err">newchild</span> <span class="err">=</span> <span class="err">document.createElement("span");</span>
-    <span class="err">newchild.className="after";</span>
-    <span class="err">newchild.appendChild(document.createTextNode("</span> <span class="err">World!"));</span>
-    <span class="err">el.appendChild(newchild);</span>
-<span class="p">}</span><span class="o">(</span><span class="nt">this</span><span class="o">));</span>
-<span class="err">}</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-css" data-lang="css">.test {
+letter-spacing: expression(function(el){
+    el.style.letterSpacing = &quot;0&quot;;
+    var newchild = document.createElement(&quot;span&quot;);
+    newchild.className=&quot;after&quot;;
+    newchild.appendChild(document.createTextNode(&quot; World!&quot;));
+    el.appendChild(newchild);
+}(this));
+}
+</code></pre></figure>
 <h3>图片缩放</h3>
 
 <p>模拟图片的：max-width 和 max-height (或 min-width 和 min-height)</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.max-width</span> <span class="nt">span</span> <span class="nt">img</span> <span class="p">{</span>
-<span class="nl">max-width</span><span class="p">:</span><span class="m">120px</span><span class="p">;</span>
-<span class="nl">max-height</span><span class="p">:</span><span class="m">120px</span><span class="p">;</span>
-<span class="py">zoom</span><span class="p">:</span><span class="n">expression</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="err">{</span>
-    <span class="n">el</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">zoom</span> <span class="err">=</span> <span class="s1">"1"</span><span class="p">;</span>
-    <span class="err">var</span> <span class="err">resizeImg</span> <span class="err">=</span> <span class="err">function()</span> <span class="err">{</span>
-        <span class="err">if</span> <span class="err">(el.width</span> <span class="err">&amp;gt;</span> <span class="err">120</span> <span class="err">||</span> <span class="err">el.height</span> <span class="err">&amp;gt;</span> <span class="err">120)</span> <span class="err">{</span>
-            <span class="err">if</span> <span class="err">(el.width</span> <span class="err">&amp;gt;</span> <span class="err">el.height)</span> <span class="err">{</span>
-                <span class="err">el.width</span> <span class="err">=</span> <span class="err">"120";</span>
-                <span class="err">el.height</span> <span class="err">=</span> <span class="err">el.height</span> <span class="err">*</span> <span class="err">(el.width</span> <span class="err">/</span> <span class="err">120);</span>
-            <span class="p">}</span> <span class="nt">else</span> <span class="p">{</span>
-                <span class="err">el.height</span> <span class="err">=</span> <span class="err">"120";</span>
-                <span class="err">el.width</span> <span class="err">=</span> <span class="err">el.width</span> <span class="err">*</span> <span class="err">(el.height</span> <span class="err">/</span> <span class="err">120);</span>
-            <span class="p">}</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-    <span class="nt">if</span> <span class="o">(</span><span class="nt">el</span><span class="nc">.complete</span><span class="o">)</span> <span class="p">{</span>
-        <span class="err">resizeImg();</span>
-    <span class="p">}</span> <span class="nt">else</span> <span class="p">{</span>
-        <span class="err">el.onload</span> <span class="err">=</span> <span class="err">function()</span> <span class="err">{</span>
-            <span class="err">resizeImg();</span>
-        <span class="p">}</span>
-    <span class="err">}</span>
-<span class="err">}</span><span class="o">(</span><span class="nt">this</span><span class="o">));</span>
-<span class="err">}</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-css" data-lang="css">.max-width span img {
+max-width:120px;
+max-height:120px;
+zoom:expression(function(el){
+    el.style.zoom = &quot;1&quot;;
+    var resizeImg = function() {
+        if (el.width &amp;gt; 120 || el.height &amp;gt; 120) {
+            if (el.width &amp;gt; el.height) {
+                el.width = &quot;120&quot;;
+                el.height = el.height * (el.width / 120);
+            } else {
+                el.height = &quot;120&quot;;
+                el.width = el.width * (el.height / 120);
+            }
+        }
+    }
+    if (el.complete) {
+        resizeImg();
+    } else {
+        el.onload = function() {
+            resizeImg();
+        }
+    }
+}(this));
+}
+</code></pre></figure>
 <h3>IE6的鼠标滑过</h3>
 
 <p>a之外元素:hover</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.ie6-hover</span> <span class="nt">input</span><span class="nd">:hover</span><span class="o">,</span> <span class="nc">.ie6-hover</span> <span class="nc">.h</span> <span class="p">{</span>
-<span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nc">.enable-ie6-hover</span> <span class="nt">input</span> <span class="p">{</span>
-<span class="py">_zoom</span><span class="p">:</span><span class="n">expression</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="err">{</span>
-    <span class="n">el</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">zoom</span> <span class="err">=</span> <span class="s1">"0"</span><span class="p">;</span>
-    <span class="err">el.onmouseenter</span> <span class="err">=</span> <span class="err">function()</span> <span class="err">{</span>
-        <span class="err">el.className</span> <span class="err">=</span> <span class="err">"h";</span>
-    <span class="p">}</span><span class="o">;</span>
-    <span class="nt">el</span><span class="nc">.onmouseleave</span> <span class="o">=</span> <span class="nt">function</span><span class="o">()</span> <span class="p">{</span>
-        <span class="err">el.className</span> <span class="err">=</span> <span class="err">"";</span>
-    <span class="p">}</span><span class="o">;</span>
-<span class="err">}</span><span class="o">(</span><span class="nt">this</span><span class="o">));</span>
-<span class="err">}</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-css" data-lang="css">.ie6-hover input:hover, .ie6-hover .h {
+border:1px solid red;
+}
+.enable-ie6-hover input {
+_zoom:expression(function(el){
+    el.style.zoom = &quot;0&quot;;
+    el.onmouseenter = function() {
+        el.className = &quot;h&quot;;
+    };
+    el.onmouseleave = function() {
+        el.className = &quot;&quot;;
+    };
+}(this));
+}
+</code></pre></figure>
 <h3>IE6行高问题</h3>
 
 <p>line-height bug</p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.ie6-line-height-bug</span> <span class="p">{</span> <span class="nl">background</span><span class="p">:</span><span class="err">\</span><span class="m">#f2f2f2</span><span class="p">;</span> <span class="nl">line-height</span><span class="p">:</span><span class="m">50px</span><span class="p">;</span> <span class="py">zoom</span><span class="p">:</span><span class="m">1</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.ie6-line-height-bug-fixed</span> <span class="nt">input</span> <span class="p">{</span>
-<span class="py">_zoom</span><span class="p">:</span> <span class="n">expression</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">el</span><span class="p">)</span><span class="err">{</span>
-    <span class="n">el</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">zoom</span> <span class="err">=</span> <span class="s1">"1"</span><span class="p">;</span>
-    <span class="err">var</span> <span class="err">iefixer</span> <span class="err">=</span> <span class="err">document.createElement("b");</span>
-    <span class="err">iefixer.style.zoom</span> <span class="err">=</span> <span class="err">1;</span>
-    <span class="err">el.parentNode.insertBefore(iefixer,</span> <span class="err">el);</span>
-<span class="p">}</span><span class="o">(</span><span class="nt">this</span><span class="o">));</span>
-<span class="err">}</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-css" data-lang="css">.ie6-line-height-bug { background:\#f2f2f2; line-height:50px; zoom:1; }
+.ie6-line-height-bug-fixed input {
+_zoom: expression(function(el){
+    el.style.zoom = &quot;1&quot;;
+    var iefixer = document.createElement(&quot;b&quot;);
+    iefixer.style.zoom = 1;
+    el.parentNode.insertBefore(iefixer, el);
+}(this));
+}
+</code></pre></figure>
   </div>
   <!-- /post content -->
 

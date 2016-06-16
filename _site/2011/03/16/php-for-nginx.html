@@ -58,127 +58,127 @@
   <div class="post-content chinese">
     <p>我用的是5.2.9，所以就以它为例，为了运行为FastCGI模式，需要打上fpm补丁包。
 PHP各个版本fpm补丁包下载 <a href="http://php-fpm.org/downloads/">http://php-fpm.org/downloads/</a></p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://cn.php.net/get/php-5.2.9.tar.gz/from/this/mirror
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://cn.php.net/get/php-5.2.9.tar.gz/from/this/mirror
 wget http://php-fpm.org/downloads/php-5.2.9-fpm-0.5.10-unofficial.diff.gz
 tar zxf php-5.2.9.tar.gz
 gzip -cd php-5.2.9-fpm-0.5.10-unofficial.diff.gz | patch -d php-5.2.9 -p1
-<span class="nb">cd </span>php-5.2.9
-./configure <span class="se">\</span>
---prefix<span class="o">=</span>/servers/app/php <span class="se">\</span>
---with-config-file-path<span class="o">=</span>/servers/app/php/etc <span class="se">\</span>
---with-mysql<span class="o">=</span>/usr/local/mysql <span class="se">\</span>
---with-mysqli<span class="o">=</span>/usr/local/mysql/bin/mysql_config <span class="se">\</span>
---with-iconv <span class="se">\</span>
---with-freetype-dir <span class="se">\</span>
---with-jpeg-dir <span class="se">\</span>
---with-png-dir <span class="se">\</span>
---with-zlib <span class="se">\</span>
---with-libxml-dir<span class="o">=</span>/usr <span class="se">\</span>
---enable-xml <span class="se">\</span>
---disable-rpath <span class="se">\</span>
---enable-discard-path <span class="se">\</span>
---enable-safe-mode <span class="se">\</span>
---enable-bcmath <span class="se">\</span>
---enable-shmop <span class="se">\</span>
---enable-sysvsem <span class="se">\</span>
---enable-inline-optimization <span class="se">\</span>
---with-curl <span class="se">\</span>
---with-curlwrappers <span class="se">\</span>
---enable-mbregex <span class="se">\</span>
---enable-fastcgi <span class="se">\</span>
---enable-fpm <span class="se">\</span>
---enable-force-cgi-redirect <span class="se">\</span>
---enable-mbstring <span class="se">\</span>
---with-mcrypt <span class="se">\</span>
---with-gd <span class="se">\</span>
---enable-gd-native-ttf <span class="se">\</span>
---with-openssl <span class="se">\</span>
---with-mhash <span class="se">\</span>
---enable-pcntl <span class="se">\</span>
---enable-sockets <span class="se">\</span>
---with-ldap <span class="se">\</span>
+cd php-5.2.9
+./configure \
+--prefix=/servers/app/php \
+--with-config-file-path=/servers/app/php/etc \
+--with-mysql=/usr/local/mysql \
+--with-mysqli=/usr/local/mysql/bin/mysql_config \
+--with-iconv \
+--with-freetype-dir \
+--with-jpeg-dir \
+--with-png-dir \
+--with-zlib \
+--with-libxml-dir=/usr \
+--enable-xml \
+--disable-rpath \
+--enable-discard-path \
+--enable-safe-mode \
+--enable-bcmath \
+--enable-shmop \
+--enable-sysvsem \
+--enable-inline-optimization \
+--with-curl \
+--with-curlwrappers \
+--enable-mbregex \
+--enable-fastcgi \
+--enable-fpm \
+--enable-force-cgi-redirect \
+--enable-mbstring \
+--with-mcrypt \
+--with-gd \
+--enable-gd-native-ttf \
+--with-openssl \
+--with-mhash \
+--enable-pcntl \
+--enable-sockets \
+--with-ldap \
 --with-ldap-sasl
-make <span class="nv">ZEND_EXTRA_LIBS</span><span class="o">=</span><span class="s1">'-liconv'</span>
+make ZEND_EXTRA_LIBS=&#39;-liconv&#39;
 make install
-</code></pre></div>
+</code></pre></figure>
 <p>*缺失的库可以尝试用yum进行安装</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum install libjpeg-devel
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum install libjpeg-devel
 yum install libpng-devel
 yum install libXpm-devel
 yum install libmcrypt-devel
-</code></pre></div>
+</code></pre></figure>
 <p>等... 看报错信息就好了
 然后，复制配置文件到php安装目录中的etc下。</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp php.ini-dist /servers/app/php/etc/php.ini
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">cp php.ini-dist /servers/app/php/etc/php.ini
+</code></pre></figure>
 <p>编辑fpm的文件</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /servers/app/php/etc/php-fpm.conf
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vi /servers/app/php/etc/php-fpm.conf
+</code></pre></figure>
 <p>需要修改的不是很多，重新设置一下pid，log，端口，进程数什么的，根据自己机器来定。
 放个简洁版的，注释太长，去了。</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" ?&gt;</span>
-<span class="nt">&lt;configuration&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">"global_options"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"pid_file"</span><span class="nt">&gt;</span>/servers/run/php-fpm-9000.pid<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"error_log"</span><span class="nt">&gt;</span>/servers/logs/php-fpm-9000.log<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"log_level"</span><span class="nt">&gt;</span>notice<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"emergency_restart_threshold"</span><span class="nt">&gt;</span>10<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"emergency_restart_interval"</span><span class="nt">&gt;</span>1m<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"process_control_timeout"</span><span class="nt">&gt;</span>5s<span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"daemonize"</span><span class="nt">&gt;</span>yes<span class="nt">&lt;/value&gt;</span>
-    <span class="nt">&lt;/section&gt;</span>
-    <span class="nt">&lt;workers&gt;</span>
-        <span class="nt">&lt;section</span> <span class="na">name=</span><span class="s">"pool"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;</span>default<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"listen_address"</span><span class="nt">&gt;</span>127.0.0.1:9000<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"listen_options"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"backlog"</span><span class="nt">&gt;</span>-1<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"owner"</span><span class="nt">&gt;&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"group"</span><span class="nt">&gt;&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"mode"</span><span class="nt">&gt;</span>0666<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"php_defines"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"sendmail_path"</span><span class="nt">&gt;</span>/usr/sbin/sendmail -t -i<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"display_errors"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"user"</span><span class="nt">&gt;</span>nginx<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"group"</span><span class="nt">&gt;</span>nginx<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"pm"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"style"</span><span class="nt">&gt;</span>static<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"max_children"</span><span class="nt">&gt;</span>128<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"apache_like"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"StartServers"</span><span class="nt">&gt;</span>20<span class="nt">&lt;/value&gt;</span>
-                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"MinSpareServers"</span><span class="nt">&gt;</span>5<span class="nt">&lt;/value&gt;</span>
-                    <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"MaxSpareServers"</span><span class="nt">&gt;</span>35<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"request_terminate_timeout"</span><span class="nt">&gt;</span>0s<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"request_slowlog_timeout"</span><span class="nt">&gt;</span>0s<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"slowlog"</span><span class="nt">&gt;</span>logs/slow.log<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"rlimit_files"</span><span class="nt">&gt;</span>65535<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"rlimit_core"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"chroot"</span><span class="nt">&gt;&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"chdir"</span><span class="nt">&gt;&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"catch_workers_output"</span><span class="nt">&gt;</span>yes<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"max_requests"</span><span class="nt">&gt;</span>1024<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"allowed_clients"</span><span class="nt">&gt;</span>127.0.0.1<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"environment"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"HOSTNAME"</span><span class="nt">&gt;</span>$HOSTNAME<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"PATH"</span><span class="nt">&gt;</span>/usr/local/bin:/usr/bin:/bin<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"TMP"</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"TMPDIR"</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"TEMP"</span><span class="nt">&gt;</span>/tmp<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"OSTYPE"</span><span class="nt">&gt;</span>$OSTYPE<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"MACHTYPE"</span><span class="nt">&gt;</span>$MACHTYPE<span class="nt">&lt;/value&gt;</span>
-                <span class="nt">&lt;value</span> <span class="na">name=</span><span class="s">"MALLOC_CHECK_"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/value&gt;</span>
-            <span class="nt">&lt;/value&gt;</span>
-        <span class="nt">&lt;/section&gt;</span>
-    <span class="nt">&lt;/workers&gt;</span>
-<span class="nt">&lt;/configuration&gt;</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;configuration&gt;
+    &lt;section name=&quot;global_options&quot;&gt;
+        &lt;value name=&quot;pid_file&quot;&gt;/servers/run/php-fpm-9000.pid&lt;/value&gt;
+        &lt;value name=&quot;error_log&quot;&gt;/servers/logs/php-fpm-9000.log&lt;/value&gt;
+        &lt;value name=&quot;log_level&quot;&gt;notice&lt;/value&gt;
+        &lt;value name=&quot;emergency_restart_threshold&quot;&gt;10&lt;/value&gt;
+        &lt;value name=&quot;emergency_restart_interval&quot;&gt;1m&lt;/value&gt;
+        &lt;value name=&quot;process_control_timeout&quot;&gt;5s&lt;/value&gt;
+        &lt;value name=&quot;daemonize&quot;&gt;yes&lt;/value&gt;
+    &lt;/section&gt;
+    &lt;workers&gt;
+        &lt;section name=&quot;pool&quot;&gt;
+            &lt;value name=&quot;name&quot;&gt;default&lt;/value&gt;
+            &lt;value name=&quot;listen_address&quot;&gt;127.0.0.1:9000&lt;/value&gt;
+            &lt;value name=&quot;listen_options&quot;&gt;
+                &lt;value name=&quot;backlog&quot;&gt;-1&lt;/value&gt;
+                &lt;value name=&quot;owner&quot;&gt;&lt;/value&gt;
+                &lt;value name=&quot;group&quot;&gt;&lt;/value&gt;
+                &lt;value name=&quot;mode&quot;&gt;0666&lt;/value&gt;
+            &lt;/value&gt;
+            &lt;value name=&quot;php_defines&quot;&gt;
+                &lt;value name=&quot;sendmail_path&quot;&gt;/usr/sbin/sendmail -t -i&lt;/value&gt;
+                &lt;value name=&quot;display_errors&quot;&gt;0&lt;/value&gt;
+            &lt;/value&gt;
+            &lt;value name=&quot;user&quot;&gt;nginx&lt;/value&gt;
+            &lt;value name=&quot;group&quot;&gt;nginx&lt;/value&gt;
+            &lt;value name=&quot;pm&quot;&gt;
+                &lt;value name=&quot;style&quot;&gt;static&lt;/value&gt;
+                &lt;value name=&quot;max_children&quot;&gt;128&lt;/value&gt;
+                &lt;value name=&quot;apache_like&quot;&gt;
+                    &lt;value name=&quot;StartServers&quot;&gt;20&lt;/value&gt;
+                    &lt;value name=&quot;MinSpareServers&quot;&gt;5&lt;/value&gt;
+                    &lt;value name=&quot;MaxSpareServers&quot;&gt;35&lt;/value&gt;
+                &lt;/value&gt;
+            &lt;/value&gt;
+            &lt;value name=&quot;request_terminate_timeout&quot;&gt;0s&lt;/value&gt;
+            &lt;value name=&quot;request_slowlog_timeout&quot;&gt;0s&lt;/value&gt;
+            &lt;value name=&quot;slowlog&quot;&gt;logs/slow.log&lt;/value&gt;
+            &lt;value name=&quot;rlimit_files&quot;&gt;65535&lt;/value&gt;
+            &lt;value name=&quot;rlimit_core&quot;&gt;0&lt;/value&gt;
+            &lt;value name=&quot;chroot&quot;&gt;&lt;/value&gt;
+            &lt;value name=&quot;chdir&quot;&gt;&lt;/value&gt;
+            &lt;value name=&quot;catch_workers_output&quot;&gt;yes&lt;/value&gt;
+            &lt;value name=&quot;max_requests&quot;&gt;1024&lt;/value&gt;
+            &lt;value name=&quot;allowed_clients&quot;&gt;127.0.0.1&lt;/value&gt;
+            &lt;value name=&quot;environment&quot;&gt;
+                &lt;value name=&quot;HOSTNAME&quot;&gt;$HOSTNAME&lt;/value&gt;
+                &lt;value name=&quot;PATH&quot;&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
+                &lt;value name=&quot;TMP&quot;&gt;/tmp&lt;/value&gt;
+                &lt;value name=&quot;TMPDIR&quot;&gt;/tmp&lt;/value&gt;
+                &lt;value name=&quot;TEMP&quot;&gt;/tmp&lt;/value&gt;
+                &lt;value name=&quot;OSTYPE&quot;&gt;$OSTYPE&lt;/value&gt;
+                &lt;value name=&quot;MACHTYPE&quot;&gt;$MACHTYPE&lt;/value&gt;
+                &lt;value name=&quot;MALLOC_CHECK_&quot;&gt;2&lt;/value&gt;
+            &lt;/value&gt;
+        &lt;/section&gt;
+    &lt;/workers&gt;
+&lt;/configuration&gt;
+</code></pre></figure>
 <p>启动fastcgi</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/servers/app/php/sbin/php-fpm start
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/servers/app/php/sbin/php-fpm start
+</code></pre></figure>
 <p>持续。。。</p>
 
   </div>

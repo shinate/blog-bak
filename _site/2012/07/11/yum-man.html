@@ -61,34 +61,34 @@
 <h2>安装</h2>
 
 <h3>单一软件</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd
+</code></pre></figure>
 <h3>多个类似软件</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd<span class="k">*</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd*
+</code></pre></figure>
 <h3>多个非类似软件</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd php php-gd mysql
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y install httpd php php-gd mysql
+</code></pre></figure>
 <h2>卸载</h2>
 
 <h3>单一软件</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd
+</code></pre></figure>
 <h3>多个相类似软件</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd<span class="k">*</span>
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd*
+</code></pre></figure>
 <h3>多个非类似软件</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd php php-gd mysql
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum -y remove httpd php php-gd mysql
+</code></pre></figure>
 <h2>yum search</h2>
 
 <p>假如我要执行iostat这个命令来查看CPU与存储设备状态，可是执行却发现没有这个命令，于是执行yum install iostat，结果说找不到该软件，使用下面的办法可以解决</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum search iostat
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum search iostat
+</code></pre></figure>
 <p>就能查到和iostat相关的安装包了。
 另外想安装一个程序，只记得一部分名称，也可以用这个办法来实现安装</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum search png |grep png
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">yum search png |grep png
+</code></pre></figure>
 <p>就能找到我们想安装的libpng这个名称。</p>
 
   </div>

@@ -85,7 +85,7 @@
 <p>前六位控制属性2</p>
 
 <p>后六位控制属性1</p>
-<div class="highlight"><pre><code class="language-" data-lang="">04 [1]      04[2]      03[1]      属性1     属性2
+<figure class="highlight"><pre><code class="language-text" data-lang="text">04 [1]      04[2]      03[1]      属性1     属性2
 00 00(0)    0000(0)    0000(0)    -30(0)    -30(0)
 00 00(0)    0001(1)    0000(0)    -14(16)   -30(0)
 00 00(0)    0010(2)    0000(0)    2(32)     -30(0)
@@ -96,17 +96,17 @@
 00 01(1)    0000(0)    0000(0)    -30(0)    -26(4)
 11 11(F)    0000(0)    0000(0)    -30(0)    30(60)
 11 11(F)    1100(0)    0000(0)    -30(0)    33(63)  可看做：  111111(33) 000000(-30)
-</code></pre></div>
+</code></pre></figure>
 <p>最大极限值必然是 33 33</p>
 
 <h3>05 &amp; 06 属性分析</h3>
 
 <p>效果1由是05控制(八位)重复一次，每2^7重复一次;
 效果2和插槽数由06共同控制，每2^6重复一次并且插槽数+1，前4位控制插槽0100(0):无槽、0100(4):1槽、1000(8):2槽、1100(C):3槽，后四位控制效果。代码效果1效果2（插槽）</p>
-<div class="highlight"><pre><code class="language-" data-lang="">00 - - 
-</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">00 - - 
+</code></pre></figure>
 <p>无插槽</p>
-<div class="highlight"><pre><code class="language-" data-lang="">01 胴系统复制 毒
+<figure class="highlight"><pre><code class="language-text" data-lang="text">01 胴系统复制 毒
 02 毒 睡眠
 03 麻痹 耐泥耐雪
 04 睡眠 体力
@@ -170,9 +170,9 @@
 3E 食事 锋利度等级+1
 3F 剥取 见切+1
 40 耐震
-</code></pre></div>
+</code></pre></figure>
 <p>1插槽</p>
-<div class="highlight"><pre><code class="language-" data-lang="">41 回避距离 毒
+<figure class="highlight"><pre><code class="language-text" data-lang="text">41 回避距离 毒
 42 拔刀会心 睡眠
 43 高速设置 耐泥耐雪
 44 体术 体力
@@ -236,9 +236,9 @@
 7E 见切+1 锋利度等级+1
 7F 见切+2 见切+1
 80 - 胴系统复制
-</code></pre></div>
+</code></pre></figure>
 <p>2插槽</p>
-<div class="highlight"><pre><code class="language-" data-lang="">81 胴系统复制 麻痹
+<figure class="highlight"><pre><code class="language-text" data-lang="text">81 胴系统复制 麻痹
 82 毒 气绝
 83 麻痹 气配(警惕)
 84 睡眠 回复速度
@@ -302,9 +302,9 @@ BD 精密射击 钝刀
 BE 食事 心眼
 BF 剥取 见切+2
 C0 耐震 胴系统复制
-</code></pre></div>
+</code></pre></figure>
 <p>3插槽</p>
-<div class="highlight"><pre><code class="language-" data-lang="">C1 回避距离 麻痹
+<figure class="highlight"><pre><code class="language-text" data-lang="text">C1 回避距离 麻痹
 C2 拔刀会心 气绝
 C3 高速设置 气配(警惕)
 C4 体术 回复速度
@@ -367,11 +367,11 @@ FC 锋利度等级+1 回复速度-2
 FD 心眼 钝刀
 FE 见切+1 心眼
 FF 见切+2 见切+2
-</code></pre></div>
+</code></pre></figure>
 <h2>附录</h2>
 
 <h3>装饰品代码</h3>
-<div class="highlight"><pre><code class="language-" data-lang="">2F 03 耐绝珠 1
+<figure class="highlight"><pre><code class="language-text" data-lang="text">2F 03 耐绝珠 1
 30 03 制绝珠 2
 31 03 耐痹珠 1
 32 03 耐痹珠 2
@@ -535,7 +535,7 @@ CF 03 强瓶珠 1
 D0 03 强瓶珠 2
 D1 03 接瓶珠 1
 D2 03 灭瓶珠 1
-</code></pre></div>
+</code></pre></figure>
 <p>未完持续......</p>
 
   </div>
