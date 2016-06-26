@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>codante</title>
+    <title>PHP获取post参数的几种方式</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="http://codante.org/blog/assets/img/favicon.ico" />
@@ -33,18 +33,51 @@
   </head>
   <body>
 
-    <div class="footer-clear page-wrapper">
+    <div class="footer-clear post-wrapper">
 
-  <div class="page-container">
+  <!-- post archive trigger -->
+  <div class="post-archive-trigger">
+    <div class="post-archive-icon"></div>
+  </div>
+  <!-- /post archive trigger -->
 
-    <div class="index-wrapper">
-  <a class="link-1" href="http://codante.org/blog/2016/06/26/php-get-post-data.html">POSTS</a>
-  |
-  <a class="link-1" href="http://codante.org/labor">LABOR</a>
-</div>
+  <!-- post archive -->
+  <div class="post-archive"></div>
+  <!-- /post archive -->
 
+  <!-- post header -->
+  <div class="post-header">
+    <h1>PHP获取post参数的几种方式</h1>
+    <span>2016-06-26</span>
+  </div>
+  <!-- /post header -->
+
+  <!-- post content -->
+  
+
+  <div class="post-content chinese">
+    <ol>
+<li><p><code>$_POST[&#39;paramName&#39;]</code> 只能接收Content-Type: <code>application/x-www-form-urlencoded</code>提交的数据</p></li>
+<li><p><code>file_get_contents(&quot;php://input&quot;)</code> 适用大多数类型的Content-type，<code>php://input</code> 允许读取 POST 的原始数据。和 <code>$HTTP_RAW_POST_DATA</code> 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。<code>php://input</code> 不能用于 <code>enctype=&quot;multipart/form-data&quot;</code>。</p></li>
+<li><p><code>$GLOBALS[&#39;HTTP_RAW_POST_DATA&#39;];</code> 总是产生 <code>$HTTP_RAW_POST_DATA</code>  变量包含有原始的 POST 数据。此变量仅在碰到未识别 MIME 类型的数据时产生。<code>$HTTP_RAW_POST_DATA</code> 对于 <code>enctype=&quot;multipart/form-data&quot;</code> 表单数据不可用。如果post过来的数据不是PHP能够识别的，你可以用 <code>$GLOBALS[&#39;HTTP_RAW_POST_DATA&#39;]</code> 来接收，比如 <code>text/xml</code> 或者 <code>soap</code> 等等。</p></li>
+</ol>
 
   </div>
+  <!-- /post content -->
+
+  <!-- post navigator -->
+  <div class="post-nav">
+    
+    <a class="post-nav-previous" href="http://codante.org/blog/2016/06/17/zend-guard-installation.html">Zend Grard 安装及配置</a>
+    
+
+    
+
+    
+  </div>
+  <!-- /post navigator -->
+
+  
 
   <!-- footer -->
   <footer class="footer">
@@ -58,6 +91,7 @@
   <!-- /footer -->
 
 </div>
+
 
     
     
