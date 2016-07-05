@@ -5,9 +5,25 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 26 Jun 2016 14:21:28 +0800</pubDate>
-    <lastBuildDate>Sun, 26 Jun 2016 14:21:28 +0800</lastBuildDate>
+    <pubDate>Tue, 05 Jul 2016 15:19:12 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Jul 2016 15:19:12 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Memcache 数据刷新</title>
+        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;telnet 127.0.0.1 11211
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;输入指令&lt;code&gt;flush_all&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;也可以一行指令解决&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;flush_all&quot;&lt;/span&gt; | nc 127.0.0.1 11211
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Tue, 05 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://codante.org/blog/2016/07/05/memcache-flush-all.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2016/07/05/memcache-flush-all.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>PHP获取post参数的几种方式</title>
@@ -428,19 +444,6 @@ int1 -le int2　　　　int1小于等于int2为真
         <pubDate>Tue, 15 Dec 2015 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2015/12/15/git-configuration-commands.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2015/12/15/git-configuration-commands.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Blender 3D 技巧收集</title>
-        <description>&lt;h3&gt;Modifiers cannot be applied to multi-user data&lt;/h3&gt;
-
-&lt;p&gt;Press U &amp;gt; Objects and Data. Then apply your modifier. Using just Object will make the object a new, separate datablock for the mesh (but will ignore modifiers). However, using Object and Data will make both the objects mesh and it&amp;#39;s modifiers a new, separate datablock.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 10 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://codante.org/blog/2015/12/10/blender-skill.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2015/12/10/blender-skill.html</guid>
         
         
       </item>
