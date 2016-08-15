@@ -5,12 +5,12 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Aug 2016 15:25:23 +0800</pubDate>
-    <lastBuildDate>Mon, 15 Aug 2016 15:25:23 +0800</lastBuildDate>
+    <pubDate>Mon, 15 Aug 2016 15:27:29 +0800</pubDate>
+    <lastBuildDate>Mon, 15 Aug 2016 15:27:29 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
-        <title>Excel csv 避免科学技术法</title>
+        <title>Excel csv 解决自动科学技术法</title>
         <description>&lt;p&gt;用程序导出的csv数据字段如果为很长很长的数字，比如身份证，带区号的手机，带前导0的数字等，就会被转换成科学计数法&lt;/p&gt;
 
 &lt;p&gt;看例子&lt;/p&gt;
