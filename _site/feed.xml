@@ -5,9 +5,36 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Jul 2016 15:19:12 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Jul 2016 15:19:12 +0800</lastBuildDate>
+    <pubDate>Mon, 15 Aug 2016 15:24:27 +0800</pubDate>
+    <lastBuildDate>Mon, 15 Aug 2016 15:24:27 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Excel csv 避免科学技术法</title>
+        <description>&lt;p&gt;用程序导出的csv数据字段如果为很长很长的数字，比如身份证，带区号的手机，带前导0的数字等，就会被转换成科学计数法&lt;/p&gt;
+
+&lt;p&gt;看例子&lt;/p&gt;
+
+&lt;h3&gt;数据&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;&quot;4173&quot;,&quot;SpeedyCorp&quot;,&quot;268435459705526269&quot;,&quot;&quot;,&quot;268435459705526269&quot;,&quot;848 Model Widget&quot;,&quot;2011-01-17&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果直接打开会出现&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;4173    SpeedyCorp  2.68435E+17     2.68435E+17 848 Model Widget    2011-01-17
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;长数字都被转换成科学计数法了...&lt;/p&gt;
+
+&lt;h3&gt;其实在字段前加上&amp;quot;&lt;code&gt;=&lt;/code&gt;&amp;quot;即可解决&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;&quot;4173&quot;,&quot;SpeedyCorp&quot;,=&quot;268435459705526269&quot;,&quot;&quot;,&quot;268435459705526269&quot;,&quot;848 Model Widget&quot;,&quot;2011-01-17&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;打开后&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;4173    SpeedyCorp  268435459705526269     2.68435E+17 848 Model Widget    2011-01-17
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Mon, 15 Aug 2016 00:00:00 +0800</pubDate>
+        <link>http://codante.org/blog/2016/08/15/excel-csv-serial-number.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2016/08/15/excel-csv-serial-number.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Memcache 数据刷新</title>
@@ -247,203 +274,6 @@ int1 -le int2　　　　int1小于等于int2为真
         <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/01/21/bash-shell-open-default-web-browser-on-mac.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2016/01/21/bash-shell-open-default-web-browser-on-mac.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Git 配置及指令</title>
-        <description>&lt;h2&gt;新建代码库&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 在当前目录新建一个Git代码库&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git init
-&lt;span class=&quot;c&quot;&gt;# 新建一个目录，将其初始化为Git代码库&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git init &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;project-name]
-&lt;span class=&quot;c&quot;&gt;# 下载一个项目和它的整个代码历史&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git clone &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;url]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;配置&lt;/h2&gt;
-
-&lt;p&gt;Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 显示当前的Git配置&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git config -l &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;--local]
-&lt;span class=&quot;c&quot;&gt;# 编辑Git配置文件&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git config -e &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;--global]
-&lt;span class=&quot;c&quot;&gt;# 设置提交代码时的用户信息&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;--local] user.name &lt;span class=&quot;s2&quot;&gt;&quot;[name]&quot;&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;--lcoal] user.email &lt;span class=&quot;s2&quot;&gt;&quot;[email address]&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;增加/删除文件&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 添加指定文件到暂存区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file1] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file2] ...
-&lt;span class=&quot;c&quot;&gt;# 添加指定目录到暂存区，包括子目录&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;dir]
-&lt;span class=&quot;c&quot;&gt;# 添加当前目录的所有文件到暂存区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git add .
-&lt;span class=&quot;c&quot;&gt;# 删除工作区文件，并且将这次删除放入暂存区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git rm &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file1] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file2] ...
-&lt;span class=&quot;c&quot;&gt;# 停止追踪指定文件，但该文件会保留在工作区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git rm --cached &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;c&quot;&gt;# 改名文件，并且将这个改名放入暂存区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git mv &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file-original] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file-renamed]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;代码提交&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 提交暂存区到仓库区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git commit -m &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;message]
-&lt;span class=&quot;c&quot;&gt;# 提交暂存区的指定文件到仓库区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file1] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file2] ... -m &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;message]
-&lt;span class=&quot;c&quot;&gt;# 提交工作区自上次commit之后的变化，直接到仓库区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git commit -a
-&lt;span class=&quot;c&quot;&gt;# 提交时显示所有diff信息&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git commit -v
-&lt;span class=&quot;c&quot;&gt;# 使用一次新的commit，替代上一次提交&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 如果代码没有任何新变化，则用来改写上一次commit的提交信息&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git commit --amend -m &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;message]
-&lt;span class=&quot;c&quot;&gt;# 重做上一次commit，并包括指定文件的新变化&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git commit --amend &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file1] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file2] ...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;分支&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 列出所有本地分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch
-&lt;span class=&quot;c&quot;&gt;# 列出所有远程分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch -r
-&lt;span class=&quot;c&quot;&gt;# 列出所有本地分支和远程分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch -a
-&lt;span class=&quot;c&quot;&gt;# 列出所有本地分支及其与远端分支的追踪关系&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch -vv
-&lt;span class=&quot;c&quot;&gt;# 新建一个分支，但依然停留在当前分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch-name]
-&lt;span class=&quot;c&quot;&gt;# 新建一个分支，并切换到该分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git checkout -b &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch]
-&lt;span class=&quot;c&quot;&gt;# 新建一个分支，指向指定commit&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;span class=&quot;c&quot;&gt;# 新建一个分支，与指定的远程分支建立追踪关系&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch --track &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote-branch]
-&lt;span class=&quot;c&quot;&gt;# 切换到指定分支，并更新工作区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git checkout &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch-name]
-&lt;span class=&quot;c&quot;&gt;# 建立追踪关系，在现有分支与指定的远程分支之间&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch --set-upstream &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote-branch]
-&lt;span class=&quot;c&quot;&gt;# 合并指定分支到当前分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git merge &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch]
-&lt;span class=&quot;c&quot;&gt;# 选择一个commit，合并进当前分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git cherry-pick &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;span class=&quot;c&quot;&gt;# 删除分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch -d &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch-name]
-&lt;span class=&quot;c&quot;&gt;# 删除远程分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push origin --delete &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch-name]
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git branch -dr &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote/branch]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;标签&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 列出所有tag&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git tag
-&lt;span class=&quot;c&quot;&gt;# 新建一个tag在当前commit&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git tag &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;tag]
-&lt;span class=&quot;c&quot;&gt;# 新建一个tag在指定commit&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git tag &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;tag] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;span class=&quot;c&quot;&gt;# 查看tag信息&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git show &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;tag]
-&lt;span class=&quot;c&quot;&gt;# 提交指定tag&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;tag]
-&lt;span class=&quot;c&quot;&gt;# 提交所有tag&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote] --tags
-&lt;span class=&quot;c&quot;&gt;# 新建一个分支，指向某个tag&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git checkout -b &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;tag]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;查看信息&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 显示有变更的文件&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git status
-&lt;span class=&quot;c&quot;&gt;# 显示当前分支的版本历史&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git log
-&lt;span class=&quot;c&quot;&gt;# 显示commit历史，以及每次commit发生变更的文件&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git log --stat
-&lt;span class=&quot;c&quot;&gt;# 显示某个文件的版本历史，包括文件改名&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git log --follow &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git whatchanged &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;c&quot;&gt;# 显示指定文件相关的每一次diff&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git log -p &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;c&quot;&gt;# 显示指定文件是什么人在什么时间修改过&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git blame &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;c&quot;&gt;# 显示暂存区和工作区的差异&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git diff
-&lt;span class=&quot;c&quot;&gt;# 显示暂存区和上一个commit的差异&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git diff --cached &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;c&quot;&gt;# 显示工作区与当前分支最新commit之间的差异&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git diff HEAD
-&lt;span class=&quot;c&quot;&gt;# 显示两次提交之间的差异&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git diff &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;first-branch]...[second-branch]
-&lt;span class=&quot;c&quot;&gt;# 显示某次提交的元数据和内容变化&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git show &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;span class=&quot;c&quot;&gt;# 显示某次提交发生变化的文件&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git show --name-only &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;span class=&quot;c&quot;&gt;# 显示某次提交时，某个文件的内容&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git show &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]:[filename]
-&lt;span class=&quot;c&quot;&gt;# 显示当前分支的最近几次提交&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git reflog
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;远程同步&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 下载远程仓库的所有变动&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git fetch &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote]
-&lt;span class=&quot;c&quot;&gt;# 显示所有远程仓库&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git remote -v
-&lt;span class=&quot;c&quot;&gt;# 显示某个远程仓库的信息&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git remote show &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote]
-&lt;span class=&quot;c&quot;&gt;# 增加一个新的远程仓库，并命名&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git remote add &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;shortname] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;url]
-&lt;span class=&quot;c&quot;&gt;# 取回远程仓库的变化，并与本地分支合并&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git pull &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch]
-&lt;span class=&quot;c&quot;&gt;# 上传本地指定分支到远程仓库&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;branch]
-&lt;span class=&quot;c&quot;&gt;# 强行推送当前分支到远程仓库，即使有冲突&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote] --force
-&lt;span class=&quot;c&quot;&gt;# 推送所有分支到远程仓库&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;remote] --all
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;撤销&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 恢复暂存区的指定文件到工作区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git checkout &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;c&quot;&gt;# 恢复某个commit的指定文件到工作区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git checkout &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;c&quot;&gt;# 恢复上一个commit的所有文件到工作区&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git checkout .
-&lt;span class=&quot;c&quot;&gt;# 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;file]
-&lt;span class=&quot;c&quot;&gt;# 重置暂存区与工作区，与上一次commit保持一致&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git reset --hard
-&lt;span class=&quot;c&quot;&gt;# 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;span class=&quot;c&quot;&gt;# 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git reset --hard &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;span class=&quot;c&quot;&gt;# 重置当前HEAD为指定commit，但保持暂存区和工作区不变&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git reset --keep &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;span class=&quot;c&quot;&gt;# 新建一个commit，用来撤销指定commit&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# 后者的所有变化都将被前者抵消，并且应用到当前分支&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git revert &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;commit]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;submodule&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 添加一个submodule&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git submodule add &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;url] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;dir]
-&lt;span class=&quot;c&quot;&gt;# 初始化&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git submodule init &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;dir]
-&lt;span class=&quot;c&quot;&gt;# 更新&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git submodule update &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;dir]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;克隆一个带有submodule的远程代码仓库&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git clone &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;url]
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git submodule init
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git submodule update
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;或者&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git clone --recursive &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;url]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Reference&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://git-scm.com/docs&quot;&gt;git官方doc&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html&quot;&gt;常用Git命令清单 by ruanyifeng&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 15 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://codante.org/blog/2015/12/15/git-configuration-commands.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2015/12/15/git-configuration-commands.html</guid>
         
         
       </item>
