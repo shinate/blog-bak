@@ -32,3 +32,5 @@ title: Excel csv 避免科学技术法
 ```
 4173    SpeedyCorp  268435459705526269     2.68435E+17 848 Model Widget    2011-01-17
 ```
+
+[http://superuser.com/questions/234997/how-can-i-stop-excel-from-eating-my-delicious-csv-files-and-excreting-useless-da](http://superuser.com/questions/234997/how-can-i-stop-excel-from-eating-my-delicious-csv-files-and-excreting-useless-da)
