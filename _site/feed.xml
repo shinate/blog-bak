@@ -5,22 +5,9 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Aug 2016 19:15:50 +0800</pubDate>
-    <lastBuildDate>Mon, 29 Aug 2016 19:15:50 +0800</lastBuildDate>
+    <pubDate>Mon, 29 Aug 2016 19:17:03 +0800</pubDate>
+    <lastBuildDate>Mon, 29 Aug 2016 19:17:03 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
-    
-      <item>
-        <title>AAAA</title>
-        <description>&lt;h3&gt;AAAA&lt;/h3&gt;
-
-&lt;p&gt;12345&lt;/p&gt;
-</description>
-        <pubDate>Mon, 29 Aug 2016 00:00:00 +0800</pubDate>
-        <link>http://codante.org/blog/2016/08/29/aaaa.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2016/08/29/aaaa.html</guid>
-        
-        
-      </item>
     
       <item>
         <title>Excel CSV 解决自动科学技术法</title>
@@ -278,6 +265,17 @@ int1 -le int2　　　　int1小于等于int2为真
         <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/01/21/shell-if.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2016/01/21/shell-if.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Mac系统用bash shell用默认浏览器打开网址</title>
+        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;open http://codante.org -a &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;VERSIONER_PERL_PREFER_32_BIT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;perl -MMac::InternetConfig -le &lt;span class=&quot;s1&quot;&gt;&#39;print +(GetICHelper &quot;http&quot;)[1]&#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
+        <link>http://codante.org/blog/2016/01/21/bash-shell-open-default-web-browser-on-mac.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2016/01/21/bash-shell-open-default-web-browser-on-mac.html</guid>
         
         
       </item>
