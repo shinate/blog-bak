@@ -102,4 +102,4 @@ date_gmt: '2010-12-15 04:34:07 +0800'
 - get over with 忘记
 - get in line 排队（everybody get in line)大家排好队
 - i don't have the energy for this 我没有能力应付这个
-- u got me.你还真问住我了 &lt;/span&gt;&lt;/span&gt;
+- u got me. 你还真问住我了
