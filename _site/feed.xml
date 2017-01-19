@@ -5,9 +5,94 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Oct 2016 17:24:21 +0800</pubDate>
-    <lastBuildDate>Tue, 11 Oct 2016 17:24:21 +0800</lastBuildDate>
+    <pubDate>Thu, 19 Jan 2017 14:35:58 +0800</pubDate>
+    <lastBuildDate>Thu, 19 Jan 2017 14:35:58 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Different In Mpeg2 Mpeg4 H264</title>
+        <description>&lt;h2&gt;宏块匹配像素精度&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MPEG2中，运动估计的精度是1/2的像素，通过线性插值实现（可能有简单修正）；&lt;/li&gt;
+&lt;li&gt;H.264和MPEG4 都可以支持1/4像素的精度；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;参考帧的数量&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MPEG2，MPEG4的P帧只能有一帧参考帧，B帧可以有两帧参考帧；&lt;/li&gt;
+&lt;li&gt;H.264可以最多有15帧参考帧，一般情况下选择3-5帧作为参考帧；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;滤波器的结构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;插值滤波器
+
+&lt;ul&gt;
+&lt;li&gt;MPEG4里面是简单的线性插值；&lt;/li&gt;
+&lt;li&gt;H.264里面是5抽头的滤波器；&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;deblocking
+
+&lt;ul&gt;
+&lt;li&gt;MPEG2没有环内deblocking工具；&lt;/li&gt;
+&lt;li&gt;MPEG4有deblocking工具，但是属于postprocessing;&lt;/li&gt;
+&lt;li&gt;H.264有环内deblocking工具；&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;I帧的编码&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MPEG2没有INTRA预测，但是有DC参数预测；&lt;/li&gt;
+&lt;li&gt;MPEG4没有INTRA预测，支持DC预测，并且支持两个AC参数的预测；&lt;/li&gt;
+&lt;li&gt;H.264支持INTRA预测，4*4共有9种模式；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;匹配宏块大小的区别&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MPEG2最小匹配块尺寸为8*8；&lt;/li&gt;
+&lt;li&gt;MPEG4同样也为8*8；&lt;/li&gt;
+&lt;li&gt;H.264最小可以到4*4尺寸；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;DCT变换的不同&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MPEG系列为8*8的DCT变换，逆变换时会出现漂移现象；&lt;/li&gt;
+&lt;li&gt;H.264为整数4*4的DCT变换，而且直流系数经过HADMARD变换之后做的DCT变换，整数DCT变换可以防止逆变换时出现漂移现象；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;量化之后的编码&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MPEG2/MPEG4则都是基于huffman，并且头部的语法相对比较简单，很少使用变长码；&lt;/li&gt;
+&lt;li&gt;H.264提供基于上下文的CAVLC和CABAC；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;编码之后的结构&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MPEG2/MPEG4都是分层结构；&lt;/li&gt;
+&lt;li&gt;H.264则是提供NAL单层结构，提供参数集合的形式；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;量化参数的区别&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MPEG4提供31个量化参数（量化模式：常量化，系统默认量化矩阵，自定义量化矩阵）；&lt;/li&gt;
+&lt;li&gt;H.264提供51个量化参数（量化模式：常量化，量化矩阵，自定义有否还不确定）；&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 19 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://codante.org/blog/2017/01/19/different-in-mpeg2-mpeg4-h264.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2017/01/19/different-in-mpeg2-mpeg4-h264.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Excel CSV 解决自动科学技术法</title>
@@ -265,17 +350,6 @@ int1 -le int2　　　　int1小于等于int2为真
         <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/01/21/shell-if.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2016/01/21/shell-if.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Mac系统用bash shell用默认浏览器打开网址</title>
-        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;open http://codante.org -a &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;VERSIONER_PERL_PREFER_32_BIT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;perl -MMac::InternetConfig -le &lt;span class=&quot;s1&quot;&gt;&#39;print +(GetICHelper &quot;http&quot;)[1]&#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-        <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
-        <link>http://codante.org/blog/2016/01/21/bash-shell-open-default-web-browser-on-mac.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2016/01/21/bash-shell-open-default-web-browser-on-mac.html</guid>
         
         
       </item>
