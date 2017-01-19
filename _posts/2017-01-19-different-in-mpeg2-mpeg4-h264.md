@@ -1,5 +1,6 @@
 ---
 layout: post
+title: MPEG-2，MPEG-4，H.264 编码标准的区别
 ---
 
 ## 宏块匹配像素精度
