@@ -5,86 +5,86 @@
     <description></description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Mar 2017 21:44:49 +0800</pubDate>
-    <lastBuildDate>Thu, 02 Mar 2017 21:44:49 +0800</lastBuildDate>
+    <pubDate>Thu, 02 Mar 2017 21:46:15 +0800</pubDate>
+    <lastBuildDate>Thu, 02 Mar 2017 21:46:15 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>MPEG-2，MPEG-4，H.264 编码标准的区别</title>
-        <description>&lt;h2&gt;宏块匹配像素精度&lt;/h2&gt;
+        <description>&lt;h2 id=&quot;section&quot;&gt;宏块匹配像素精度&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;MPEG2中，运动估计的精度是1/2的像素，通过线性插值实现（可能有简单修正）；&lt;/li&gt;
-&lt;li&gt;H.264和MPEG4 都可以支持1/4像素的精度；&lt;/li&gt;
+  &lt;li&gt;MPEG2中，运动估计的精度是1/2的像素，通过线性插值实现（可能有简单修正）；&lt;/li&gt;
+  &lt;li&gt;H.264和MPEG4 都可以支持1/4像素的精度；&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;参考帧的数量&lt;/h2&gt;
+&lt;h2 id=&quot;section-1&quot;&gt;参考帧的数量&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;MPEG2，MPEG4的P帧只能有一帧参考帧，B帧可以有两帧参考帧；&lt;/li&gt;
-&lt;li&gt;H.264可以最多有15帧参考帧，一般情况下选择3-5帧作为参考帧；&lt;/li&gt;
+  &lt;li&gt;MPEG2，MPEG4的P帧只能有一帧参考帧，B帧可以有两帧参考帧；&lt;/li&gt;
+  &lt;li&gt;H.264可以最多有15帧参考帧，一般情况下选择3-5帧作为参考帧；&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;滤波器的结构&lt;/h2&gt;
+&lt;h2 id=&quot;section-2&quot;&gt;滤波器的结构&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;插值滤波器
-
-&lt;ul&gt;
-&lt;li&gt;MPEG4里面是简单的线性插值；&lt;/li&gt;
-&lt;li&gt;H.264里面是5抽头的滤波器；&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;deblocking
-
-&lt;ul&gt;
-&lt;li&gt;MPEG2没有环内deblocking工具；&lt;/li&gt;
-&lt;li&gt;MPEG4有deblocking工具，但是属于postprocessing;&lt;/li&gt;
-&lt;li&gt;H.264有环内deblocking工具；&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+  &lt;li&gt;插值滤波器
+    &lt;ul&gt;
+      &lt;li&gt;MPEG4里面是简单的线性插值；&lt;/li&gt;
+      &lt;li&gt;H.264里面是5抽头的滤波器；&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;deblocking
+    &lt;ul&gt;
+      &lt;li&gt;MPEG2没有环内deblocking工具；&lt;/li&gt;
+      &lt;li&gt;MPEG4有deblocking工具，但是属于postprocessing;&lt;/li&gt;
+      &lt;li&gt;H.264有环内deblocking工具；&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;I帧的编码&lt;/h2&gt;
+&lt;h2 id=&quot;i&quot;&gt;I帧的编码&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;MPEG2没有INTRA预测，但是有DC参数预测；&lt;/li&gt;
-&lt;li&gt;MPEG4没有INTRA预测，支持DC预测，并且支持两个AC参数的预测；&lt;/li&gt;
-&lt;li&gt;H.264支持INTRA预测，4*4共有9种模式；&lt;/li&gt;
+  &lt;li&gt;MPEG2没有INTRA预测，但是有DC参数预测；&lt;/li&gt;
+  &lt;li&gt;MPEG4没有INTRA预测，支持DC预测，并且支持两个AC参数的预测；&lt;/li&gt;
+  &lt;li&gt;H.264支持INTRA预测，4*4共有9种模式；&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;匹配宏块大小的区别&lt;/h2&gt;
+&lt;h2 id=&quot;section-3&quot;&gt;匹配宏块大小的区别&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;MPEG2最小匹配块尺寸为8*8；&lt;/li&gt;
-&lt;li&gt;MPEG4同样也为8*8；&lt;/li&gt;
-&lt;li&gt;H.264最小可以到4*4尺寸；&lt;/li&gt;
+  &lt;li&gt;MPEG2最小匹配块尺寸为8*8；&lt;/li&gt;
+  &lt;li&gt;MPEG4同样也为8*8；&lt;/li&gt;
+  &lt;li&gt;H.264最小可以到4*4尺寸；&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;DCT变换的不同&lt;/h2&gt;
+&lt;h2 id=&quot;dct&quot;&gt;DCT变换的不同&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;MPEG系列为8*8的DCT变换，逆变换时会出现漂移现象；&lt;/li&gt;
-&lt;li&gt;H.264为整数4*4的DCT变换，而且直流系数经过HADMARD变换之后做的DCT变换，整数DCT变换可以防止逆变换时出现漂移现象；&lt;/li&gt;
+  &lt;li&gt;MPEG系列为8*8的DCT变换，逆变换时会出现漂移现象；&lt;/li&gt;
+  &lt;li&gt;H.264为整数4*4的DCT变换，而且直流系数经过HADMARD变换之后做的DCT变换，整数DCT变换可以防止逆变换时出现漂移现象；&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;量化之后的编码&lt;/h2&gt;
+&lt;h2 id=&quot;section-4&quot;&gt;量化之后的编码&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;MPEG2/MPEG4则都是基于huffman，并且头部的语法相对比较简单，很少使用变长码；&lt;/li&gt;
-&lt;li&gt;H.264提供基于上下文的CAVLC和CABAC；&lt;/li&gt;
+  &lt;li&gt;MPEG2/MPEG4则都是基于huffman，并且头部的语法相对比较简单，很少使用变长码；&lt;/li&gt;
+  &lt;li&gt;H.264提供基于上下文的CAVLC和CABAC；&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;编码之后的结构&lt;/h2&gt;
+&lt;h2 id=&quot;section-5&quot;&gt;编码之后的结构&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;MPEG2/MPEG4都是分层结构；&lt;/li&gt;
-&lt;li&gt;H.264则是提供NAL单层结构，提供参数集合的形式；&lt;/li&gt;
+  &lt;li&gt;MPEG2/MPEG4都是分层结构；&lt;/li&gt;
+  &lt;li&gt;H.264则是提供NAL单层结构，提供参数集合的形式；&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2&gt;量化参数的区别&lt;/h2&gt;
+&lt;h2 id=&quot;section-6&quot;&gt;量化参数的区别&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;MPEG4提供31个量化参数（量化模式：常量化，系统默认量化矩阵，自定义量化矩阵）；&lt;/li&gt;
-&lt;li&gt;H.264提供51个量化参数（量化模式：常量化，量化矩阵，自定义有否还不确定）；&lt;/li&gt;
+  &lt;li&gt;MPEG4提供31个量化参数（量化模式：常量化，系统默认量化矩阵，自定义量化矩阵）；&lt;/li&gt;
+  &lt;li&gt;H.264提供51个量化参数（量化模式：常量化，量化矩阵，自定义有否还不确定）；&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Jan 2017 00:00:00 +0800</pubDate>
@@ -100,20 +100,32 @@
 
 &lt;p&gt;看例子&lt;/p&gt;
 
-&lt;h3&gt;数据&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;&quot;4173&quot;,&quot;SpeedyCorp&quot;,&quot;268435459705526269&quot;,&quot;&quot;,&quot;268435459705526269&quot;,&quot;848 Model Widget&quot;,&quot;2011-01-17&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如果直接打开会出现&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;4173    SpeedyCorp  2.68435E+17     2.68435E+17 848 Model Widget    2011-01-17
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;长数字都被转换成科学计数法了...&lt;/p&gt;
+&lt;h3 id=&quot;section&quot;&gt;数据&lt;/h3&gt;
 
-&lt;h3&gt;其实在字段前加上&amp;quot;&lt;code&gt;=&lt;/code&gt;&amp;quot;即可解决&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;&quot;4173&quot;,&quot;SpeedyCorp&quot;,=&quot;268435459705526269&quot;,&quot;&quot;,&quot;268435459705526269&quot;,&quot;848 Model Widget&quot;,&quot;2011-01-17&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;4173&quot;,&quot;SpeedyCorp&quot;,&quot;268435459705526269&quot;,&quot;&quot;,&quot;268435459705526269&quot;,&quot;848 Model Widget&quot;,&quot;2011-01-17&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果直接打开会出现&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;4173    SpeedyCorp  2.68435E+17     2.68435E+17 848 Model Widget    2011-01-17
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;长数字都被转换成科学计数法了…&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;其实在字段前加上”&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;“即可解决&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;4173&quot;,&quot;SpeedyCorp&quot;,=&quot;268435459705526269&quot;,&quot;&quot;,&quot;268435459705526269&quot;,&quot;848 Model Widget&quot;,&quot;2011-01-17&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;打开后&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;4173    SpeedyCorp  268435459705526269     2.68435E+17 848 Model Widget    2011-01-17
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;4173    SpeedyCorp  268435459705526269     2.68435E+17 848 Model Widget    2011-01-17
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;&lt;a href=&quot;http://superuser.com/questions/234997/how-can-i-stop-excel-from-eating-my-delicious-csv-files-and-excreting-useless-da&quot;&gt;http://superuser.com/questions/234997/how-can-i-stop-excel-from-eating-my-delicious-csv-files-and-excreting-useless-da&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 15 Aug 2016 00:00:00 +0800</pubDate>
@@ -125,13 +137,18 @@
     
       <item>
         <title>Memcache 数据刷新</title>
-        <description>&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;telnet 127.0.0.1 11211
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;输入指令&lt;code&gt;flush_all&lt;/code&gt;&lt;/p&gt;
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;telnet 127.0.0.1 11211
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;输入指令&lt;code class=&quot;highlighter-rouge&quot;&gt;flush_all&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;也可以一行指令解决&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;flush_all&quot;&lt;/span&gt; | nc 127.0.0.1 11211
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;flush_all&quot;&lt;/span&gt; | nc 127.0.0.1 11211
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
         <pubDate>Tue, 05 Jul 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/07/05/memcache-flush-all.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2016/07/05/memcache-flush-all.html</guid>
@@ -142,9 +159,15 @@
       <item>
         <title>PHP获取post参数的几种方式</title>
         <description>&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;$_POST[&amp;#39;paramName&amp;#39;]&lt;/code&gt; 只能接收Content-Type: &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;提交的数据&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;file_get_contents(&amp;quot;php://input&amp;quot;)&lt;/code&gt; 适用大多数类型的Content-type，&lt;code&gt;php://input&lt;/code&gt; 允许读取 POST 的原始数据。和 &lt;code&gt;$HTTP_RAW_POST_DATA&lt;/code&gt; 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。&lt;code&gt;php://input&lt;/code&gt; 不能用于 &lt;code&gt;enctype=&amp;quot;multipart/form-data&amp;quot;&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;$GLOBALS[&amp;#39;HTTP_RAW_POST_DATA&amp;#39;];&lt;/code&gt; 总是产生 &lt;code&gt;$HTTP_RAW_POST_DATA&lt;/code&gt;  变量包含有原始的 POST 数据。此变量仅在碰到未识别 MIME 类型的数据时产生。&lt;code&gt;$HTTP_RAW_POST_DATA&lt;/code&gt; 对于 &lt;code&gt;enctype=&amp;quot;multipart/form-data&amp;quot;&lt;/code&gt; 表单数据不可用。如果post过来的数据不是PHP能够识别的，你可以用 &lt;code&gt;$GLOBALS[&amp;#39;HTTP_RAW_POST_DATA&amp;#39;]&lt;/code&gt; 来接收，比如 &lt;code&gt;text/xml&lt;/code&gt; 或者 &lt;code&gt;soap&lt;/code&gt; 等等。&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$_POST[&#39;paramName&#39;]&lt;/code&gt; 只能接收Content-Type: &lt;code class=&quot;highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt;提交的数据&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;file_get_contents(&quot;php://input&quot;)&lt;/code&gt; 适用大多数类型的Content-type，&lt;code class=&quot;highlighter-rouge&quot;&gt;php://input&lt;/code&gt; 允许读取 POST 的原始数据。和 &lt;code class=&quot;highlighter-rouge&quot;&gt;$HTTP_RAW_POST_DATA&lt;/code&gt; 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。&lt;code class=&quot;highlighter-rouge&quot;&gt;php://input&lt;/code&gt; 不能用于 &lt;code class=&quot;highlighter-rouge&quot;&gt;enctype=&quot;multipart/form-data&quot;&lt;/code&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$GLOBALS[&#39;HTTP_RAW_POST_DATA&#39;];&lt;/code&gt; 总是产生 &lt;code class=&quot;highlighter-rouge&quot;&gt;$HTTP_RAW_POST_DATA&lt;/code&gt;  变量包含有原始的 POST 数据。此变量仅在碰到未识别 MIME 类型的数据时产生。&lt;code class=&quot;highlighter-rouge&quot;&gt;$HTTP_RAW_POST_DATA&lt;/code&gt; 对于 &lt;code class=&quot;highlighter-rouge&quot;&gt;enctype=&quot;multipart/form-data&quot;&lt;/code&gt; 表单数据不可用。如果post过来的数据不是PHP能够识别的，你可以用 &lt;code class=&quot;highlighter-rouge&quot;&gt;$GLOBALS[&#39;HTTP_RAW_POST_DATA&#39;]&lt;/code&gt; 来接收，比如 &lt;code class=&quot;highlighter-rouge&quot;&gt;text/xml&lt;/code&gt; 或者 &lt;code class=&quot;highlighter-rouge&quot;&gt;soap&lt;/code&gt; 等等。&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 26 Jun 2016 00:00:00 +0800</pubDate>
@@ -156,30 +179,40 @@
     
       <item>
         <title>Zend Grard 安装及配置</title>
-        <description>&lt;h3&gt;下载Zend Guard&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /home
+        <description>&lt;h3 id=&quot;zend-guard&quot;&gt;下载Zend Guard&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /home
 wget http://downloads.zend.com/guard/5.5.0/ZendGuardLoader-php-5.3-linux-glibc23-i386.tar.gz    &lt;span class=&quot;c&quot;&gt;#32位&lt;/span&gt;
 wget http://downloads.zend.com/guard/5.5.0/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz  &lt;span class=&quot;c&quot;&gt;#64位&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;安装Zend Guard&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mkdir /usr/zend       &lt;span class=&quot;c&quot;&gt;#建立Zend Guard安装目录&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;zend-guard-1&quot;&gt;安装Zend Guard&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir /usr/zend       &lt;span class=&quot;c&quot;&gt;#建立Zend Guard安装目录&lt;/span&gt;
 tar xvfz ZendGuardLoader-php-5.3-linux-glibc23-i386.tar.gz    &lt;span class=&quot;c&quot;&gt;#解压安装文件&lt;/span&gt;
 cp ZendGuardLoader-php-5.3-linux-glibc23-i386/php-5.3.x/ZendGuardLoader.so /usr/zend/   &lt;span class=&quot;c&quot;&gt;#拷贝文件到安装目录&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;      &lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;      
+### 配置Zend Guard&lt;/p&gt;
 
-&lt;h3&gt;配置Zend Guard&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cp /etc/php.ini    /etc/php.inibak   &lt;span class=&quot;c&quot;&gt;#修改之前先备份&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cp /etc/php.ini    /etc/php.inibak   &lt;span class=&quot;c&quot;&gt;#修改之前先备份&lt;/span&gt;
 vi /etc/php.ini    &lt;span class=&quot;c&quot;&gt;#编辑文件&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;在最后位置添加以下内容&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;[Zend Guard]
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Zend Guard]
 zend_extension=/usr/zend/ZendGuardLoader.so
 zend_loader.enable=1
 zend_loader.disable_licensing=0
 zend_loader.obfuscation_level_support=3
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;重启php-fpm&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;php-fpm&quot;&gt;重启php-fpm&lt;/h3&gt;
 </description>
         <pubDate>Fri, 17 Jun 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/06/17/zend-guard-installation.html</link>
@@ -191,7 +224,8 @@ zend_loader.obfuscation_level_support=3
       <item>
         <title>检测移动设备及鼠标/触摸事件兼容</title>
         <description>&lt;p&gt;&lt;strong&gt;MAC触摸板也支持touch，加入了区分判断&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;c1&quot;&gt;// IOS desktop has touch events, make them busting&lt;/span&gt;
         &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hasTouch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;ontouchstart&#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Mac OS X /&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userAgent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DocumentTouch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DocumentTouch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -203,7 +237,9 @@ zend_loader.obfuscation_level_support=3
             &lt;span class=&quot;na&quot;&gt;resizeEvt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;onorientationchange&#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;orientationchange&#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;resize&#39;&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
         <pubDate>Thu, 16 Jun 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/06/16/detecting-mobile-device-event.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2016/06/16/detecting-mobile-device-event.html</guid>
@@ -213,15 +249,22 @@ zend_loader.obfuscation_level_support=3
     
       <item>
         <title>移动端前端调试工具</title>
-        <description>&lt;h1&gt;weinre&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;weinre&quot;&gt;weinre&lt;/h1&gt;
 
-&lt;h2&gt;安装&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;npm install -g weinre
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;启动&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;wernre --boundHost &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;IP] --httpPort &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;PORT]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;section&quot;&gt;安装&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install -g weinre
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;启动&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wernre --boundHost &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;IP] --httpPort &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;PORT]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;进入相应网址，按提示配置及访问&lt;/p&gt;
+
 </description>
         <pubDate>Mon, 07 Mar 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/03/07/mobile-terminal-debugging.html</link>
@@ -232,20 +275,29 @@ zend_loader.obfuscation_level_support=3
     
       <item>
         <title>在命令行让MAC说话唱歌</title>
-        <description>&lt;h2&gt;调用say&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/usr/bin/say 那啥那啥啥
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;参数&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# -v 选择声音，默认是Siri(say -v Samantha)&lt;/span&gt;
+        <description>&lt;h2 id=&quot;say&quot;&gt;调用say&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/bin/say 那啥那啥啥
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;参数&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -v 选择声音，默认是Siri(say -v Samantha)&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# -o 输出为音频文件，(say -v Cellos -o &quot;xxx.m4a&quot;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;写脚本的时候为了兼容linux系统，可以包个方法&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;VT &lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;linux&quot;&gt;写脚本的时候为了兼容linux系统，可以包个方法&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;VT &lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;-f /usr/bin/say&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;-n &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
         /usr/bin/say &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
         <pubDate>Mon, 07 Mar 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/03/07/let-mac-speak.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2016/03/07/let-mac-speak.html</guid>
@@ -255,27 +307,43 @@ zend_loader.obfuscation_level_support=3
     
       <item>
         <title>进制转换与位移运算</title>
-        <description>&lt;h1&gt;进制转换&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;section&quot;&gt;进制转换&lt;/h1&gt;
 
-&lt;h2&gt;二进制 &amp;gt;&amp;gt; 十进制&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;1101(2) = 1*2^0 + 0*2^1 + 1*2^2 + 1*2^3 = 1 + 0 + 4 + 8 = 13
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;八进制 &amp;gt;&amp;gt; 十进制&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;1101(8) = 1*8^0 + 0*8^1 + 1*8^2 + 1*8^3 = 1+0+64+512 = 577
+&lt;h2 id=&quot;section-1&quot;&gt;二进制 » 十进制&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1101(2) = 1*2^0 + 0*2^1 + 1*2^2 + 1*2^3 = 1 + 0 + 4 + 8 = 13
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;八进制 » 十进制&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1101(8) = 1*8^0 + 0*8^1 + 1*8^2 + 1*8^3 = 1+0+64+512 = 577
 425(8) = 5*8^0 + 2*8^1 + 4*8^2 = 5 + 16 + 256 = 277
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;十六进制 &amp;gt;&amp;gt; 十进制&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;1101(16)= 1*16^0 + 0*16^1 + 1*16^2 + 1*16^3 = 1 + 256 + 4096 = 4353
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;十六进制 » 十进制&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1101(16)= 1*16^0 + 0*16^1 + 1*16^2 + 1*16^3 = 1 + 256 + 4096 = 4353
 AF(16) = 15*16^0 + 10*16^1 = 15 + 160 = 175
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;二进制 &amp;gt;&amp;gt; 八进制&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;1100100(2) = [001 100 100](2) = [1 4 4](8) = 144(8)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;二进制 &amp;gt;&amp;gt; 十六进制&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;10001001101010111100110111101111(2) = [1000 1001 1010 1011 1100 1101 1110 1111](2) = [8 9 A B C D E F](16) = 89ABCDEF(16) = 0x89ABCDEF
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;十进制 &amp;gt;&amp;gt; 二进制&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;整数位按照除2取余的规则进行换算
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;二进制 » 八进制&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1100100(2) = [001 100 100](2) = [1 4 4](8) = 144(8)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;二进制 » 十六进制&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;10001001101010111100110111101111(2) = [1000 1001 1010 1011 1100 1101 1110 1111](2) = [8 9 A B C D E F](16) = 89ABCDEF(16) = 0x89ABCDEF
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;十进制 » 二进制&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;整数位按照除2取余的规则进行换算
 25除以2    12余1
 12除以2    6余0
 6除以2     3余0
@@ -285,9 +353,12 @@ AF(16) = 15*16^0 + 10*16^1 = 15 + 160 = 175
 4的二进制为100, 2等于10
 
 18(10) = 4*4+2 = 10000 + 10 = 10010(2)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;十进制 &amp;gt;&amp;gt; 二进制 (小数)&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;求25.8125的二进制
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;十进制 » 二进制 (小数)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;求25.8125的二进制
 
 整数位
 25(10) = 11001(2)
@@ -302,10 +373,12 @@ AF(16) = 15*16^0 + 10*16^1 = 15 + 160 = 175
 0.8125(10) = 0.1101(2)
 
 25.8125(10) = 11001.1101(2)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;位移操作&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;To bi continue...&lt;/p&gt;
+&lt;h2 id=&quot;section-8&quot;&gt;位移操作&lt;/h2&gt;
+
+&lt;p&gt;To bi continue…&lt;/p&gt;
 </description>
         <pubDate>Fri, 19 Feb 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/02/19/hexadecimal.html</link>
@@ -316,23 +389,30 @@ AF(16) = 15*16^0 + 10*16^1 = 15 + 160 = 175
     
       <item>
         <title>Shell if</title>
-        <description>&lt;h2&gt;字符串判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;str1 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; str2　　　　　　当两个串有相同内容、长度时为真 
+        <description>&lt;h2 id=&quot;section&quot;&gt;字符串判断&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;str1 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; str2　　　　　　当两个串有相同内容、长度时为真 
 str1 !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; str2　　　　　 当串str1和str2不等时为真 
 -n str1　　　　　　　  当串的长度大于0时为真&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;串非空&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
 -z str1　　　　　　　  当串的长度为0时为真&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;空串&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
 str1　　　　　　　　   当串str1为非空时为真
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;数字的判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;int1 -eq int2　　　　两数相等为真 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;数字的判断&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int1 -eq int2　　　　两数相等为真 
 int1 -ne int2　　　　两数不等为真 
 int1 -gt int2　　　　int1大于int2为真 
 int1 -ge int2　　　　int1大于等于int2为真 
 int1 -lt int2　　　　int1小于int2为真 
 int1 -le int2　　　　int1小于等于int2为真
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;文件的判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;-r file　　　　　用户可读为真 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;文件的判断&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-r file　　　　　用户可读为真 
 -w file　　　　　用户可写为真 
 -x file　　　　　用户可执行为真 
 -f file　　　　　文件为正规文件为真 
@@ -341,12 +421,17 @@ int1 -le int2　　　　int1小于等于int2为真
 -b file　　　　　文件为块特殊文件为真 
 -s file　　　　　文件大小非0时为真 
 -t file　　　　　当文件描述符&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;默认为1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;指定的设备为终端时为真
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;复杂逻辑判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;-a 　 　　　　　 与 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;复杂逻辑判断&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-a 　 　　　　　 与 
 -o　　　　　　　 或 
 !　　　　　　　　非
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
         <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/01/21/shell-if.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2016/01/21/shell-if.html</guid>

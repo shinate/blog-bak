@@ -57,18 +57,30 @@
 
   <div class="post-content chinese">
     <p>统计当前目录下的文件以及目录数量（不包括子目录）</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l | wc -l
-</code></pre></div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ls -l | wc -l
+</code></pre>
+</div>
+
 <p>统计当前目录下的文件数量（遍历所有子目录）</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type f | wc -l
-</code></pre></div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find . -type f | wc -l
+</code></pre>
+</div>
+
 <p>统计当前目录下的目录数量（遍历所有子目录）</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">find . -type d |  wc -l
-</code></pre></div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find . -type d |  wc -l
+</code></pre>
+</div>
+
 <p>当然，也可以指定某个目录来使用</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">find /xxx/yyy ......
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>find /xxx/yyy ......
 ls -l /xxx/yyy......
-</code></pre></div>
+</code></pre>
+</div>
+
   </div>
   <!-- /post content -->
 

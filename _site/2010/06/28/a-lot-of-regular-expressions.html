@@ -56,8 +56,9 @@
   
 
   <div class="post-content chinese">
-    <h2>比较常用的</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">/*匹配双字节字符(包括汉字在内)，可以用来计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）*/
+    <h2 id="section">比较常用的</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/*匹配双字节字符(包括汉字在内)，可以用来计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）*/
 [^x00-xff]
 
 /*匹配空白行的正则表达式，可以用来删除空白行*/
@@ -92,11 +93,14 @@ d{15}|d{18}
 
 /*匹配ip地址，提取ip地址时有用*/
 d+.d+.d+.d+
-</code></pre></div>
-<h2>匹配特定数字</h2>
+</code></pre>
+</div>
+
+<h2 id="section-1">匹配特定数字</h2>
 
 <p>处理大量数据时有用，具体应用时注意修正</p>
-<div class="highlight"><pre><code class="language-" data-lang="">/*匹配正整数*/
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/*匹配正整数*/
 ^[1-9]d*$
 
 /*匹配负整数*/
@@ -125,9 +129,12 @@ d+.d+.d+.d+
 
 /*匹配非正浮点数（负浮点数 + 0）*/
 ^(-([1-9]d*.d*|0.d*[1-9]d*))|0?.0+|0$
-</code></pre></div>
-<h2>匹配特定字符串</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">/*匹配由26个英文字母组成的字符串*/
+</code></pre>
+</div>
+
+<h2 id="section-2">匹配特定字符串</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/*匹配由26个英文字母组成的字符串*/
 ^[A-Za-z]+$
 
 /*匹配由26个英文字母的大写组成的字符串*/
@@ -141,11 +148,14 @@ d+.d+.d+.d+
 
 /*匹配由数字、26个英文字母或者下划线组成的字符串*/
 ^w+$
-</code></pre></div>
-<h2>表单验证</h2>
+</code></pre>
+</div>
+
+<h2 id="section-3">表单验证</h2>
 
 <p>在使用RegularExpressionValidator验证控件时的验证功能及其验证表达式介绍如下:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">/*只能输入数字*/
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/*只能输入数字*/
 ^[0-9]*$
 
 /*只能输入n位的数字*/
@@ -213,9 +223,12 @@ d+.d+.d+.d+
 
 /*验证一个月的31天，正确格式为："01"-"09"和"1"-"31"*/
 ^((0?[1-9])|((1|2)[0-9])|30|31)$
-</code></pre></div>
-<h2>特定的字符</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">/*匹配中文字符的正则表达式*/
+</code></pre>
+</div>
+
+<h2 id="section-4">特定的字符</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/*匹配中文字符的正则表达式*/
 [u4e00-u9fa5]
 
 /*匹配双字节字符(包括汉字在内)*/
@@ -235,21 +248,30 @@ w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*
 
 /*匹配网址URL的正则表达式*/
 http://([w-]+.)+[w-]+(/[w- ./?%&amp;=]*)?
-</code></pre></div>
-<h2>应用</h2>
+</code></pre>
+</div>
 
-<h3>计算字符串的长度</h3>
+<h2 id="section-5">应用</h2>
+
+<h3 id="section-6">计算字符串的长度</h3>
 
 <p>一个双字节字符长度计2，ASCII字符计1</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">len</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">([</span><span class="o">^</span><span class="nx">x00</span><span class="o">-</span><span class="nx">xff</span><span class="p">]</span><span class="o">/</span><span class="nx">g</span><span class="p">,</span><span class="s2">"aa"</span><span class="p">).</span><span class="nx">length</span><span class="p">;}</span>
-</code></pre></div>
-<h3>javascript中的trim</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">len</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">([</span><span class="o">^</span><span class="nx">x00</span><span class="o">-</span><span class="nx">xff</span><span class="p">]</span><span class="o">/</span><span class="nx">g</span><span class="p">,</span><span class="s2">"aa"</span><span class="p">).</span><span class="nx">length</span><span class="p">;}</span>
+</code></pre>
+</div>
+
+<h3 id="javascripttrim">javascript中的trim</h3>
 
 <p>javascript中没有像vbscript那样的trim函数，我们就可以利用这个表达式来实现</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">(</span><span class="sr">^s*</span><span class="se">)</span><span class="sr">|</span><span class="se">(</span><span class="sr">s*$</span><span class="se">)</span><span class="sr">/g</span><span class="p">,</span> <span class="s2">""</span><span class="p">);}</span>
-</code></pre></div>
-<h3>分解和转换IP地址</h3>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*IP地址转换成对应数值*/</span>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">(</span><span class="sr">^s*</span><span class="se">)</span><span class="sr">|</span><span class="se">(</span><span class="sr">s*$</span><span class="se">)</span><span class="sr">/g</span><span class="p">,</span> <span class="s2">""</span><span class="p">);}</span>
+</code></pre>
+</div>
+
+<h3 id="ip">分解和转换IP地址</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="cm">/*IP地址转换成对应数值*/</span>
 <span class="kd">function</span> <span class="nx">IP2V</span><span class="p">(</span><span class="nx">ip</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">re</span><span class="o">=</span><span class="sr">/</span><span class="se">(</span><span class="sr">d+</span><span class="se">)</span><span class="sr">.</span><span class="se">(</span><span class="sr">d+</span><span class="se">)</span><span class="sr">.</span><span class="se">(</span><span class="sr">d+</span><span class="se">)</span><span class="sr">.</span><span class="se">(</span><span class="sr">d+</span><span class="se">)</span><span class="sr">/g</span> <span class="c1">//匹配IP地址的正则表达式</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">re</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">ip</span><span class="p">)){</span>
@@ -258,13 +280,18 @@ http://([w-]+.)+[w-]+(/[w- ./?%&amp;=]*)?
         <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">"Not a valid IP address!"</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<h3>从URL地址中提取文件名</h3>
+</code></pre>
+</div>
+
+<h3 id="url">从URL地址中提取文件名</h3>
 
 <p>应用于javascript程序</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">s</span><span class="o">=</span><span class="s2">"http://www.9499.net/page1.htm"</span><span class="p">;</span>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">s</span><span class="o">=</span><span class="s2">"http://www.9499.net/page1.htm"</span><span class="p">;</span>
 <span class="nx">s</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">(</span><span class="sr">.*/</span><span class="p">){</span><span class="mi">0</span><span class="p">,}([</span><span class="o">^</span><span class="p">.]</span><span class="o">+</span><span class="p">).</span><span class="o">*</span><span class="sr">/ig,"$2"</span><span class="se">)</span><span class="sr"> ;  /</span><span class="o">/</span><span class="nx">Page1</span><span class="p">.</span><span class="nx">htm</span>
-</code></pre></div>
+</code></pre>
+</div>
+
   </div>
   <!-- /post content -->
 
