@@ -56,25 +56,21 @@
   
 
   <div class="post-content chinese">
-    <h2 id="section">依赖</h2>
+    <h2>依赖</h2>
 
 <p>安装redis需要先安装tcl
 <a href="http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html" title="tcl">http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html</a></p>
 
-<h2 id="section-1">获取软件</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#tcl8.5</span>
+<h2>获取软件</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#tcl8.5</span>
 wget http://downloads.sourceforge.net/tcl/tcl8.5.12-src.tar.gz
 <span class="c">#redis</span>
 wget http://redis.googlecode.com/files/redis-2.6.2.tar.gz
-</code></pre>
-</div>
+</code></pre></div>
+<h2>安装</h2>
 
-<h2 id="section-2">安装</h2>
-
-<h3 id="tcl">tcl</h3>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>tar -zxf tcl8.5.12-html.tar.gz --strip-components<span class="o">=</span>1
+<h3>tcl</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">tar -zxf tcl8.5.12-html.tar.gz --strip-components<span class="o">=</span>1
 <span class="nb">cd </span>unix <span class="o">&amp;&amp;</span> ./configure --prefix<span class="o">=</span>/usr <span class="se">\</span>
 --enable-threads <span class="se">\</span>
 --mandir<span class="o">=</span>/usr/share/man
@@ -86,10 +82,7 @@ make install
 make install-private-headers
 ln -v -sf tclsh8.5 /usr/bin/tclsh
 chmod -v 755 /usr/lib/libtcl8.5.so
-</code></pre>
-</div>
-
-
+</code></pre></div>
   </div>
   <!-- /post content -->
 

@@ -56,33 +56,23 @@
   
 
   <div class="post-content chinese">
-    <h2 id="svn">卸载系统自带的svn</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>rpm -e --allmatches subversion
-</code></pre>
-</div>
-
-<h2 id="apr">安装apr</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://apache.mirror.phpchina.com/apr/apr-1.3.5.tar.gz
+    <h2>卸载系统自带的svn</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rpm -e --allmatches subversion
+</code></pre></div>
+<h2>安装apr</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://apache.mirror.phpchina.com/apr/apr-1.3.5.tar.gz
 ./configure
 make
 make install
-</code></pre>
-</div>
-
-<h2 id="apr-util">安装apr-util</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://apache.mirror.phpchina.com/apr/apr-util-1.3.7.tar.gz
+</code></pre></div>
+<h2>安装apr-util</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://apache.mirror.phpchina.com/apr/apr-util-1.3.7.tar.gz
 ./configure --with-apr<span class="o">=</span>/usr/local/apr
 make
 make install
-</code></pre>
-</div>
-
-<h2 id="subversion">安装subversion</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://subversion.tigris.org/downloads/subversion-1.4.5.tar.gz
+</code></pre></div>
+<h2>安装subversion</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://subversion.tigris.org/downloads/subversion-1.4.5.tar.gz
 ./configure <span class="se">\</span>
 --with-apxs<span class="o">=</span>/usr/local/webserver/apache_web_001/bin/apxs <span class="se">\</span>
 --prefix<span class="o">=</span>/usr/local/subversion <span class="se">\</span>
@@ -94,16 +84,13 @@ make install
 --bindir<span class="o">=</span>/usr/bin/ <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">"-L/usr/lib64 -L/lib64"</span>
 make
 make install
-</code></pre>
-</div>
-
+</code></pre></div>
 <ul>
-  <li>如果使用的是64位系统，一定要加上这句 <strong>- -bindir=/usr/bin/ LDFLAGS=”-L/usr/lib64 -L/lib64”</strong></li>
+<li>如果使用的是64位系统，一定要加上这句 <strong>- -bindir=/usr/bin/ LDFLAGS=&quot;-L/usr/lib64 -L/lib64&quot;</strong></li>
 </ul>
 
-<h2 id="apache">安装apache</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://apache.etoak.com/httpd/httpd-2.2.11.tar.gz
+<h2>安装apache</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://apache.etoak.com/httpd/httpd-2.2.11.tar.gz
 ./configure <span class="se">\</span>
 --prefix<span class="o">=</span>/usr/local/webserver/apache_svn <span class="se">\</span>
 --enable-dav <span class="se">\</span>
@@ -113,28 +100,22 @@ make install
 --with-apr-util<span class="o">=</span>/usr/local/apr/bin/apu-1-config
 make
 make install
-</code></pre>
-</div>
-
+</code></pre></div>
 <ul>
-  <li>一定要加上 <strong>- -enable-dav</strong>，后面配置svn的时候会用到
+<li>一定要加上 <strong>- -enable-dav</strong>，后面配置svn的时候会用到
 <a href="/blog/2010/06/23/apache-install-and-configuration.html">更多关于apache的安装及配置</a></li>
 </ul>
 
-<h2 id="section">配置</h2>
+<h2>配置</h2>
 
-<h3 id="httpdconf">修改httpd.conf</h3>
+<h3>修改httpd.conf</h3>
 
 <p>添加以下信息</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">LoadModule</span> <span class="err">dav_svn_module</span> <span class="err">modules/mod_dav_svn.so</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">LoadModule</span> <span class="err">dav_svn_module</span> <span class="err">modules/mod_dav_svn.so</span>
 <span class="err">LoadModule</span> <span class="err">authz_svn_module</span> <span class="err">modules/mod_authz_svn.so</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>在末尾添加</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="err">&lt;Location</span> <span class="err">/svn&gt;</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="err">&lt;Location</span> <span class="err">/svn&gt;</span>
   <span class="err">DAV</span> <span class="err">svn</span>
   <span class="err">SVNParentPath</span> <span class="err">/home/nuptsoft/subversion_project</span>  <span class="err">(此处配置你的版本库根目录)</span>
   <span class="err">AuthType</span> <span class="err">Basic</span>
@@ -143,45 +124,31 @@ make install
   <span class="err">AuthzSVNAccessFile</span> <span class="err">/home/nuptsoft/auth</span> <span class="err">（此处修改为访问版本库权限的文件）</span>
   <span class="err">Require</span> <span class="err">valid-user</span>
 <span class="err">&lt;/Location&gt;</span>
-</code></pre>
-</div>
-
-<h3 id="section-1">创建版本库目录</h3>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>svnadmin create /home/nuptsoft/subversion_project/test
-</code></pre>
-</div>
-
-<h3 id="section-2">添加用户和密码</h3>
+</code></pre></div>
+<h3>创建版本库目录</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">svnadmin create /home/nuptsoft/subversion_project/test
+</code></pre></div>
+<h3>添加用户和密码</h3>
 
 <p>运行apache的htpasswd</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>/usr/local/webserver/apache_svn/bin/htpasswd -cm /home/nuptsoft/passwd admin
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/local/webserver/apache_svn/bin/htpasswd -cm /home/nuptsoft/passwd admin
 /usr/local/webserver/apache_svn/bin/htpasswd -m /home/nuptsoft/passwd somebody
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>第一次执行要加参数 <strong>c</strong> 来建立文件</p>
 
-<h3 id="svn-1">svn项目权限分配</h3>
+<h3>svn项目权限分配</h3>
 
 <p>通过修改auth文件来配置权限
 用户组格式：</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="nn">[groups]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[groups]</span>
 <span class="err">&lt;用户组名&gt;</span> <span class="err">=</span> <span class="err">&lt;用户1&gt;,&lt;用户2&gt;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>其中，1个用户组可以包含1个或多个用户，用户间以逗号分隔。
 版本库目录格式：</p>
-
-<div class="language-ini highlighter-rouge"><pre class="highlight"><code><span class="nn">[&lt;版本库&gt;:/项目/目录]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[&lt;版本库&gt;:/项目/目录]</span>
 <span class="err">@&lt;用户组名&gt;</span> <span class="err">=</span> <span class="err">&lt;权限&gt;</span>
 <span class="err">&lt;用户名&gt;</span> <span class="err">=</span> <span class="err">&lt;权限&gt;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>其中，方框号内部分可以有多种写法:</p>
 
 <p>/,表示根目录及以下。根目录是svnserve启动时指定的，我们指定为/opt/svndata。这样，/就是表示对全部版本库设置权限。</p>
@@ -195,8 +162,7 @@ make install
 <p>权限主体可以是用户组、用户或<em>，用户组在前面加@，</em>表示全部用户。权限可以是w、r、wr和空，空表示没有任何权限。</p>
 
 <p>示例：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>[groups]
+<div class="highlight"><pre><code class="language-" data-lang="">[groups]
 admin = alan
 [/]
 @admin = rw
@@ -204,10 +170,8 @@ admin = alan
 somebody = rw
 [repos2:/pass]
 somebody =
-</code></pre>
-</div>
-
-<h2 id="cvs">附1：与CVS对比</h2>
+</code></pre></div>
+<h2>附1：与CVS对比</h2>
 
 <p>在SVN之前，CVS是使用最广泛的版本管理软件。SVN与CVS对比的优点如下：
 * 统一的版本号。CVS是对每个文件顺序编排版本号，在某一时间各文件的版本号各不相同。而Subversion下，任何一次提交都会对所有文件增加到同一 个新版本号，即使是提交并不涉及的文件。所以，各文件在某任意时间的版本号是相同的。版本号相同的文件构成软件的一个版本。
@@ -218,14 +182,13 @@ somebody =
 * 分支的开销非常小。
 * 优化过的数据库访问，使得一些操作不必访问数据库就可以做到。这样减少了很多不必要的和数据库主机之间的网络流量。</p>
 
-<h2 id="svn-2">附2：SVN的发展历史</h2>
+<h2>附2：SVN的发展历史</h2>
 
 <p>早在2000年，CollabNet, Inc.就开始召集开发人员开发CVS的替代品。CollabNet 提供一套名为SourceCast协同工作套件，其中的一部分组件是版本控制。 虽然SourceCast使用CVS作为其最初的版本控制系统，但是CVS的种种限制从一开始就处处可见，最后CollabNet明白必须要找到一个更好 的解决方案。不幸的是，至少在免费license中，因为没有更好的选择，CVS已经广泛成为了开源世界中事实上的标准。所以CollabNet决定开发 一个新的版本控制系统，保留CVS的基本特性但去除CVS的bug和不好的特性。
-在2000年2月，他们联系《使用CVS开发开源项目》（Open Source Development with CVS）(Coriolis, 1999)的作者Karl Fogel，并征求了他是否愿意在这个新的项目中担任一个角色。巧合的是，当时Karl已经和他的朋友Jim Blandy讨论了一个关于新的版本控制系统的设计。在1995年，这两人就成立了Cyclic Software，一个提供CVS的商业支持的软件公司。虽然他们经营商业服务，但是仍然在每天都在工作中使用CVS。使用CVS的挫折感使得Jim认真 思考更好的方法来管理数据，不但确定名字为”Subversion”，而且完成了Subversion档案库的基础设计。
+在2000年2月，他们联系《使用CVS开发开源项目》（Open Source Development with CVS）(Coriolis, 1999)的作者Karl Fogel，并征求了他是否愿意在这个新的项目中担任一个角色。巧合的是，当时Karl已经和他的朋友Jim Blandy讨论了一个关于新的版本控制系统的设计。在1995年，这两人就成立了Cyclic Software，一个提供CVS的商业支持的软件公司。虽然他们经营商业服务，但是仍然在每天都在工作中使用CVS。使用CVS的挫折感使得Jim认真 思考更好的方法来管理数据，不但确定名字为&quot;Subversion&quot;，而且完成了Subversion档案库的基础设计。
 当CollabNet的电话到来时，Karl立即答应了加入项目中，而且Jim让他的雇主 RedHat Software同意让他在这个项目中不定期工作。CollabNet雇用了Karl和Ben Collins-Sussman，并在5月开始了详细设计工作。在得到了来自CollabNet的Brian Behlendorf、Jason Robbins和Greg Stein（当时是一名活跃在WebDAV/DeltaV规范过程的自由程序员）很多创意的帮助下，Subversion很快地引起了一个活跃开发者社区 的注意。它找出并欢迎很多同样在CVS上受到挫折的社员能来为这个项目做点什么。
 Subversion 最初的设计Team定下了几个简单的目标。 它必须在功能上可取代 CVS，也就是说, 所有 CVS 可做到的事, 它都要能够作到。 在修正最明显的瑕疵的同时, 还要保留相同的开发模式。 还有, Subversion 应该要和 CVS 很相像, 任何 CVS 使用者只要花费少许的力气, 就可以很快地上手。
-经过十四个月的编码后, Subversion 于2001年8月31日开始实现 “自行管理”。 也就是说, 开发人员不再使用 CVS 来管理 Subversion 的代码, 而以 Subversion 自己来管理。</p>
-
+经过十四个月的编码后, Subversion 于2001年8月31日开始实现 &quot;自行管理&quot;。 也就是说, 开发人员不再使用 CVS 来管理 Subversion 的代码, 而以 Subversion 自己来管理。</p>
 
   </div>
   <!-- /post content -->
