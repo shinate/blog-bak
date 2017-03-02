@@ -1,7 +1,7 @@
 # Site settings
 title: codante
 email: shine.wangrs@gmail.com
-description: ""
+description: "This is my blog"
 avatar: "/assets/img/avatar.png"
 # destination: "./_site/blog"
 # baseurl: "/blog" # the subpath of your site, e.g. /blog/
@@ -18,7 +18,6 @@ disqus_shortname: # disqus_shortname for disqus comment system
 # highlighter: rb-pygments
 # markdown: redcarpet
 markdown: kramdown
-
 
 # Build settings
 exclude: [node_modules, src, gulpfile.js, package.json, build.sh, bower_components]
