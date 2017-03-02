@@ -21,15 +21,15 @@ date_gmt: '2010-07-02 10:10:48 +0800'
 ## 清空文档
 
 ```bash
-echo ""&gt;filename
+echo "" > filename
 ```
 
 ```bash
-&gt;filename
+> filename
 ```
 
 ```bash
-cat /dev/null &gt;filename
+cat /dev/null > filename
 ```
 
 ## 统计
