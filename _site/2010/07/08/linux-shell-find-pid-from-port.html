@@ -56,8 +56,10 @@
   
 
   <div class="post-content chinese">
-    <div class="highlight"><pre><code class="language-bash" data-lang="bash">netstat -lnp|grep 端口号|grep -v grep|sed -n <span class="s1">'1p'</span>|awk <span class="s1">'{print $7}'</span>|awk -F/ <span class="s1">'{print $1}'</span>
-</code></pre></div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>netstat -lnp|grep 端口号|grep -v grep|sed -n <span class="s1">'1p'</span>|awk <span class="s1">'{print $7}'</span>|awk -F/ <span class="s1">'{print $1}'</span>
+</code></pre>
+</div>
+
   </div>
   <!-- /post content -->
 

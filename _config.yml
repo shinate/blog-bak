@@ -13,12 +13,45 @@ favicon: "/assets/img/favicon.ico"
 google_analytics: # google analytics id
 baidu_analytics: "b73a1c414265340e2dd6a77fa1ac1b75"
 disqus_shortname: # disqus_shortname for disqus comment system
-safe: true
 
-# highlight
-# highlighter: "rouge"
-markdown: "redcarpet"
-# markdown: "kramdown"
-
-# Build settings
+# Handling Reading
+safe: false
+keep_files: [".git", ".svn"]
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 exclude: [node_modules, src, gulpfile.js, package.json, build, bower_components]
+
+# Filtering Content
+show_drafts: null
+limit_posts: 0
+future:      false
+unpublished: false
+
+# Plugins
+# whitelist: []
+# plugins:   []
+
+
+# Conversion
+markdown: kramdown
+# markdown: redcarpet
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+# Markdown Processors
+rdiscount:
+  extensions: []
+
+redcarpet:
+  extensions: []
+
+kramdown:
+  auto_ids:       true
+  entity_output:  as_char
+  toc_levels:     1..6
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  input:          GFM
+  hard_wrap:      false
+  footnote_nr:    1
