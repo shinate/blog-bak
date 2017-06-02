@@ -56,22 +56,16 @@
   
 
   <div class="post-content chinese">
-    <p>根据需求修改文件名和行数即可</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>awk <span class="s1">'{print $1}'</span> 日志文件名 |sort |uniq -c|sort -nr|head -行数
-</code></pre>
-</div>
-
+    <p>根据需求修改文件名和行数即可  </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">awk <span class="s1">'{print $1}'</span> 日志文件名 |sort |uniq -c|sort -nr|head -行数
+</code></pre></div>
 <p>输出：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>1234 123.456.789.0
+<div class="highlight"><pre><code class="language-" data-lang="">1234 123.456.789.0
  321 11.22.33.44
   56 22.33.44.55
   34 33.44.55.66
   ......
-</code></pre>
-</div>
-
+</code></pre></div>
   </div>
   <!-- /post content -->
 

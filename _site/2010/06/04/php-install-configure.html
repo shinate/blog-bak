@@ -56,15 +56,11 @@
   
 
   <div class="post-content chinese">
-    <h2 id="section">下载软件包</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://cn.php.net/get/php-5.2.9.tar.gz/from/this/mirror
-</code></pre>
-</div>
-
-<h2 id="section-1">编译安装</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>./configure <span class="se">\</span>
+    <h2>下载软件包</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://cn.php.net/get/php-5.2.9.tar.gz/from/this/mirror
+</code></pre></div>
+<h2>编译安装</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure <span class="se">\</span>
 --prefix<span class="o">=</span>/usr/local/php5 <span class="se">\</span>
 --with-apxs2<span class="o">=</span>/usr/local/apache2/bin/apxs <span class="se">\</span>
 --with-mysql<span class="o">=</span>/usr/local/mysql <span class="se">\</span>
@@ -87,47 +83,30 @@
 --with-curl
 make
 make install
-</code></pre>
-</div>
-
-<h2 id="section-2">配置</h2>
+</code></pre></div>
+<h2>配置</h2>
 
 <p>拷贝配置文件到安装目录</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>cp php.ini-dist /usr/local/php5/lib/php.ini
-</code></pre>
-</div>
-
-<h2 id="section-3">启动中遇到的问题</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp php.ini-dist /usr/local/php5/lib/php.ini
+</code></pre></div>
+<h2>启动中遇到的问题</h2>
 
 <p>重启apache</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>遇到错误: httpd: Syntax error on line 54 of /usr/local/apache2/conf/httpd.conf: Cannot load /usr/local/apache2/modules/libphp5.so into server: /usr/local/apache2/modules/libphp5.so: cannot restore segment prot after reloc: Permission denied
-</code></pre>
-</div>
-
-<h3 id="section-4">解决办法1</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">遇到错误: httpd: Syntax error on line 54 of /usr/local/apache2/conf/httpd.conf: Cannot load /usr/local/apache2/modules/libphp5.so into server: /usr/local/apache2/modules/libphp5.so: cannot restore segment prot after reloc: Permission denied
+</code></pre></div>
+<h3>解决办法1</h3>
 
 <p>设置通过selinux的检验</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>chcon -t texrel_shlib_t /usr/local/apache2/modules/libphp5.so
-</code></pre>
-</div>
-
-<h3 id="section-5">解决办法2</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">chcon -t texrel_shlib_t /usr/local/apache2/modules/libphp5.so
+</code></pre></div>
+<h3>解决办法2</h3>
 
 <p>关闭selinux</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>vi /etc/selinux/config
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vi /etc/selinux/config
+</code></pre></div>
 <p>设置</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>SELINUX=disabled
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">SELINUX=disabled
+</code></pre></div>
 <p><strong>重启apache，安装完毕</strong></p>
 
   </div>

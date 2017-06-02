@@ -57,15 +57,9 @@
 
   <div class="post-content chinese">
     <ol>
-  <li>
-    <p><code class="highlighter-rouge">$_POST['paramName']</code> 只能接收Content-Type: <code class="highlighter-rouge">application/x-www-form-urlencoded</code>提交的数据</p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">file_get_contents("php://input")</code> 适用大多数类型的Content-type，<code class="highlighter-rouge">php://input</code> 允许读取 POST 的原始数据。和 <code class="highlighter-rouge">$HTTP_RAW_POST_DATA</code> 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。<code class="highlighter-rouge">php://input</code> 不能用于 <code class="highlighter-rouge">enctype="multipart/form-data"</code>。</p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">$GLOBALS['HTTP_RAW_POST_DATA'];</code> 总是产生 <code class="highlighter-rouge">$HTTP_RAW_POST_DATA</code>  变量包含有原始的 POST 数据。此变量仅在碰到未识别 MIME 类型的数据时产生。<code class="highlighter-rouge">$HTTP_RAW_POST_DATA</code> 对于 <code class="highlighter-rouge">enctype="multipart/form-data"</code> 表单数据不可用。如果post过来的数据不是PHP能够识别的，你可以用 <code class="highlighter-rouge">$GLOBALS['HTTP_RAW_POST_DATA']</code> 来接收，比如 <code class="highlighter-rouge">text/xml</code> 或者 <code class="highlighter-rouge">soap</code> 等等。</p>
-  </li>
+<li><p><code>$_POST[&#39;paramName&#39;]</code> 只能接收Content-Type: <code>application/x-www-form-urlencoded</code>提交的数据</p></li>
+<li><p><code>file_get_contents(&quot;php://input&quot;)</code> 适用大多数类型的Content-type，<code>php://input</code> 允许读取 POST 的原始数据。和 <code>$HTTP_RAW_POST_DATA</code> 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。<code>php://input</code> 不能用于 <code>enctype=&quot;multipart/form-data&quot;</code>。</p></li>
+<li><p><code>$GLOBALS[&#39;HTTP_RAW_POST_DATA&#39;];</code> 总是产生 <code>$HTTP_RAW_POST_DATA</code>  变量包含有原始的 POST 数据。此变量仅在碰到未识别 MIME 类型的数据时产生。<code>$HTTP_RAW_POST_DATA</code> 对于 <code>enctype=&quot;multipart/form-data&quot;</code> 表单数据不可用。如果post过来的数据不是PHP能够识别的，你可以用 <code>$GLOBALS[&#39;HTTP_RAW_POST_DATA&#39;]</code> 来接收，比如 <code>text/xml</code> 或者 <code>soap</code> 等等。</p></li>
 </ol>
 
   </div>

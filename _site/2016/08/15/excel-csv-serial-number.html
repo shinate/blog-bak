@@ -60,32 +60,20 @@
 
 <p>看例子</p>
 
-<h3 id="section">数据</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>"4173","SpeedyCorp","268435459705526269","","268435459705526269","848 Model Widget","2011-01-17"
-</code></pre>
-</div>
-
+<h3>数据</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">"4173","SpeedyCorp","268435459705526269","","268435459705526269","848 Model Widget","2011-01-17"
+</code></pre></div>
 <p>如果直接打开会出现</p>
+<div class="highlight"><pre><code class="language-" data-lang="">4173    SpeedyCorp  2.68435E+17     2.68435E+17 848 Model Widget    2011-01-17
+</code></pre></div>
+<p>长数字都被转换成科学计数法了...</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>4173    SpeedyCorp  2.68435E+17     2.68435E+17 848 Model Widget    2011-01-17
-</code></pre>
-</div>
-
-<p>长数字都被转换成科学计数法了…</p>
-
-<h3 id="section-1">其实在字段前加上”<code class="highlighter-rouge">=</code>“即可解决</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>"4173","SpeedyCorp",="268435459705526269","","268435459705526269","848 Model Widget","2011-01-17"
-</code></pre>
-</div>
-
+<h3>其实在字段前加上&quot;<code>=</code>&quot;即可解决</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">"4173","SpeedyCorp",="268435459705526269","","268435459705526269","848 Model Widget","2011-01-17"
+</code></pre></div>
 <p>打开后</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>4173    SpeedyCorp  268435459705526269     2.68435E+17 848 Model Widget    2011-01-17
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-" data-lang="">4173    SpeedyCorp  268435459705526269     2.68435E+17 848 Model Widget    2011-01-17
+</code></pre></div>
 <p><a href="http://superuser.com/questions/234997/how-can-i-stop-excel-from-eating-my-delicious-csv-files-and-excreting-useless-da">http://superuser.com/questions/234997/how-can-i-stop-excel-from-eating-my-delicious-csv-files-and-excreting-useless-da</a></p>
 
   </div>
