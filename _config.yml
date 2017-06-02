@@ -15,7 +15,7 @@ baidu_analytics: "b73a1c414265340e2dd6a77fa1ac1b75"
 disqus_shortname: # disqus_shortname for disqus comment system
 
 # highlight
-highlighter: rouge
+highlighter: "rouge"
 markdown: "redcarpet"
 # markdown: "kramdown"
 
