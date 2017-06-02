@@ -5,9 +5,20 @@
     <description>This is my blog</description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Mar 2017 23:02:07 +0800</pubDate>
-    <lastBuildDate>Thu, 02 Mar 2017 23:02:07 +0800</lastBuildDate>
+    <pubDate>Fri, 02 Jun 2017 13:47:40 +0800</pubDate>
+    <lastBuildDate>Fri, 02 Jun 2017 13:47:40 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>javascript 的真值婊</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://codante.org/static1/images/js-true.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 02 Jun 2017 00:00:00 +0800</pubDate>
+        <link>http://codante.org/blog/2017/06/02/javascript-true-values.html</link>
+        <guid isPermaLink="true">http://codante.org/blog/2017/06/02/javascript-true-values.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>MPEG-2，MPEG-4，H.264 编码标准的区别</title>
@@ -310,46 +321,6 @@ AF(16) = 15*16^0 + 10*16^1 = 15 + 160 = 175
         <pubDate>Fri, 19 Feb 2016 00:00:00 +0800</pubDate>
         <link>http://codante.org/blog/2016/02/19/hexadecimal.html</link>
         <guid isPermaLink="true">http://codante.org/blog/2016/02/19/hexadecimal.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Shell if</title>
-        <description>&lt;h2&gt;字符串判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;str1 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; str2　　　　　　当两个串有相同内容、长度时为真 
-str1 !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; str2　　　　　 当串str1和str2不等时为真 
--n str1　　　　　　　  当串的长度大于0时为真&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;串非空&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
--z str1　　　　　　　  当串的长度为0时为真&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;空串&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
-str1　　　　　　　　   当串str1为非空时为真
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;数字的判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;int1 -eq int2　　　　两数相等为真 
-int1 -ne int2　　　　两数不等为真 
-int1 -gt int2　　　　int1大于int2为真 
-int1 -ge int2　　　　int1大于等于int2为真 
-int1 -lt int2　　　　int1小于int2为真 
-int1 -le int2　　　　int1小于等于int2为真
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;文件的判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;-r file　　　　　用户可读为真 
--w file　　　　　用户可写为真 
--x file　　　　　用户可执行为真 
--f file　　　　　文件为正规文件为真 
--d file　　　　　文件为目录为真 
--c file　　　　　文件为字符特殊文件为真 
--b file　　　　　文件为块特殊文件为真 
--s file　　　　　文件大小非0时为真 
--t file　　　　　当文件描述符&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;默认为1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;指定的设备为终端时为真
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;复杂逻辑判断&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;-a 　 　　　　　 与 
--o　　　　　　　 或 
-!　　　　　　　　非
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-        <pubDate>Thu, 21 Jan 2016 00:00:00 +0800</pubDate>
-        <link>http://codante.org/blog/2016/01/21/shell-if.html</link>
-        <guid isPermaLink="true">http://codante.org/blog/2016/01/21/shell-if.html</guid>
         
         
       </item>
