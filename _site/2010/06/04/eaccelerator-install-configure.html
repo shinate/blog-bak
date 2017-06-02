@@ -56,49 +56,68 @@
   
 
   <div class="post-content chinese">
-    <h2>什么是eaccelerator？</h2>
+    <h2 id="eaccelerator">什么是eaccelerator？</h2>
 
 <p>eAccelerator的主要功能：</p>
 
 <ol>
-<li>缓存PHP文件的执行代码：在被缓存的代码再次被调用时，将直接从内存读取，从而在很大程度了PHP运行的速度。</li>
-<li>提供了共享内存操作函数：用户可以将自己的常见非资源对像，保存到内存之中，并可以随时读取出来。</li>
+  <li>缓存PHP文件的执行代码：在被缓存的代码再次被调用时，将直接从内存读取，从而在很大程度了PHP运行的速度。</li>
+  <li>提供了共享内存操作函数：用户可以将自己的常见非资源对像，保存到内存之中，并可以随时读取出来。</li>
 </ol>
 
 <p>eAccelerator作为PHP的扩展库存在，那么仅在PHP运行时，可以操作和读写共享内存，一般情况，只能由操作共享内存的程序自己调用．</p>
 
-<h2>安装</h2>
+<h2 id="section">安装</h2>
 
-<h3>下载软件包</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://bart.eaccelerator.net/source/0.9.5.3/eaccelerator-0.9.5.3.zip
-</code></pre></div>
-<h3>准备安装</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>eaccelerator-0.9.5.2
+<h3 id="section-1">下载软件包</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://bart.eaccelerator.net/source/0.9.5.3/eaccelerator-0.9.5.3.zip
+</code></pre>
+</div>
+
+<h3 id="section-2">准备安装</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>eaccelerator-0.9.5.2
 <span class="nb">export </span><span class="nv">PHP_PREFIX</span><span class="o">=</span><span class="s2">"/usr/local/php5"</span>
 /usr/local/php5/bin/phpize
-</code></pre></div>
-<h3>编译安装</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --enable-eaccelerator<span class="o">=</span>shared --with-php-config<span class="o">=</span><span class="nv">$PHP_PREFIX</span>/bin/php-config
+</code></pre>
+</div>
+
+<h3 id="section-3">编译安装</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>./configure --enable-eaccelerator<span class="o">=</span>shared --with-php-config<span class="o">=</span><span class="nv">$PHP_PREFIX</span>/bin/php-config
 make
 make install
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>显示 <strong>/usr/local/php5/lib/php/extensions/no-debug-non-zts-20060613/</strong>
 这个路径在一会儿的配置时会有用</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /tmp/xxx
-</code></pre></div>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>mkdir /tmp/xxx
+</code></pre>
+</div>
+
 <p>这里的xxx自己来定义，想放哪里都行</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">chmod -R 0777 /tmp/xxx
-</code></pre></div>
-<h2>配置</h2>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>chmod -R 0777 /tmp/xxx
+</code></pre>
+</div>
+
+<h2 id="section-4">配置</h2>
 
 <p>打开php.ini
 设置</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">extension_dir <span class="o">=</span> <span class="s2">"/usr/local/php5/lib/php/extensions/no-debug-non-zts-20060613/"</span>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>extension_dir <span class="o">=</span> <span class="s2">"/usr/local/php5/lib/php/extensions/no-debug-non-zts-20060613/"</span>
 session.save_path <span class="o">=</span> <span class="s2">"/tmp/xxx"</span>
 <span class="nv">extension</span><span class="o">=</span>eaccelerator.so
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>在最后添加</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>eaccelerator]
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>eaccelerator]
 <span class="nv">extension</span><span class="o">=</span>eaccelerator.so
 eaccelerator.shm_size<span class="o">=</span><span class="s2">"32"</span>
 eaccelerator.cache_dir<span class="o">=</span><span class="s2">"/home/eaccelerator"</span>
@@ -113,11 +132,16 @@ eaccelerator.shm_prune_period<span class="o">=</span><span class="s2">"0"</span>
 eaccelerator.shm_only<span class="o">=</span><span class="s2">"0"</span>
 eaccelerator.compress<span class="o">=</span><span class="s2">"1"</span>
 eaccelerator.compress_level<span class="o">=</span><span class="s2">"9"</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>保存退出</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /home/eaccelerator
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>mkdir /home/eaccelerator
 chmod -R 0777 /home/eaccelerator/
-</code></pre></div>
+</code></pre>
+</div>
+
 <p><strong>重启apache，安装完毕</strong>
 建议运行一个php页面进行测试</p>
 

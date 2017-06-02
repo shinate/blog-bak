@@ -57,7 +57,8 @@
 
   <div class="post-content chinese">
     <p><strong>MAC触摸板也支持touch，加入了区分判断</strong></p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="c1">// IOS desktop has touch events, make them busting</span>
         <span class="kd">var</span> <span class="nx">hasTouch</span> <span class="o">=</span> <span class="o">!!</span><span class="p">((</span><span class="s1">'ontouchstart'</span> <span class="k">in</span> <span class="nx">global</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="sr">/Mac OS X /</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">global</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">))</span> <span class="o">||</span> <span class="nx">global</span><span class="p">.</span><span class="nx">DocumentTouch</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span> <span class="k">instanceof</span> <span class="nx">global</span><span class="p">.</span><span class="nx">DocumentTouch</span><span class="p">);</span>
         <span class="k">return</span> <span class="p">{</span>
@@ -69,7 +70,9 @@
             <span class="na">resizeEvt</span><span class="p">:</span> <span class="s1">'onorientationchange'</span> <span class="k">in</span> <span class="nx">global</span> <span class="p">?</span> <span class="s1">'orientationchange'</span> <span class="p">:</span> <span class="s1">'resize'</span>
         <span class="p">};</span>
     <span class="p">})();</span>
-</code></pre></div>
+</code></pre>
+</div>
+
   </div>
   <!-- /post content -->
 
