@@ -126,7 +126,7 @@ cp memcached-debug /usr/local/bin/
 <p><strong>使用 “LD_DEBUG=libs /usr/local/memcached/bin/memcached -v” 进行检查</strong>
 得到以下结果</p>
 
-<p><code class="highlighter-rouge">access log
+<p>```access log
 3566: find library=libevent-1.4.so.2 [0]; searching
 3566: search cache=/etc/ld.so.cache
 3566: search path=/lib64/tls/x86_64:/lib64/tls:/lib64/x86_64:/lib64:/usr/lib64/tls/x86_64:/usr/lib64/tls:/usr/lib64/x86_64:/usr/lib64 (system search path)
@@ -139,12 +139,12 @@ cp memcached-debug /usr/local/bin/
 3566: trying file=/usr/lib64/x86_64/libevent-1.4.so.2
 3566: trying file=/usr/lib64/libevent-1.4.so.2
 3566:
-/usr/local/memcached/bin/memcached: error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory
-</code></p>
+/usr/local/memcached/bin/memcached: error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+可以看出"/usr/local/memcached/bin/memcached: error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory" 64位系统只会去找lib64下的包，我的处理办法是在lib64下建立个软连接：
 
-<p>可以看出”/usr/local/memcached/bin/memcached: error while loading shared libraries: libevent-1.4.so.2: cannot open shared object file: No such file or directory” 64位系统只会去找lib64下的包，我的处理办法是在lib64下建立个软连接：</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2
+```bash
+ln -s /usr/local/lib/libevent-1.4.so.2 /usr/lib64/libevent-1.4.so.2
 </code></pre>
 </div>
 

@@ -144,16 +144,20 @@ Firefox：不能！
 <h2 id="frame">frame</h2>
 
 <p>以下面的frame为例：
-&lt;frame src=”xxx.html” id=”frameId” name=”frameName” /&gt;
-1. 访问frame对象：</p>
+&lt;frame src=”xxx.html” id=”frameId” name=”frameName” /&gt;</p>
+<ol>
+  <li>访问frame对象：</li>
+</ol>
 
 <p>[ ie中返回的为object , ff中会显示具体的类型 比如： object window ]</p>
 
 <p>IE:使用window.frameId或者window.frameName来访问这个frame对象. frameId和frameName可以同名。</p>
 
 <p>Firefox:只能使用window.frameName来访问这个frame对象.<br />
-  ** 在IE和Firefox中都可以使用window.document.getElementById(“frameId”)来访问这个frame对象.**
-2. 切换frame内容:</p>
+  ** 在IE和Firefox中都可以使用window.document.getElementById(“frameId”)来访问这个frame对象.**</p>
+<ol>
+  <li>切换frame内容:</li>
+</ol>
 
 <p>在IE和Firefox中都可以使用window.document.getElementById(“testFrame”).src = “xxx.html”或window.frameName.location = “xxx.html”来切换frame的内容.</p>
 

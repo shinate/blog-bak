@@ -5,8 +5,8 @@
     <description>This is my blog</description>
     <link>http://codante.org/blog/</link>
     <atom:link href="http://codante.org/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 05 Jun 2017 12:24:39 +0800</pubDate>
-    <lastBuildDate>Mon, 05 Jun 2017 12:24:39 +0800</lastBuildDate>
+    <pubDate>Mon, 05 Jun 2017 12:34:05 +0800</pubDate>
+    <lastBuildDate>Mon, 05 Jun 2017 12:34:05 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -205,8 +205,8 @@ tar xvfz ZendGuardLoader-php-5.3-linux-glibc23-i386.tar.gz    &lt;span class=
 cp ZendGuardLoader-php-5.3-linux-glibc23-i386/php-5.3.x/ZendGuardLoader.so /usr/zend/   &lt;span class=&quot;c&quot;&gt;#拷贝文件到安装目录&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;      
-### 配置Zend Guard&lt;/p&gt;
+&lt;p&gt;      &lt;/p&gt;
+&lt;h3 id=&quot;zend-guard-2&quot;&gt;配置Zend Guard&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cp /etc/php.ini    /etc/php.inibak   &lt;span class=&quot;c&quot;&gt;#修改之前先备份&lt;/span&gt;
 vi /etc/php.ini    &lt;span class=&quot;c&quot;&gt;#编辑文件&lt;/span&gt;
