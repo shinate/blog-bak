@@ -11,7 +11,7 @@ author:
 author_login: admin
 author_email: shine.wangrs@gmail.com
 author_url: http://codante.org
-excerpt: "如何查看有几个处理器，是否多核？是否超线程？"
+excerpt: 如何查看有几个处理器，是否多核？是否超线程？
 wordpress_id: 328
 wordpress_url: http://codante.org/?p=328
 date: '2010-09-08 11:16:11 +0800'

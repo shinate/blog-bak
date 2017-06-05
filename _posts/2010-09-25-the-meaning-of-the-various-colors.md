@@ -11,7 +11,7 @@ author:
 author_login: admin
 author_email: shine.wangrs@gmail.com
 author_url: http://codante.org
-excerpt: "色彩是色相和色度的表现。色彩形态不仅具有审美性和装饰性，而且还具有符号意义和象征意义，如红色代表革命、热烈；白色象征素洁；绿色象征生命、春天、和平等等。在视知觉的研究中，色彩形态或者说颜色视觉的研究已成一个重要的分支。"
+excerpt: 色彩是色相和色度的表现。色彩形态不仅具有审美性和装饰性，而且还具有符号意义和象征意义，如红色代表革命、热烈；白色象征素洁；绿色象征生命、春天、和平等等。在视知觉的研究中，色彩形态或者说颜色视觉的研究已成一个重要的分支。
 wordpress_id: 342
 wordpress_url: http://codante.org/?p=342
 date: '2010-09-25 11:15:55 +0800'

@@ -11,7 +11,7 @@ author:
 author_login: admin
 author_email: shine.wangrs@gmail.com
 author_url: http://codante.org
-excerpt: "使用memcached的好处不言而喻，它不仅减少了系统访问数据库的压力，而且提高系统的反应速度。特别是做多台服务器集群时，memcached有效的解决了session共享的问题。架构确实变复杂了一些，但应用起来却极为简便，几乎不需要修改任何程序代码，通过修改几行配置信息即可实现。"
+excerpt: 使用memcached的好处不言而喻，它不仅减少了系统访问数据库的压力，而且提高系统的反应速度。特别是做多台服务器集群时，memcached有效的解决了session共享的问题。架构确实变复杂了一些，但应用起来却极为简便，几乎不需要修改任何程序代码，通过修改几行配置信息即可实现。
 wordpress_id: 291
 wordpress_url: http://codante.org/?p=291
 date: '2010-08-09 09:45:33 +0800'
