@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "在windows中创建软链接，junction的使用方法"
+title: 在windows中创建软链接，junction的使用方法
 author:
   display_name: "莳子"
   login: admin

@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "一些很实用的英文口头语"
+title: 一些很实用的英文口头语
 author:
   display_name: "莳子"
   login: admin

@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "磁盘阵列 - RAID详解"
+title: 磁盘阵列 - RAID详解
 author:
   display_name: "莳子"
   login: admin

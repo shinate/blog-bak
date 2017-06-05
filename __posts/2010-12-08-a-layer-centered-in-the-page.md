@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "让一个层在页面中居中"
+title: 让一个层在页面中居中
 author:
   display_name: "莳子"
   login: admin

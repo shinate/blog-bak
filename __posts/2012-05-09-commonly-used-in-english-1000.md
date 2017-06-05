@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "常用英语1000句"
+title: 常用英语1000句
 author:
   display_name: "莳子"
   login: admin

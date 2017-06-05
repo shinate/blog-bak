@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "学英语要从兴趣开始"
+title: 学英语要从兴趣开始
 author:
   display_name: "莳子"
   login: admin

@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "各种颜色所代表的含义"
+title: 各种颜色所代表的含义
 author:
   display_name: "莳子"
   login: admin

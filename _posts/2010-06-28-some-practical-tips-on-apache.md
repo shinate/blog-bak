@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "关于apache的一些实用技巧"
+title: 关于apache的一些实用技巧
 author:
   display_name: "莳子"
   login: admin

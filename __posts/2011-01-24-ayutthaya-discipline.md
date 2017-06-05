@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "城府修练"
+title: 城府修练
 author:
   display_name: "莳子"
   login: admin

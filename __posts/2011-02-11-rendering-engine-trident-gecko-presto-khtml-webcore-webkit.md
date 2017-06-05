@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "浏览器内核(Rendering Engine):Trident、Gecko、Presto、KHTML、WebCore、WebKit"
+title: 浏览器内核(Rendering Engine):Trident、Gecko、Presto、KHTML、WebCore、WebKit
 author:
   display_name: "莳子"
   login: admin

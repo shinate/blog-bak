@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "据统计，大雄在《哆啦A梦》全集中一共被胖虎揍173次，被老师骂60次，被妈妈骂了327次，被狗咬23次，掉进水沟14次"
+title: 据统计，大雄在《哆啦A梦》全集中一共被胖虎揍173次，被老师骂60次，被妈妈骂了327次，被狗咬23次，掉进水沟14次
 author:
   display_name: "莳子"
   login: admin

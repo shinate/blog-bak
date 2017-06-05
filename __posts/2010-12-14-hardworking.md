@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "年轻人就是要奋斗！"
+title: 年轻人就是要奋斗！
 author:
   display_name: "蓝色"
   login: blue

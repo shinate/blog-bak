@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "实时更新的CPU性能测试排行"
+title: 实时更新的CPU性能测试排行
 author:
   display_name: "莳子"
   login: admin

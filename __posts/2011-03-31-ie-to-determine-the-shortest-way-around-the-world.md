@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "全世界最短的IE判断方法"
+title: 全世界最短的IE判断方法
 author:
   display_name: "莳子"
   login: admin

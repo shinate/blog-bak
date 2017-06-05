@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "日文假中文字对照表"
+title: 日文假中文字对照表
 author:
   display_name: "莳子"
   login: admin

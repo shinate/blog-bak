@@ -2,7 +2,7 @@
 layout: post
 status: publish
 published: true
-title: "判断javascript加载完成的方法"
+title: 判断javascript加载完成的方法
 author:
   display_name: "莳子"
   login: admin
