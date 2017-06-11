@@ -7,11 +7,11 @@ title: linux中去掉Windows文件的"^M"字符
 
 对某个文件进行处理
 
-```bash
+```
 vi filename
 ```
 
-```bash
+```
 :%s/^M/\r/g
 ```
 
@@ -21,7 +21,7 @@ vi filename
 
 可对多文件批量处理
 
-```bash
+```
 perl -p -i -e "s/^M//g" `find .`
 ```
 
