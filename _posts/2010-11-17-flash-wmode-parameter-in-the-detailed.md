@@ -1,21 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: Flash中的wmode参数详解
-author:
-  display_name: "莳子"
-  login: admin
-  email: shine.wangrs@gmail.com
-  url: http://codante.org
-author_login: admin
-author_email: shine.wangrs@gmail.com
-author_url: http://codante.org
-excerpt: 在做web开发中可能会遇到flash遮挡页面中元素的情况，无论怎么设置flash容器和层的深度(z-index)也无济于事，现有的解决方案是在插入flash的embed或object标签中加入"wmode"属性并设置为wmode="transparent"或"opaque"，但wmode属性到起怎样的作用，它们都具有什么养的意义呢？本文将详细的进行介绍。
-wordpress_id: 376
-wordpress_url: http://codante.org/?p=376
-date: '2010-11-17 10:15:11 +0800'
-date_gmt: '2010-11-17 02:15:11 +0800'
 ---
 
 ## 参数详解

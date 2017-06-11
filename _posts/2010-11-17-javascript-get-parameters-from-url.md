@@ -1,21 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: Javascript从url中获取参数
-author:
-  display_name: "莳子"
-  login: admin
-  email: shine.wangrs@gmail.com
-  url: http://codante.org
-author_login: admin
-author_email: shine.wangrs@gmail.com
-author_url: http://codante.org
-excerpt: "有时我们需要在客户端获取链接参数，一个常见的方法是将链接当做字符串，按照链接的格式分解，然后获取对应的参数值。"
-wordpress_id: 378
-wordpress_url: http://codante.org/?p=378
-date: '2010-11-17 15:09:36 +0800'
-date_gmt: '2010-11-17 07:09:36 +0800'
 ---
 
 ## 实现方法
