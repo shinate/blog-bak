@@ -1,29 +1,12 @@
 ---
 layout: post
-status: publish
-published: true
 title: Nginx安装及配置
-author:
-  display_name: "莳子"
-  login: admin
-  email: shine.wangrs@gmail.com
-  url: http://codante.org
-author_login: admin
-author_email: shine.wangrs@gmail.com
-author_url: http://codante.org
-excerpt: "持续收集更新中，为了保证实用性与可靠性，在这里发出的文档都是经过实际操作和测试的，另外有关Nginx的好文档实在太少了...T T"
-wordpress_id: 348
-wordpress_url: http://codante.org/?p=348
-date: '2010-10-05 16:52:44 +0800'
-date_gmt: '2010-10-05 08:52:44 +0800'
 ---
 
 configure 脚本确定系统所具有一些特性，特别是 nginx 用来处理连接的方法。然后，它创建 Makefile 文件。
-在nginx安装完成后有一些配置信息是无法更改的，所以在创建makefile时需要对一些参数进行修改。在[**附录1**][0]中列举了所有的configure所支持的参数。
+在nginx安装完成后有一些配置信息是无法更改的，所以在创建makefile时需要对一些参数进行修改。在下面列举了所有的configure所支持的参数。
 
-## [附**录1**][1]
-
-configure 所有支持的选项
+## configure 所有支持的选项
 
 - **--prefix=**&lt;path&gt; - Nginx安装路径。如果没有指定，默认为 /usr/local/nginx。
 - **--sbin-path=**&lt;path&gt; - Nginx可执行文件安装路径。只能安装时指定，如果没有指定，默认为&lt;prefix&gt;/sbin/nginx。
