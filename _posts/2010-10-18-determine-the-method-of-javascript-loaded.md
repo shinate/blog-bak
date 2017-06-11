@@ -1,20 +1,6 @@
 ---
 layout: post
-status: publish
-published: true
 title: 判断javascript加载完成的方法
-author:
-  display_name: "莳子"
-  login: admin
-  email: shine.wangrs@gmail.com
-  url: http://codante.org
-author_login: admin
-author_email: shine.wangrs@gmail.com
-author_url: http://codante.org
-wordpress_id: 357
-wordpress_url: http://codante.org/?p=357
-date: '2010-10-18 12:41:59 +0800'
-date_gmt: '2010-10-18 04:41:59 +0800'
 ---
 
 ```javascript
