@@ -128,4 +128,4 @@
         return _i < 0 ? _p : _p.substr(0, i);
     }
 
-})(jQuery);
+})(Zepto);
