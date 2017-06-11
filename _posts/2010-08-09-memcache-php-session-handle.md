@@ -44,6 +44,7 @@ ini_set("session.save_path","tcp://127.0.0.1:11211");
 ### memcached
 
 基于libmemcached通用类库的memcache客户端
+
 **在配置文件中进行设置：**
 
 ```ini
@@ -63,8 +64,11 @@ ini_set("session.save_path","127.0.0.1:11211");
 ### 验证效果
 
 通过[memcachephp][2]来查询是否session数据被正确设置了：
+
+```
 The session keys are stored under the prefix memc.sess.key
 memc.sess.key.8fvadbqo1lt2l6j98tbg7ao1d7
+```
 
 [0]: http://cn.php.net/manual/en/memcache.ini.php
 [1]: http://cn.php.net/manual/en/memcached.sessions.php
